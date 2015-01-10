@@ -10,11 +10,11 @@
 		B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730771A6151870073EB51 /* ACoreDataPortal.swift */; };
 		B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730781A6151870073EB51 /* ACoreDataStore.swift */; };
 		B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B637307B1A61566D0073EB51 /* DataModel.xcdatamodeld */; };
-		B637308C1A61579A0073EB51 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637308B1A61579A0073EB51 /* Location.swift */; };
-		B637308E1A61579B0073EB51 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637308D1A61579B0073EB51 /* Notification.swift */; };
-		B63730901A61579B0073EB51 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637308F1A61579B0073EB51 /* User.swift */; };
-		B63730921A61579B0073EB51 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730911A61579B0073EB51 /* LocalUser.swift */; };
 		B63730971A61580A0073EB51 /* LocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730961A61580A0073EB51 /* LocationStore.swift */; };
+		B63730991A615E3A0073EB51 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730981A615E3A0073EB51 /* Location.swift */; };
+		B637309B1A615E3A0073EB51 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309A1A615E3A0073EB51 /* Notification.swift */; };
+		B637309D1A615E3B0073EB51 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309C1A615E3B0073EB51 /* LocalUser.swift */; };
+		B637309F1A615E3B0073EB51 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309E1A615E3B0073EB51 /* User.swift */; };
 		B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EC3D11A614C610064ED0E /* AppDelegate.swift */; };
 		B88EC3D41A614C610064ED0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EC3D31A614C610064ED0E /* ViewController.swift */; };
 		B88EC3D71A614C610064ED0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B88EC3D51A614C610064ED0E /* Main.storyboard */; };
@@ -37,11 +37,11 @@
 		B63730771A6151870073EB51 /* ACoreDataPortal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataPortal.swift; sourceTree = "<group>"; };
 		B63730781A6151870073EB51 /* ACoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataStore.swift; sourceTree = "<group>"; };
 		B637307C1A61566D0073EB51 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		B637308B1A61579A0073EB51 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = ../Location.swift; sourceTree = "<group>"; };
-		B637308D1A61579B0073EB51 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Notification.swift; path = ../Notification.swift; sourceTree = "<group>"; };
-		B637308F1A61579B0073EB51 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
-		B63730911A61579B0073EB51 /* LocalUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalUser.swift; path = ../LocalUser.swift; sourceTree = "<group>"; };
 		B63730961A61580A0073EB51 /* LocationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationStore.swift; sourceTree = "<group>"; };
+		B63730981A615E3A0073EB51 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		B637309A1A615E3A0073EB51 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		B637309C1A615E3B0073EB51 /* LocalUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
+		B637309E1A615E3B0073EB51 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B88EC3CC1A614C610064ED0E /* AStalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AStalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88EC3D01A614C610064ED0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B88EC3D11A614C610064ED0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,10 +103,10 @@
 		B63730931A6157BE0073EB51 /* NSManagedObject Subclasses */ = {
 			isa = PBXGroup;
 			children = (
-				B63730911A61579B0073EB51 /* LocalUser.swift */,
-				B637308F1A61579B0073EB51 /* User.swift */,
-				B637308D1A61579B0073EB51 /* Notification.swift */,
-				B637308B1A61579A0073EB51 /* Location.swift */,
+				B637309E1A615E3B0073EB51 /* User.swift */,
+				B637309C1A615E3B0073EB51 /* LocalUser.swift */,
+				B637309A1A615E3A0073EB51 /* Notification.swift */,
+				B63730981A615E3A0073EB51 /* Location.swift */,
 			);
 			name = "NSManagedObject Subclasses";
 			sourceTree = "<group>";
@@ -269,14 +269,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B63730971A61580A0073EB51 /* LocationStore.swift in Sources */,
+				B637309D1A615E3B0073EB51 /* LocalUser.swift in Sources */,
+				B63730991A615E3A0073EB51 /* Location.swift in Sources */,
 				B88EC3D41A614C610064ED0E /* ViewController.swift in Sources */,
-				B63730921A61579B0073EB51 /* LocalUser.swift in Sources */,
 				B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */,
+				B637309F1A615E3B0073EB51 /* User.swift in Sources */,
 				B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */,
-				B637308E1A61579B0073EB51 /* Notification.swift in Sources */,
-				B63730901A61579B0073EB51 /* User.swift in Sources */,
+				B637309B1A615E3A0073EB51 /* Notification.swift in Sources */,
 				B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */,
-				B637308C1A61579A0073EB51 /* Location.swift in Sources */,
 				B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
