@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main ScreenVC-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainScreenVC" customModule="AStalker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-bo-wp5" userLabel="mapContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="442"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-Ys-JOO">
+                                        <rect key="frame" x="485" y="51" width="63" height="30"/>
+                                        <state key="normal" title="Contacts">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="contactButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OBI-3A-CRb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.1843137255" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zud-pt-DOl">
+                                <rect key="frame" x="36" y="51" width="88" height="30"/>
+                                <state key="normal" title="MyLocations">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="myLocationsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Vx-O9-1Y2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPY-1L-Y9E">
+                                <rect key="frame" x="36" y="389" width="130" height="30"/>
+                                <state key="normal" title="ShareYourLocation">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="shareYourLocationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JXU-B0-2pH"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tab-fF-qvs" userLabel="tableContainer">
+                                <rect key="frame" x="0.0" y="442" width="600" height="158"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Tab-fF-qvs" firstAttribute="width" secondItem="XNS-bo-wp5" secondAttribute="height" multiplier="300:221" id="2VQ-Z0-I4B"/>
+                            <constraint firstItem="ZPY-1L-Y9E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="36" id="4Ye-Pc-2Ig"/>
+                            <constraint firstItem="Tab-fF-qvs" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="bottom" id="6rs-ih-O3Z"/>
+                            <constraint firstAttribute="trailing" secondItem="XNS-bo-wp5" secondAttribute="trailing" id="9vG-P6-Eik"/>
+                            <constraint firstItem="XNS-bo-wp5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Bjq-8w-TCb"/>
+                            <constraint firstItem="Tab-fF-qvs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="DGI-dk-bHa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Tab-fF-qvs" secondAttribute="trailing" id="HfE-96-VQC"/>
+                            <constraint firstItem="Tab-fF-qvs" firstAttribute="top" secondItem="ZPY-1L-Y9E" secondAttribute="bottom" constant="23" id="R2G-uB-wV1"/>
+                            <constraint firstItem="XNS-bo-wp5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Rwy-DC-YS2"/>
+                            <constraint firstItem="Tab-fF-qvs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aaG-Zc-fCx"/>
+                            <constraint firstItem="Zud-pt-DOl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="31" id="fE7-Lf-Evc"/>
+                            <constraint firstAttribute="trailing" secondItem="Tab-fF-qvs" secondAttribute="trailing" id="pOO-ff-y9Z"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Tab-fF-qvs" secondAttribute="bottom" id="rsr-DC-Jwt"/>
+                            <constraint firstItem="Zud-pt-DOl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="36" id="wSh-ie-qhm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contactButton" destination="Be8-Ys-JOO" id="2zV-ma-wVF"/>
+                        <outlet property="friendsLocationsContainer" destination="Tab-fF-qvs" id="MrG-dj-FMW"/>
+                        <outlet property="mapContainer" destination="XNS-bo-wp5" id="0MT-xF-tTz"/>
+                        <outlet property="myLocationsButton" destination="Zud-pt-DOl" id="Sqn-Dx-x44"/>
+                        <outlet property="shareYourLocationButton" destination="ZPY-1L-Y9E" id="Msw-zP-1TG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="406" y="377"/>
+        </scene>
+    </scenes>
+</document>
