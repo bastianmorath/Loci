@@ -6,6 +6,11 @@
 //  Copyright (c) 2015 Antum. All rights reserved.
 //
 
+/**
+*  This Controller controlls the tableContainer View in the MainScreenVC
+*  The TableView shows the locations of the users friends
+*/
+
 import Foundation
 import UIKit
 

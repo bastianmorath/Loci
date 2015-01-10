@@ -51,6 +51,15 @@
                                             <action selector="shareYourLocationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JXU-B0-2pH"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoM-1a-Oih">
+                                        <rect key="frame" x="484" y="356" width="69" height="30"/>
+                                        <state key="normal" title="LocateMe">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="locateMeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Fx-Zk-jpZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.1843137255" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -59,6 +68,8 @@
                                     <constraint firstItem="ZPY-1L-Y9E" firstAttribute="leading" secondItem="XNS-bo-wp5" secondAttribute="leading" constant="37" id="AiG-me-WeW"/>
                                     <constraint firstAttribute="trailing" secondItem="Be8-Ys-JOO" secondAttribute="trailing" constant="47" id="OUI-kU-4g7"/>
                                     <constraint firstAttribute="bottom" secondItem="ZPY-1L-Y9E" secondAttribute="bottom" constant="33" id="Vkm-fX-moc"/>
+                                    <constraint firstAttribute="bottom" secondItem="VoM-1a-Oih" secondAttribute="bottom" constant="33" id="WCO-y7-kUJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="VoM-1a-Oih" secondAttribute="trailing" constant="47" id="ak4-M9-TI7"/>
                                     <constraint firstItem="Zud-pt-DOl" firstAttribute="leading" secondItem="XNS-bo-wp5" secondAttribute="leading" constant="37" id="o9S-V6-seU"/>
                                 </constraints>
                             </view>
@@ -79,6 +90,7 @@
                     <connections>
                         <outlet property="contactButton" destination="Be8-Ys-JOO" id="2zV-ma-wVF"/>
                         <outlet property="friendsLocationsContainer" destination="Tab-fF-qvs" id="MrG-dj-FMW"/>
+                        <outlet property="locateMeButton" destination="VoM-1a-Oih" id="cgK-XU-5X5"/>
                         <outlet property="mapContainer" destination="XNS-bo-wp5" id="0MT-xF-tTz"/>
                         <outlet property="myLocationsButton" destination="Zud-pt-DOl" id="Sqn-Dx-x44"/>
                         <outlet property="shareYourLocationButton" destination="ZPY-1L-Y9E" id="Msw-zP-1TG"/>

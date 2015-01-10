@@ -30,6 +30,10 @@ class MainScreenVC: UIViewController {
     @IBAction func myLocationsButtonPressed(sender: AnyObject) {
     }
     
+    @IBOutlet weak var locateMeButton: UIButton!
+    @IBAction func locateMeButtonPressed(sender: AnyObject) {
+        mapVC.zoomIn()
+    }
     
     // child controllers
     var mapVC: MainScreenMapVC!
@@ -54,6 +58,13 @@ class MainScreenVC: UIViewController {
         self.mapContainer.setTranslatesAutoresizingMaskIntoConstraints( false )
         
         // add Observer
+        
+        // bring Buttons to Front (front of MKMapView)
+        mapContainer.bringSubviewToFront(myLocationsButton)
+        mapContainer.bringSubviewToFront(shareYourLocationButton)
+        mapContainer.bringSubviewToFront(contactButton)
+        mapContainer.bringSubviewToFront(locateMeButton)
+        
         
         // Setup MainScreenTableVC
         tabelVC = MainScreenTableVC()

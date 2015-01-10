@@ -8,6 +8,7 @@
 
 /**
 *  This Controller controlls the mapContainer View in the MainScreenVC 
+*  The MKMapView displays the users position 
 */
 
 import Foundation
@@ -77,6 +78,7 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
