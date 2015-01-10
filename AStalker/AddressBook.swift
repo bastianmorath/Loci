@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AddressBook
 
-class AddressBook{
+class AddressBook: NSObject{
     lazy var addressBook: ABAddressBookRef = {
         var error: Unmanaged<CFError>?
         return ABAddressBookCreateWithOptions(nil,
@@ -33,8 +33,9 @@ class AddressBook{
         return StaticInstance.instance!
     }
     
-    
+
     func askForAccess(){
+        
         ABAddressBookRequestAccessWithCompletion(addressBook,
             {[weak self] (granted: Bool, error: CFError!) in
                 
@@ -45,6 +46,7 @@ class AddressBook{
                 } else {
                     println("Access is not granted")
                 }
+                
         })
     }
     
@@ -60,6 +62,10 @@ class AddressBook{
             self.askForAccess()
             return self.accesAuthorized()
         default:
+            println("Access denied")
+            let alert = UIAlertView(title: "Kein Zugriff", message: "Gehen Sie in die Einstellungen und erlauben Sie AStalker Zugriff auf IHre Kontakte", delegate: self, cancelButtonTitle: "Verstanden!")
+            alert.show()
+
             return false
         }
     }

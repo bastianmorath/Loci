@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AddressBook
 class ViewController: UIViewController {
 
   override func viewDidLoad() {
@@ -16,7 +16,16 @@ class ViewController: UIViewController {
     let contacts = LocationStore.defaultStore().getContacts()
     if let contactArray = contacts{
         for person in contacts! {
-            println(person)
+            let firstName = ABRecordCopyValue(person, kABPersonFirstNameProperty).takeRetainedValue() as String
+            let lastName = ABRecordCopyValue(person, kABPersonLastNameProperty)?.takeRetainedValue() as? String
+            let number = ABRecordCopyValue(person, kABPersonPhoneProperty)?.takeRetainedValue() as? String
+            if lastName == nil{
+                println(firstName+" NILNILNIL")
+                continue
+            } else {
+                println(firstName + lastName!)
+
+            }
         }
     } else {
         println("Keine Kontakte...")

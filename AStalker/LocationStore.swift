@@ -53,16 +53,18 @@ class LocationStore: NSObject{
        return localUserArray.first
     }
     
-    func getContacts() -> [ABRecordRef]?{
+    /**
+    Diese Methode gibt ein Array zurück. Dieser enthält pro Kontakt ein Dictionary mit den Daten des Kontaktes. Welche Properties im Dictionary gespeichert werden sollen, kann über die Boolsche Variabeln dieser Methode bestummen werden.
+    
+    :returns: Ein Array mit Dictionaries
+    */
+    func getContacts(firstName: Bool = false, lastName: Bool = false, phoneNumber: Bool = false) -> [ABRecordRef]?{
         if AddressBook.defaultStore().accesAuthorized() {
-            let addressBook = AddressBook.defaultStore().addressBook as AddressBook
+            let addressBook: ABAddressBookRef = AddressBook.defaultStore().addressBook as ABAddressBookRef
             let allPeople = ABAddressBookCopyArrayOfAllPeople(
                 addressBook).takeRetainedValue() as NSArray
             return allPeople
         } else {
-            println("Access denied")
-            let alert = UIAlertView(title: "Kein Zugriff", message: "Gehen Sie in die Einstellungen und erlauben Sie AStalker Zugriff auf IHre Kontakte", delegate: self, cancelButtonTitle: "Verstanden!")
-            alert.show()
             return nil
         }
     }
