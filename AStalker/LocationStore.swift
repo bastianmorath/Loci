@@ -58,19 +58,48 @@ class LocationStore: NSObject{
     
     :returns: Ein Array mit Dictionaries
     */
-    func getContacts(firstName: Bool = false, lastName: Bool = false, phoneNumber: Bool = false) -> ["String":"String"]?{
+    func getContacts(addFirstName: Bool = true, addLastName: Bool = false, addPhoneNumber: Bool = false) -> [Dictionary<String, String>]?{
+        
         if AddressBook.defaultStore().accesAuthorized() {
             let addressBook: ABAddressBookRef = AddressBook.defaultStore().addressBook as ABAddressBookRef
             let allPeople = ABAddressBookCopyArrayOfAllPeople(
                 addressBook).takeRetainedValue() as NSArray
+            var dictArray:[Dictionary<String, String>] = []
             
-            return allPeople
+            for person in allPeople{
+                
+                var personDictionary = ["String":"String"]
+                if addFirstName{
+                    let firstName = ABRecordCopyValue(person,
+                        kABPersonFirstNameProperty).takeRetainedValue() as String
+                    personDictionary.updateValue(firstName, forKey: "firstName")
+                }
+                if addLastName{
+                    let lastName = ABRecordCopyValue(person,
+                        kABPersonLastNameProperty).takeRetainedValue() as String
+                    personDictionary.updateValue(lastName, forKey: "lastName")
+                }
+                if addPhoneNumber{
+                    let phoneNumber = ABRecordCopyValue(person,
+                        kABPersonFirstNameProperty).takeRetainedValue() as String
+                    //personDictionary.updateValue(firstName, forKey: "firstName")
+                }
+                dictArray.append(personDictionary)
+            }
+            
+            return dictArray
         } else {
             return nil
         }
     }
     
-    
+//    func getMobileNumberFromABRecordRef(ref: ABRecordRef) -> String{
+//        var multiRef: ABMutableMultiValueRef = ABRecordCopyValue(ref, kABPersonPhoneProperty)
+//        for i in multiRef{
+//            var mobileLabel = ABMultiValueCopyLabelAtIndex(multiRef, i)
+//            if mobileLabel.
+//        }
+//    }
     
     /**************************** WRITE Methods **********************************/
     func createUser(name: String) -> User? {
