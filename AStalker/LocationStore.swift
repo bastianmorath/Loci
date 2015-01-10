@@ -8,7 +8,8 @@
 
 import Foundation
 import CoreData
-
+import AddressBook
+import UIKit
 class LocationStore: NSObject{
     var coreDataStore: ACoreDataStore = ACoreDataStore.defaultStore()
     var coreDataPortal: ACoreDataPortal = ACoreDataStore.defaultStore()
@@ -52,8 +53,18 @@ class LocationStore: NSObject{
        return localUserArray.first
     }
     
-    func getContacts(){
-        
+    func getContacts() -> [ABRecordRef]?{
+        if AddressBook.defaultStore().accesAuthorized() {
+            let addressBook = AddressBook.defaultStore().addressBook as AddressBook
+            let allPeople = ABAddressBookCopyArrayOfAllPeople(
+                addressBook).takeRetainedValue() as NSArray
+            return allPeople
+        } else {
+            println("Access denied")
+            let alert = UIAlertView(title: "Kein Zugriff", message: "Gehen Sie in die Einstellungen und erlauben Sie AStalker Zugriff auf IHre Kontakte", delegate: self, cancelButtonTitle: "Verstanden!")
+            alert.show()
+            return nil
+        }
     }
     
     
