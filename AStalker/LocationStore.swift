@@ -58,11 +58,12 @@ class LocationStore: NSObject{
     
     :returns: Ein Array mit Dictionaries
     */
-    func getContacts(firstName: Bool = false, lastName: Bool = false, phoneNumber: Bool = false) -> [ABRecordRef]?{
+    func getContacts(firstName: Bool = false, lastName: Bool = false, phoneNumber: Bool = false) -> ["String":"String"]?{
         if AddressBook.defaultStore().accesAuthorized() {
             let addressBook: ABAddressBookRef = AddressBook.defaultStore().addressBook as ABAddressBookRef
             let allPeople = ABAddressBookCopyArrayOfAllPeople(
                 addressBook).takeRetainedValue() as NSArray
+            
             return allPeople
         } else {
             return nil
