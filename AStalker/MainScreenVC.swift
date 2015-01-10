@@ -63,8 +63,9 @@ class MainScreenVC: UIViewController {
         
         
         
-        
-        
+        //AddressBook Debugging
+        var dict = AddressBook.defaultStore().getContacts(addName: true, addPhoneNumber: true)
+        println(dict)
     }
     
     override func didReceiveMemoryWarning() {
