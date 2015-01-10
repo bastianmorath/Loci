@@ -14,11 +14,57 @@
 import Foundation
 import UIKit
 
-class MainScreenTableVC: UIViewController {
+class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+    
+    var tableView:UITableView!
+    var items: [String]!
+    
+    override func loadView() {
+      
+        // layout tableView
+        tableView = UITableView()
+        self.view = UIView()
+        self.view.backgroundColor = UIColor.purpleColor()
+        self.view.addSubview(tableView)
+        self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
+
+        // setup tableView
+        tableView.delegate = self
+        
+        
+        
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let nibName = UINib(nibName: "MainScreenTableViewCell", bundle:nil)
+        self.tableView.registerNib(nibName, forCellReuseIdentifier: "cell")
+        
+        items = ["We", "Swift"]
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        tableView.frame = self.view.bounds
+    }
+    
+    // MARK:- Data Source
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.items.count
+    }
+    
+    // MARK:- Delegates
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
+        cell.textLabel!.text = self.items[indexPath.row]
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("cell selected")
     }
     
     override func didReceiveMemoryWarning() {

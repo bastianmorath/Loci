@@ -8,7 +8,7 @@
 
 /**
 *  This Controller controlls the mapContainer View in the MainScreenVC 
-*  The MKMapView displays the users position 
+*  The MKMapView displays the users position
 */
 
 import Foundation
@@ -51,7 +51,7 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
     //  adjust Region of mapView
     func zoomIn() {
         var userLocation = mapView.userLocation
-
+        
         if let userLocation = userLocation {
             let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 2000, 2000)
             let adjustedRegion = mapView.regionThatFits(region)
