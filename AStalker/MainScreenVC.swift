@@ -45,6 +45,14 @@ class MainScreenVC: UIViewController {
         self.addChildViewController(mapVC)
         mapContainer.addSubview(mapVC.view)
         mapVC.didMoveToParentViewController(self)
+        
+        let views = ["mapView":mapVC.view ]
+        let metrics = [:]
+        self.view.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat( "H:|[mapView]|", options: nil, metrics: metrics, views: views ) )
+        self.view.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat("V:|[mapView]|", options: nil, metrics: metrics, views: views ))
+        self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
+        self.mapContainer.setTranslatesAutoresizingMaskIntoConstraints( false )
+        
         // add Observer
         
         // Setup MainScreenTableVC

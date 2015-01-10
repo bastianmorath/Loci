@@ -21,7 +21,6 @@
 		B660CC261A6192E500630E6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B660CC251A6192E500630E6F /* Main.storyboard */; };
 		B664B38A1A617214000E24BE /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B664B3891A617214000E24BE /* AddressBook.swift */; };
 		B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EC3D11A614C610064ED0E /* AppDelegate.swift */; };
-		B88EC3D41A614C610064ED0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EC3D31A614C610064ED0E /* ViewController.swift */; };
 		B88EC3D91A614C610064ED0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88EC3D81A614C610064ED0E /* Images.xcassets */; };
 		B88EC3DC1A614C610064ED0E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88EC3DA1A614C610064ED0E /* LaunchScreen.xib */; };
 		B88EC3E81A614C610064ED0E /* AStalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EC3E71A614C610064ED0E /* AStalkerTests.swift */; };
@@ -54,7 +53,6 @@
 		B88EC3CC1A614C610064ED0E /* AStalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AStalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88EC3D01A614C610064ED0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B88EC3D11A614C610064ED0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B88EC3D31A614C610064ED0E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B88EC3D81A614C610064ED0E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B88EC3DB1A614C610064ED0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B88EC3E11A614C610064ED0E /* AStalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AStalkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +78,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A250E91A1A61CA6400022ACD /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B660CC211A6192DC00630E6F /* MainScreenVC.swift */,
+				B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */,
+				B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */,
+			);
+			name = MainScreen;
+			sourceTree = "<group>";
+		};
 		B63730741A6151400073EB51 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,10 +112,7 @@
 		B63730761A61514E0073EB51 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */,
-				B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */,
-				B660CC211A6192DC00630E6F /* MainScreenVC.swift */,
-				B88EC3D31A614C610064ED0E /* ViewController.swift */,
+				A250E91A1A61CA6400022ACD /* MainScreen */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -284,7 +289,6 @@
 				B637309D1A615E3B0073EB51 /* LocalUser.swift in Sources */,
 				B63730991A615E3A0073EB51 /* Location.swift in Sources */,
 				B664B38A1A617214000E24BE /* AddressBook.swift in Sources */,
-				B88EC3D41A614C610064ED0E /* ViewController.swift in Sources */,
 				B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */,
 				B637309F1A615E3B0073EB51 /* User.swift in Sources */,
 				B660CC241A6192DC00630E6F /* MainScreenVC.swift in Sources */,
