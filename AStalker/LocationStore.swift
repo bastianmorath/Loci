@@ -10,7 +10,10 @@ import Foundation
 import CoreData
 import AddressBook
 import UIKit
+
+
 class LocationStore: NSObject{
+    
     var coreDataStore: ACoreDataStore = ACoreDataStore.defaultStore()
     var coreDataPortal: ACoreDataPortal = ACoreDataStore.defaultStore()
     
@@ -34,7 +37,14 @@ class LocationStore: NSObject{
     
     /**************************** READ Methods **********************************/
     func getUser() -> [User]{
-        return self.coreDataStore.performFetch("User") as [User]
+        var user = self.coreDataStore.performFetch("User")
+        for (index, object) in enumerate(user as [User]) {
+            if object == self.getLocalUser(){
+                user!.removeAtIndex(index)
+            }
+        }
+        
+        return user! as [User]
     }
     
     /*
@@ -47,29 +57,44 @@ class LocationStore: NSObject{
         return coreDataStore.createFetchedResultsController("User", predicate: nil, sortDescriptors: [sortDescriptor] )
     }
     
-    //TODO: LocalUser verbessern, nil prüfen
-    func getLocalUser() -> LocalUser?{
-        var localUserArray = self.coreDataStore.performFetch("LocalUser") as [LocalUser]
-        return localUserArray.first
+    func FetchedResultsControllerOfUser(user:LocalUser) -> NSFetchedResultsController{
+         let predicate = NSPredicate(format: "ANY contacts == %@", user)
+        
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true )
+
+         return coreDataStore.createFetchedResultsController("User", predicate: predicate, sortDescriptors: [sortDescriptor] )
     }
     
-       /**************************** WRITE Methods **********************************/
+    //TODO: LocalUser verbessern, nil prüfen
+    func getLocalUser() -> LocalUser{
+        var localUserArray = self.coreDataStore.performFetch("LocalUser") as [LocalUser]
+
+        return localUserArray.first!
+    }
+    
+    /**************************** WRITE Methods **********************************/
     func createUser(name: String) -> User? {
         var userObject = self.coreDataPortal.createObject("User") as User?
         if let user = userObject {
             user.name = name
+            self.coreDataPortal.save()
             return user
         }
         return nil
     }
     
-    func createLocalUser(name: String, phoneNumber: String) -> LocalUser?{
-        var user = self.coreDataPortal.createObject("LocalUser") as LocalUser?
-        if let localUser = user {
-            localUser.phoneNumber = phoneNumber
-            return localUser
+    func createLocalUser(name: String, phoneNumber: String) -> LocalUser{
+        var localUserArray = self.coreDataStore.performFetch("LocalUser")! as [LocalUser]
+        //Prüft, ob schon ein LocalUser vorhanden ist
+        if localUserArray.count>0 {
+            return localUserArray.first!
+        } else {
+            var user = self.coreDataPortal.createObject("LocalUser") as LocalUser
+            user.name = name
+            user.phoneNumber = phoneNumber
+            self.coreDataPortal.save()
+            return user
         }
-        return nil
     }
     
     /**
@@ -91,5 +116,19 @@ class LocationStore: NSObject{
             return location
         }
         return nil
+    }
+    
+    /**************************** Create Debug Objects **********************************/
+    func createDebugUsers(){
+        var nameArray = ["Bastian Morath", "Aleksandar Papez, ", "Lukas Reichart", "Florian Morath", "Cheryl Vaterlaus", "Elisa Mischi"]
+        
+        for name in nameArray {
+            self.createUser(name)
+        }
+    }
+    
+    func createDebugLocalUser(){
+        var localUser = self.createLocalUser("Bastian Morath", phoneNumber: "07954501010")
+        localUser.contacts = NSSet(array: self.getUser())
     }
 }
