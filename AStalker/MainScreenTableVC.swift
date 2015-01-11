@@ -65,11 +65,13 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
             return headerCell
         }
         // set properties to cell
-        cell.userNameLabel.text = "Aleksangdar Papez"
+        cell.userNameLabel.text = "Aleksandar Papez"
         cell.timeLabel.text = "12:45"
         cell.dateLabel.text = "10. Januar"
         cell.addressLabel.text = "Im Werk 11, Uster"
-        cell.imageView?.image = UIImage(named: "LocationPin")
+        cell.imageIconView.image = UIImage(named: "BigLocationPin")
+        cell.imageIconView.backgroundColor = UIColor.whiteColor()
+    
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
