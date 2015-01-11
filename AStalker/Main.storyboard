@@ -25,9 +25,15 @@
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-bo-wp5" userLabel="mapContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="419"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-Ys-JOO">
-                                        <rect key="frame" x="490" y="39" width="63" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-Ys-JOO">
+                                        <rect key="frame" x="490" y="39" width="55" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="55" id="Bb5-r0-Saw"/>
+                                            <constraint firstAttribute="width" constant="55" id="Enz-Vc-ZqM"/>
+                                        </constraints>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <state key="normal" title="Contacts">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -35,8 +41,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zud-pt-DOl">
-                                        <rect key="frame" x="37" y="39" width="88" height="30"/>
+                                        <rect key="frame" x="30" y="30" width="55" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="FrU-h8-c0h"/>
+                                            <constraint firstAttribute="height" constant="55" id="lFT-E3-u5y"/>
+                                        </constraints>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <state key="normal" title="MyLocations">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -44,8 +56,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoM-1a-Oih">
-                                        <rect key="frame" x="484" y="356" width="69" height="30"/>
+                                        <rect key="frame" x="515" y="334" width="55" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="5A0-tH-k6T"/>
+                                            <constraint firstAttribute="height" constant="55" id="DTx-Wq-Ah1"/>
+                                        </constraints>
+                                        <color key="tintColor" red="1" green="0.1843137255" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="LocateMe">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -53,8 +71,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPY-1L-Y9E">
-                                        <rect key="frame" x="37" y="356" width="130" height="30"/>
+                                        <rect key="frame" x="30" y="334" width="55" height="55"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="55" id="o01-FZ-O7l"/>
+                                            <constraint firstAttribute="height" constant="55" id="rGz-P5-zt7"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="ShareYourLocation">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -64,14 +88,14 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Zud-pt-DOl" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="top" constant="39" id="2Vj-19-fev"/>
-                                    <constraint firstItem="Be8-Ys-JOO" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="top" constant="39" id="4ik-Ia-CRp"/>
-                                    <constraint firstItem="ZPY-1L-Y9E" firstAttribute="leading" secondItem="XNS-bo-wp5" secondAttribute="leading" constant="37" id="AiG-me-WeW"/>
-                                    <constraint firstAttribute="trailing" secondItem="Be8-Ys-JOO" secondAttribute="trailing" constant="47" id="OUI-kU-4g7"/>
-                                    <constraint firstAttribute="bottom" secondItem="ZPY-1L-Y9E" secondAttribute="bottom" constant="33" id="Vkm-fX-moc"/>
-                                    <constraint firstAttribute="bottom" secondItem="VoM-1a-Oih" secondAttribute="bottom" constant="33" id="WCO-y7-kUJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="VoM-1a-Oih" secondAttribute="trailing" constant="47" id="ak4-M9-TI7"/>
-                                    <constraint firstItem="Zud-pt-DOl" firstAttribute="leading" secondItem="XNS-bo-wp5" secondAttribute="leading" constant="37" id="o9S-V6-seU"/>
+                                    <constraint firstItem="Zud-pt-DOl" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="top" constant="30" id="2Vj-19-fev"/>
+                                    <constraint firstItem="Be8-Ys-JOO" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="top" constant="30" id="4ik-Ia-CRp"/>
+                                    <constraint firstItem="ZPY-1L-Y9E" firstAttribute="leading" secondItem="XNS-bo-wp5" secondAttribute="leading" constant="30" id="AiG-me-WeW"/>
+                                    <constraint firstAttribute="trailing" secondItem="Be8-Ys-JOO" secondAttribute="trailing" constant="30" id="OUI-kU-4g7"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZPY-1L-Y9E" secondAttribute="bottom" constant="30" id="Vkm-fX-moc"/>
+                                    <constraint firstAttribute="bottom" secondItem="VoM-1a-Oih" secondAttribute="bottom" constant="30" id="WCO-y7-kUJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="VoM-1a-Oih" secondAttribute="trailing" constant="30" id="ak4-M9-TI7"/>
+                                    <constraint firstItem="Zud-pt-DOl" firstAttribute="leading" secondItem="XNS-bo-wp5" secondAttribute="leading" constant="30" id="o9S-V6-seU"/>
                                 </constraints>
                             </view>
                         </subviews>

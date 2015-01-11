@@ -31,7 +31,6 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         self.view.addSubview( mapView )
         self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
 
-
         // initialize Map
         mapView.removeAnnotations(self.mapView.annotations)
         mapView.mapType = MKMapType.Standard
