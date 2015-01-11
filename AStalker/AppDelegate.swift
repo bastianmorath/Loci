@@ -21,6 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //setup MKMapView UserLocation Tracking
         locationManager = CLLocationManager()
         locationManager?.requestWhenInUseAuthorization()
+        
+        if LocationStore.defaultStore().getLocalUser() == nil {
+            LocationStore.defaultStore().createDebugUsers()
+            LocationStore.defaultStore().createDebugLocalUser()
+        }
+        
     /*
     Ask for AddressBookAccess
     */

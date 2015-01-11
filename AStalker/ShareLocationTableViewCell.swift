@@ -41,7 +41,7 @@ class ShareLocationTableViewCell: UITableViewCell {
             self.nameLabel.text = user.name
             
             //Herzchen rechts hinter den namen tun, wenn der User ein Freund ist
-            if LocationStore.defaultStore().getLocalUser().friends.containsObject(user){
+            if LocationStore.defaultStore().getLocalUser()?.friends.containsObject(user) != nil{
                 println("Herzchen")
             }
         }

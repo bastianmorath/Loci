@@ -66,9 +66,9 @@ class LocationStore: NSObject{
     }
     
     //TODO: LocalUser verbessern, nil prüfen
-    func getLocalUser() -> LocalUser{
+    func getLocalUser() -> LocalUser?{
         var localUserArray = self.coreDataStore.performFetch("LocalUser") as [LocalUser]
-        return localUserArray.first!
+        return localUserArray.first?
     }
     
     /**************************** WRITE Methods **********************************/

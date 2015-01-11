@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2BC946A1A623EC900B73A69 /* MainScreenHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BC94681A623EC900B73A69 /* MainScreenHeaderTableViewCell.swift */; };
+		A2BC946B1A623EC900B73A69 /* MainScreenHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BC94691A623EC900B73A69 /* MainScreenHeaderTableViewCell.xib */; };
 		B60C03601A620E4F005921B2 /* MainScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */; };
 		B60C03621A620E5D005921B2 /* MainScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
 		B60C03641A620F55005921B2 /* MainScreenTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
@@ -80,6 +82,8 @@
 
 /* Begin PBXFileReference section */
 		7B1F7991D56C58CA3E0747E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2BC94681A623EC900B73A69 /* MainScreenHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		A2BC94691A623EC900B73A69 /* MainScreenHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCell.swift; sourceTree = "<group>"; };
 		B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenTableViewCell.xib; sourceTree = "<group>"; };
 		B62719FD1A62499D008B410C /* Hackaton-Icons_Heart-Dark-Grey.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Heart-Dark-Grey.pdf"; sourceTree = "<group>"; };

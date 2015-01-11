@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LF6-FI-tCK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -58,7 +58,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="shareYourLocationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JXU-B0-2pH"/>
+                                            <action selector="shareYourLocationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b6g-nV-UOO"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -95,7 +95,7 @@
                         <outlet property="mapContainer" destination="XNS-bo-wp5" id="0MT-xF-tTz"/>
                         <outlet property="myLocationsButton" destination="Zud-pt-DOl" id="Sqn-Dx-x44"/>
                         <outlet property="shareYourLocationButton" destination="ZPY-1L-Y9E" id="Msw-zP-1TG"/>
-                        <segue destination="LF6-FI-tCK" kind="show" id="pTl-RE-mxK"/>
+                        <segue destination="LF6-FI-tCK" kind="show" identifier="shareYourLocation" id="pTl-RE-mxK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

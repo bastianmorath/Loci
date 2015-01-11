@@ -32,11 +32,10 @@ class MainScreenVC: UIViewController {
     
     @IBOutlet weak var shareYourLocationButton: UIButton!
     @IBAction func shareYourLocationButtonPressed(sender: AnyObject) {
-        
-        
-        locationToShare?.latitude = mapVC.mapView.userLocation.location.coordinate.latitude
-        locationToShare?.longitude = mapVC.mapView.userLocation.location.coordinate.longitude
-        locationToShare?.timestamp = NSDate()
+        //var latitude = mapVC.mapView.userLocation.location.coordinate.latitude
+        //var longitude = mapVC.mapView.userLocation.location.coordinate.longitude
+
+        locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: 4.1, latitude: 2.9, user: nil)
         
         performSegueWithIdentifier("shareYourLocation", sender: nil)
         
@@ -101,6 +100,7 @@ class MainScreenVC: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         var shareLocationVC:ShareLocationVC = segue.destinationViewController as ShareLocationVC
+        
         shareLocationVC.location = self.locationToShare!
     }
     
