@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A2BC94621A62146F00B73A69 /* MainScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BC94601A62146F00B73A69 /* MainScreenTableViewCell.swift */; };
 		A2BC94631A62146F00B73A69 /* MainScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BC94611A62146F00B73A69 /* MainScreenTableViewCell.xib */; };
+		A2BC94661A621F7600B73A69 /* MainScreenHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BC94641A621F7600B73A69 /* MainScreenHeaderTableViewCell.swift */; };
+		A2BC94671A621F7600B73A69 /* MainScreenHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BC94651A621F7600B73A69 /* MainScreenHeaderTableViewCell.xib */; };
 		B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730771A6151870073EB51 /* ACoreDataPortal.swift */; };
 		B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730781A6151870073EB51 /* ACoreDataStore.swift */; };
 		B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B637307B1A61566D0073EB51 /* DataModel.xcdatamodeld */; };
@@ -74,6 +76,8 @@
 /* Begin PBXFileReference section */
 		A2BC94601A62146F00B73A69 /* MainScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCell.swift; sourceTree = "<group>"; };
 		A2BC94611A62146F00B73A69 /* MainScreenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenTableViewCell.xib; sourceTree = "<group>"; };
+		A2BC94641A621F7600B73A69 /* MainScreenHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		A2BC94651A621F7600B73A69 /* MainScreenHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		B63730771A6151870073EB51 /* ACoreDataPortal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataPortal.swift; sourceTree = "<group>"; };
 		B63730781A6151870073EB51 /* ACoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataStore.swift; sourceTree = "<group>"; };
 		B637307C1A61566D0073EB51 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -173,11 +177,13 @@
 			isa = PBXGroup;
 			children = (
 				B668BD5B1A61BAA500939A6C /* ShareLocation */,
+				B660CC211A6192DC00630E6F /* MainScreenVC.swift */,
 				B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */,
 				B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */,
-				B660CC211A6192DC00630E6F /* MainScreenVC.swift */,
 				A2BC94601A62146F00B73A69 /* MainScreenTableViewCell.swift */,
 				A2BC94611A62146F00B73A69 /* MainScreenTableViewCell.xib */,
+				A2BC94641A621F7600B73A69 /* MainScreenHeaderTableViewCell.swift */,
+				A2BC94651A621F7600B73A69 /* MainScreenHeaderTableViewCell.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				B6A9AD821A61E59100AF4B51 /* UniversLTStd-BoldCnObl.otf in Resources */,
 				B6A9AD921A61E59100AF4B51 /* UniversLTStd-XBlack.otf in Resources */,
 				B6A9AD8E1A61E59100AF4B51 /* UniversLTStd-LightUltraCn.otf in Resources */,
+				A2BC94671A621F7600B73A69 /* MainScreenHeaderTableViewCell.xib in Resources */,
 				B6A9AD801A61E59100AF4B51 /* UniversLTStd-Bold.otf in Resources */,
 				B6A9AD841A61E59100AF4B51 /* UniversLTStd-BoldExObl.otf in Resources */,
 				B6A9AD871A61E59100AF4B51 /* UniversLTStd-CnObl.otf in Resources */,
@@ -435,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B63730971A61580A0073EB51 /* LocationStore.swift in Sources */,
+				A2BC94661A621F7600B73A69 /* MainScreenHeaderTableViewCell.swift in Sources */,
 				B637309D1A615E3B0073EB51 /* LocalUser.swift in Sources */,
 				B63730991A615E3A0073EB51 /* Location.swift in Sources */,
 				B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */,

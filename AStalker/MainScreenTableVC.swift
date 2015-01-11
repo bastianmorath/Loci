@@ -38,7 +38,11 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
         super.viewDidLoad()
         
         let nibName = UINib(nibName: "MainScreenTableViewCell", bundle:nil)
-        self.tableView.registerNib(nibName, forCellReuseIdentifier: "cell")
+        self.tableView.registerNib(nibName, forCellReuseIdentifier: "MainScreenTableViewCell")
+
+        let nibNameHeader = UINib(nibName: "MainScreenHeaderTableViewCell", bundle:nil)
+        self.tableView.registerNib(nibNameHeader, forCellReuseIdentifier: "MainScreenHeaderTableViewCell")
+
         
     }
     
@@ -54,28 +58,10 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     // MARK:- Delegates
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:MainScreenTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as MainScreenTableViewCell
-        
+        var cell:MainScreenTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("MainScreenTableViewCell") as MainScreenTableViewCell
+        var headerCell:MainScreenHeaderTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("MainScreenHeaderTableViewCell") as MainScreenHeaderTableViewCell
         if indexPath.row == 0 {
-            
-            // hide all labels
-            cell.backgroundColor = UIColor.whiteColor()
-            cell.userNameLabel.hidden = true
-            cell.imageIconView.hidden = true
-            cell.timeLabel.hidden = true
-            cell.dateLabel.hidden = true
-            cell.addressLabel.hidden = true
-            
-            // add labels
-            let friendsLabel = UILabel(frame: CGRect(x: 15 , y: 30 , width: 100, height: 15))
-            friendsLabel.text = "Friends"
-            cell.contentView .addSubview(friendsLabel)
-            
-            let lastUpdate = UILabel(frame: CGRect(x: 215 , y: 30 , width: 100, height: 15))
-            friendsLabel.text = "Last Update"
-            cell.contentView .addSubview(lastUpdate)
-            
-            return cell
+            return headerCell
         }
         // set properties to cell
         cell.userNameLabel.text = "Aleksandar Papez"
@@ -91,7 +77,12 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 55
+        if indexPath.row == 0 {
+            // Header Cell
+            return 60
+        } else {
+            return 55
+        }
     }
     
     override func didReceiveMemoryWarning() {
