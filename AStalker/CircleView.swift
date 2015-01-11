@@ -24,7 +24,7 @@ class CircleView: UIView {
         var context = UIGraphicsGetCurrentContext();
         
         // Set the circle outerline-width
-        CGContextSetLineWidth(context, 5.0);
+        CGContextSetLineWidth(context, 1);
         
         // Set the circle outerline-colour
         UIColor.blackColor().set()

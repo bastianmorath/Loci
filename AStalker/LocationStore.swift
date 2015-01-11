@@ -100,11 +100,13 @@ class LocationStore: NSObject{
     Erstellt eine Location mit Name, Timestamp, Longitude und latitude.
     Der User ist optional: Wird einer mitgeliefert, wird die Location dem Property 'sharedLocation' des Users, anderfalls des LcoalUsers hinzugefügt.
     */
-    func createLocation(name: NSString, timestamp: NSDate, longitude: Double, latitude: Double, user: User? = nil) -> Location?{
+    func createLocation(name: String, timestamp: NSDate? = nil, longitude: Double, latitude: Double, user: User? = nil) -> Location?{
         var locationObject = self.coreDataPortal.createObject("Location") as Location?
         if let location = locationObject {
             location.name = name
-            location.timestamp = timestamp
+            if let timestamo = timestamp {
+            location.timestamp = timestamp!
+            }
             location.longitude = longitude
             location.latitude = latitude
             if (user != nil) {

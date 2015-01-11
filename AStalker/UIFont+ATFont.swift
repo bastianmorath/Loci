@@ -25,11 +25,11 @@ extension UIFont{
     }
     
     class func ATFont() -> UIFont? {
-        return UIFont( name: "UniversLTStd-Light", size: 10.0 )
+        return UIFont( name: "UniversLTStd-Light", size: 12.0 )
     }
     
     class func ATBoldFont() -> UIFont? {
-        return UIFont( name: "UniversLTStd-Bold", size: 15.0 )
+        return UIFont( name: "UniversLTStd-Bold", size: 13.0 )
     }
     
     class func ATButtonFont() -> UIFont? {
