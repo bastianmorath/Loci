@@ -87,7 +87,6 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
             location.sharedUsers = location.sharedUsers.setByAddingObject(selectedUser)
         }
         tableView.reloadData()
-        println("Anzahl ausgewählte KOntakte: \(location.sharedUsers.count)")
     }
     
     

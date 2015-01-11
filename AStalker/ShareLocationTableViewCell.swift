@@ -54,7 +54,16 @@ class ShareLocationTableViewCell: UITableViewCell, UITableViewDelegate {
             
             //Herzchen rechts hinter den namen tun, wenn der User ein Freund ist
             if LocationStore.defaultStore().getLocalUser()?.friends.containsObject(user) != nil{
+                var imageView = UIImageView(image: UIImage(named: "Heart_DarkGrey.png"))
+                imageView.frame = CGRectMake(270, 13, 30, 30)
+                self.contentView.addSubview(imageView)
+
+//                var viewsDictionary = ["imageView":imageView]
+//                var constraintRight = NSLayoutConstraint.constraintsWithVisualFormat("H:[imageView]-30-|", options: nil, metrics: nil, views: viewsDictionary)
+//                imageView.addConstraints(constraintRight)
+
             }
+            
         }
     }
     //Roter Checkmark-View

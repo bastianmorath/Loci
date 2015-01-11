@@ -26,7 +26,7 @@ class ShareLocationDataSource: ATableViewDataSource, UITableViewDelegate{
         
         //User ist schon angeklickt worden. Entferne den roten Button
         if (location?.sharedUsers.containsObject(user) != nil) {
-            cell.redView.hidden = false
+            cell.redView.hidden = true
         } else {
             cell.redView.hidden = true
         }

@@ -50,6 +50,7 @@ extension UIButton {
     enum ATButtonLocation {
         case TopRight
         case TopLeft
+        case BottomLeft
         case TopHalfLeft
         case BottomRight
     }
@@ -94,10 +95,6 @@ extension UIButton {
             imageView.image = UIImage(named: "Contacts.png")
         }
         button.addSubview(imageView)
-
-        
-
-        
     
         return button
     }
@@ -120,16 +117,19 @@ extension UIButton {
         switch location {
         case .TopRight:
             horizontalConstraint = "H:[button]-margin-|"
-            verticalConstraint = "V:|-margin-[button]"
+            verticalConstraint =   "V:|-margin-[button]"
         case .TopLeft:
             horizontalConstraint = "H:|-margin-[button]"
-            verticalConstraint = "V:|-margin-[button]"
+            verticalConstraint =   "V:|-margin-[button]"
+        case .BottomLeft:
+            horizontalConstraint = "H:|-margin-[button]"
+            verticalConstraint =   "V:[button]-margin-|"
         case .TopHalfLeft:
             horizontalConstraint = "H:|-margin-[button]"
-            verticalConstraint = "V:|-0-[button]"
+            verticalConstraint =   "V:|-0-[button]"
         case .BottomRight:
             horizontalConstraint = "H:[button]-margin-|"
-            verticalConstraint = "V:[button]-margin-|"
+            verticalConstraint =   "V:[button]-margin-|"
         default:
             break
         }

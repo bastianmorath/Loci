@@ -85,8 +85,8 @@ class MainScreenVC: UIViewController {
         
         shareYourLocationButton = UIButton.ATButton(.ContactLocation, color: .Grey)
         shareYourLocationButton.addTarget(self, action: "shareYourLocationButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.friendsLocationsContainer.addSubview(shareYourLocationButton)
-        shareYourLocationButton.positionButtonToLocation(.TopHalfLeft)
+        self.mapContainer.addSubview(shareYourLocationButton)
+        shareYourLocationButton.positionButtonToLocation(.BottomLeft)
         
         locateMeButton = UIButton.ATButton(.SingleLocation, color: .White)
         locateMeButton.addTarget(self, action: "locateMeButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
@@ -109,7 +109,7 @@ class MainScreenVC: UIViewController {
         mapVC.zoomIn()
     }
     
-    func myLocationsButtonPressed() {
+    func myLocationButtonPressed() {
         
     }
     
@@ -123,7 +123,7 @@ class MainScreenVC: UIViewController {
         }
     }
     
-    func contactButtonPressed(sender: AnyObject) {
+    func contactButtonPressed() {
         
     }
     
