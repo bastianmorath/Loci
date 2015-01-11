@@ -2,8 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This information is required to show your current location</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>UniversLTStd-Light.otf</string>
 		<string>UniversLTStd.otf</string>
 		<string>UniversLTStd-Bold.otf</string>
 	</array>

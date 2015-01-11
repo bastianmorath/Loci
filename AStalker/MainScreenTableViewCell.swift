@@ -21,6 +21,14 @@ class MainScreenTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        // setup label font
+        userNameLabel.font = UIFont.ATTableViewSmallFont()
+        addressLabel.font = UIFont.ATFont()
+        dateLabel.font = UIFont.ATFont()
+        timeLabel.font = UIFont.ATTableViewSmallFont()
+        
+    
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

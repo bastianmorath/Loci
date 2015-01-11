@@ -405,6 +405,7 @@
 				B6A9AD821A61E59100AF4B51 /* UniversLTStd-BoldCnObl.otf in Resources */,
 				B6A9AD921A61E59100AF4B51 /* UniversLTStd-XBlack.otf in Resources */,
 				B6A9AD8E1A61E59100AF4B51 /* UniversLTStd-LightUltraCn.otf in Resources */,
+				A2BC94671A621F7600B73A69 /* MainScreenHeaderTableViewCell.xib in Resources */,
 				B6A9AD801A61E59100AF4B51 /* UniversLTStd-Bold.otf in Resources */,
 				B6A9AD841A61E59100AF4B51 /* UniversLTStd-BoldExObl.otf in Resources */,
 				B6A9AD871A61E59100AF4B51 /* UniversLTStd-CnObl.otf in Resources */,
@@ -446,6 +447,7 @@
 			files = (
 				B60C03641A620F55005921B2 /* MainScreenTableViewCell.xib in Sources */,
 				B63730971A61580A0073EB51 /* LocationStore.swift in Sources */,
+				A2BC94661A621F7600B73A69 /* MainScreenHeaderTableViewCell.swift in Sources */,
 				B637309D1A615E3B0073EB51 /* LocalUser.swift in Sources */,
 				B63730991A615E3A0073EB51 /* Location.swift in Sources */,
 				B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */,
@@ -466,6 +468,7 @@
 				B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */,
 				B66B282B1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift in Sources */,
 				B66B282D1A61BF9C00D3E6D1 /* ATableViewDataSource.swift in Sources */,
+				A2BC94621A62146F00B73A69 /* MainScreenTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
