@@ -12,16 +12,26 @@ import CoreData
 
 class ShareLocationDataSource: ATableViewDataSource, UITableViewDelegate{
     
-    init( tableView: UITableView, user: LocalUser ) {
+    var location: Location?
+    init( tableView: UITableView, user: LocalUser, location: Location? = nil) {
+        self.location = location
         let fetchedResultsController = LocationStore.defaultStore().FetchedResultsControllerOfUser(user)
         super.init(tableView: tableView, fetchedResultsController: fetchedResultsController )
     }
     
+    
     override func cellForTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return ShareLocationTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self )
+        var cell =  ShareLocationTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self ) as ShareLocationTableViewCell
+        var user = self.modelForIndexPath(indexPath) as User
+        
+        //User ist schon angeklickt worden. Entferne den roten Button
+        if (location?.sharedUsers.containsObject(user) != nil) {
+            cell.redView.hidden = false
+        } else {
+            cell.redView.hidden = true
+        }
+        return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("Pressed")
-    }
+
 }

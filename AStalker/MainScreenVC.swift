@@ -51,7 +51,8 @@ class MainScreenVC: UIViewController {
     }
     
     
-    
+    //TransitionManager für CustomSegue
+    let transitionManager = TrainsitionManager()
 
     
     override func viewDidLoad() {
@@ -126,6 +127,7 @@ class MainScreenVC: UIViewController {
         var shareLocationVC:ShareLocationVC = segue.destinationViewController as ShareLocationVC
         
         shareLocationVC.location = self.locationToShare!
+        shareLocationVC.transitioningDelegate = self.transitionManager
     }
     
     override func prefersStatusBarHidden() -> Bool {
