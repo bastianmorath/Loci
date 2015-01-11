@@ -15,13 +15,45 @@
 		B637309B1A615E3A0073EB51 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309A1A615E3A0073EB51 /* Notification.swift */; };
 		B637309D1A615E3B0073EB51 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309C1A615E3B0073EB51 /* LocalUser.swift */; };
 		B637309F1A615E3B0073EB51 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309E1A615E3B0073EB51 /* User.swift */; };
+		B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */; };
 		B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */; };
 		B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */; };
 		B660CC241A6192DC00630E6F /* MainScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC211A6192DC00630E6F /* MainScreenVC.swift */; };
 		B660CC261A6192E500630E6F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B660CC251A6192E500630E6F /* Main.storyboard */; };
 		B664B38A1A617214000E24BE /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B664B3891A617214000E24BE /* AddressBook.swift */; };
+		B668BD5D1A61BAC300939A6C /* UIFont+ATFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = B668BD5C1A61BAC300939A6C /* UIFont+ATFont.swift */; };
+		B66B282B1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B282A1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift */; };
+		B66B282D1A61BF9C00D3E6D1 /* ATableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */; };
+		B66B282F1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B282E1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift */; };
+		B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */; };
+		B6A9AD7C1A61E59100AF4B51 /* UniversLTStd-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD611A61E59100AF4B51 /* UniversLTStd-Black.otf */; };
+		B6A9AD7D1A61E59100AF4B51 /* UniversLTStd-BlackEx.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD621A61E59100AF4B51 /* UniversLTStd-BlackEx.otf */; };
+		B6A9AD7E1A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD631A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf */; };
+		B6A9AD7F1A61E59100AF4B51 /* UniversLTStd-BlackObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD641A61E59100AF4B51 /* UniversLTStd-BlackObl.otf */; };
+		B6A9AD801A61E59100AF4B51 /* UniversLTStd-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD651A61E59100AF4B51 /* UniversLTStd-Bold.otf */; };
+		B6A9AD811A61E59100AF4B51 /* UniversLTStd-BoldCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD661A61E59100AF4B51 /* UniversLTStd-BoldCn.otf */; };
+		B6A9AD821A61E59100AF4B51 /* UniversLTStd-BoldCnObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD671A61E59100AF4B51 /* UniversLTStd-BoldCnObl.otf */; };
+		B6A9AD831A61E59100AF4B51 /* UniversLTStd-BoldEx.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD681A61E59100AF4B51 /* UniversLTStd-BoldEx.otf */; };
+		B6A9AD841A61E59100AF4B51 /* UniversLTStd-BoldExObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD691A61E59100AF4B51 /* UniversLTStd-BoldExObl.otf */; };
+		B6A9AD851A61E59100AF4B51 /* UniversLTStd-BoldObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD6A1A61E59100AF4B51 /* UniversLTStd-BoldObl.otf */; };
+		B6A9AD861A61E59100AF4B51 /* UniversLTStd-Cn.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD6B1A61E59100AF4B51 /* UniversLTStd-Cn.otf */; };
+		B6A9AD871A61E59100AF4B51 /* UniversLTStd-CnObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD6C1A61E59100AF4B51 /* UniversLTStd-CnObl.otf */; };
+		B6A9AD881A61E59100AF4B51 /* UniversLTStd-Ex.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD6D1A61E59100AF4B51 /* UniversLTStd-Ex.otf */; };
+		B6A9AD891A61E59100AF4B51 /* UniversLTStd-ExObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD6E1A61E59100AF4B51 /* UniversLTStd-ExObl.otf */; };
+		B6A9AD8A1A61E59100AF4B51 /* UniversLTStd-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD6F1A61E59100AF4B51 /* UniversLTStd-Light.otf */; };
+		B6A9AD8B1A61E59100AF4B51 /* UniversLTStd-LightCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD701A61E59100AF4B51 /* UniversLTStd-LightCn.otf */; };
+		B6A9AD8C1A61E59100AF4B51 /* UniversLTStd-LightCnObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD711A61E59100AF4B51 /* UniversLTStd-LightCnObl.otf */; };
+		B6A9AD8D1A61E59100AF4B51 /* UniversLTStd-LightObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD721A61E59100AF4B51 /* UniversLTStd-LightObl.otf */; };
+		B6A9AD8E1A61E59100AF4B51 /* UniversLTStd-LightUltraCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD731A61E59100AF4B51 /* UniversLTStd-LightUltraCn.otf */; };
+		B6A9AD8F1A61E59100AF4B51 /* UniversLTStd-Obl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD741A61E59100AF4B51 /* UniversLTStd-Obl.otf */; };
+		B6A9AD901A61E59100AF4B51 /* UniversLTStd-ThinUltraCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD751A61E59100AF4B51 /* UniversLTStd-ThinUltraCn.otf */; };
+		B6A9AD911A61E59100AF4B51 /* UniversLTStd-UltraCn.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD761A61E59100AF4B51 /* UniversLTStd-UltraCn.otf */; };
+		B6A9AD921A61E59100AF4B51 /* UniversLTStd-XBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD771A61E59100AF4B51 /* UniversLTStd-XBlack.otf */; };
+		B6A9AD931A61E59100AF4B51 /* UniversLTStd-XBlackEx.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD781A61E59100AF4B51 /* UniversLTStd-XBlackEx.otf */; };
+		B6A9AD941A61E59100AF4B51 /* UniversLTStd-XBlackExObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD791A61E59100AF4B51 /* UniversLTStd-XBlackExObl.otf */; };
+		B6A9AD951A61E59100AF4B51 /* UniversLTStd-XBlackObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD7A1A61E59100AF4B51 /* UniversLTStd-XBlackObl.otf */; };
+		B6A9AD961A61E59100AF4B51 /* UniversLTStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD7B1A61E59100AF4B51 /* UniversLTStd.otf */; };
 		B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EC3D11A614C610064ED0E /* AppDelegate.swift */; };
-		B88EC3D41A614C610064ED0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EC3D31A614C610064ED0E /* ViewController.swift */; };
 		B88EC3D91A614C610064ED0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88EC3D81A614C610064ED0E /* Images.xcassets */; };
 		B88EC3DC1A614C610064ED0E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88EC3DA1A614C610064ED0E /* LaunchScreen.xib */; };
 		B88EC3E81A614C610064ED0E /* AStalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EC3E71A614C610064ED0E /* AStalkerTests.swift */; };
@@ -46,15 +78,47 @@
 		B637309A1A615E3A0073EB51 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		B637309C1A615E3B0073EB51 /* LocalUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
 		B637309E1A615E3B0073EB51 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationTableViewCell.swift; sourceTree = "<group>"; };
 		B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenMapVC.swift; sourceTree = "<group>"; };
 		B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableVC.swift; sourceTree = "<group>"; };
 		B660CC211A6192DC00630E6F /* MainScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenVC.swift; sourceTree = "<group>"; };
 		B660CC251A6192E500630E6F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B664B3891A617214000E24BE /* AddressBook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBook.swift; sourceTree = "<group>"; };
+		B668BD5C1A61BAC300939A6C /* UIFont+ATFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+ATFont.swift"; sourceTree = "<group>"; };
+		B66B282A1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationDataSource.swift; sourceTree = "<group>"; };
+		B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATableViewDataSource.swift; sourceTree = "<group>"; };
+		B66B282E1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ATTableViewCell.swift"; sourceTree = "<group>"; };
+		B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationVC.swift; sourceTree = "<group>"; };
+		B6A9AD611A61E59100AF4B51 /* UniversLTStd-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Black.otf"; sourceTree = "<group>"; };
+		B6A9AD621A61E59100AF4B51 /* UniversLTStd-BlackEx.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BlackEx.otf"; sourceTree = "<group>"; };
+		B6A9AD631A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BlackExObl.otf"; sourceTree = "<group>"; };
+		B6A9AD641A61E59100AF4B51 /* UniversLTStd-BlackObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BlackObl.otf"; sourceTree = "<group>"; };
+		B6A9AD651A61E59100AF4B51 /* UniversLTStd-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Bold.otf"; sourceTree = "<group>"; };
+		B6A9AD661A61E59100AF4B51 /* UniversLTStd-BoldCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BoldCn.otf"; sourceTree = "<group>"; };
+		B6A9AD671A61E59100AF4B51 /* UniversLTStd-BoldCnObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BoldCnObl.otf"; sourceTree = "<group>"; };
+		B6A9AD681A61E59100AF4B51 /* UniversLTStd-BoldEx.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BoldEx.otf"; sourceTree = "<group>"; };
+		B6A9AD691A61E59100AF4B51 /* UniversLTStd-BoldExObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BoldExObl.otf"; sourceTree = "<group>"; };
+		B6A9AD6A1A61E59100AF4B51 /* UniversLTStd-BoldObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BoldObl.otf"; sourceTree = "<group>"; };
+		B6A9AD6B1A61E59100AF4B51 /* UniversLTStd-Cn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Cn.otf"; sourceTree = "<group>"; };
+		B6A9AD6C1A61E59100AF4B51 /* UniversLTStd-CnObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-CnObl.otf"; sourceTree = "<group>"; };
+		B6A9AD6D1A61E59100AF4B51 /* UniversLTStd-Ex.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Ex.otf"; sourceTree = "<group>"; };
+		B6A9AD6E1A61E59100AF4B51 /* UniversLTStd-ExObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-ExObl.otf"; sourceTree = "<group>"; };
+		B6A9AD6F1A61E59100AF4B51 /* UniversLTStd-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Light.otf"; sourceTree = "<group>"; };
+		B6A9AD701A61E59100AF4B51 /* UniversLTStd-LightCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-LightCn.otf"; sourceTree = "<group>"; };
+		B6A9AD711A61E59100AF4B51 /* UniversLTStd-LightCnObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-LightCnObl.otf"; sourceTree = "<group>"; };
+		B6A9AD721A61E59100AF4B51 /* UniversLTStd-LightObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-LightObl.otf"; sourceTree = "<group>"; };
+		B6A9AD731A61E59100AF4B51 /* UniversLTStd-LightUltraCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-LightUltraCn.otf"; sourceTree = "<group>"; };
+		B6A9AD741A61E59100AF4B51 /* UniversLTStd-Obl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Obl.otf"; sourceTree = "<group>"; };
+		B6A9AD751A61E59100AF4B51 /* UniversLTStd-ThinUltraCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-ThinUltraCn.otf"; sourceTree = "<group>"; };
+		B6A9AD761A61E59100AF4B51 /* UniversLTStd-UltraCn.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-UltraCn.otf"; sourceTree = "<group>"; };
+		B6A9AD771A61E59100AF4B51 /* UniversLTStd-XBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-XBlack.otf"; sourceTree = "<group>"; };
+		B6A9AD781A61E59100AF4B51 /* UniversLTStd-XBlackEx.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-XBlackEx.otf"; sourceTree = "<group>"; };
+		B6A9AD791A61E59100AF4B51 /* UniversLTStd-XBlackExObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-XBlackExObl.otf"; sourceTree = "<group>"; };
+		B6A9AD7A1A61E59100AF4B51 /* UniversLTStd-XBlackObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-XBlackObl.otf"; sourceTree = "<group>"; };
+		B6A9AD7B1A61E59100AF4B51 /* UniversLTStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniversLTStd.otf; sourceTree = "<group>"; };
 		B88EC3CC1A614C610064ED0E /* AStalker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AStalker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88EC3D01A614C610064ED0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B88EC3D11A614C610064ED0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B88EC3D31A614C610064ED0E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B88EC3D81A614C610064ED0E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B88EC3DB1A614C610064ED0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B88EC3E11A614C610064ED0E /* AStalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AStalkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,8 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				B63730931A6157BE0073EB51 /* NSManagedObject Subclasses */,
-				B637307B1A61566D0073EB51 /* DataModel.xcdatamodeld */,
 				B63730961A61580A0073EB51 /* LocationStore.swift */,
+				B637307B1A61566D0073EB51 /* DataModel.xcdatamodeld */,
 				B664B3891A617214000E24BE /* AddressBook.swift */,
 				B63730771A6151870073EB51 /* ACoreDataPortal.swift */,
 				B63730781A6151870073EB51 /* ACoreDataStore.swift */,
@@ -104,10 +168,10 @@
 		B63730761A61514E0073EB51 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B668BD5B1A61BAA500939A6C /* ShareLocation */,
 				B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */,
 				B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */,
 				B660CC211A6192DC00630E6F /* MainScreenVC.swift */,
-				B88EC3D31A614C610064ED0E /* ViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -121,6 +185,60 @@
 				B63730981A615E3A0073EB51 /* Location.swift */,
 			);
 			name = "NSManagedObject Subclasses";
+			sourceTree = "<group>";
+		};
+		B668BD5B1A61BAA500939A6C /* ShareLocation */ = {
+			isa = PBXGroup;
+			children = (
+				B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */,
+				B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */,
+				B66B282A1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift */,
+				B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */,
+				B66B282E1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift */,
+			);
+			name = ShareLocation;
+			sourceTree = "<group>";
+		};
+		B668BD5E1A61BACF00939A6C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				B668BD5C1A61BAC300939A6C /* UIFont+ATFont.swift */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		B6A9AD601A61E59100AF4B51 /* Univers */ = {
+			isa = PBXGroup;
+			children = (
+				B6A9AD611A61E59100AF4B51 /* UniversLTStd-Black.otf */,
+				B6A9AD621A61E59100AF4B51 /* UniversLTStd-BlackEx.otf */,
+				B6A9AD631A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf */,
+				B6A9AD641A61E59100AF4B51 /* UniversLTStd-BlackObl.otf */,
+				B6A9AD651A61E59100AF4B51 /* UniversLTStd-Bold.otf */,
+				B6A9AD661A61E59100AF4B51 /* UniversLTStd-BoldCn.otf */,
+				B6A9AD671A61E59100AF4B51 /* UniversLTStd-BoldCnObl.otf */,
+				B6A9AD681A61E59100AF4B51 /* UniversLTStd-BoldEx.otf */,
+				B6A9AD691A61E59100AF4B51 /* UniversLTStd-BoldExObl.otf */,
+				B6A9AD6A1A61E59100AF4B51 /* UniversLTStd-BoldObl.otf */,
+				B6A9AD6B1A61E59100AF4B51 /* UniversLTStd-Cn.otf */,
+				B6A9AD6C1A61E59100AF4B51 /* UniversLTStd-CnObl.otf */,
+				B6A9AD6D1A61E59100AF4B51 /* UniversLTStd-Ex.otf */,
+				B6A9AD6E1A61E59100AF4B51 /* UniversLTStd-ExObl.otf */,
+				B6A9AD6F1A61E59100AF4B51 /* UniversLTStd-Light.otf */,
+				B6A9AD701A61E59100AF4B51 /* UniversLTStd-LightCn.otf */,
+				B6A9AD711A61E59100AF4B51 /* UniversLTStd-LightCnObl.otf */,
+				B6A9AD721A61E59100AF4B51 /* UniversLTStd-LightObl.otf */,
+				B6A9AD731A61E59100AF4B51 /* UniversLTStd-LightUltraCn.otf */,
+				B6A9AD741A61E59100AF4B51 /* UniversLTStd-Obl.otf */,
+				B6A9AD751A61E59100AF4B51 /* UniversLTStd-ThinUltraCn.otf */,
+				B6A9AD761A61E59100AF4B51 /* UniversLTStd-UltraCn.otf */,
+				B6A9AD771A61E59100AF4B51 /* UniversLTStd-XBlack.otf */,
+				B6A9AD781A61E59100AF4B51 /* UniversLTStd-XBlackEx.otf */,
+				B6A9AD791A61E59100AF4B51 /* UniversLTStd-XBlackExObl.otf */,
+				B6A9AD7A1A61E59100AF4B51 /* UniversLTStd-XBlackObl.otf */,
+				B6A9AD7B1A61E59100AF4B51 /* UniversLTStd.otf */,
+			);
+			path = Univers;
 			sourceTree = "<group>";
 		};
 		B88EC3C31A614C610064ED0E = {
@@ -144,6 +262,7 @@
 		B88EC3CE1A614C610064ED0E /* AStalker */ = {
 			isa = PBXGroup;
 			children = (
+				B668BD5E1A61BACF00939A6C /* Categories */,
 				B63730741A6151400073EB51 /* Model */,
 				B63730751A6151450073EB51 /* View */,
 				B63730761A61514E0073EB51 /* Controller */,
@@ -158,6 +277,7 @@
 		B88EC3CF1A614C610064ED0E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B6A9AD601A61E59100AF4B51 /* Univers */,
 				B88EC3D01A614C610064ED0E /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -260,9 +380,36 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6A9AD8C1A61E59100AF4B51 /* UniversLTStd-LightCnObl.otf in Resources */,
 				B660CC261A6192E500630E6F /* Main.storyboard in Resources */,
+				B6A9AD961A61E59100AF4B51 /* UniversLTStd.otf in Resources */,
+				B6A9AD941A61E59100AF4B51 /* UniversLTStd-XBlackExObl.otf in Resources */,
+				B6A9AD811A61E59100AF4B51 /* UniversLTStd-BoldCn.otf in Resources */,
+				B6A9AD851A61E59100AF4B51 /* UniversLTStd-BoldObl.otf in Resources */,
+				B6A9AD821A61E59100AF4B51 /* UniversLTStd-BoldCnObl.otf in Resources */,
+				B6A9AD921A61E59100AF4B51 /* UniversLTStd-XBlack.otf in Resources */,
+				B6A9AD8E1A61E59100AF4B51 /* UniversLTStd-LightUltraCn.otf in Resources */,
+				B6A9AD801A61E59100AF4B51 /* UniversLTStd-Bold.otf in Resources */,
+				B6A9AD841A61E59100AF4B51 /* UniversLTStd-BoldExObl.otf in Resources */,
+				B6A9AD871A61E59100AF4B51 /* UniversLTStd-CnObl.otf in Resources */,
+				B6A9AD831A61E59100AF4B51 /* UniversLTStd-BoldEx.otf in Resources */,
+				B6A9AD951A61E59100AF4B51 /* UniversLTStd-XBlackObl.otf in Resources */,
+				B6A9AD861A61E59100AF4B51 /* UniversLTStd-Cn.otf in Resources */,
+				B6A9AD891A61E59100AF4B51 /* UniversLTStd-ExObl.otf in Resources */,
+				B6A9AD911A61E59100AF4B51 /* UniversLTStd-UltraCn.otf in Resources */,
+				B6A9AD7E1A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf in Resources */,
+				B6A9AD931A61E59100AF4B51 /* UniversLTStd-XBlackEx.otf in Resources */,
 				B88EC3DC1A614C610064ED0E /* LaunchScreen.xib in Resources */,
+				B6A9AD8D1A61E59100AF4B51 /* UniversLTStd-LightObl.otf in Resources */,
+				B6A9AD881A61E59100AF4B51 /* UniversLTStd-Ex.otf in Resources */,
+				B6A9AD7C1A61E59100AF4B51 /* UniversLTStd-Black.otf in Resources */,
+				B6A9AD7F1A61E59100AF4B51 /* UniversLTStd-BlackObl.otf in Resources */,
+				B6A9AD8B1A61E59100AF4B51 /* UniversLTStd-LightCn.otf in Resources */,
+				B6A9AD901A61E59100AF4B51 /* UniversLTStd-ThinUltraCn.otf in Resources */,
+				B6A9AD8F1A61E59100AF4B51 /* UniversLTStd-Obl.otf in Resources */,
+				B6A9AD7D1A61E59100AF4B51 /* UniversLTStd-BlackEx.otf in Resources */,
 				B88EC3D91A614C610064ED0E /* Images.xcassets in Resources */,
+				B6A9AD8A1A61E59100AF4B51 /* UniversLTStd-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,17 +430,22 @@
 				B63730971A61580A0073EB51 /* LocationStore.swift in Sources */,
 				B637309D1A615E3B0073EB51 /* LocalUser.swift in Sources */,
 				B63730991A615E3A0073EB51 /* Location.swift in Sources */,
+				B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */,
 				B664B38A1A617214000E24BE /* AddressBook.swift in Sources */,
-				B88EC3D41A614C610064ED0E /* ViewController.swift in Sources */,
 				B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */,
+				B66B282F1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift in Sources */,
+				B668BD5D1A61BAC300939A6C /* UIFont+ATFont.swift in Sources */,
 				B637309F1A615E3B0073EB51 /* User.swift in Sources */,
 				B660CC241A6192DC00630E6F /* MainScreenVC.swift in Sources */,
 				B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */,
 				B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */,
+				B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */,
 				B637309B1A615E3A0073EB51 /* Notification.swift in Sources */,
 				B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */,
 				B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */,
 				B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */,
+				B66B282B1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift in Sources */,
+				B66B282D1A61BF9C00D3E6D1 /* ATableViewDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -118,7 +118,8 @@ final class ACoreDataStore: ACoreDataPortal {
     let fetchRequest = createFetchRequest( entityName, predicate: predicate, sortDescriptors: sortDescriptors )
     
     var error: NSError?
-    let result = managedObjectContext.executeFetchRequest( fetchRequest, error: &error)
+    let result = managedObjectContext.executeFetchRequest(fetchRequest, error: &error)
+
     
     return result as [NSManagedObject]?
   }
