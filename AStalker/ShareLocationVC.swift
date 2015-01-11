@@ -18,7 +18,7 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
     
     var shareLocationDataSource: ShareLocationDataSource!
     
-    //Hier wird das Location-Objeckt gespeichert, welches vom MainVC übergeben wird
+    //Hier wird das Location-Objekt gespeichert, welches vom MainVC übergeben wird
     //var location = Location()
     
     //Dieser Array speichert die angeklickten User
@@ -33,6 +33,7 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
         
         let localUser = (LocationStore.defaultStore().getLocalUser())
         var name = localUser.name
+    
         
         self.streetLabel.font = UIFont.ATBoldFont()
         self.placeLabel.font = UIFont.ATFont()
@@ -43,6 +44,7 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println(indexPath.row)
+        
     }
     
     

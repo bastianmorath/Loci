@@ -54,11 +54,11 @@ class LocationStore: NSObject{
         // sort them alphabetically
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true )
         
-        return coreDataStore.createFetchedResultsController("User", predicate: nil, sortDescriptors: [sortDescriptor] )
+        return coreDataStore.createFetchedResultsController("User", predicate: nil, sortDescriptors: [sortDescriptor])
     }
     
     func FetchedResultsControllerOfUser(user:LocalUser) -> NSFetchedResultsController{
-         let predicate = NSPredicate(format: "ANY contacts == %@", user)
+         let predicate = NSPredicate(format: "self IN %@", user.contacts )
         
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true )
 
@@ -68,7 +68,6 @@ class LocationStore: NSObject{
     //TODO: LocalUser verbessern, nil prüfen
     func getLocalUser() -> LocalUser{
         var localUserArray = self.coreDataStore.performFetch("LocalUser") as [LocalUser]
-
         return localUserArray.first!
     }
     
@@ -120,7 +119,7 @@ class LocationStore: NSObject{
     
     /**************************** Create Debug Objects **********************************/
     func createDebugUsers(){
-        var nameArray = ["Bastian Morath", "Aleksandar Papez, ", "Lukas Reichart", "Florian Morath", "Cheryl Vaterlaus", "Elisa Mischi"]
+        var nameArray = ["Bastian Morath", "Aleksandar Papez", "Lukas Reichart", "Florian Morath", "Cheryl Vaterlaus", "Elisa Mischi"]
         
         for name in nameArray {
             self.createUser(name)

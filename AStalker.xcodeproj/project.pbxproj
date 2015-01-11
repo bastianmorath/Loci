@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A2BC94571A61FB0D00B73A69 /* MainScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BC94551A61FB0D00B73A69 /* MainScreenTableViewCell.xib */; };
 		B60C03601A620E4F005921B2 /* MainScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */; };
 		B60C03621A620E5D005921B2 /* MainScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
 		B60C03641A620F55005921B2 /* MainScreenTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
@@ -20,6 +19,7 @@
 		B637309D1A615E3B0073EB51 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309C1A615E3B0073EB51 /* LocalUser.swift */; };
 		B637309F1A615E3B0073EB51 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309E1A615E3B0073EB51 /* User.swift */; };
 		B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */; };
+		B6582E991A62335B00D74FAF /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6582E981A62335B00D74FAF /* CircleView.swift */; };
 		B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */; };
 		B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */; };
 		B660CC241A6192DC00630E6F /* MainScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC211A6192DC00630E6F /* MainScreenVC.swift */; };
@@ -73,7 +73,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A2BC94551A61FB0D00B73A69 /* MainScreenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenTableViewCell.xib; sourceTree = "<group>"; };
 		B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCell.swift; sourceTree = "<group>"; };
 		B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenTableViewCell.xib; sourceTree = "<group>"; };
 		B63730771A6151870073EB51 /* ACoreDataPortal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataPortal.swift; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		B637309C1A615E3B0073EB51 /* LocalUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
 		B637309E1A615E3B0073EB51 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationTableViewCell.swift; sourceTree = "<group>"; };
+		B6582E981A62335B00D74FAF /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenMapVC.swift; sourceTree = "<group>"; };
 		B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableVC.swift; sourceTree = "<group>"; };
 		B660CC211A6192DC00630E6F /* MainScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenVC.swift; sourceTree = "<group>"; };
@@ -166,6 +166,7 @@
 		B63730751A6151450073EB51 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B88EC3D11A614C610064ED0E /* AppDelegate.swift */,
 				B660CC251A6192E500630E6F /* Main.storyboard */,
 			);
 			name = View;
@@ -174,12 +175,8 @@
 		B63730761A61514E0073EB51 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B6E6A0C31A6210D4004C9B31 /* MainScreen */,
 				B668BD5B1A61BAA500939A6C /* ShareLocation */,
-				B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */,
-				B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */,
-				B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */,
-				B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */,
-				B660CC211A6192DC00630E6F /* MainScreenVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -199,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */,
+				B6582E981A62335B00D74FAF /* CircleView.swift */,
 				B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */,
 				B66B282A1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift */,
 				B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */,
@@ -249,6 +247,18 @@
 			path = Univers;
 			sourceTree = "<group>";
 		};
+		B6E6A0C31A6210D4004C9B31 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */,
+				B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */,
+				B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */,
+				B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */,
+				B660CC211A6192DC00630E6F /* MainScreenVC.swift */,
+			);
+			name = MainScreen;
+			sourceTree = "<group>";
+		};
 		B88EC3C31A614C610064ED0E = {
 			isa = PBXGroup;
 			children = (
@@ -274,7 +284,6 @@
 				B63730741A6151400073EB51 /* Model */,
 				B63730751A6151450073EB51 /* View */,
 				B63730761A61514E0073EB51 /* Controller */,
-				B88EC3D11A614C610064ED0E /* AppDelegate.swift */,
 				B88EC3D81A614C610064ED0E /* Images.xcassets */,
 				B88EC3DA1A614C610064ED0E /* LaunchScreen.xib */,
 				B88EC3CF1A614C610064ED0E /* Supporting Files */,
@@ -388,7 +397,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2BC94571A61FB0D00B73A69 /* MainScreenTableViewCell.xib in Resources */,
 				B660CC261A6192E500630E6F /* Main.storyboard in Resources */,
 				B6A9AD961A61E59100AF4B51 /* UniversLTStd.otf in Resources */,
 				B6A9AD941A61E59100AF4B51 /* UniversLTStd-XBlackExObl.otf in Resources */,
@@ -442,6 +450,7 @@
 				B63730991A615E3A0073EB51 /* Location.swift in Sources */,
 				B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */,
 				B664B38A1A617214000E24BE /* AddressBook.swift in Sources */,
+				B6582E991A62335B00D74FAF /* CircleView.swift in Sources */,
 				B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */,
 				B66B282F1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift in Sources */,
 				B668BD5D1A61BAC300939A6C /* UIFont+ATFont.swift in Sources */,

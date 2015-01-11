@@ -33,7 +33,8 @@ class ATableViewDataSource: NSObject {
   }
   
   internal func cellForTableView( tableView: UITableView, atIndexPath indexPath: NSIndexPath ) -> UITableViewCell {
-    var cell = ShareLocationTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self )
+    
+    var cell = UITableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self )
     return cell
   }
 }
@@ -62,7 +63,8 @@ extension ATableViewDataSource: UITableViewDataSource {
     let sectionInfo: AnyObject? = fetchedResultsController?.sections?[ section ]
     
     if sectionInfo != nil {
-      return sectionInfo!.numberOfObjects
+      let count = sectionInfo!.numberOfObjects
+        return count
     }
     return 0
   }

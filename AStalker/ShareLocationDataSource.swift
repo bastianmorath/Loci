@@ -10,13 +10,18 @@ import Foundation
 import UIKit
 import CoreData
 
-class ShareLocationDataSource: ATableViewDataSource{
+class ShareLocationDataSource: ATableViewDataSource, UITableViewDelegate{
+    
     init( tableView: UITableView, user: LocalUser ) {
         let fetchedResultsController = LocationStore.defaultStore().FetchedResultsControllerOfUser(user)
         super.init(tableView: tableView, fetchedResultsController: fetchedResultsController )
     }
     
     override func cellForTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self )
+        return ShareLocationTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self )
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("Pressed")
     }
 }
