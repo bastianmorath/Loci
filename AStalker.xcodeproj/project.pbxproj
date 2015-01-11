@@ -38,6 +38,7 @@
 		A24517701A6272070006CDB0 /* Hackaton-Icons_Shared-Locations.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517561A6272070006CDB0 /* Hackaton-Icons_Shared-Locations.pdf */; };
 		A24517711A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517571A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf */; };
 		A24517731A62727A0006CDB0 /* antum_logo_email.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A24517721A62727A0006CDB0 /* antum_logo_email.jpg */; };
+		A2CEA7681A62AD92004F8FBC /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CEA7671A62AD92004F8FBC /* TransitionManager.swift */; };
 		B60C03601A620E4F005921B2 /* MainScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */; };
 		B60C03621A620E5D005921B2 /* MainScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
 		B60C03641A620F55005921B2 /* MainScreenTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
@@ -108,7 +109,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7B1F7991D56C58CA3E0747E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A24517331A626EE00006CDB0 /* LoginWelcomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWelcomeVC.swift; sourceTree = "<group>"; };
 		A24517351A626F2E0006CDB0 /* LoginSMSVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSMSVC.swift; sourceTree = "<group>"; };
 		A24517371A626F540006CDB0 /* LoginRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegistrationVC.swift; sourceTree = "<group>"; };
@@ -142,6 +142,7 @@
 		A24517561A6272070006CDB0 /* Hackaton-Icons_Shared-Locations.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Hackaton-Icons_Shared-Locations.pdf"; path = "AStalker/Hackaton-Icons_Shared-Locations.pdf"; sourceTree = SOURCE_ROOT; };
 		A24517571A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Hackaton-Icons_Small-Location-Pin-Grey.pdf"; path = "AStalker/Hackaton-Icons_Small-Location-Pin-Grey.pdf"; sourceTree = SOURCE_ROOT; };
 		A24517721A62727A0006CDB0 /* antum_logo_email.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = antum_logo_email.jpg; sourceTree = "<group>"; };
+		A2CEA7671A62AD92004F8FBC /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCell.swift; sourceTree = "<group>"; };
 		B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenTableViewCell.xib; sourceTree = "<group>"; };
 		B6271A011A624F63008B410C /* checkmark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = checkmark.pdf; sourceTree = "<group>"; };
@@ -242,6 +243,7 @@
 				A24517331A626EE00006CDB0 /* LoginWelcomeVC.swift */,
 				A24517351A626F2E0006CDB0 /* LoginSMSVC.swift */,
 				A24517371A626F540006CDB0 /* LoginRegistrationVC.swift */,
+				A2CEA7671A62AD92004F8FBC /* TransitionManager.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -682,6 +684,7 @@
 				B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */,
 				B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */,
 				B60C03601A620E4F005921B2 /* MainScreenTableViewCell.swift in Sources */,
+				A2CEA7681A62AD92004F8FBC /* TransitionManager.swift in Sources */,
 				B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */,
 				B637309B1A615E3A0073EB51 /* Notification.swift in Sources */,
 				B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */,
