@@ -95,6 +95,30 @@ class MainScreenVC: UIViewController {
         //AddressBook Debugging
         //var dict = AddressBook.defaultStore().getContacts(addName: true, addPhoneNumber: true)
         //println(dict)
+        
+        // setup Buttons
+        myLocationsButton.setImage(UIImage(named: "MyLocations"), forState: UIControlState.Normal)
+        myLocationsButton.setTitle("", forState: UIControlState.Normal)
+        
+        
+//        contactButton.imageView?.layer.borderWidth=1.0
+//        contactButton.imageView?.layer.masksToBounds = false
+//        contactButton.imageView?.layer.borderColor = UIColor.whiteColor().CGColor
+//        contactButton.imageView?.layer.cornerRadius = 20
+//        contactButton.imageView?.clipsToBounds = true
+        contactButton.imageView?.backgroundColor = UIColor.whiteColor()
+        contactButton.setImage(UIImage(named: "Contacts"), forState: UIControlState.Normal)
+        contactButton.setTitle("", forState: UIControlState.Normal)
+        
+        shareYourLocationButton.setImage(UIImage(named: "SharedLocations"), forState: UIControlState.Normal)
+        shareYourLocationButton.setTitle("", forState: UIControlState.Normal)
+        
+        locateMeButton.setImage(UIImage(named: "LocationPin"), forState: UIControlState.Normal)
+        locateMeButton.setTitle("", forState: UIControlState.Normal)
+
+        
+        
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
