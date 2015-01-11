@@ -245,6 +245,7 @@
 				A24517331A626EE00006CDB0 /* LoginWelcomeVC.swift */,
 				A24517351A626F2E0006CDB0 /* LoginSMSVC.swift */,
 				A24517371A626F540006CDB0 /* LoginRegistrationVC.swift */,
+				A2CEA7671A62AD92004F8FBC /* TransitionManager.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";

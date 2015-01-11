@@ -26,7 +26,19 @@ class LoginRegistrationVC: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var passwordAgainTextField: ATTextField!
     
+    // Eingaben des Benutzers
+    var password1:Int?
+    var password2:Int?
+    var name:Int?
+    
     @IBAction func finishPressed(sender: AnyObject) {
+        
+        if password1 != nil && password2 != nil && password1 == password2 {
+            // save User with name and password
+            // dismiss ViewController
+        } else {
+            // Try again
+        }
     }
     
     override func viewDidLoad() {
@@ -45,14 +57,11 @@ class LoginRegistrationVC: UIViewController, UITextFieldDelegate {
         // textField
         nameTextField.delegate = self
         passwordTextField.delegate = self
+        passwordTextField.secureTextEntry = true
         passwordAgainTextField.delegate = self
+        passwordAgainTextField.secureTextEntry = true
       
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -75,6 +84,15 @@ class LoginRegistrationVC: UIViewController, UITextFieldDelegate {
         UIView.setAnimationDuration(movementDuration )
         self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
         UIView.commitAnimations()
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     /*
