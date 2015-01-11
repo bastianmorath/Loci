@@ -30,7 +30,7 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
         self.streetLabel.font = UIFont.ATBoldFont()
         self.placeLabel.font = UIFont.ATFont()
         
-        self.shareButton = UIButton.ATButton(UIButton.ATButtonType.Contact, color: UIButton.ATColor.Red)
+        self.shareButton = UIButton.ATButton(UIButton.ATButtonType.Share, color: UIButton.ATColor.White)
         if let button = shareButton{
             button.addTarget(self, action: "sharePressed", forControlEvents:UIControlEvents.TouchUpInside)
             self.view.addSubview(button)

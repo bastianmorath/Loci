@@ -60,7 +60,7 @@ class ShareLocationTableViewCell: UITableViewCell, UITableViewDelegate {
     //Roter Checkmark-View
     func redCheckmarkView() -> UIView {
 
-        var circleView = CheckmarkView(frame: CGRectMake(25, 8, 30, 30))
+        var circleView = CheckmarkView(frame: CGRectMake(5, 5, 25, 25))
    
         return circleView
     }

@@ -16,8 +16,10 @@ extension UIButton {
     
     enum ATButtonType {
         case Contact
-        case Location
+        case SingleLocation
         case ContactLocation
+        case MultipleLocations
+        case Share
     }
     
     enum ATColor {
@@ -29,14 +31,16 @@ extension UIButton {
     enum ATButtonLocation {
         case TopRight
         case TopLeft
+        case BottomLeft
+        case BottomRight
     }
     
     
-    class func ATButton( type: ATButtonType, color: ATColor, buttonLocation: ATButtonLocation? = nil) -> UIButton {
+    class func ATButton( type: ATButtonType, color: ATColor) -> UIButton {
         var button = UIButton.buttonWithType( UIButtonType.Custom ) as UIButton
         
         //button.clipsToBounds = true
-        button.layer.cornerRadius = 70
+        button.layer.cornerRadius = 28
         button.setTranslatesAutoresizingMaskIntoConstraints( false )
         button.showsTouchWhenHighlighted = true
         switch color{
@@ -48,30 +52,32 @@ extension UIButton {
             button.backgroundColor = UIColor.GreyColor()
         }
         
-        
+        var imageView = UIImageView(frame: CGRectMake(11, 9, 35, 35))
         switch type {
         case .Contact:
-            button.setImage( UIImage( named: "Contacts.png"), forState: UIControlState.Normal )
-        case .Location:
-            button.setImage( UIImage( named: "MyLocations.png"), forState: UIControlState.Normal )
+            imageView.image = UIImage(named: "Contacts.png")
+        case .SingleLocation:
+            imageView.image = UIImage(named: "Location.png")
         case .ContactLocation:
-            button.setImage( UIImage( named: "SharedLocations.png"), forState: UIControlState.Normal )
+            imageView.image = UIImage(named: "SharedLocations.png")
+        case .MultipleLocations:
+            imageView.image = UIImage(named: "MyLocations.png")
+        case .Share:
+            var label = UILabel(frame: CGRectMake(10, 12, 50, 35))
+            label.text = "Share"
+            label.font = UIFont.ATBoldFont()
+            label.textColor = UIColor.RedColor()
+            button.addSubview(label)
+            return button
         default:
-            button.setImage( UIImage(named: "EditIcon"), forState: UIControlState.Normal )
+            imageView.image = UIImage(named: "Contacts.png")
         }
+        button.addSubview(imageView)
+
         
-//        if let location = buttonLocation {
-//            self.positionButtonToLocation(location)
-//        }
+
         
-        // add a shadow to the button
-        button.layer.masksToBounds = false
-        button.layer.shadowColor = UIColor.blackColor().CGColor
-        button.layer.shadowOpacity = 0.25
-        button.layer.shadowRadius = 5.0
-        button.layer.shadowOffset = CGSizeMake( 1, 1 )
-        
-        
+    
         return button
     }
     
@@ -82,7 +88,9 @@ extension UIButton {
         
         var horizontalConstraint = ""
         var verticalConstraint = ""
-        
+        var heightConstraint = "V:[button(56)]"
+        var widthConstraint = "H:[button(56)]"
+
         switch location {
         case .TopRight:
             horizontalConstraint = "H:[button]-margin-|"
@@ -90,6 +98,12 @@ extension UIButton {
         case .TopLeft:
             horizontalConstraint = "H:|-margin-[button]"
             verticalConstraint = "V:|-margin-[button]"
+        case .BottomLeft:
+            horizontalConstraint = "H:|-margin-[button]"
+            verticalConstraint = "V:[button]-margin-|"
+        case .BottomRight:
+            horizontalConstraint = "H:[button]-margin-|"
+            verticalConstraint = "V:[button]-margin-|"
         default:
             break
         }
@@ -97,6 +111,8 @@ extension UIButton {
         if let superview = self.superview {
             superview.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(horizontalConstraint, options: nil, metrics: metrics, views: views ) )
             superview.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(verticalConstraint, options: nil, metrics: metrics, views: views ) )
+            superview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(heightConstraint, options: nil, metrics: nil, views: views))
+            superview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(widthConstraint, options: nil, metrics: nil, views: views))
         }
     }
 }

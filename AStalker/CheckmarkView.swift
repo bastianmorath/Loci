@@ -27,12 +27,11 @@ class CheckmarkView: UIView {
             var context = UIGraphicsGetCurrentContext();
             
             // Set the circle outerline-width
-            CGContextSetLineWidth(context, 1);
+            //CGContextSetLineWidth(context, 1);
             
             // Set the circle outerline-colour
-//            UIColor.RedColor()!.set()
+            UIColor.RedColor().setFill()
             CGContextFillEllipseInRect(context, CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height))
-                   self.backgroundColor = UIColor.RedColor()
     }
 }
 

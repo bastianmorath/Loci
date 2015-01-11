@@ -25,13 +25,13 @@ class MainScreenVC: UIViewController {
     @IBOutlet weak var friendsLocationsContainer: UIView!
     
     // Buttons
-    @IBOutlet weak var contactButton: UIButton!
-    @IBAction func contactButtonPressed(sender: AnyObject) {
+     var contactButton: UIButton!
+     func contactButtonPressed(sender: AnyObject) {
     }
     
     
-    @IBOutlet weak var shareYourLocationButton: UIButton!
-    @IBAction func shareYourLocationButtonPressed(sender: AnyObject) {
+     var shareYourLocationButton: UIButton!
+     func shareYourLocationButtonPressed(){
         //var latitude = mapVC.mapView.userLocation.location.coordinate.latitude
         //var longitude = mapVC.mapView.userLocation.location.coordinate.longitude
 
@@ -41,18 +41,18 @@ class MainScreenVC: UIViewController {
         
     }
     
-    @IBOutlet weak var myLocationsButton: UIButton!
-    @IBAction func myLocationsButtonPressed(sender: AnyObject) {
+     var myLocationsButton: UIButton!
+     func myLocationsButtonPressed(sender: AnyObject) {
     }
     
-    @IBOutlet weak var locateMeButton: UIButton!
-    @IBAction func locateMeButtonPressed(sender: AnyObject) {
+     var locateMeButton: UIButton!
+     func locateMeButtonPressed(sender: AnyObject) {
         mapVC.zoomIn()
     }
     
     
     //TransitionManager für CustomSegue
-    let transitionManager = TrainsitionManager()
+    let transitionManager = TransitionManager()
 
     
     override func viewDidLoad() {
@@ -72,13 +72,7 @@ class MainScreenVC: UIViewController {
         self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
         self.mapContainer.setTranslatesAutoresizingMaskIntoConstraints( false )
         
-        // bring Buttons to Front (front of MKMapView)
-        mapContainer.bringSubviewToFront(myLocationsButton)
-        mapContainer.bringSubviewToFront(shareYourLocationButton)
-        mapContainer.bringSubviewToFront(contactButton)
-        mapContainer.bringSubviewToFront(locateMeButton)
-        
-        
+
         // Setup MainScreenTableVC
         tableVC = MainScreenTableVC()
         self.addChildViewController(tableVC)
@@ -98,28 +92,24 @@ class MainScreenVC: UIViewController {
         //println(dict)
         
         // setup Buttons
-        myLocationsButton.setImage(UIImage(named: "MyLocations"), forState: UIControlState.Normal)
-        myLocationsButton.setTitle("", forState: UIControlState.Normal)
+        myLocationsButton = UIButton.ATButton(.MultipleLocations, color: .White)
+        myLocationsButton.positionButtonToLocation(.TopLeft)
+        self.mapContainer.addSubview(myLocationsButton)
         
-        
-//        contactButton.imageView?.layer.borderWidth=1.0
-//        contactButton.imageView?.layer.masksToBounds = false
-//        contactButton.imageView?.layer.borderColor = UIColor.whiteColor().CGColor
-//        contactButton.imageView?.layer.cornerRadius = 20
-//        contactButton.imageView?.clipsToBounds = true
-        contactButton.imageView?.backgroundColor = UIColor.whiteColor()
-        contactButton.setImage(UIImage(named: "Contacts"), forState: UIControlState.Normal)
-        contactButton.setTitle("", forState: UIControlState.Normal)
-        
-        shareYourLocationButton.setImage(UIImage(named: "SharedLocations"), forState: UIControlState.Normal)
-        shareYourLocationButton.setTitle("", forState: UIControlState.Normal)
-        
-        locateMeButton.setImage(UIImage(named: "LocationPin"), forState: UIControlState.Normal)
-        locateMeButton.setTitle("", forState: UIControlState.Normal)
+        contactButton = UIButton.ATButton(.Contact, color: .White)
+        contactButton.positionButtonToLocation(.TopRight)
+        self.mapContainer.addSubview(contactButton)
 
-        
+        shareYourLocationButton = UIButton.ATButton(.ContactLocation, color: .White)
+        shareYourLocationButton.positionButtonToLocation(.BottomLeft)
+        self.mapContainer.addSubview(shareYourLocationButton)
+
+        locateMeButton = UIButton.ATButton(.SingleLocation, color: .White)
+        locateMeButton.positionButtonToLocation(.BottomRight)
+        self.mapContainer.addSubview(locateMeButton)
         
 
+        self.shareYourLocationButtonPressed()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -127,11 +117,7 @@ class MainScreenVC: UIViewController {
         var shareLocationVC:ShareLocationVC = segue.destinationViewController as ShareLocationVC
         
         shareLocationVC.location = self.locationToShare!
-        shareLocationVC.transitioningDelegate = self.transitionManager
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+
     }
     
     override func didReceiveMemoryWarning() {

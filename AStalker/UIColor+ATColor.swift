@@ -16,24 +16,24 @@ import UIKit
 extension UIColor{
 
     /************************* BEGIN Convenience Functions  ***********************************/
-    class func RedColor() -> UIColor? {
-        return UIColor(red: 237, green: 27, blue: 36, alpha: 1)
+    class func RedColor() -> UIColor {
+        return UIColor(red: 237 / 255, green: 27 / 255, blue: 36 / 255, alpha: 1)
     }
     
-    class func WhiteColor() -> UIColor? {
-        return UIColor(red: 255, green: 255, blue: 255, alpha: 1)
+    class func WhiteColor() -> UIColor {
+        return UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
-    class func BlueColor() -> UIColor? {
-        return UIColor(red: 5, green: 122, blue: 235, alpha: 1)
+    class func BlueColor() -> UIColor {
+        return UIColor(red: 5 / 255, green: 122 / 255, blue: 235 / 255, alpha: 1)
     }
     
-    class func GreenColor() -> UIColor? {
-        return UIColor(red: 57, green: 178, blue: 47, alpha: 1)
+    class func GreenColor() -> UIColor {
+        return UIColor(red: 57 / 255, green: 178 / 255, blue: 47 / 255, alpha: 1)
     }
     
-    class func GreyColor() -> UIColor? {
-        return UIColor(red: 141, green: 141, blue: 141, alpha: 1)
+    class func GreyColor() -> UIColor {
+        return UIColor(red: 141 / 255, green: 141 / 255, blue: 141 / 255, alpha: 1)
     }
     
     

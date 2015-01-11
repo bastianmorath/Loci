@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrainsitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
+class TransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
     // MARK: UIViewControllerAnimatedTransitioning protocol methods
     
     // animate a change from one viewcontroller to another
