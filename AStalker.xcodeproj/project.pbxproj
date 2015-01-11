@@ -7,10 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A24517181A62515A0006CDB0 /* Hackaton-Icons__Small-Location-Pin-Green.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24516FE1A62515A0006CDB0 /* Hackaton-Icons__Small-Location-Pin-Green.pdf */; };
+		A24517191A62515A0006CDB0 /* Hackaton-Icons_Auswaehlen-White.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24516FF1A62515A0006CDB0 /* Hackaton-Icons_Auswaehlen-White.pdf */; };
+		A245171A1A62515A0006CDB0 /* Hackaton-Icons_Big-Location-Pin-Green.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517001A62515A0006CDB0 /* Hackaton-Icons_Big-Location-Pin-Green.pdf */; };
+		A245171B1A62515A0006CDB0 /* Hackaton-Icons_Big-Location-Pin-Grey.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517011A62515A0006CDB0 /* Hackaton-Icons_Big-Location-Pin-Grey.pdf */; };
+		A245171C1A62515A0006CDB0 /* Hackaton-Icons_Bild-hinzufügen.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517021A62515A0006CDB0 /* Hackaton-Icons_Bild-hinzufügen.pdf */; };
+		A245171D1A62515A0006CDB0 /* Hackaton-Icons_Close.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517031A62515A0006CDB0 /* Hackaton-Icons_Close.pdf */; };
+		A245171E1A62515A0006CDB0 /* Hackaton-Icons_Heart-Dark-Grey.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517041A62515A0006CDB0 /* Hackaton-Icons_Heart-Dark-Grey.pdf */; };
+		A245171F1A62515A0006CDB0 /* Hackaton-Icons_Heart-Light-Grey.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517051A62515A0006CDB0 /* Hackaton-Icons_Heart-Light-Grey.pdf */; };
+		A24517201A62515A0006CDB0 /* Hackaton-Icons_Heart-White.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517061A62515A0006CDB0 /* Hackaton-Icons_Heart-White.pdf */; };
+		A24517211A62515A0006CDB0 /* Hackaton-Icons_Invite.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517071A62515A0006CDB0 /* Hackaton-Icons_Invite.pdf */; };
+		A24517231A62515A0006CDB0 /* Hackaton-Icons_Locate-Me.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517091A62515A0006CDB0 /* Hackaton-Icons_Locate-Me.pdf */; };
+		A24517241A62515A0006CDB0 /* Hackaton-Icons_Location-und-Bild-Grey.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A245170A1A62515A0006CDB0 /* Hackaton-Icons_Location-und-Bild-Grey.pdf */; };
+		A24517251A62515A0006CDB0 /* Hackaton-Icons_Location-und-Bild-Red.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A245170B1A62515A0006CDB0 /* Hackaton-Icons_Location-und-Bild-Red.pdf */; };
+		A24517261A62515A0006CDB0 /* Hackaton-Icons_My-Locations.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A245170C1A62515A0006CDB0 /* Hackaton-Icons_My-Locations.pdf */; };
+		A24517271A62515A0006CDB0 /* Hackaton-Icons_Notification-1.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A245170D1A62515A0006CDB0 /* Hackaton-Icons_Notification-1.pdf */; };
+		A24517281A62515A0006CDB0 /* Hackaton-Icons_Notification-2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A245170E1A62515A0006CDB0 /* Hackaton-Icons_Notification-2.pdf */; };
+		A24517291A62515A0006CDB0 /* Hackaton-Icons_Notification-3.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A245170F1A62515A0006CDB0 /* Hackaton-Icons_Notification-3.pdf */; };
+		A245172A1A62515A0006CDB0 /* Hackaton-Icons_Notification-4.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517101A62515A0006CDB0 /* Hackaton-Icons_Notification-4.pdf */; };
+		A245172B1A62515A0006CDB0 /* Hackaton-Icons_Notification-5.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517111A62515A0006CDB0 /* Hackaton-Icons_Notification-5.pdf */; };
+		A245172C1A62515A0006CDB0 /* Hackaton-Icons_Notification-6.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517121A62515A0006CDB0 /* Hackaton-Icons_Notification-6.pdf */; };
+		A245172D1A62515A0006CDB0 /* Hackaton-Icons_Notification-7.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517131A62515A0006CDB0 /* Hackaton-Icons_Notification-7.pdf */; };
+		A245172E1A62515A0006CDB0 /* Hackaton-Icons_Notification-8.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517141A62515A0006CDB0 /* Hackaton-Icons_Notification-8.pdf */; };
+		A245172F1A62515A0006CDB0 /* Hackaton-Icons_Notification-9.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517151A62515A0006CDB0 /* Hackaton-Icons_Notification-9.pdf */; };
+		A24517301A62515A0006CDB0 /* Hackaton-Icons_Shared-Locations.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517161A62515A0006CDB0 /* Hackaton-Icons_Shared-Locations.pdf */; };
+		A24517311A62515A0006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517171A62515A0006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf */; };
 		B60C03601A620E4F005921B2 /* MainScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */; };
 		B60C03621A620E5D005921B2 /* MainScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
 		B60C03641A620F55005921B2 /* MainScreenTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
-		B6271A021A624F63008B410C /* checkmark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B6271A011A624F63008B410C /* checkmark.pdf */; };
+		B61B12121A628CED00F48702 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B12111A628CED00F48702 /* CheckmarkView.swift */; };
+		B6271A041A626C74008B410C /* UIButton+ATButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6271A031A626C74008B410C /* UIButton+ATButton.swift */; };
+		B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6271A051A626D5F008B410C /* UIColor+ATColor.swift */; };
+		B6271A0A1A627D9C008B410C /* TrainsitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6271A091A627D9C008B410C /* TrainsitionManager.swift */; };
 		B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730771A6151870073EB51 /* ACoreDataPortal.swift */; };
 		B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730781A6151870073EB51 /* ACoreDataStore.swift */; };
 		B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B637307B1A61566D0073EB51 /* DataModel.xcdatamodeld */; };
@@ -78,9 +106,38 @@
 
 /* Begin PBXFileReference section */
 		7B1F7991D56C58CA3E0747E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A24516FE1A62515A0006CDB0 /* Hackaton-Icons__Small-Location-Pin-Green.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons__Small-Location-Pin-Green.pdf"; sourceTree = "<group>"; };
+		A24516FF1A62515A0006CDB0 /* Hackaton-Icons_Auswaehlen-White.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Auswaehlen-White.pdf"; sourceTree = "<group>"; };
+		A24517001A62515A0006CDB0 /* Hackaton-Icons_Big-Location-Pin-Green.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Big-Location-Pin-Green.pdf"; sourceTree = "<group>"; };
+		A24517011A62515A0006CDB0 /* Hackaton-Icons_Big-Location-Pin-Grey.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Big-Location-Pin-Grey.pdf"; sourceTree = "<group>"; };
+		A24517021A62515A0006CDB0 /* Hackaton-Icons_Bild-hinzufügen.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Bild-hinzufügen.pdf"; sourceTree = "<group>"; };
+		A24517031A62515A0006CDB0 /* Hackaton-Icons_Close.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Close.pdf"; sourceTree = "<group>"; };
+		A24517041A62515A0006CDB0 /* Hackaton-Icons_Heart-Dark-Grey.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Heart-Dark-Grey.pdf"; sourceTree = "<group>"; };
+		A24517051A62515A0006CDB0 /* Hackaton-Icons_Heart-Light-Grey.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Heart-Light-Grey.pdf"; sourceTree = "<group>"; };
+		A24517061A62515A0006CDB0 /* Hackaton-Icons_Heart-White.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Heart-White.pdf"; sourceTree = "<group>"; };
+		A24517071A62515A0006CDB0 /* Hackaton-Icons_Invite.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Invite.pdf"; sourceTree = "<group>"; };
+		A24517081A62515A0006CDB0 /* Hackaton-Icons_Kontakte.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Kontakte.pdf"; sourceTree = "<group>"; };
+		A24517091A62515A0006CDB0 /* Hackaton-Icons_Locate-Me.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Locate-Me.pdf"; sourceTree = "<group>"; };
+		A245170A1A62515A0006CDB0 /* Hackaton-Icons_Location-und-Bild-Grey.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Location-und-Bild-Grey.pdf"; sourceTree = "<group>"; };
+		A245170B1A62515A0006CDB0 /* Hackaton-Icons_Location-und-Bild-Red.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Location-und-Bild-Red.pdf"; sourceTree = "<group>"; };
+		A245170C1A62515A0006CDB0 /* Hackaton-Icons_My-Locations.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_My-Locations.pdf"; sourceTree = "<group>"; };
+		A245170D1A62515A0006CDB0 /* Hackaton-Icons_Notification-1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Notification-1.pdf"; sourceTree = "<group>"; };
+		A245170E1A62515A0006CDB0 /* Hackaton-Icons_Notification-2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Notification-2.pdf"; sourceTree = "<group>"; };
+		A245170F1A62515A0006CDB0 /* Hackaton-Icons_Notification-3.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Notification-3.pdf"; sourceTree = "<group>"; };
+		A24517101A62515A0006CDB0 /* Hackaton-Icons_Notification-4.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Notification-4.pdf"; sourceTree = "<group>"; };
+		A24517111A62515A0006CDB0 /* Hackaton-Icons_Notification-5.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Notification-5.pdf"; sourceTree = "<group>"; };
+		A24517121A62515A0006CDB0 /* Hackaton-Icons_Notification-6.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Notification-6.pdf"; sourceTree = "<group>"; };
+		A24517131A62515A0006CDB0 /* Hackaton-Icons_Notification-7.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Notification-7.pdf"; sourceTree = "<group>"; };
+		A24517141A62515A0006CDB0 /* Hackaton-Icons_Notification-8.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Notification-8.pdf"; sourceTree = "<group>"; };
+		A24517151A62515A0006CDB0 /* Hackaton-Icons_Notification-9.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Notification-9.pdf"; sourceTree = "<group>"; };
+		A24517161A62515A0006CDB0 /* Hackaton-Icons_Shared-Locations.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Shared-Locations.pdf"; sourceTree = "<group>"; };
+		A24517171A62515A0006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Small-Location-Pin-Grey.pdf"; sourceTree = "<group>"; };
 		B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCell.swift; sourceTree = "<group>"; };
 		B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenTableViewCell.xib; sourceTree = "<group>"; };
-		B6271A011A624F63008B410C /* checkmark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = checkmark.pdf; sourceTree = "<group>"; };
+		B61B12111A628CED00F48702 /* CheckmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
+		B6271A031A626C74008B410C /* UIButton+ATButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+ATButton.swift"; sourceTree = "<group>"; };
+		B6271A051A626D5F008B410C /* UIColor+ATColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ATColor.swift"; sourceTree = "<group>"; };
+		B6271A091A627D9C008B410C /* TrainsitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainsitionManager.swift; sourceTree = "<group>"; };
 		B63730771A6151870073EB51 /* ACoreDataPortal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataPortal.swift; sourceTree = "<group>"; };
 		B63730781A6151870073EB51 /* ACoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataStore.swift; sourceTree = "<group>"; };
 		B637307C1A61566D0073EB51 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -211,14 +268,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B62719FC1A62497D008B410C /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				B6271A011A624F63008B410C /* checkmark.pdf */,
-			);
-			name = Images;
-			sourceTree = "<group>";
-		};
 		B63730741A6151400073EB51 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +286,7 @@
 			children = (
 				B88EC3D11A614C610064ED0E /* AppDelegate.swift */,
 				B660CC251A6192E500630E6F /* Main.storyboard */,
+				B6271A091A627D9C008B410C /* TrainsitionManager.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -266,6 +316,7 @@
 			children = (
 				B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */,
 				B6582E981A62335B00D74FAF /* CircleView.swift */,
+				B61B12111A628CED00F48702 /* CheckmarkView.swift */,
 				B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */,
 				B66B282A1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift */,
 				B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */,
@@ -277,6 +328,8 @@
 		B668BD5E1A61BACF00939A6C /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				B6271A051A626D5F008B410C /* UIColor+ATColor.swift */,
+				B6271A031A626C74008B410C /* UIButton+ATButton.swift */,
 				B668BD5C1A61BAC300939A6C /* UIFont+ATFont.swift */,
 			);
 			name = Categories;
@@ -367,7 +420,7 @@
 		B88EC3CF1A614C610064ED0E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B62719FC1A62497D008B410C /* Images */,
+				A24516FD1A6251120006CDB0 /* Icons */,
 				B6A9AD601A61E59100AF4B51 /* Univers */,
 				B88EC3D01A614C610064ED0E /* Info.plist */,
 			);
@@ -529,7 +582,6 @@
 				B88EC3D91A614C610064ED0E /* Images.xcassets in Resources */,
 				B659CCE61A62445D005B6910 /* MainScreenHeaderTableViewCell.xib in Resources */,
 				B6A9AD8A1A61E59100AF4B51 /* UniversLTStd-Light.otf in Resources */,
-				B6271A021A624F63008B410C /* checkmark.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,6 +632,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6271A041A626C74008B410C /* UIButton+ATButton.swift in Sources */,
 				B60C03641A620F55005921B2 /* MainScreenTableViewCell.xib in Sources */,
 				B63730971A61580A0073EB51 /* LocationStore.swift in Sources */,
 				B637309D1A615E3B0073EB51 /* LocalUser.swift in Sources */,
@@ -589,17 +642,20 @@
 				B6582E991A62335B00D74FAF /* CircleView.swift in Sources */,
 				B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */,
 				B66B282F1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift in Sources */,
+				B61B12121A628CED00F48702 /* CheckmarkView.swift in Sources */,
 				B668BD5D1A61BAC300939A6C /* UIFont+ATFont.swift in Sources */,
 				B637309F1A615E3B0073EB51 /* User.swift in Sources */,
 				B660CC241A6192DC00630E6F /* MainScreenVC.swift in Sources */,
 				B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */,
 				B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */,
 				B60C03601A620E4F005921B2 /* MainScreenTableViewCell.swift in Sources */,
+				B6271A0A1A627D9C008B410C /* TrainsitionManager.swift in Sources */,
 				B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */,
 				B637309B1A615E3A0073EB51 /* Notification.swift in Sources */,
 				B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */,
 				B659CCE51A62445D005B6910 /* MainScreenHeaderTableViewCell.swift in Sources */,
 				B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */,
+				B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */,
 				B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */,
 				B66B282B1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift in Sources */,
 				B66B282D1A61BF9C00D3E6D1 /* ATableViewDataSource.swift in Sources */,

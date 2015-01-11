@@ -51,7 +51,6 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
     
     //  adjust Region of mapView
     func zoomIn() {
-        println("zoomIn")
         var userLocation = mapView.userLocation
         
         if let userLocation = userLocation {
