@@ -7,13 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A2BC946A1A623EC900B73A69 /* MainScreenHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BC94681A623EC900B73A69 /* MainScreenHeaderTableViewCell.swift */; };
-		A2BC946B1A623EC900B73A69 /* MainScreenHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BC94691A623EC900B73A69 /* MainScreenHeaderTableViewCell.xib */; };
 		B60C03601A620E4F005921B2 /* MainScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */; };
 		B60C03621A620E5D005921B2 /* MainScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
 		B60C03641A620F55005921B2 /* MainScreenTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
-		B62719FE1A62499D008B410C /* Hackaton-Icons_Heart-Dark-Grey.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B62719FD1A62499D008B410C /* Hackaton-Icons_Heart-Dark-Grey.pdf */; };
-		B6271A001A6249D6008B410C /* Hackaton-Icons_Auswaehlen-White.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B62719FF1A6249D6008B410C /* Hackaton-Icons_Auswaehlen-White.pdf */; };
 		B6271A021A624F63008B410C /* checkmark.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B6271A011A624F63008B410C /* checkmark.pdf */; };
 		B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730771A6151870073EB51 /* ACoreDataPortal.swift */; };
 		B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730781A6151870073EB51 /* ACoreDataStore.swift */; };
@@ -82,12 +78,8 @@
 
 /* Begin PBXFileReference section */
 		7B1F7991D56C58CA3E0747E7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A2BC94681A623EC900B73A69 /* MainScreenHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		A2BC94691A623EC900B73A69 /* MainScreenHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCell.swift; sourceTree = "<group>"; };
 		B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenTableViewCell.xib; sourceTree = "<group>"; };
-		B62719FD1A62499D008B410C /* Hackaton-Icons_Heart-Dark-Grey.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Heart-Dark-Grey.pdf"; sourceTree = "<group>"; };
-		B62719FF1A6249D6008B410C /* Hackaton-Icons_Auswaehlen-White.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Auswaehlen-White.pdf"; sourceTree = "<group>"; };
 		B6271A011A624F63008B410C /* checkmark.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = checkmark.pdf; sourceTree = "<group>"; };
 		B63730771A6151870073EB51 /* ACoreDataPortal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataPortal.swift; sourceTree = "<group>"; };
 		B63730781A6151870073EB51 /* ACoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataStore.swift; sourceTree = "<group>"; };
@@ -190,8 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				B6271A011A624F63008B410C /* checkmark.pdf */,
-				B62719FF1A6249D6008B410C /* Hackaton-Icons_Auswaehlen-White.pdf */,
-				B62719FD1A62499D008B410C /* Hackaton-Icons_Heart-Dark-Grey.pdf */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -450,7 +440,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6271A001A6249D6008B410C /* Hackaton-Icons_Auswaehlen-White.pdf in Resources */,
 				B660CC261A6192E500630E6F /* Main.storyboard in Resources */,
 				B6A9AD961A61E59100AF4B51 /* UniversLTStd.otf in Resources */,
 				B6A9AD941A61E59100AF4B51 /* UniversLTStd-XBlackExObl.otf in Resources */,
@@ -461,7 +450,6 @@
 				B6A9AD8E1A61E59100AF4B51 /* UniversLTStd-LightUltraCn.otf in Resources */,
 				B6A9AD801A61E59100AF4B51 /* UniversLTStd-Bold.otf in Resources */,
 				B6A9AD841A61E59100AF4B51 /* UniversLTStd-BoldExObl.otf in Resources */,
-				B62719FE1A62499D008B410C /* Hackaton-Icons_Heart-Dark-Grey.pdf in Resources */,
 				B6A9AD871A61E59100AF4B51 /* UniversLTStd-CnObl.otf in Resources */,
 				B6A9AD831A61E59100AF4B51 /* UniversLTStd-BoldEx.otf in Resources */,
 				B6A9AD951A61E59100AF4B51 /* UniversLTStd-XBlackObl.otf in Resources */,
