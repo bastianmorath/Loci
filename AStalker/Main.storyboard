@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LF6-FI-tCK">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -20,7 +20,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tab-fF-qvs" userLabel="tableContainer">
                                 <rect key="frame" x="0.0" y="419" width="600" height="181"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-bo-wp5" userLabel="mapContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="419"/>
@@ -43,15 +43,6 @@
                                             <action selector="myLocationsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Vx-O9-1Y2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPY-1L-Y9E">
-                                        <rect key="frame" x="37" y="356" width="130" height="30"/>
-                                        <state key="normal" title="ShareYourLocation">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="shareYourLocationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JXU-B0-2pH"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoM-1a-Oih">
                                         <rect key="frame" x="484" y="356" width="69" height="30"/>
                                         <state key="normal" title="LocateMe">
@@ -61,8 +52,17 @@
                                             <action selector="locateMeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Fx-Zk-jpZ"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPY-1L-Y9E">
+                                        <rect key="frame" x="37" y="356" width="130" height="30"/>
+                                        <state key="normal" title="ShareYourLocation">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="shareYourLocationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JXU-B0-2pH"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.1843137255" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Zud-pt-DOl" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="top" constant="39" id="2Vj-19-fev"/>
                                     <constraint firstItem="Be8-Ys-JOO" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="top" constant="39" id="4ik-Ia-CRp"/>
@@ -95,11 +95,12 @@
                         <outlet property="mapContainer" destination="XNS-bo-wp5" id="0MT-xF-tTz"/>
                         <outlet property="myLocationsButton" destination="Zud-pt-DOl" id="Sqn-Dx-x44"/>
                         <outlet property="shareYourLocationButton" destination="ZPY-1L-Y9E" id="Msw-zP-1TG"/>
+                        <segue destination="LF6-FI-tCK" kind="show" id="pTl-RE-mxK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="126" y="205"/>
+            <point key="canvasLocation" x="114" y="222"/>
         </scene>
         <!--Share LocationVC-->
         <scene sceneID="uBk-MB-OVd">

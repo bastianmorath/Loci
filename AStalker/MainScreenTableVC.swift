@@ -70,6 +70,8 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
         cell.dateLabel.text = "10. Januar"
         cell.addressLabel.text = "Im Werk 11, Uster"
         
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
         return cell
     }
     

@@ -13,6 +13,13 @@ import UIKit
 
 class MainScreenVC: UIViewController {
 
+    // child controllers
+    var mapVC: MainScreenMapVC!
+    var tableVC: MainScreenTableVC!
+    
+    // Location, welche dem ShareLocationVC übergeben wird
+    var locationToShare:Location?
+    
     // Containers to hold the child controllers view
     @IBOutlet weak var mapContainer: UIView!
     @IBOutlet weak var friendsLocationsContainer: UIView!
@@ -22,8 +29,17 @@ class MainScreenVC: UIViewController {
     @IBAction func contactButtonPressed(sender: AnyObject) {
     }
     
+    
     @IBOutlet weak var shareYourLocationButton: UIButton!
-    @IBAction func shareYourLocationButton(sender: AnyObject) {
+    @IBAction func shareYourLocationButtonPressed(sender: AnyObject) {
+        
+        
+        locationToShare?.latitude = mapVC.mapView.userLocation.location.coordinate.latitude
+        locationToShare?.longitude = mapVC.mapView.userLocation.location.coordinate.longitude
+        locationToShare?.timestamp = NSDate()
+        
+        performSegueWithIdentifier("shareYourLocation", sender: nil)
+        
     }
     
     @IBOutlet weak var myLocationsButton: UIButton!
@@ -35,9 +51,7 @@ class MainScreenVC: UIViewController {
         mapVC.zoomIn()
     }
     
-    // child controllers
-    var mapVC: MainScreenMapVC!
-    var tableVC: MainScreenTableVC!
+    
     
 
     
@@ -82,6 +96,12 @@ class MainScreenVC: UIViewController {
         //AddressBook Debugging
         //var dict = AddressBook.defaultStore().getContacts(addName: true, addPhoneNumber: true)
         //println(dict)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        var shareLocationVC:ShareLocationVC = segue.destinationViewController as ShareLocationVC
+        shareLocationVC.location = self.locationToShare!
     }
     
     override func prefersStatusBarHidden() -> Bool {
