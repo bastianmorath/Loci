@@ -51,10 +51,6 @@ class MainScreenVC: UIViewController {
     }
     
     
-    //TransitionManager für CustomSegue
-    let transitionManager = TransitionManager()
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
