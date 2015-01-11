@@ -94,7 +94,7 @@
 		B88EC3D91A614C610064ED0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88EC3D81A614C610064ED0E /* Images.xcassets */; };
 		B88EC3DC1A614C610064ED0E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88EC3DA1A614C610064ED0E /* LaunchScreen.xib */; };
 		B88EC3E81A614C610064ED0E /* AStalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EC3E71A614C610064ED0E /* AStalkerTests.swift */; };
-		E49726249E1A9B4C80D8C2FF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B1F7991D56C58CA3E0747E7 /* libPods.a */; };
+		B88EC41C1A6281C60064ED0E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B88EC41B1A6281C60064ED0E /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +202,8 @@
 		B88EC3E11A614C610064ED0E /* AStalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AStalkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88EC3E61A614C610064ED0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B88EC3E71A614C610064ED0E /* AStalkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStalkerTests.swift; sourceTree = "<group>"; };
+		B88EC41B1A6281C60064ED0E /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		B88EC41D1A6281DA0064ED0E /* AStalker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AStalker-Bridging-Header.h"; sourceTree = "<group>"; };
 		CB82150B2A6BF508F24D5E17 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D78FB5393E333EFA6E44D13C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -211,7 +213,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E49726249E1A9B4C80D8C2FF /* libPods.a in Frameworks */,
+				B88EC41C1A6281C60064ED0E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +284,7 @@
 		AFCF7232A35EE9122730771F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7B1F7991D56C58CA3E0747E7 /* libPods.a */,
+				B88EC41B1A6281C60064ED0E /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -413,6 +415,7 @@
 		B88EC3C31A614C610064ED0E = {
 			isa = PBXGroup;
 			children = (
+				B88EC41D1A6281DA0064ED0E /* AStalker-Bridging-Header.h */,
 				B88EC3CE1A614C610064ED0E /* AStalker */,
 				B88EC3E41A614C610064ED0E /* AStalkerTests */,
 				B88EC3CD1A614C610064ED0E /* Products */,
@@ -811,6 +814,10 @@
 				INFOPLIST_FILE = AStalker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AStalker/AStalker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -826,6 +833,10 @@
 				INFOPLIST_FILE = AStalker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "AStalker/AStalker-Bridging-Header.h";
 			};

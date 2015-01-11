@@ -13,7 +13,6 @@ import UIKit
 
 
 class LocationStore: NSObject{
-    
     var coreDataStore: ACoreDataStore = ACoreDataStore.defaultStore()
     var coreDataPortal: ACoreDataPortal = ACoreDataStore.defaultStore()
     
