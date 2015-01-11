@@ -38,6 +38,7 @@
         [self setupTextField];
         self.placeholder = placeholder;
         self.text = self.placeholder;
+       
     }
     return self;
 }
@@ -50,6 +51,8 @@
     self.contentVerticalAlignment = UIControlContentVerticalAlignmentBottom;
     [self setBorderStyle:UITextBorderStyleNone];
     self.delegate = self;
+    self.backgroundColor = [UIColor whiteColor];
+    self.textColor = [UIColor blackColor];
 }
 
 

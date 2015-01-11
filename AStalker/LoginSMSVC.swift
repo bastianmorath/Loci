@@ -67,6 +67,7 @@ class LoginSMSVC: UIViewController, UITextFieldDelegate {
         println("Code: \(code)")
         if code != nil {
             // dissmiss
+            
         } else {
             self.resendCodeLabel.hidden = false
             self.textField.text = ""
