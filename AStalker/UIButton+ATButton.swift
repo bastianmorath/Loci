@@ -12,8 +12,20 @@ import UIKit
 /**
 *  Extend the UIButton with some factory methods for our custom Buttons.
 */
+let kMargin: Int = 20
+let kSize = 56
 extension UIButton {
     
+    
+    /**
+    Enumeration über Button-Typen. Der Typ wird durch das angezeigte Icon definiert.
+    
+    - Contact:           Zwei Kontakt-Männchen
+    - SingleLocation:    Ein Location-Icon
+    - ContactLocation:   Ein LocationIcon und ein KontaktIcon
+    - MultipleLocations: Zwei Location-Icons
+    - Share:             Share-Text
+    */
     enum ATButtonType {
         case Contact
         case SingleLocation
@@ -28,10 +40,17 @@ extension UIButton {
         case Grey
     }
     
+    /**
+    Enumeration über den Ort des Buttons.
+    
+    - TopHalfLeft: Das Icon wird am oberen linken Rand des SuperViews angezeigt, wobei die Hälfte des Icons darüber hinaus ist.
+
+    */
+
     enum ATButtonLocation {
         case TopRight
         case TopLeft
-        case BottomLeft
+        case TopHalfLeft
         case BottomRight
     }
     
@@ -40,7 +59,7 @@ extension UIButton {
         var button = UIButton.buttonWithType( UIButtonType.Custom ) as UIButton
         
         //button.clipsToBounds = true
-        button.layer.cornerRadius = 28
+        button.layer.cornerRadius = CGFloat(kSize / 2)
         button.setTranslatesAutoresizingMaskIntoConstraints( false )
         button.showsTouchWhenHighlighted = true
         switch color{
@@ -57,7 +76,9 @@ extension UIButton {
         case .Contact:
             imageView.image = UIImage(named: "Contacts.png")
         case .SingleLocation:
-            imageView.image = UIImage(named: "Location.png")
+            imageView.image = UIImage(named: "LocateMe.png")
+            imageView.frame = CGRectMake(3, 3, 50, 50)
+            button.backgroundColor = UIColor.clearColor()
         case .ContactLocation:
             imageView.image = UIImage(named: "SharedLocations.png")
         case .MultipleLocations:
@@ -81,15 +102,20 @@ extension UIButton {
         return button
     }
     
-    
+    /**
+    Diese Funktion passt den Ort des Buttons an. Wird automatisch durch vordefinierte Constraints am SuperView angepasst.
+    ACHTUNG: FUnktion erst anwenden, NACHDEM der Button dem SuperView hinzugefügt wurde
+    :param: location Location-Enumeration
+    */
     func positionButtonToLocation(location: ATButtonLocation ) {
+        
         let views = ["button" : self]
-        let metrics = ["margin": 25]
+        let metrics = ["margin": kMargin]
         
         var horizontalConstraint = ""
         var verticalConstraint = ""
-        var heightConstraint = "V:[button(56)]"
-        var widthConstraint = "H:[button(56)]"
+        var heightConstraint = "V:[button(\(kSize))]"
+        var widthConstraint = "H:[button(\(kSize))]"
 
         switch location {
         case .TopRight:
@@ -98,9 +124,9 @@ extension UIButton {
         case .TopLeft:
             horizontalConstraint = "H:|-margin-[button]"
             verticalConstraint = "V:|-margin-[button]"
-        case .BottomLeft:
+        case .TopHalfLeft:
             horizontalConstraint = "H:|-margin-[button]"
-            verticalConstraint = "V:[button]-margin-|"
+            verticalConstraint = "V:|-0-[button]"
         case .BottomRight:
             horizontalConstraint = "H:[button]-margin-|"
             verticalConstraint = "V:[button]-margin-|"

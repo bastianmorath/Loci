@@ -12,7 +12,9 @@ import Foundation
 import UIKit
 
 class MainScreenVC: UIViewController {
-
+    
+    // MARK: - Properies und Variabeln
+    
     // child controllers
     var mapVC: MainScreenMapVC!
     var tableVC: MainScreenTableVC!
@@ -25,35 +27,19 @@ class MainScreenVC: UIViewController {
     @IBOutlet weak var friendsLocationsContainer: UIView!
     
     // Buttons
-     var contactButton: UIButton!
-     func contactButtonPressed(sender: AnyObject) {
-    }
     
+    //Zeigt alle Kontakte des Users an, insbesondere wo diese sich befinden und wann sie dort waren
+    var contactButton: UIButton!
     
-     var shareYourLocationButton: UIButton!
-     func shareYourLocationButtonPressed(){
-        //var latitude = mapVC.mapView.userLocation.location.coordinate.latitude
-        //var longitude = mapVC.mapView.userLocation.location.coordinate.longitude
-
-        locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: 4.1, latitude: 2.9, user: nil)
-        
-        performSegueWithIdentifier("shareYourLocation", sender: nil)
-        
-    }
+    /// Der User shared seine Location und kann auswählen, mit welchen Kontakten er das machen will
+    var shareYourLocationButton: UIButton!
     
-     var myLocationsButton: UIButton!
-     func myLocationsButtonPressed(sender: AnyObject) {
-    }
+    /// Zeigt die Favoriten/Meist besuchten Locations vom Nutzer an. Dort sieht man auch, wie lange man an einer Location war.
+    var myLocationsButton: UIButton!
     
-     var locateMeButton: UIButton!
-     func locateMeButtonPressed(sender: AnyObject) {
-        mapVC.zoomIn()
-    }
+    /// Die momentane Location des Users wird auf der Karte angezeigt
+    var locateMeButton: UIButton!
     
-    
-    //TransitionManager für CustomSegue
-    let transitionManager = TransitionManager()
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +58,7 @@ class MainScreenVC: UIViewController {
         self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
         self.mapContainer.setTranslatesAutoresizingMaskIntoConstraints( false )
         
-
+        
         // Setup MainScreenTableVC
         tableVC = MainScreenTableVC()
         self.addChildViewController(tableVC)
@@ -86,46 +72,60 @@ class MainScreenVC: UIViewController {
         self.view.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat("V:|[tableView]|", options: nil, metrics: metrics, views: views2 ))
         self.friendsLocationsContainer.setTranslatesAutoresizingMaskIntoConstraints( false )
         
-        
-        //AddressBook Debugging
-        //var dict = AddressBook.defaultStore().getContacts(addName: true, addPhoneNumber: true)
-        //println(dict)
-        
-        // setup Buttons
+        // Setup Buttons
         myLocationsButton = UIButton.ATButton(.MultipleLocations, color: .White)
+        myLocationsButton.addTarget(self, action: "myLocationButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(myLocationsButton)
         myLocationsButton.positionButtonToLocation(.TopLeft)
-        self.mapContainer.addSubview(myLocationsButton)
         
         contactButton = UIButton.ATButton(.Contact, color: .White)
-        contactButton.positionButtonToLocation(.TopRight)
+        contactButton.addTarget(self, action: "contactButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
         self.mapContainer.addSubview(contactButton)
-
-        shareYourLocationButton = UIButton.ATButton(.ContactLocation, color: .White)
-        shareYourLocationButton.positionButtonToLocation(.BottomLeft)
-        self.mapContainer.addSubview(shareYourLocationButton)
-
-        locateMeButton = UIButton.ATButton(.SingleLocation, color: .White)
-        locateMeButton.positionButtonToLocation(.BottomRight)
-        self.mapContainer.addSubview(locateMeButton)
+        contactButton.positionButtonToLocation(.TopRight)
         
-
-        self.shareYourLocationButtonPressed()
-    }
+        shareYourLocationButton = UIButton.ATButton(.ContactLocation, color: .Grey)
+        shareYourLocationButton.addTarget(self, action: "shareYourLocationButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        self.friendsLocationsContainer.addSubview(shareYourLocationButton)
+        shareYourLocationButton.positionButtonToLocation(.TopHalfLeft)
+        
+        locateMeButton = UIButton.ATButton(.SingleLocation, color: .White)
+        locateMeButton.addTarget(self, action: "locateMeButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+        self.mapContainer.addSubview(locateMeButton)
+        locateMeButton.positionButtonToLocation(.BottomRight)
+}
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        var shareLocationVC:ShareLocationVC = segue.destinationViewController as ShareLocationVC
+        if segue.identifier == "shareYourLocation" {
+            var shareLocationVC:ShareLocationVC = segue.destinationViewController as ShareLocationVC
+            
+            shareLocationVC.location = self.locationToShare!
+        }
+    }
+    
+    // MARK: - Button Handling
+    
+    func locateMeButtonPressed() {
+        mapVC.zoomIn()
+    }
+    
+    func myLocationsButtonPressed() {
         
-        shareLocationVC.location = self.locationToShare!
-
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func shareYourLocationButtonPressed(){
+        var latitude = mapVC.mapView.userLocation?.location?.coordinate.latitude
+        var longitude = mapVC.mapView.userLocation?.location?.coordinate.longitude
+        
+        if longitude == longitude && latitude == latitude{
+            locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: 4.1, latitude: 2.9, user: nil)
+            performSegueWithIdentifier("shareYourLocation", sender: nil)
+        }
     }
     
-    
+    func contactButtonPressed(sender: AnyObject) {
+        
+    }
     
 }
 

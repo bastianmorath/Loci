@@ -33,7 +33,7 @@ extension UIColor{
     }
     
     class func GreyColor() -> UIColor {
-        return UIColor(red: 141 / 255, green: 141 / 255, blue: 141 / 255, alpha: 1)
+        return UIColor(red: 50 / 255, green: 50 / 255, blue: 50 / 255, alpha: 1)
     }
     
     

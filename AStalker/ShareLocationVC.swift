@@ -98,7 +98,7 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
         LocationStore.defaultStore().getLocalUser()?.sharedLocations = mutableSet
         println( LocationStore.defaultStore().getLocalUser()?.sharedLocations)
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
    

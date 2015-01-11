@@ -35,7 +35,6 @@
 		A245176D1A6272070006CDB0 /* Hackaton-Icons_Notification-7.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517531A6272070006CDB0 /* Hackaton-Icons_Notification-7.pdf */; };
 		A245176E1A6272070006CDB0 /* Hackaton-Icons_Notification-8.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517541A6272070006CDB0 /* Hackaton-Icons_Notification-8.pdf */; };
 		A245176F1A6272070006CDB0 /* Hackaton-Icons_Notification-9.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517551A6272070006CDB0 /* Hackaton-Icons_Notification-9.pdf */; };
-		A24517701A6272070006CDB0 /* Hackaton-Icons_Shared-Locations.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517561A6272070006CDB0 /* Hackaton-Icons_Shared-Locations.pdf */; };
 		A24517711A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517571A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf */; };
 		A24517731A62727A0006CDB0 /* antum_logo_email.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A24517721A62727A0006CDB0 /* antum_logo_email.jpg */; };
 		B60C03601A620E4F005921B2 /* MainScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */; };
@@ -66,6 +65,7 @@
 		B66B282D1A61BF9C00D3E6D1 /* ATableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */; };
 		B66B282F1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B282E1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift */; };
 		B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */; };
+		B67BEDD11A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B67BEDD01A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf */; };
 		B6A9AD7C1A61E59100AF4B51 /* UniversLTStd-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD611A61E59100AF4B51 /* UniversLTStd-Black.otf */; };
 		B6A9AD7D1A61E59100AF4B51 /* UniversLTStd-BlackEx.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD621A61E59100AF4B51 /* UniversLTStd-BlackEx.otf */; };
 		B6A9AD7E1A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD631A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf */; };
@@ -140,7 +140,6 @@
 		A24517531A6272070006CDB0 /* Hackaton-Icons_Notification-7.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Hackaton-Icons_Notification-7.pdf"; path = "AStalker/Hackaton-Icons_Notification-7.pdf"; sourceTree = SOURCE_ROOT; };
 		A24517541A6272070006CDB0 /* Hackaton-Icons_Notification-8.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Hackaton-Icons_Notification-8.pdf"; path = "AStalker/Hackaton-Icons_Notification-8.pdf"; sourceTree = SOURCE_ROOT; };
 		A24517551A6272070006CDB0 /* Hackaton-Icons_Notification-9.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Hackaton-Icons_Notification-9.pdf"; path = "AStalker/Hackaton-Icons_Notification-9.pdf"; sourceTree = SOURCE_ROOT; };
-		A24517561A6272070006CDB0 /* Hackaton-Icons_Shared-Locations.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Hackaton-Icons_Shared-Locations.pdf"; path = "AStalker/Hackaton-Icons_Shared-Locations.pdf"; sourceTree = SOURCE_ROOT; };
 		A24517571A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Hackaton-Icons_Small-Location-Pin-Grey.pdf"; path = "AStalker/Hackaton-Icons_Small-Location-Pin-Grey.pdf"; sourceTree = SOURCE_ROOT; };
 		A24517721A62727A0006CDB0 /* antum_logo_email.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = antum_logo_email.jpg; sourceTree = "<group>"; };
 		B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCell.swift; sourceTree = "<group>"; };
@@ -170,6 +169,7 @@
 		B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATableViewDataSource.swift; sourceTree = "<group>"; };
 		B66B282E1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ATTableViewCell.swift"; sourceTree = "<group>"; };
 		B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationVC.swift; sourceTree = "<group>"; };
+		B67BEDD01A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Shared-Locations.pdf"; sourceTree = "<group>"; };
 		B6A9AD611A61E59100AF4B51 /* UniversLTStd-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Black.otf"; sourceTree = "<group>"; };
 		B6A9AD621A61E59100AF4B51 /* UniversLTStd-BlackEx.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BlackEx.otf"; sourceTree = "<group>"; };
 		B6A9AD631A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BlackExObl.otf"; sourceTree = "<group>"; };
@@ -245,7 +245,6 @@
 				A24517331A626EE00006CDB0 /* LoginWelcomeVC.swift */,
 				A24517351A626F2E0006CDB0 /* LoginSMSVC.swift */,
 				A24517371A626F540006CDB0 /* LoginRegistrationVC.swift */,
-				A2CEA7671A62AD92004F8FBC /* TransitionManager.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -278,7 +277,7 @@
 				A24517531A6272070006CDB0 /* Hackaton-Icons_Notification-7.pdf */,
 				A24517541A6272070006CDB0 /* Hackaton-Icons_Notification-8.pdf */,
 				A24517551A6272070006CDB0 /* Hackaton-Icons_Notification-9.pdf */,
-				A24517561A6272070006CDB0 /* Hackaton-Icons_Shared-Locations.pdf */,
+				B67BEDD01A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf */,
 				A24517571A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf */,
 			);
 			name = Icons;
@@ -587,9 +586,9 @@
 				B6A9AD861A61E59100AF4B51 /* UniversLTStd-Cn.otf in Resources */,
 				B6A9AD891A61E59100AF4B51 /* UniversLTStd-ExObl.otf in Resources */,
 				B60C03621A620E5D005921B2 /* MainScreenTableViewCell.xib in Resources */,
+				B67BEDD11A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf in Resources */,
 				B6A9AD911A61E59100AF4B51 /* UniversLTStd-UltraCn.otf in Resources */,
 				A24517711A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf in Resources */,
-				A24517701A6272070006CDB0 /* Hackaton-Icons_Shared-Locations.pdf in Resources */,
 				B6A9AD7E1A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf in Resources */,
 				B6A9AD931A61E59100AF4B51 /* UniversLTStd-XBlackEx.otf in Resources */,
 				A24517661A6272070006CDB0 /* Hackaton-Icons_My-Locations.pdf in Resources */,
