@@ -18,8 +18,8 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
     
     var shareLocationDataSource: ShareLocationDataSource!
     
-    //Hier wird das Location-Objekt gespeichert, welches vom MainVC übergeben wird
-    //var location = Location()
+    //Hier wird das Location-Objekt gespeichert, welches vom MainScreenVC übergeben wird
+    var location = Location()
     
     //Dieser Array speichert die angeklickten User
     var userToShareArray: [User] = []
