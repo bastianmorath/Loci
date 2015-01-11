@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainScreenHeaderTableViewCell: UITableViewCell {
+class FriendsLocationHeaderTableViewCell: UITableViewCell {
     
     @IBOutlet var friendsLabel: UILabel!
     @IBOutlet var updateLabel: UILabel!

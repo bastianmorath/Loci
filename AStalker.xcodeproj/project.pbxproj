@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2119BB71A62DFD100FA095C /* FriendsLocationHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2119BB61A62DFD100FA095C /* FriendsLocationHeaderTableViewCell.xib */; };
+		A2119BBA1A62E0E400FA095C /* ChangeLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2119BB81A62E0E400FA095C /* ChangeLocationTableViewCell.swift */; };
+		A2119BBB1A62E0E400FA095C /* ChangeLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2119BB91A62E0E400FA095C /* ChangeLocationTableViewCell.xib */; };
 		A24517341A626EE00006CDB0 /* LoginWelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24517331A626EE00006CDB0 /* LoginWelcomeVC.swift */; };
 		A24517361A626F2E0006CDB0 /* LoginSMSVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24517351A626F2E0006CDB0 /* LoginSMSVC.swift */; };
 		A24517381A626F540006CDB0 /* LoginRegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24517371A626F540006CDB0 /* LoginRegistrationVC.swift */; };
@@ -37,9 +40,9 @@
 		A245176F1A6272070006CDB0 /* Hackaton-Icons_Notification-9.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517551A6272070006CDB0 /* Hackaton-Icons_Notification-9.pdf */; };
 		A24517711A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A24517571A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf */; };
 		A24517731A62727A0006CDB0 /* antum_logo_email.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A24517721A62727A0006CDB0 /* antum_logo_email.jpg */; };
-		B60C03601A620E4F005921B2 /* MainScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */; };
-		B60C03621A620E5D005921B2 /* MainScreenTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
-		B60C03641A620F55005921B2 /* MainScreenTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */; };
+		B60C03601A620E4F005921B2 /* FriendsLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C035F1A620E4F005921B2 /* FriendsLocationTableViewCell.swift */; };
+		B60C03621A620E5D005921B2 /* FriendsLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */; };
+		B60C03641A620F55005921B2 /* FriendsLocationTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */; };
 		B61B12121A628CED00F48702 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B12111A628CED00F48702 /* CheckmarkView.swift */; };
 		B6271A041A626C74008B410C /* UIButton+ATButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6271A031A626C74008B410C /* UIButton+ATButton.swift */; };
 		B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6271A051A626D5F008B410C /* UIColor+ATColor.swift */; };
@@ -53,8 +56,7 @@
 		B637309F1A615E3B0073EB51 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309E1A615E3B0073EB51 /* User.swift */; };
 		B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */; };
 		B6582E991A62335B00D74FAF /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6582E981A62335B00D74FAF /* CircleView.swift */; };
-		B659CCE51A62445D005B6910 /* MainScreenHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659CCE31A62445D005B6910 /* MainScreenHeaderTableViewCell.swift */; };
-		B659CCE61A62445D005B6910 /* MainScreenHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B659CCE41A62445D005B6910 /* MainScreenHeaderTableViewCell.xib */; };
+		B659CCE51A62445D005B6910 /* FriendsLocationHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659CCE31A62445D005B6910 /* FriendsLocationHeaderTableViewCell.swift */; };
 		B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */; };
 		B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */; };
 		B660CC241A6192DC00630E6F /* MainScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC211A6192DC00630E6F /* MainScreenVC.swift */; };
@@ -110,6 +112,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A2119BB61A62DFD100FA095C /* FriendsLocationHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsLocationHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		A2119BB81A62E0E400FA095C /* ChangeLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeLocationTableViewCell.swift; sourceTree = "<group>"; };
+		A2119BB91A62E0E400FA095C /* ChangeLocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeLocationTableViewCell.xib; sourceTree = "<group>"; };
 		A24517331A626EE00006CDB0 /* LoginWelcomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWelcomeVC.swift; sourceTree = "<group>"; };
 		A24517351A626F2E0006CDB0 /* LoginSMSVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginSMSVC.swift; sourceTree = "<group>"; };
 		A24517371A626F540006CDB0 /* LoginRegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRegistrationVC.swift; sourceTree = "<group>"; };
@@ -142,8 +147,8 @@
 		A24517551A6272070006CDB0 /* Hackaton-Icons_Notification-9.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Hackaton-Icons_Notification-9.pdf"; path = "AStalker/Hackaton-Icons_Notification-9.pdf"; sourceTree = SOURCE_ROOT; };
 		A24517571A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Hackaton-Icons_Small-Location-Pin-Grey.pdf"; path = "AStalker/Hackaton-Icons_Small-Location-Pin-Grey.pdf"; sourceTree = SOURCE_ROOT; };
 		A24517721A62727A0006CDB0 /* antum_logo_email.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = antum_logo_email.jpg; sourceTree = "<group>"; };
-		B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableViewCell.swift; sourceTree = "<group>"; };
-		B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenTableViewCell.xib; sourceTree = "<group>"; };
+		B60C035F1A620E4F005921B2 /* FriendsLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsLocationTableViewCell.swift; sourceTree = "<group>"; };
+		B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsLocationTableViewCell.xib; sourceTree = "<group>"; };
 		B61B12111A628CED00F48702 /* CheckmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		B6271A031A626C74008B410C /* UIButton+ATButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+ATButton.swift"; sourceTree = "<group>"; };
 		B6271A051A626D5F008B410C /* UIColor+ATColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ATColor.swift"; sourceTree = "<group>"; };
@@ -157,8 +162,7 @@
 		B637309E1A615E3B0073EB51 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationTableViewCell.swift; sourceTree = "<group>"; };
 		B6582E981A62335B00D74FAF /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		B659CCE31A62445D005B6910 /* MainScreenHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenHeaderTableViewCell.swift; sourceTree = "<group>"; };
-		B659CCE41A62445D005B6910 /* MainScreenHeaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainScreenHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		B659CCE31A62445D005B6910 /* FriendsLocationHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsLocationHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenMapVC.swift; sourceTree = "<group>"; };
 		B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableVC.swift; sourceTree = "<group>"; };
 		B660CC211A6192DC00630E6F /* MainScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenVC.swift; sourceTree = "<group>"; };
@@ -399,13 +403,15 @@
 		B6E6A0C31A6210D4004C9B31 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				B659CCE31A62445D005B6910 /* MainScreenHeaderTableViewCell.swift */,
-				B659CCE41A62445D005B6910 /* MainScreenHeaderTableViewCell.xib */,
-				B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */,
-				B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */,
-				B60C03611A620E5D005921B2 /* MainScreenTableViewCell.xib */,
-				B60C035F1A620E4F005921B2 /* MainScreenTableViewCell.swift */,
 				B660CC211A6192DC00630E6F /* MainScreenVC.swift */,
+				B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */,
+				B659CCE31A62445D005B6910 /* FriendsLocationHeaderTableViewCell.swift */,
+				A2119BB61A62DFD100FA095C /* FriendsLocationHeaderTableViewCell.xib */,
+				B60C035F1A620E4F005921B2 /* FriendsLocationTableViewCell.swift */,
+				B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */,
+				A2119BB81A62E0E400FA095C /* ChangeLocationTableViewCell.swift */,
+				A2119BB91A62E0E400FA095C /* ChangeLocationTableViewCell.xib */,
+				B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */,
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
@@ -569,6 +575,7 @@
 				A24517731A62727A0006CDB0 /* antum_logo_email.jpg in Resources */,
 				B6A9AD921A61E59100AF4B51 /* UniversLTStd-XBlack.otf in Resources */,
 				A24517601A6272070006CDB0 /* Hackaton-Icons_Heart-White.pdf in Resources */,
+				A2119BBB1A62E0E400FA095C /* ChangeLocationTableViewCell.xib in Resources */,
 				B6A9AD8E1A61E59100AF4B51 /* UniversLTStd-LightUltraCn.otf in Resources */,
 				A24517681A6272070006CDB0 /* Hackaton-Icons_Notification-2.pdf in Resources */,
 				A245175F1A6272070006CDB0 /* Hackaton-Icons_Heart-Light-Grey.pdf in Resources */,
@@ -585,7 +592,7 @@
 				B6A9AD951A61E59100AF4B51 /* UniversLTStd-XBlackObl.otf in Resources */,
 				B6A9AD861A61E59100AF4B51 /* UniversLTStd-Cn.otf in Resources */,
 				B6A9AD891A61E59100AF4B51 /* UniversLTStd-ExObl.otf in Resources */,
-				B60C03621A620E5D005921B2 /* MainScreenTableViewCell.xib in Resources */,
+				B60C03621A620E5D005921B2 /* FriendsLocationTableViewCell.xib in Resources */,
 				B67BEDD11A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf in Resources */,
 				B6A9AD911A61E59100AF4B51 /* UniversLTStd-UltraCn.otf in Resources */,
 				A24517711A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf in Resources */,
@@ -601,6 +608,7 @@
 				B6A9AD881A61E59100AF4B51 /* UniversLTStd-Ex.otf in Resources */,
 				B6A9AD7C1A61E59100AF4B51 /* UniversLTStd-Black.otf in Resources */,
 				A24517631A6272070006CDB0 /* Hackaton-Icons_Locate-Me.pdf in Resources */,
+				A2119BB71A62DFD100FA095C /* FriendsLocationHeaderTableViewCell.xib in Resources */,
 				A24517611A6272070006CDB0 /* Hackaton-Icons_Invite.pdf in Resources */,
 				B6A9AD7F1A61E59100AF4B51 /* UniversLTStd-BlackObl.otf in Resources */,
 				B6A9AD8B1A61E59100AF4B51 /* UniversLTStd-LightCn.otf in Resources */,
@@ -609,7 +617,6 @@
 				A245176D1A6272070006CDB0 /* Hackaton-Icons_Notification-7.pdf in Resources */,
 				B6A9AD7D1A61E59100AF4B51 /* UniversLTStd-BlackEx.otf in Resources */,
 				B88EC3D91A614C610064ED0E /* Images.xcassets in Resources */,
-				B659CCE61A62445D005B6910 /* MainScreenHeaderTableViewCell.xib in Resources */,
 				B6A9AD8A1A61E59100AF4B51 /* UniversLTStd-Light.otf in Resources */,
 				A24517581A6272070006CDB0 /* Hackaton-Icons__Small-Location-Pin-Green.pdf in Resources */,
 			);
@@ -664,7 +671,8 @@
 			files = (
 				B6271A041A626C74008B410C /* UIButton+ATButton.swift in Sources */,
 				A245173C1A6270760006CDB0 /* ATTextField.m in Sources */,
-				B60C03641A620F55005921B2 /* MainScreenTableViewCell.xib in Sources */,
+				B60C03641A620F55005921B2 /* FriendsLocationTableViewCell.xib in Sources */,
+				A2119BBA1A62E0E400FA095C /* ChangeLocationTableViewCell.swift in Sources */,
 				B63730971A61580A0073EB51 /* LocationStore.swift in Sources */,
 				B637309D1A615E3B0073EB51 /* LocalUser.swift in Sources */,
 				B63730991A615E3A0073EB51 /* Location.swift in Sources */,
@@ -679,12 +687,12 @@
 				B660CC241A6192DC00630E6F /* MainScreenVC.swift in Sources */,
 				B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */,
 				B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */,
-				B60C03601A620E4F005921B2 /* MainScreenTableViewCell.swift in Sources */,
+				B60C03601A620E4F005921B2 /* FriendsLocationTableViewCell.swift in Sources */,
 				B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */,
 				B637309B1A615E3A0073EB51 /* Notification.swift in Sources */,
 				B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */,
 				A24517341A626EE00006CDB0 /* LoginWelcomeVC.swift in Sources */,
-				B659CCE51A62445D005B6910 /* MainScreenHeaderTableViewCell.swift in Sources */,
+				B659CCE51A62445D005B6910 /* FriendsLocationHeaderTableViewCell.swift in Sources */,
 				A24517361A626F2E0006CDB0 /* LoginSMSVC.swift in Sources */,
 				B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */,
 				B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */,
