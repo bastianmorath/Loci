@@ -42,14 +42,16 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         //show user location
         mapView.showsUserLocation = true
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+
         mapView.frame = self.view.bounds
     }
     
     //  adjust Region of mapView
     func zoomIn() {
+        println("zoomIn")
         var userLocation = mapView.userLocation
         
         if let userLocation = userLocation {

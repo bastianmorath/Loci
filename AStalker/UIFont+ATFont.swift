@@ -14,21 +14,27 @@ import UIKit
 */
 extension UIFont{
   
-  class func ATTitleFont() -> UIFont? {
-    return UIFont( name: "UniversLTStd", size: 20.0 )
-  }
-  
-  class func ATFont() -> UIFont? {
-    return UIFont( name: "UniversLTStd", size: 15.0 )
-  }
-  
+    class func ATTitleFont() -> UIFont? {
+        return UIFont( name: "UniversLTStd-Light", size: 12.0 )
+    }
+    class func ATTableViewSmallFont() -> UIFont? {
+        return UIFont( name: "UniversLTStd-Light", size: 20.0 )
+    }
+    class func ATTableViewFont() -> UIFont? {
+        return UIFont( name: "UniversLTStd-Light", size: 24.0 )
+    }
+    
+    class func ATFont() -> UIFont? {
+        return UIFont( name: "UniversLTStd-Light", size: 10.0 )
+    }
+    
     class func ATBoldFont() -> UIFont? {
         return UIFont( name: "UniversLTStd-Bold", size: 15.0 )
     }
     
-  class func ATButtonFont() -> UIFont? {
-    return UIFont( name: "UniversLTStd", size: 11.0 )
-  }
+    class func ATButtonFont() -> UIFont? {
+        return UIFont( name: "UniversLTStd", size: 11.0 )
+    }
   
   /**
   Debug function: Logs all fonts available to the command line.

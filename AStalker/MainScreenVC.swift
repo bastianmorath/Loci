@@ -76,7 +76,6 @@ class MainScreenVC: UIViewController {
         let metrics2 = [:]
         self.view.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat( "H:|[tableView]|", options: nil, metrics: metrics, views: views2 ) )
         self.view.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat("V:|[tableView]|", options: nil, metrics: metrics, views: views2 ))
-        self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
         self.friendsLocationsContainer.setTranslatesAutoresizingMaskIntoConstraints( false )
         
         

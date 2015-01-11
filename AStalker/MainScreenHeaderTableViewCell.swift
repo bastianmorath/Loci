@@ -9,10 +9,19 @@
 import UIKit
 
 class MainScreenHeaderTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet var friendsLabel: UILabel!
+    @IBOutlet var updateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.selectionStyle = UITableViewCellSelectionStyle.None
+        
+        // setup label font and size
+        friendsLabel.font = UIFont.ATFont()
+        updateLabel.font = UIFont.ATFont()
+        
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

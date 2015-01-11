@@ -30,6 +30,7 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
         // setup tableView
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
     }
     
@@ -64,7 +65,7 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
             return headerCell
         }
         // set properties to cell
-        cell.userNameLabel.text = "Aleksandar Papez"
+        cell.userNameLabel.text = "Aleksangdar Papez"
         cell.timeLabel.text = "12:45"
         cell.dateLabel.text = "10. Januar"
         cell.addressLabel.text = "Im Werk 11, Uster"

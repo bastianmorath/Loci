@@ -13,21 +13,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJf-Du-Y5B">
-                        <rect key="frame" x="8" y="35" width="57" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJf-Du-Y5B">
+                        <rect key="frame" x="30" y="31" width="45" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Update" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziA-yd-PxL">
-                        <rect key="frame" x="218" y="35" width="94" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Update" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziA-yd-PxL">
+                        <rect key="frame" x="226" y="31" width="74" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ziA-yd-PxL" secondAttribute="trailing" constant="20" id="Upa-Gj-AY7"/>
+                    <constraint firstAttribute="bottom" secondItem="ziA-yd-PxL" secondAttribute="bottom" constant="12" id="ZWN-SX-DgR"/>
+                    <constraint firstItem="hJf-Du-Y5B" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="luh-YN-DEY"/>
+                    <constraint firstAttribute="bottom" secondItem="hJf-Du-Y5B" secondAttribute="bottom" constant="12" id="m3y-lo-fRJ"/>
+                </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="473" y="263.5"/>
+            <connections>
+                <outlet property="friendsLabel" destination="hJf-Du-Y5B" id="aQ3-ck-fSy"/>
+                <outlet property="updateLabel" destination="ziA-yd-PxL" id="eE5-wH-C1u"/>
+            </connections>
+            <point key="canvasLocation" x="465" y="249"/>
         </tableViewCell>
     </objects>
 </document>
