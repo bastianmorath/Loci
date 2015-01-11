@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LF6-FI-tCK">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -76,31 +77,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Tab-fF-qvs" firstAttribute="width" secondItem="XNS-bo-wp5" secondAttribute="height" multiplier="300:221" id="2VQ-Z0-I4B"/>
-                            <constraint firstItem="ZPY-1L-Y9E" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="36" id="4Ye-Pc-2Ig"/>
-                            <constraint firstItem="Tab-fF-qvs" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="bottom" id="6rs-ih-O3Z"/>
-                            <constraint firstItem="Tab-fF-qvs" firstAttribute="leading" secondItem="XNS-bo-wp5" secondAttribute="leading" id="9A3-wr-yBH"/>
-                            <constraint firstAttribute="trailing" secondItem="XNS-bo-wp5" secondAttribute="trailing" id="9vG-P6-Eik"/>
-                            <constraint firstItem="XNS-bo-wp5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Bjq-8w-TCb"/>
-                            <constraint firstItem="Tab-fF-qvs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="DGI-dk-bHa"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Tab-fF-qvs" secondAttribute="trailing" id="HfE-96-VQC"/>
-                            <constraint firstItem="Tab-fF-qvs" firstAttribute="top" secondItem="ZPY-1L-Y9E" secondAttribute="bottom" constant="23" id="R2G-uB-wV1"/>
-                            <constraint firstItem="XNS-bo-wp5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Rwy-DC-YS2"/>
-                            <constraint firstItem="Tab-fF-qvs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aaG-Zc-fCx"/>
-                            <constraint firstItem="XNS-bo-wp5" firstAttribute="trailing" secondItem="Tab-fF-qvs" secondAttribute="trailing" id="eQr-Tg-On2"/>
-                            <constraint firstItem="Zud-pt-DOl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="31" id="fE7-Lf-Evc"/>
-                            <constraint firstAttribute="trailing" secondItem="Tab-fF-qvs" secondAttribute="trailing" id="pOO-ff-y9Z"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Tab-fF-qvs" secondAttribute="bottom" id="rsr-DC-Jwt"/>
-                            <constraint firstItem="Zud-pt-DOl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="36" id="wSh-ie-qhm"/>
+                            <constraint firstAttribute="trailing" secondItem="XNS-bo-wp5" secondAttribute="trailing" id="2ZJ-MA-Xl4"/>
+                            <constraint firstItem="XNS-bo-wp5" firstAttribute="height" secondItem="Tab-fF-qvs" secondAttribute="height" multiplier="15:6.5" constant="2" id="8Ub-6n-Ogj"/>
+                            <constraint firstItem="XNS-bo-wp5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="N0p-dG-vzH"/>
+                            <constraint firstItem="Tab-fF-qvs" firstAttribute="width" secondItem="XNS-bo-wp5" secondAttribute="width" id="Nv9-Bu-30g"/>
+                            <constraint firstItem="Tab-fF-qvs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Yge-f2-aWD"/>
+                            <constraint firstItem="XNS-bo-wp5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dVt-i5-Pf7"/>
+                            <constraint firstItem="Tab-fF-qvs" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="bottom" id="epF-fn-yti"/>
+                            <constraint firstAttribute="trailing" secondItem="XNS-bo-wp5" secondAttribute="trailing" id="iiq-4o-Vx6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Tab-fF-qvs" secondAttribute="bottom" id="zPd-vp-vwX"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="DGI-dk-bHa"/>
-                                <exclude reference="HfE-96-VQC"/>
-                                <exclude reference="aaG-Zc-fCx"/>
-                                <exclude reference="pOO-ff-y9Z"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="contactButton" destination="Be8-Ys-JOO" id="2zV-ma-wVF"/>
