@@ -23,7 +23,7 @@ class MainScreenVC: UIViewController {
     }
     
     @IBOutlet weak var shareYourLocationButton: UIButton!
-    @IBAction func shareYourLocationButton(sender: AnyObject) {
+    @IBAction func shareYourLocationButtonPressed(sender: AnyObject) {
     }
     
     @IBOutlet weak var myLocationsButton: UIButton!

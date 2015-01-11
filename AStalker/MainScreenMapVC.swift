@@ -37,10 +37,11 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         mapView.mapType = MKMapType.Standard
         mapView.delegate = self
         mapView.rotateEnabled = false
-        zoomIn()
+        
         
         //show user location
         mapView.showsUserLocation = true
+        zoomIn()
     }
 
     override func viewWillLayoutSubviews() {
