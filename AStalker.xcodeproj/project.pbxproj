@@ -91,7 +91,7 @@
 		B88EC3D91A614C610064ED0E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B88EC3D81A614C610064ED0E /* Images.xcassets */; };
 		B88EC3DC1A614C610064ED0E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B88EC3DA1A614C610064ED0E /* LaunchScreen.xib */; };
 		B88EC3E81A614C610064ED0E /* AStalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88EC3E71A614C610064ED0E /* AStalkerTests.swift */; };
-		E49726249E1A9B4C80D8C2FF /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B1F7991D56C58CA3E0747E7 /* libPods.a */; };
+		B88EC41C1A6281C60064ED0E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B88EC41B1A6281C60064ED0E /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,6 +195,8 @@
 		B88EC3E11A614C610064ED0E /* AStalkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AStalkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B88EC3E61A614C610064ED0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B88EC3E71A614C610064ED0E /* AStalkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AStalkerTests.swift; sourceTree = "<group>"; };
+		B88EC41B1A6281C60064ED0E /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
+		B88EC41D1A6281DA0064ED0E /* AStalker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AStalker-Bridging-Header.h"; sourceTree = "<group>"; };
 		CB82150B2A6BF508F24D5E17 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D78FB5393E333EFA6E44D13C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,7 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E49726249E1A9B4C80D8C2FF /* libPods.a in Frameworks */,
+				B88EC41C1A6281C60064ED0E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,43 +229,55 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A24516FD1A6251120006CDB0 /* Icons */ = {
+		A24517321A626E8A0006CDB0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				A24516FE1A62515A0006CDB0 /* Hackaton-Icons__Small-Location-Pin-Green.pdf */,
-				A24516FF1A62515A0006CDB0 /* Hackaton-Icons_Auswaehlen-White.pdf */,
-				A24517001A62515A0006CDB0 /* Hackaton-Icons_Big-Location-Pin-Green.pdf */,
-				A24517011A62515A0006CDB0 /* Hackaton-Icons_Big-Location-Pin-Grey.pdf */,
-				A24517021A62515A0006CDB0 /* Hackaton-Icons_Bild-hinzufügen.pdf */,
-				A24517031A62515A0006CDB0 /* Hackaton-Icons_Close.pdf */,
-				A24517041A62515A0006CDB0 /* Hackaton-Icons_Heart-Dark-Grey.pdf */,
-				A24517051A62515A0006CDB0 /* Hackaton-Icons_Heart-Light-Grey.pdf */,
-				A24517061A62515A0006CDB0 /* Hackaton-Icons_Heart-White.pdf */,
-				A24517071A62515A0006CDB0 /* Hackaton-Icons_Invite.pdf */,
-				A24517081A62515A0006CDB0 /* Hackaton-Icons_Kontakte.pdf */,
-				A24517091A62515A0006CDB0 /* Hackaton-Icons_Locate-Me.pdf */,
-				A245170A1A62515A0006CDB0 /* Hackaton-Icons_Location-und-Bild-Grey.pdf */,
-				A245170B1A62515A0006CDB0 /* Hackaton-Icons_Location-und-Bild-Red.pdf */,
-				A245170C1A62515A0006CDB0 /* Hackaton-Icons_My-Locations.pdf */,
-				A245170D1A62515A0006CDB0 /* Hackaton-Icons_Notification-1.pdf */,
-				A245170E1A62515A0006CDB0 /* Hackaton-Icons_Notification-2.pdf */,
-				A245170F1A62515A0006CDB0 /* Hackaton-Icons_Notification-3.pdf */,
-				A24517101A62515A0006CDB0 /* Hackaton-Icons_Notification-4.pdf */,
-				A24517111A62515A0006CDB0 /* Hackaton-Icons_Notification-5.pdf */,
-				A24517121A62515A0006CDB0 /* Hackaton-Icons_Notification-6.pdf */,
-				A24517131A62515A0006CDB0 /* Hackaton-Icons_Notification-7.pdf */,
-				A24517141A62515A0006CDB0 /* Hackaton-Icons_Notification-8.pdf */,
-				A24517151A62515A0006CDB0 /* Hackaton-Icons_Notification-9.pdf */,
-				A24517161A62515A0006CDB0 /* Hackaton-Icons_Shared-Locations.pdf */,
-				A24517171A62515A0006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf */,
+				A24517331A626EE00006CDB0 /* LoginWelcomeVC.swift */,
+				A24517351A626F2E0006CDB0 /* LoginSMSVC.swift */,
+				A24517371A626F540006CDB0 /* LoginRegistrationVC.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		A245173D1A6271ED0006CDB0 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				A24517721A62727A0006CDB0 /* antum_logo_email.jpg */,
+				A245173E1A6272070006CDB0 /* Hackaton-Icons__Small-Location-Pin-Green.pdf */,
+				A245173F1A6272070006CDB0 /* Hackaton-Icons_Auswaehlen-White.pdf */,
+				A24517401A6272070006CDB0 /* Hackaton-Icons_Big-Location-Pin-Green.pdf */,
+				A24517411A6272070006CDB0 /* Hackaton-Icons_Big-Location-Pin-Grey.pdf */,
+				A24517421A6272070006CDB0 /* Hackaton-Icons_Bild-hinzufügen.pdf */,
+				A24517431A6272070006CDB0 /* Hackaton-Icons_Close.pdf */,
+				A24517441A6272070006CDB0 /* Hackaton-Icons_Heart-Dark-Grey.pdf */,
+				A24517451A6272070006CDB0 /* Hackaton-Icons_Heart-Light-Grey.pdf */,
+				A24517461A6272070006CDB0 /* Hackaton-Icons_Heart-White.pdf */,
+				A24517471A6272070006CDB0 /* Hackaton-Icons_Invite.pdf */,
+				A24517481A6272070006CDB0 /* Hackaton-Icons_Kontakte.pdf */,
+				A24517491A6272070006CDB0 /* Hackaton-Icons_Locate-Me.pdf */,
+				A245174A1A6272070006CDB0 /* Hackaton-Icons_Location-und-Bild-Grey.pdf */,
+				A245174B1A6272070006CDB0 /* Hackaton-Icons_Location-und-Bild-Red.pdf */,
+				A245174C1A6272070006CDB0 /* Hackaton-Icons_My-Locations.pdf */,
+				A245174D1A6272070006CDB0 /* Hackaton-Icons_Notification-1.pdf */,
+				A245174E1A6272070006CDB0 /* Hackaton-Icons_Notification-2.pdf */,
+				A245174F1A6272070006CDB0 /* Hackaton-Icons_Notification-3.pdf */,
+				A24517501A6272070006CDB0 /* Hackaton-Icons_Notification-4.pdf */,
+				A24517511A6272070006CDB0 /* Hackaton-Icons_Notification-5.pdf */,
+				A24517521A6272070006CDB0 /* Hackaton-Icons_Notification-6.pdf */,
+				A24517531A6272070006CDB0 /* Hackaton-Icons_Notification-7.pdf */,
+				A24517541A6272070006CDB0 /* Hackaton-Icons_Notification-8.pdf */,
+				A24517551A6272070006CDB0 /* Hackaton-Icons_Notification-9.pdf */,
+				A24517561A6272070006CDB0 /* Hackaton-Icons_Shared-Locations.pdf */,
+				A24517571A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf */,
 			);
 			name = Icons;
+			path = Univers;
 			sourceTree = "<group>";
 		};
 		AFCF7232A35EE9122730771F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7B1F7991D56C58CA3E0747E7 /* libPods.a */,
+				B88EC41B1A6281C60064ED0E /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -294,6 +308,7 @@
 		B63730761A61514E0073EB51 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				A24517321A626E8A0006CDB0 /* Login */,
 				B6E6A0C31A6210D4004C9B31 /* MainScreen */,
 				B668BD5B1A61BAA500939A6C /* ShareLocation */,
 			);
@@ -331,6 +346,7 @@
 				B6271A051A626D5F008B410C /* UIColor+ATColor.swift */,
 				B6271A031A626C74008B410C /* UIButton+ATButton.swift */,
 				B668BD5C1A61BAC300939A6C /* UIFont+ATFont.swift */,
+				A24517391A6270750006CDB0 /* AStalker-Bridging-Header.h */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -386,6 +402,7 @@
 		B88EC3C31A614C610064ED0E = {
 			isa = PBXGroup;
 			children = (
+				B88EC41D1A6281DA0064ED0E /* AStalker-Bridging-Header.h */,
 				B88EC3CE1A614C610064ED0E /* AStalker */,
 				B88EC3E41A614C610064ED0E /* AStalkerTests */,
 				B88EC3CD1A614C610064ED0E /* Products */,
@@ -526,58 +543,59 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A245172C1A62515A0006CDB0 /* Hackaton-Icons_Notification-6.pdf in Resources */,
-				A24517191A62515A0006CDB0 /* Hackaton-Icons_Auswaehlen-White.pdf in Resources */,
+				A24517651A6272070006CDB0 /* Hackaton-Icons_Location-und-Bild-Red.pdf in Resources */,
 				B660CC261A6192E500630E6F /* Main.storyboard in Resources */,
+				A245176C1A6272070006CDB0 /* Hackaton-Icons_Notification-6.pdf in Resources */,
+				A245175B1A6272070006CDB0 /* Hackaton-Icons_Big-Location-Pin-Grey.pdf in Resources */,
+				A24517691A6272070006CDB0 /* Hackaton-Icons_Notification-3.pdf in Resources */,
+				A245176F1A6272070006CDB0 /* Hackaton-Icons_Notification-9.pdf in Resources */,
+				A24517641A6272070006CDB0 /* Hackaton-Icons_Location-und-Bild-Grey.pdf in Resources */,
 				B6A9AD961A61E59100AF4B51 /* UniversLTStd.otf in Resources */,
 				B6A9AD941A61E59100AF4B51 /* UniversLTStd-XBlackExObl.otf in Resources */,
-				A245171A1A62515A0006CDB0 /* Hackaton-Icons_Big-Location-Pin-Green.pdf in Resources */,
 				B6A9AD811A61E59100AF4B51 /* UniversLTStd-BoldCn.otf in Resources */,
-				A245172A1A62515A0006CDB0 /* Hackaton-Icons_Notification-4.pdf in Resources */,
 				B6A9AD851A61E59100AF4B51 /* UniversLTStd-BoldObl.otf in Resources */,
-				A24517311A62515A0006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf in Resources */,
-				A245171F1A62515A0006CDB0 /* Hackaton-Icons_Heart-Light-Grey.pdf in Resources */,
 				B6A9AD821A61E59100AF4B51 /* UniversLTStd-BoldCnObl.otf in Resources */,
+				A24517731A62727A0006CDB0 /* antum_logo_email.jpg in Resources */,
 				B6A9AD921A61E59100AF4B51 /* UniversLTStd-XBlack.otf in Resources */,
+				A24517601A6272070006CDB0 /* Hackaton-Icons_Heart-White.pdf in Resources */,
 				B6A9AD8E1A61E59100AF4B51 /* UniversLTStd-LightUltraCn.otf in Resources */,
-				A24517241A62515A0006CDB0 /* Hackaton-Icons_Location-und-Bild-Grey.pdf in Resources */,
+				A24517681A6272070006CDB0 /* Hackaton-Icons_Notification-2.pdf in Resources */,
+				A245175F1A6272070006CDB0 /* Hackaton-Icons_Heart-Light-Grey.pdf in Resources */,
+				A245175E1A6272070006CDB0 /* Hackaton-Icons_Heart-Dark-Grey.pdf in Resources */,
+				A245175D1A6272070006CDB0 /* Hackaton-Icons_Close.pdf in Resources */,
+				A245176B1A6272070006CDB0 /* Hackaton-Icons_Notification-5.pdf in Resources */,
 				B6A9AD801A61E59100AF4B51 /* UniversLTStd-Bold.otf in Resources */,
 				B6A9AD841A61E59100AF4B51 /* UniversLTStd-BoldExObl.otf in Resources */,
+				A245175A1A6272070006CDB0 /* Hackaton-Icons_Big-Location-Pin-Green.pdf in Resources */,
 				B6A9AD871A61E59100AF4B51 /* UniversLTStd-CnObl.otf in Resources */,
+				A245176E1A6272070006CDB0 /* Hackaton-Icons_Notification-8.pdf in Resources */,
+				A24517591A6272070006CDB0 /* Hackaton-Icons_Auswaehlen-White.pdf in Resources */,
 				B6A9AD831A61E59100AF4B51 /* UniversLTStd-BoldEx.otf in Resources */,
-				A24517211A62515A0006CDB0 /* Hackaton-Icons_Invite.pdf in Resources */,
 				B6A9AD951A61E59100AF4B51 /* UniversLTStd-XBlackObl.otf in Resources */,
 				B6A9AD861A61E59100AF4B51 /* UniversLTStd-Cn.otf in Resources */,
-				A245172F1A62515A0006CDB0 /* Hackaton-Icons_Notification-9.pdf in Resources */,
 				B6A9AD891A61E59100AF4B51 /* UniversLTStd-ExObl.otf in Resources */,
 				B60C03621A620E5D005921B2 /* MainScreenTableViewCell.xib in Resources */,
-				A245171D1A62515A0006CDB0 /* Hackaton-Icons_Close.pdf in Resources */,
 				B6A9AD911A61E59100AF4B51 /* UniversLTStd-UltraCn.otf in Resources */,
+				A24517711A6272070006CDB0 /* Hackaton-Icons_Small-Location-Pin-Grey.pdf in Resources */,
+				A24517701A6272070006CDB0 /* Hackaton-Icons_Shared-Locations.pdf in Resources */,
 				B6A9AD7E1A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf in Resources */,
 				B6A9AD931A61E59100AF4B51 /* UniversLTStd-XBlackEx.otf in Resources */,
-				A24517301A62515A0006CDB0 /* Hackaton-Icons_Shared-Locations.pdf in Resources */,
-				A24517261A62515A0006CDB0 /* Hackaton-Icons_My-Locations.pdf in Resources */,
+				A24517661A6272070006CDB0 /* Hackaton-Icons_My-Locations.pdf in Resources */,
+				A24517671A6272070006CDB0 /* Hackaton-Icons_Notification-1.pdf in Resources */,
+				A24517621A6272070006CDB0 /* Hackaton-Icons_Kontakte.pdf in Resources */,
 				B88EC3DC1A614C610064ED0E /* LaunchScreen.xib in Resources */,
-				A24517271A62515A0006CDB0 /* Hackaton-Icons_Notification-1.pdf in Resources */,
-				A245171B1A62515A0006CDB0 /* Hackaton-Icons_Big-Location-Pin-Grey.pdf in Resources */,
-				A245171C1A62515A0006CDB0 /* Hackaton-Icons_Bild-hinzufügen.pdf in Resources */,
-				A245172E1A62515A0006CDB0 /* Hackaton-Icons_Notification-8.pdf in Resources */,
 				B6A9AD8D1A61E59100AF4B51 /* UniversLTStd-LightObl.otf in Resources */,
-				A245172B1A62515A0006CDB0 /* Hackaton-Icons_Notification-5.pdf in Resources */,
-				A24517181A62515A0006CDB0 /* Hackaton-Icons__Small-Location-Pin-Green.pdf in Resources */,
-				A24517281A62515A0006CDB0 /* Hackaton-Icons_Notification-2.pdf in Resources */,
+				A245176A1A6272070006CDB0 /* Hackaton-Icons_Notification-4.pdf in Resources */,
+				A245175C1A6272070006CDB0 /* Hackaton-Icons_Bild-hinzufügen.pdf in Resources */,
 				B6A9AD881A61E59100AF4B51 /* UniversLTStd-Ex.otf in Resources */,
 				B6A9AD7C1A61E59100AF4B51 /* UniversLTStd-Black.otf in Resources */,
+				A24517631A6272070006CDB0 /* Hackaton-Icons_Locate-Me.pdf in Resources */,
+				A24517611A6272070006CDB0 /* Hackaton-Icons_Invite.pdf in Resources */,
 				B6A9AD7F1A61E59100AF4B51 /* UniversLTStd-BlackObl.otf in Resources */,
 				B6A9AD8B1A61E59100AF4B51 /* UniversLTStd-LightCn.otf in Resources */,
-				A24517231A62515A0006CDB0 /* Hackaton-Icons_Locate-Me.pdf in Resources */,
 				B6A9AD901A61E59100AF4B51 /* UniversLTStd-ThinUltraCn.otf in Resources */,
-				A24517291A62515A0006CDB0 /* Hackaton-Icons_Notification-3.pdf in Resources */,
-				A24517201A62515A0006CDB0 /* Hackaton-Icons_Heart-White.pdf in Resources */,
-				A245171E1A62515A0006CDB0 /* Hackaton-Icons_Heart-Dark-Grey.pdf in Resources */,
 				B6A9AD8F1A61E59100AF4B51 /* UniversLTStd-Obl.otf in Resources */,
-				A24517251A62515A0006CDB0 /* Hackaton-Icons_Location-und-Bild-Red.pdf in Resources */,
-				A245172D1A62515A0006CDB0 /* Hackaton-Icons_Notification-7.pdf in Resources */,
+				A245176D1A6272070006CDB0 /* Hackaton-Icons_Notification-7.pdf in Resources */,
 				B6A9AD7D1A61E59100AF4B51 /* UniversLTStd-BlackEx.otf in Resources */,
 				B88EC3D91A614C610064ED0E /* Images.xcassets in Resources */,
 				B659CCE61A62445D005B6910 /* MainScreenHeaderTableViewCell.xib in Resources */,
@@ -653,10 +671,13 @@
 				B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */,
 				B637309B1A615E3A0073EB51 /* Notification.swift in Sources */,
 				B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */,
+				A24517341A626EE00006CDB0 /* LoginWelcomeVC.swift in Sources */,
 				B659CCE51A62445D005B6910 /* MainScreenHeaderTableViewCell.swift in Sources */,
+				A24517361A626F2E0006CDB0 /* LoginSMSVC.swift in Sources */,
 				B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */,
 				B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */,
 				B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */,
+				A24517381A626F540006CDB0 /* LoginRegistrationVC.swift in Sources */,
 				B66B282B1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift in Sources */,
 				B66B282D1A61BF9C00D3E6D1 /* ATableViewDataSource.swift in Sources */,
 			);
@@ -780,8 +801,12 @@
 				INFOPLIST_FILE = AStalker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AStalker/AStalker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -795,8 +820,12 @@
 				INFOPLIST_FILE = AStalker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AStalker/AStalker-Bridging-Header.h";
 			};
 			name = Release;
 		};

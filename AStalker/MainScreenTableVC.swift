@@ -69,6 +69,7 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
         cell.timeLabel.text = "12:45"
         cell.dateLabel.text = "10. Januar"
         cell.addressLabel.text = "Im Werk 11, Uster"
+        cell.imageView?.image = UIImage(named: "LocationPin")
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         
