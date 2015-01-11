@@ -8,6 +8,7 @@
 
 /**
 *  This Controller controlls the mapContainer View in the MainScreenVC 
+*  The MKMapView displays the users position
 */
 
 import Foundation
@@ -16,44 +17,68 @@ import MapKit
 import CoreLocation
 
 
-class MainScreenMapVC: UIViewController {
+class MainScreenMapVC: UIViewController, MKMapViewDelegate {
     
-    var mapView:MKMapView = MKMapView()
+    var mapView:MKMapView!
     
     override func loadView() {
         super.loadView()
         
-        // Setup mapView
-        mapView.frame = self.view.frame
-        mapView.mapType = MKMapType.Hybrid
-        self.view = mapView
-        self.view.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
-        self.view.setTranslatesAutoresizingMaskIntoConstraints( true )
-        
-        //initialize Location
-        var location = CLLocationCoordinate2D(
-            latitude: 48.783667,
-            longitude: 9.181459 )
-        
-        var span = MKCoordinateSpanMake(0.01, 0.01)
-        var region = MKCoordinateRegion(center:location,span:span)
-        
-        mapView.region = region
-        var annotation = MKPointAnnotation()
-        annotation.setCoordinate(location)
-        annotation.title = "Stuttgart 21"
-        annotation.subtitle = "Ewige Baustelle"
-        
-        mapView.addAnnotation(annotation)
-        
-    
+        // layout mapView
+        mapView = MKMapView()
+        self.view = UIView()
+        self.view.backgroundColor = UIColor.yellowColor()
+        self.view.addSubview( mapView )
+        self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
 
+
+        // initialize Map
+        mapView.removeAnnotations(self.mapView.annotations)
+        mapView.mapType = MKMapType.Standard
+        mapView.delegate = self
+        mapView.rotateEnabled = false
+        zoomIn()
+        
+        //show user location
+        mapView.showsUserLocation = true
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        mapView.frame = self.view.bounds
     }
+    
+    //  adjust Region of mapView
+    func zoomIn() {
+        var userLocation = mapView.userLocation
+        
+        if let userLocation = userLocation {
+            let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 2000, 2000)
+            let adjustedRegion = mapView.regionThatFits(region)
+            mapView.setRegion(adjustedRegion, animated: false)
+
+        }
+ 
+    }
+    
+    
+    //   Keep track of user: if user changes position center of mapView will change
+    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+        mapView.centerCoordinate = userLocation.location.coordinate
+    }
+
+//    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+//        
+//        var annotationView = MKAnnotationView()
+//        annotationView.image = UIImage(named: "myAnnotationImageTest")
+//        return annotationView
+//        
+//    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

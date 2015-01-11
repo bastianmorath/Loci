@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6221" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="LF6-FI-tCK">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6213"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Main ScreenVC-->
@@ -14,15 +13,19 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-bo-wp5" userLabel="mapContainer">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="442"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tab-fF-qvs" userLabel="tableContainer">
+                                <rect key="frame" x="0.0" y="419" width="600" height="181"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-bo-wp5" userLabel="mapContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="419"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-Ys-JOO">
-                                        <rect key="frame" x="485" y="51" width="63" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Be8-Ys-JOO">
+                                        <rect key="frame" x="490" y="39" width="63" height="30"/>
                                         <state key="normal" title="Contacts">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -30,30 +33,45 @@
                                             <action selector="contactButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OBI-3A-CRb"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zud-pt-DOl">
+                                        <rect key="frame" x="37" y="39" width="88" height="30"/>
+                                        <state key="normal" title="MyLocations">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="myLocationsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Vx-O9-1Y2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPY-1L-Y9E">
+                                        <rect key="frame" x="37" y="356" width="130" height="30"/>
+                                        <state key="normal" title="ShareYourLocation">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="shareYourLocationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JXU-B0-2pH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VoM-1a-Oih">
+                                        <rect key="frame" x="484" y="356" width="69" height="30"/>
+                                        <state key="normal" title="LocateMe">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="locateMeButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Fx-Zk-jpZ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.1843137255" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zud-pt-DOl">
-                                <rect key="frame" x="36" y="51" width="88" height="30"/>
-                                <state key="normal" title="MyLocations">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="myLocationsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Vx-O9-1Y2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPY-1L-Y9E">
-                                <rect key="frame" x="36" y="389" width="130" height="30"/>
-                                <state key="normal" title="ShareYourLocation">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="shareYourLocationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JXU-B0-2pH"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tab-fF-qvs" userLabel="tableContainer">
-                                <rect key="frame" x="0.0" y="442" width="600" height="158"/>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Zud-pt-DOl" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="top" constant="39" id="2Vj-19-fev"/>
+                                    <constraint firstItem="Be8-Ys-JOO" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="top" constant="39" id="4ik-Ia-CRp"/>
+                                    <constraint firstItem="ZPY-1L-Y9E" firstAttribute="leading" secondItem="XNS-bo-wp5" secondAttribute="leading" constant="37" id="AiG-me-WeW"/>
+                                    <constraint firstAttribute="trailing" secondItem="Be8-Ys-JOO" secondAttribute="trailing" constant="47" id="OUI-kU-4g7"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZPY-1L-Y9E" secondAttribute="bottom" constant="33" id="Vkm-fX-moc"/>
+                                    <constraint firstAttribute="bottom" secondItem="VoM-1a-Oih" secondAttribute="bottom" constant="33" id="WCO-y7-kUJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="VoM-1a-Oih" secondAttribute="trailing" constant="47" id="ak4-M9-TI7"/>
+                                    <constraint firstItem="Zud-pt-DOl" firstAttribute="leading" secondItem="XNS-bo-wp5" secondAttribute="leading" constant="37" id="o9S-V6-seU"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -87,6 +105,7 @@
                     <connections>
                         <outlet property="contactButton" destination="Be8-Ys-JOO" id="2zV-ma-wVF"/>
                         <outlet property="friendsLocationsContainer" destination="Tab-fF-qvs" id="MrG-dj-FMW"/>
+                        <outlet property="locateMeButton" destination="VoM-1a-Oih" id="cgK-XU-5X5"/>
                         <outlet property="mapContainer" destination="XNS-bo-wp5" id="0MT-xF-tTz"/>
                         <outlet property="myLocationsButton" destination="Zud-pt-DOl" id="Sqn-Dx-x44"/>
                         <outlet property="shareYourLocationButton" destination="ZPY-1L-Y9E" id="Msw-zP-1TG"/>
@@ -94,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="406" y="377"/>
+            <point key="canvasLocation" x="126" y="205"/>
         </scene>
         <!--Share LocationVC-->
         <scene sceneID="uBk-MB-OVd">
