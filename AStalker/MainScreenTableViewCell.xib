@@ -50,7 +50,7 @@
                 <outlet property="timeLabel" destination="pkC-ev-b2V" id="Qgz-LY-1U3"/>
                 <outlet property="userNameLabel" destination="VC5-w4-0E7" id="SYl-jI-RCy"/>
             </connections>
-            <point key="canvasLocation" x="169" y="233.5"/>
+            <point key="canvasLocation" x="365" y="230.5"/>
         </tableViewCell>
     </objects>
 </document>
