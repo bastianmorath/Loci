@@ -56,6 +56,27 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell:MainScreenTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as MainScreenTableViewCell
         
+        if indexPath.row == 0 {
+            
+            // hide all labels
+            cell.backgroundColor = UIColor.whiteColor()
+            cell.userNameLabel.hidden = true
+            cell.imageIconView.hidden = true
+            cell.timeLabel.hidden = true
+            cell.dateLabel.hidden = true
+            cell.addressLabel.hidden = true
+            
+            // add labels
+            let friendsLabel = UILabel(frame: CGRect(x: 15 , y: 30 , width: 100, height: 15))
+            friendsLabel.text = "Friends"
+            cell.contentView .addSubview(friendsLabel)
+            
+            let lastUpdate = UILabel(frame: CGRect(x: 215 , y: 30 , width: 100, height: 15))
+            friendsLabel.text = "Last Update"
+            cell.contentView .addSubview(lastUpdate)
+            
+            return cell
+        }
         // set properties to cell
         cell.userNameLabel.text = "Aleksandar Papez"
         cell.timeLabel.text = "12:45"
