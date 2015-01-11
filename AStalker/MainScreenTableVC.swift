@@ -38,11 +38,11 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nibName = UINib(nibName: "MainScreenTableViewCell", bundle:nil)
-        self.tableView.registerNib(nibName, forCellReuseIdentifier: "MainScreenTableViewCell")
+        let nibName = UINib(nibName: "FriendsLocationTableViewCell", bundle:nil)
+        self.tableView.registerNib(nibName, forCellReuseIdentifier: "FriendsLocationTableViewCell")
 
-        let nibNameHeader = UINib(nibName: "MainScreenHeaderTableViewCell", bundle:nil)
-        self.tableView.registerNib(nibNameHeader, forCellReuseIdentifier: "MainScreenHeaderTableViewCell")
+        let nibNameHeader = UINib(nibName: "FriendsLocationHeaderTableViewCell", bundle:nil)
+        self.tableView.registerNib(nibNameHeader, forCellReuseIdentifier: "FriendsLocationHeaderTableViewCell")
 
         
     }
@@ -59,8 +59,8 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     // MARK:- Delegates
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:MainScreenTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("MainScreenTableViewCell") as MainScreenTableViewCell
-        var headerCell:MainScreenHeaderTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("MainScreenHeaderTableViewCell") as MainScreenHeaderTableViewCell
+        var cell:FriendsLocationTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("FriendsLocationTableViewCell") as FriendsLocationTableViewCell
+        var headerCell:FriendsLocationHeaderTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("FriendsLocationHeaderTableViewCell") as FriendsLocationHeaderTableViewCell
         if indexPath.row == 0 {
             return headerCell
         }

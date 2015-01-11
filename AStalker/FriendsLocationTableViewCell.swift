@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainScreenTableViewCell: UITableViewCell {
+class FriendsLocationTableViewCell: UITableViewCell {
 
     
     // IBOutlets

@@ -83,10 +83,10 @@ class MainScreenVC: UIViewController {
         self.mapContainer.addSubview(contactButton)
         contactButton.positionButtonToLocation(.TopRight)
         
-        shareYourLocationButton = UIButton.ATButton(.ContactLocation, color: .Grey)
-        shareYourLocationButton.addTarget(self, action: "shareYourLocationButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.friendsLocationsContainer.addSubview(shareYourLocationButton)
-        shareYourLocationButton.positionButtonToLocation(.TopHalfLeft)
+//        shareYourLocationButton = UIButton.ATButton(.ContactLocation, color: .Grey)
+//        shareYourLocationButton.addTarget(self, action: "shareYourLocationButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+//        self.friendsLocationsContainer.addSubview(shareYourLocationButton)
+//        shareYourLocationButton.positionButtonToLocation(.TopHalfLeft)
         
         locateMeButton = UIButton.ATButton(.SingleLocation, color: .White)
         locateMeButton.addTarget(self, action: "locateMeButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
