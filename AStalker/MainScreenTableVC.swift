@@ -17,7 +17,6 @@ import UIKit
 class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     var tableView:UITableView!
-    var items: [String]!
     
     override func loadView() {
       
@@ -30,9 +29,7 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
 
         // setup tableView
         tableView.delegate = self
-        
-        
-        
+        tableView.dataSource = self
         
     }
     
@@ -43,7 +40,6 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
         let nibName = UINib(nibName: "MainScreenTableViewCell", bundle:nil)
         self.tableView.registerNib(nibName, forCellReuseIdentifier: "cell")
         
-        items = ["We", "Swift"]
     }
     
     override func viewWillLayoutSubviews() {
@@ -53,18 +49,28 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     // MARK:- Data Source
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.items.count
+        return 4
     }
     
     // MARK:- Delegates
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
-        cell.textLabel!.text = self.items[indexPath.row]
+        var cell:MainScreenTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as MainScreenTableViewCell
+        
+        // set properties to cell
+        cell.userNameLabel.text = "Aleksandar Papez"
+        cell.timeLabel.text = "12:45"
+        cell.dateLabel.text = "10. Januar"
+        cell.addressLabel.text = "Im Werk 11, Uster"
+        
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("cell selected")
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 55
     }
     
     override func didReceiveMemoryWarning() {

@@ -6,19 +6,27 @@
 //  Copyright (c) 2015 Antum. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class MainScreenTableViewCell: UITableViewCell {
+
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
-        super.init(style: UITableViewCellStyle.Value1, reuseIdentifier: reuseIdentifier)
+    // IBOutlets
+    @IBOutlet weak var imageIconView: UIImageView!
+    @IBOutlet var userNameLabel: UILabel!
+    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
     }
 
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
 
+        // Configure the view for the selected state
+    }
+    
 }
-
-
