@@ -23,15 +23,6 @@ class ShareLocationDataSource: ATableViewDataSource, UITableViewDelegate{
     override func cellForTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell =  ShareLocationTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self ) as ShareLocationTableViewCell
         var user = self.modelForIndexPath(indexPath) as User
-        
-        //User ist schon angeklickt worden. Entferne den roten Button
-        if (location?.sharedUsers.containsObject(user) != nil) {
-            cell.redView.hidden = true
-        } else {
-            cell.redView.hidden = true
-        }
         return cell
     }
-    
-
 }

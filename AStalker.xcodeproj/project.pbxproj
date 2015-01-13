@@ -68,6 +68,7 @@
 		B66B282F1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B282E1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift */; };
 		B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */; };
 		B67BEDD11A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B67BEDD01A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf */; };
+		B67E0A9C1A653B1E006F79A1 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E0A9B1A653B1E006F79A1 /* CheckboxButton.swift */; };
 		B6A9AD7C1A61E59100AF4B51 /* UniversLTStd-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD611A61E59100AF4B51 /* UniversLTStd-Black.otf */; };
 		B6A9AD7D1A61E59100AF4B51 /* UniversLTStd-BlackEx.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD621A61E59100AF4B51 /* UniversLTStd-BlackEx.otf */; };
 		B6A9AD7E1A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD631A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf */; };
@@ -174,6 +175,7 @@
 		B66B282E1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ATTableViewCell.swift"; sourceTree = "<group>"; };
 		B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationVC.swift; sourceTree = "<group>"; };
 		B67BEDD01A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Shared-Locations.pdf"; sourceTree = "<group>"; };
+		B67E0A9B1A653B1E006F79A1 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
 		B6A9AD611A61E59100AF4B51 /* UniversLTStd-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Black.otf"; sourceTree = "<group>"; };
 		B6A9AD621A61E59100AF4B51 /* UniversLTStd-BlackEx.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BlackEx.otf"; sourceTree = "<group>"; };
 		B6A9AD631A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BlackExObl.otf"; sourceTree = "<group>"; };
@@ -343,9 +345,10 @@
 			isa = PBXGroup;
 			children = (
 				B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */,
+				B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */,
+				B67E0A9B1A653B1E006F79A1 /* CheckboxButton.swift */,
 				B6582E981A62335B00D74FAF /* CircleView.swift */,
 				B61B12111A628CED00F48702 /* CheckmarkView.swift */,
-				B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */,
 				B66B282A1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift */,
 				B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */,
 				B66B282E1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift */,
@@ -687,6 +690,7 @@
 				B660CC241A6192DC00630E6F /* MainScreenVC.swift in Sources */,
 				B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */,
 				B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */,
+				B67E0A9C1A653B1E006F79A1 /* CheckboxButton.swift in Sources */,
 				B60C03601A620E4F005921B2 /* FriendsLocationTableViewCell.swift in Sources */,
 				B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */,
 				B637309B1A615E3A0073EB51 /* Notification.swift in Sources */,

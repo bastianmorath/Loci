@@ -73,7 +73,6 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
     
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println(indexPath.row)
         var selectedUser = self.shareLocationDataSource.modelForIndexPath(indexPath) as User
         var cell = tableView.cellForRowAtIndexPath(indexPath) as ShareLocationTableViewCell
         
@@ -86,8 +85,9 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
             //Füge den User bei lcoation.sharedUsers hinzu und Selecte ihn im View(roter Checkmark-View)
             location.sharedUsers = location.sharedUsers.setByAddingObject(selectedUser)
         }
-        tableView.reloadData()
-    }
+        cell.checkboxButton.isChecked = !cell.checkboxButton.isChecked
+
+}
     
     
      func sharePressed() {

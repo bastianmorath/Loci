@@ -9,29 +9,29 @@
 import UIKit
 
 class CheckmarkView: UIView {
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            self.opaque = false
-            self.backgroundColor = UIColor.RedColor()
-            self.hidden = true
-        }
+    
+    var imageView = UIImageView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = UIColor.clearColor()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func drawRect(rect: CGRect) {
+        var bPath:UIBezierPath = UIBezierPath(rect: rect)
+        let circleFillColor = UIColor.RedColor()
+        var cPath: UIBezierPath = UIBezierPath(ovalInRect: rect)
+        circleFillColor.set()
+        cPath.fill()
         
-        required init(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-        
-        override func drawRect(rect: CGRect) {
-            super.drawRect( rect )
-            
-            // Get the Graphics Context
-            var context = UIGraphicsGetCurrentContext();
-            
-            // Set the circle outerline-width
-            //CGContextSetLineWidth(context, 1);
-            
-            // Set the circle outerline-colour
-            UIColor.RedColor().setFill()
-            CGContextFillEllipseInRect(context, CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height))
+        self.imageView = UIImageView(image: UIImage(named: "Checkmark.png"))
+        self.imageView.userInteractionEnabled = false
+        self.imageView.frame = rect
+        self.addSubview(self.imageView)
     }
 }
 
