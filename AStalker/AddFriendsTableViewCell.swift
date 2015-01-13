@@ -1,14 +1,14 @@
 //
-//  ShareLocationTableViewCell.swift
+//  AddFriendsTableViewCell.swift
 //  AStalker
 //
-//  Created by Bastian Morath on 10/01/15.
+//  Created by Bastian Morath on 13/01/15.
 //  Copyright (c) 2015 Antum. All rights reserved.
 //
 
 import UIKit
 
-class ShareLocationTableViewCell: UITableViewCell, UITableViewDelegate {
+class AddFriendsTableViewCell: UITableViewCell {
     var nameLabel = UILabel()
     var checkboxButton: CheckboxButton!
     var likeView = UIImageView()
@@ -20,13 +20,13 @@ class ShareLocationTableViewCell: UITableViewCell, UITableViewDelegate {
     }
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-       
+        
         //nameLabel hinzufügen
         self.nameLabel.frame = CGRectMake(76, 10, 200, 40)
         self.nameLabel.font = UIFont.ATTableViewFont()
         self.nameLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.contentView.addSubview(self.nameLabel)
-
+        
         // Set checkboxButton
         self.checkboxButton = CheckboxButton(frame: CGRectMake(30, 15, 30, 30))
         self.addSubview(self.checkboxButton)
@@ -49,11 +49,10 @@ class ShareLocationTableViewCell: UITableViewCell, UITableViewDelegate {
             self.nameLabel.text = user.name
             
             //Herzchen rechts hinter den namen tun, wenn der User ein Freund ist
-            if (LocationStore.defaultStore().getLocalUser()!.friends.containsObject(user)){
-               likeView.hidden = false
-            } else {
-                likeView.hidden = true
+            if LocationStore.defaultStore().getLocalUser()?.friends.containsObject(user) != nil{
+                likeView.hidden = false
             }
         }
     }
+
 }

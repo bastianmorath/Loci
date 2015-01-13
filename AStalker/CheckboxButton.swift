@@ -19,11 +19,9 @@ class CheckboxButton: UIButton {
     var isChecked:Bool = false {
         didSet{
             if isChecked == true {
-                println("isChecked = true")
                 notSelectedView.hidden == true
                 selectedView.hidden = false
             } else {
-                println("isChecked = false")
                 notSelectedView.hidden == false
                 selectedView.hidden = true
             }
@@ -44,12 +42,4 @@ class CheckboxButton: UIButton {
         self.isChecked = false
     }
 
-   //TODO: UNterscheiden, ob der Button oder die Cell angeklickt wurde
-//    func buttonClicked(sender: UIButton){
-//        println(isChecked)
-//        if(sender == self){
-//            if isChecked {isChecked = false}
-//            else {isChecked = true}
-//        }
-//    }
 }

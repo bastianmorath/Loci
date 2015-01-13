@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 class ShareLocationVC: UIViewController, UITableViewDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     /// Strassen- und Ortslabel der Location
@@ -24,9 +24,10 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
     var location:Location!
     
     var shareButton: UIButton?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.streetLabel.font = UIFont.ATBoldFont()
         self.placeLabel.font = UIFont.ATFont()
         
@@ -37,7 +38,7 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
             button.positionButtonToLocation(.TopRight)
         }
         
-
+        
         
         
         var location = CLLocation(latitude: self.location.longitude.doubleValue, longitude: self.location.longitude.doubleValue) //changed!!!
@@ -54,11 +55,11 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
             }
         })
         
-        
+        // Define the tableView's dataSource
         let localUser = (LocationStore.defaultStore().getLocalUser())
         shareLocationDataSource = ShareLocationDataSource(tableView: tableView, user: localUser!, location: self.location )
         tableView.dataSource = shareLocationDataSource
-}
+    }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRectMake(0, 0, 50, 40))
@@ -71,35 +72,35 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
     }
     
     
-
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedUser = self.shareLocationDataSource.modelForIndexPath(indexPath) as User
         var cell = tableView.cellForRowAtIndexPath(indexPath) as ShareLocationTableViewCell
         
         if location!.sharedUsers.containsObject(selectedUser){
             //User ist schon ausgewählt. Deselecte ihn im View und lösche ihn aus locations.sharedUsers
-           var mutableSet = NSMutableSet(set: location.sharedUsers)
+            var mutableSet = NSMutableSet(set: location.sharedUsers)
             mutableSet.removeObject(selectedUser)
             location.sharedUsers = NSSet(set: mutableSet)
-              } else {
+        } else {
             //Füge den User bei lcoation.sharedUsers hinzu und Selecte ihn im View(roter Checkmark-View)
             location.sharedUsers = location.sharedUsers.setByAddingObject(selectedUser)
         }
         cell.checkboxButton.isChecked = !cell.checkboxButton.isChecked
-
-}
+        
+    }
     
     
-     func sharePressed() {
+    func sharePressed() {
         //Add Location to localUser.sharedLocations
         var mutableSet = LocationStore.defaultStore().getLocalUser()?.sharedLocations as NSMutableSet
         mutableSet.addObject(location)
         LocationStore.defaultStore().getLocalUser()?.sharedLocations = mutableSet
-        println( LocationStore.defaultStore().getLocalUser()?.sharedLocations)
+        println("\(self.location.sharedUsers.count) Personen hinzugefügt")
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-   
-
+    
+    
 }

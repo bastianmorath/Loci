@@ -130,6 +130,9 @@ class LocationStore: NSObject{
     
     func createDebugLocalUser(){
         var localUser = self.createLocalUser("Bastian Morath", phoneNumber: "07954501010")
-        localUser.contacts = NSSet(array: self.getUser())
+        var userArray =  self.getUser()
+        localUser.contacts = NSSet(array: userArray)
+        let friendsArray = [userArray[0], userArray[2], userArray[4]]
+        localUser.friends = NSSet(array: friendsArray)
     }
 }

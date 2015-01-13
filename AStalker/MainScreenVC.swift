@@ -26,6 +26,8 @@ class MainScreenVC: UIViewController {
     @IBOutlet weak var mapContainer: UIView!
     @IBOutlet weak var friendsLocationsContainer: UIView!
     
+    
+    
     // Buttons
     
     //Zeigt alle Kontakte des Users an, insbesondere wo diese sich befinden und wann sie dort waren
@@ -96,7 +98,12 @@ class MainScreenVC: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "shareYourLocation" {
+        if segue.identifier == "showShareYourLocationVCSegue" {
+            var shareLocationVC:ShareLocationVC = segue.destinationViewController as ShareLocationVC
+            
+            shareLocationVC.location = self.locationToShare!
+        }
+        if segue.identifier == "showFriendsVCSegue" {
             var shareLocationVC:ShareLocationVC = segue.destinationViewController as ShareLocationVC
             
             shareLocationVC.location = self.locationToShare!
@@ -119,14 +126,13 @@ class MainScreenVC: UIViewController {
         
         if longitude == longitude && latitude == latitude{
             locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: 4.1, latitude: 2.9, user: nil)
-            performSegueWithIdentifier("shareYourLocation", sender: nil)
+            performSegueWithIdentifier("showShareYourLocationVCSegue", sender: nil)
         }
     }
     
     func contactButtonPressed() {
         
     }
-    
 }
 
 
