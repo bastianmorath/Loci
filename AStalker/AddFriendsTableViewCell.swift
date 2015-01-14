@@ -11,7 +11,6 @@ import UIKit
 class AddFriendsTableViewCell: UITableViewCell {
     var nameLabel = UILabel()
     var checkboxButton: CheckboxButton!
-    var likeView = UIImageView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,10 +30,6 @@ class AddFriendsTableViewCell: UITableViewCell {
         self.checkboxButton = CheckboxButton(frame: CGRectMake(30, 15, 30, 30))
         self.addSubview(self.checkboxButton)
         
-        //Configure likeView
-        likeView = UIImageView(image: UIImage(named: "Heart_DarkGrey.png"))
-        likeView.frame = CGRectMake(270, 13, 30, 30)
-        self.contentView.addSubview(likeView)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -50,7 +45,7 @@ class AddFriendsTableViewCell: UITableViewCell {
             
             //Herzchen rechts hinter den namen tun, wenn der User ein Freund ist
             if LocationStore.defaultStore().getLocalUser()?.friends.containsObject(user) != nil{
-                likeView.hidden = false
+
             }
         }
     }

@@ -45,7 +45,7 @@ class MainScreenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor.RedColor()
         // Setup MainScreenMapVC
         mapVC = MainScreenMapVC()
         self.addChildViewController(mapVC)
@@ -126,7 +126,7 @@ class MainScreenVC: UIViewController {
         
         if longitude == longitude && latitude == latitude{
             locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: 4.1, latitude: 2.9, user: nil)
-            performSegueWithIdentifier("showShareYourLocationVCSegue", sender: nil)
+            self.navigationController?.pushViewController(ShareLocationVC(), animated: true)
         }
     }
     

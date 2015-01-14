@@ -16,7 +16,7 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
     var addFriendsButton: UIButton?
     
     //DataSource des TableViews
-    var shareLocationDataSource: ShareLocationDataSource!
+    var addFriendsDataSource: AddFriendsDataSource!
 
     
     override func viewDidLoad() {
@@ -31,8 +31,8 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
         
         // Define the tableView's dataSource
         let localUser = (LocationStore.defaultStore().getLocalUser())
-        shareLocationDataSource = ShareLocationDataSource(tableView: tableView, user: localUser!, location: nil)
-        tableView.dataSource = shareLocationDataSource
+        addFriendsDataSource = AddFriendsDataSource(tableView: tableView, user: localUser!, location: nil)
+        tableView.dataSource = addFriendsDataSource
 
     }
     

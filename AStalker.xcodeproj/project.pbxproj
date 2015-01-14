@@ -44,6 +44,9 @@
 		B60C03621A620E5D005921B2 /* FriendsLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */; };
 		B60C03641A620F55005921B2 /* FriendsLocationTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */; };
 		B61B12121A628CED00F48702 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B12111A628CED00F48702 /* CheckmarkView.swift */; };
+		B62291191A6671BB006C1B30 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62291171A6671BB006C1B30 /* AnimationController.swift */; };
+		B622911A1A6671BB006C1B30 /* ATNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62291181A6671BB006C1B30 /* ATNavigationController.swift */; };
+		B622911C1A667A29006C1B30 /* HideMapAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B622911B1A667A29006C1B30 /* HideMapAnimationController.swift */; };
 		B6271A041A626C74008B410C /* UIButton+ATButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6271A031A626C74008B410C /* UIButton+ATButton.swift */; };
 		B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6271A051A626D5F008B410C /* UIColor+ATColor.swift */; };
 		B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730771A6151870073EB51 /* ACoreDataPortal.swift */; };
@@ -69,7 +72,6 @@
 		B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */; };
 		B67BEDD11A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B67BEDD01A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf */; };
 		B67E0A9C1A653B1E006F79A1 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E0A9B1A653B1E006F79A1 /* CheckboxButton.swift */; };
-		B6A0A1C31A656CCA00AD6FA5 /* ShareYourLocationSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6A0A1C21A656CCA00AD6FA5 /* ShareYourLocationSegue.swift */; };
 		B6A9AD7C1A61E59100AF4B51 /* UniversLTStd-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD611A61E59100AF4B51 /* UniversLTStd-Black.otf */; };
 		B6A9AD7D1A61E59100AF4B51 /* UniversLTStd-BlackEx.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD621A61E59100AF4B51 /* UniversLTStd-BlackEx.otf */; };
 		B6A9AD7E1A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD631A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf */; };
@@ -155,6 +157,9 @@
 		B60C035F1A620E4F005921B2 /* FriendsLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsLocationTableViewCell.swift; sourceTree = "<group>"; };
 		B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsLocationTableViewCell.xib; sourceTree = "<group>"; };
 		B61B12111A628CED00F48702 /* CheckmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
+		B62291171A6671BB006C1B30 /* AnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
+		B62291181A6671BB006C1B30 /* ATNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATNavigationController.swift; sourceTree = "<group>"; };
+		B622911B1A667A29006C1B30 /* HideMapAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideMapAnimationController.swift; sourceTree = "<group>"; };
 		B6271A031A626C74008B410C /* UIButton+ATButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+ATButton.swift"; sourceTree = "<group>"; };
 		B6271A051A626D5F008B410C /* UIColor+ATColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ATColor.swift"; sourceTree = "<group>"; };
 		B63730771A6151870073EB51 /* ACoreDataPortal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataPortal.swift; sourceTree = "<group>"; };
@@ -180,7 +185,6 @@
 		B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationVC.swift; sourceTree = "<group>"; };
 		B67BEDD01A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Shared-Locations.pdf"; sourceTree = "<group>"; };
 		B67E0A9B1A653B1E006F79A1 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
-		B6A0A1C21A656CCA00AD6FA5 /* ShareYourLocationSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareYourLocationSegue.swift; sourceTree = "<group>"; };
 		B6A9AD611A61E59100AF4B51 /* UniversLTStd-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Black.otf"; sourceTree = "<group>"; };
 		B6A9AD621A61E59100AF4B51 /* UniversLTStd-BlackEx.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BlackEx.otf"; sourceTree = "<group>"; };
 		B6A9AD631A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BlackExObl.otf"; sourceTree = "<group>"; };
@@ -306,6 +310,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B62291161A6671AE006C1B30 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B62291171A6671BB006C1B30 /* AnimationController.swift */,
+				B62291181A6671BB006C1B30 /* ATNavigationController.swift */,
+				B622911B1A667A29006C1B30 /* HideMapAnimationController.swift */,
+			);
+			name = Navigation;
+			sourceTree = "<group>";
+		};
 		B63730741A6151400073EB51 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,7 +337,6 @@
 			isa = PBXGroup;
 			children = (
 				B88EC3D11A614C610064ED0E /* AppDelegate.swift */,
-				B6A0A1C21A656CCA00AD6FA5 /* ShareYourLocationSegue.swift */,
 				B660CC251A6192E500630E6F /* Main.storyboard */,
 			);
 			name = View;
@@ -332,6 +345,7 @@
 		B63730761A61514E0073EB51 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B62291161A6671AE006C1B30 /* Navigation */,
 				B6F1BB281A65777C0083FE07 /* AddFriends */,
 				A24517321A626E8A0006CDB0 /* Login */,
 				B6E6A0C31A6210D4004C9B31 /* MainScreen */,
@@ -692,7 +706,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6A0A1C31A656CCA00AD6FA5 /* ShareYourLocationSegue.swift in Sources */,
 				B6271A041A626C74008B410C /* UIButton+ATButton.swift in Sources */,
 				A245173C1A6270760006CDB0 /* ATTextField.m in Sources */,
 				B60C03641A620F55005921B2 /* FriendsLocationTableViewCell.xib in Sources */,
@@ -712,6 +725,7 @@
 				B660CC241A6192DC00630E6F /* MainScreenVC.swift in Sources */,
 				B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */,
 				B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */,
+				B62291191A6671BB006C1B30 /* AnimationController.swift in Sources */,
 				B67E0A9C1A653B1E006F79A1 /* CheckboxButton.swift in Sources */,
 				B60C03601A620E4F005921B2 /* FriendsLocationTableViewCell.swift in Sources */,
 				B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */,
@@ -720,10 +734,12 @@
 				B6F1BB2C1A657AFF0083FE07 /* AddFriendsDataSource.swift in Sources */,
 				B6F1BB2A1A6578440083FE07 /* AddFriendsVC.swift in Sources */,
 				A24517341A626EE00006CDB0 /* LoginWelcomeVC.swift in Sources */,
+				B622911C1A667A29006C1B30 /* HideMapAnimationController.swift in Sources */,
 				B659CCE51A62445D005B6910 /* FriendsLocationHeaderTableViewCell.swift in Sources */,
 				A24517361A626F2E0006CDB0 /* LoginSMSVC.swift in Sources */,
 				B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */,
 				B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */,
+				B622911A1A6671BB006C1B30 /* ATNavigationController.swift in Sources */,
 				B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */,
 				A24517381A626F540006CDB0 /* LoginRegistrationVC.swift in Sources */,
 				B66B282B1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift in Sources */,

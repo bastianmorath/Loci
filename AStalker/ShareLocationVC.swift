@@ -25,6 +25,8 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
     
     var shareButton: UIButton?
     
+    var animationController = HideMapAnimationController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,8 +40,8 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
             button.positionButtonToLocation(.TopRight)
         }
         
-        
-        
+       //FOR DEBUGGING: Create custom Location
+        self.location = LocationStore.defaultStore().createLocation("test", timestamp: nil, longitude: 1, latitude: 2, user: LocationStore.defaultStore().getLocalUser())
         
         var location = CLLocation(latitude: self.location.longitude.doubleValue, longitude: self.location.longitude.doubleValue) //changed!!!
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
@@ -98,7 +100,7 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
         LocationStore.defaultStore().getLocalUser()?.sharedLocations = mutableSet
         println("\(self.location.sharedUsers.count) Personen hinzugefügt")
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     
