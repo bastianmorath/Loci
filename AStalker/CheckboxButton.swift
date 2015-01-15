@@ -11,9 +11,9 @@ import UIKit
 class CheckboxButton: UIButton {
     
     //CircleView: Grauer Kreis
-    var notSelectedView = CircleView(frame: CGRectMake(0, -6, 35, 35), type: .Empty)
+    var notSelectedView = DeselectedButtonView(frame: CGRectMake(0, -6, 35, 35), type: .Empty)
     //CheckmarkView: Roter Button mit Checkmark
-    var selectedView = CheckmarkView(frame: CGRectMake(4, -2, 27, 27), type: .Checkmark)
+    var selectedView = SelectedButtonView(frame: CGRectMake(4, -2, 27, 27), type: .Checkmark)
     
     //bool Property. Versteckt,r esp. zeigt die zwei Views an.
     var isChecked:Bool = false {

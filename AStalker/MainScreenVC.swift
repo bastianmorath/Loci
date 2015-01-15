@@ -13,14 +13,14 @@ import UIKit
 
 class MainScreenVC: UIViewController {
     
-
+    
     //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
     let kAspectRatioMapToTableViewIPhone: CGFloat = 1.24
     
     //Verhältnis vom mapContainer zum TableView: iPad
     let kAspectRatioMapToTableViewIPad: CGFloat = 1.04
-
-
+    
+    
     
     
     // MARK: - Properies und Variabeln
@@ -35,6 +35,20 @@ class MainScreenVC: UIViewController {
     // Containers to hold the child controllers view
     var mapContainer: UIView!
     var tableViewContainer: UIView!
+    
+    // Gibt an, ob der TableView ausgeklappt ist oder nicht.
+    var tableViewIsExtended = false
+    
+    // Height of TableView
+    var tableViewHeight:CGFloat {
+        get{
+            if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+                return self.view.frame.height-self.view.frame.size.width*kAspectRatioMapToTableViewIPad
+            } else {
+                return self.view.frame.height-self.view.frame.size.width*kAspectRatioMapToTableViewIPhone
+            }
+        }
+    }
     
     
     
@@ -71,16 +85,13 @@ class MainScreenVC: UIViewController {
         mapVC.didMoveToParentViewController(self)
         
         
-       //  Setup TableViewController
+        //  Setup TableViewController
         tableVC = MainScreenTableVC()
         self.addChildViewController(tableVC)
-        var tableViewHeight:CGFloat!
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
-            tableViewHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPad
-        } else {
-            tableViewHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPhone
-        }
-        self.tableViewContainer = UIView(frame: CGRectMake(0, tableViewHeight, self.view.frame.size.width, self.view.frame.height - tableViewHeight))
+        
+        //
+        self.tableViewContainer = UIView(frame: CGRectMake(0, self.view.frame.height-self.tableViewHeight, self.view.frame.size.width, self.tableViewHeight))
+        
         self.view.addSubview(self.tableViewContainer)
         tableViewContainer.addSubview(tableVC.view)
         tableVC.didMoveToParentViewController(self)
@@ -94,13 +105,13 @@ class MainScreenVC: UIViewController {
         
         contactButton = UIButton.ATButton(.Contact, color: .White)
         contactButton.addTarget(self, action: "contactButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.mapContainer.addSubview(contactButton)
+        self.view.addSubview(contactButton)
         contactButton.positionButtonToLocation(.TopRight)
         
         shareYourLocationButton = UIButton.ATButton(.ContactLocation, color: .Grey)
         shareYourLocationButton.addTarget(self, action: "shareYourLocationButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.mapContainer.addSubview(shareYourLocationButton)
-        shareYourLocationButton.positionButtonToLocation(.BottomLeft)
+        self.tableViewContainer.addSubview(shareYourLocationButton)
+        shareYourLocationButton.positionButtonToLocation(.TopHalfLeft)
         
         locateMeButton = UIButton.ATButton(.SingleLocation, color: .White)
         locateMeButton.addTarget(self, action: "locateMeButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
@@ -108,7 +119,10 @@ class MainScreenVC: UIViewController {
         locateMeButton.positionButtonToLocation(.BottomRight)
         
         
-}
+    }
+    
+    
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -131,25 +145,49 @@ class MainScreenVC: UIViewController {
     }
     
     func myLocationButtonPressed() {
-        
-    }
-    
-    func shareYourLocationButtonPressed(){
         var latitude = mapVC.mapView.userLocation?.location?.coordinate.latitude
         var longitude = mapVC.mapView.userLocation?.location?.coordinate.longitude
         
-        if longitude == longitude && latitude == latitude{
-            locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: 4.1, latitude: 2.9, user: nil)
-            
-            var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
-            self.navigationController?.pushViewController(shareLocationVC, animated: true)
+        if let longitude = longitude{
+            if let latitude = latitude{
+                locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: longitude, latitude: latitude, user: nil)
+                
+                var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
+                shareLocationVC.location = locationToShare
+                self.navigationController?.pushViewController(shareLocationVC, animated: true)
+            }
         }
+    }
+    
+    func shareYourLocationButtonPressed(){
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
+            var transitionConstant = numberOfRows * 55 - self.tableViewHeight
+            
+            let topSpace = 100 as CGFloat
+            let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
+            transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
+            
+            if self.tableViewIsExtended{
+                // Button grau einfärben
+                self.shareYourLocationButton.backgroundColor = UIColor.GreyColor()
+                self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+            } else {
+                // Button rot einfärben
+                self.shareYourLocationButton.backgroundColor = UIColor.RedColor()
+                self.view.backgroundColor = UIColor.RedColor()
+                self.view.frame = CGRectMake(0, -transitionConstant, self.view.frame.width, self.view.frame.height+2*transitionConstant)
+            }
+            
+        })
+        
+        self.tableViewIsExtended = !self.tableViewIsExtended
     }
     
     func contactButtonPressed() {
         var addFriendsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("addFriendsVC") as AddFriendsVC
         self.navigationController?.pushViewController(addFriendsVC, animated: true)
-
+        
     }
 }
 

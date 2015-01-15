@@ -12,6 +12,7 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var descriptionLabel: UILabel!
     
     var addFriendsButton: UIButton?
     
@@ -25,10 +26,12 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
     
         self.addFriendsButton = UIButton.ATButton(UIButton.ATButtonType.Contact, color: UIButton.ATColor.White)
         if let button = addFriendsButton{
-            button.addTarget(self, action: "sharePressed", forControlEvents:UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: "addFriendsPressed", forControlEvents:UIControlEvents.TouchUpInside)
             self.view.addSubview(button)
             button.positionButtonToLocation(.TopRight)
         }
+        
+        self.descriptionLabel.numberOfLines = 0
         
         // Define the tableView's dataSource
         
@@ -73,5 +76,9 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
         cell.heartButton.isChecked = !cell.heartButton.isChecked
     }
 
+    func addFriendsPressed(){
+        self.navigationController?.popViewControllerAnimated(true)
+
+    }
 
 }

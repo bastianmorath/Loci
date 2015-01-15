@@ -33,17 +33,9 @@ class ShareLocationVC: UIViewController {
         self.streetLabel.font = UIFont.ATBoldFont()
         self.placeLabel.font = UIFont.ATFont()
         
-        self.shareButton = UIButton.ATButton(UIButton.ATButtonType.Share, color: UIButton.ATColor.White)
-        if let button = shareButton{
-            button.addTarget(self, action: "sharePressed", forControlEvents:UIControlEvents.TouchUpInside)
-            self.view.addSubview(button)
-            button.positionButtonToLocation(.TopRight)
-        }
         
-       //FOR DEBUGGING: Create custom Location
-        self.location = LocationStore.defaultStore().createLocation("test", timestamp: nil, longitude: 1, latitude: 2, user: LocationStore.defaultStore().getLocalUser())
-        
-        var location = CLLocation(latitude: self.location.longitude.doubleValue, longitude: self.location.longitude.doubleValue) //changed!!!
+        // Strasse und Ort bestimmen
+        var location = CLLocation(latitude: self.location.latitude.doubleValue, longitude: self.location.longitude.doubleValue)
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
             if error != nil {
                 println("Reverse geocoder failed with error" + error.localizedDescription)
@@ -51,13 +43,27 @@ class ShareLocationVC: UIViewController {
             }
             if placemarks.count > 0 {
                 let pm = placemarks[0] as CLPlacemark
+                var city = pm.addressDictionary["City"] as String
+                var street = pm.addressDictionary["Street"] as String
+                
+                self.streetLabel.text = street
+                self.placeLabel.text = city
             }
             else {
                 println("Problem with the data received from geocoder")
             }
         })
         
-        // Define the tableView's dataSource
+        //ShareButton
+        self.shareButton = UIButton.ATButton(UIButton.ATButtonType.Share, color: UIButton.ATColor.White)
+        if let button = shareButton{
+            button.addTarget(self, action: "sharePressed", forControlEvents:UIControlEvents.TouchUpInside)
+            self.view.addSubview(button)
+            button.positionButtonToLocation(.TopRight)
+        }
+
+        
+        // TableView DataSource definieren
         let localUser = (LocationStore.defaultStore().getLocalUser())
         shareLocationDataSource = ShareLocationDataSource(tableView: tableView, user: localUser!, location: self.location )
         tableView.dataSource = shareLocationDataSource
@@ -72,8 +78,6 @@ class ShareLocationVC: UIViewController {
         headerView.addSubview(label)
         return headerView
     }
-    
-    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedUser = self.shareLocationDataSource.modelForIndexPath(indexPath) as User
@@ -90,7 +94,6 @@ class ShareLocationVC: UIViewController {
         }
         cell.checkboxButton.isChecked = !cell.checkboxButton.isChecked
     }
-    
     
     func sharePressed() {
         //Add Location to localUser.sharedLocations

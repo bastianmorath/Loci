@@ -72,6 +72,6 @@ class AnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     :returns: returns the duration of the animation
     */
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
-        return  0.4 as NSTimeInterval
+        return  0.8 as NSTimeInterval
     }
 }

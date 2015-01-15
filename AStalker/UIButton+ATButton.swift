@@ -107,10 +107,10 @@ extension UIButton {
     func positionButtonToLocation(location: ATButtonLocation ) {
         
         let views = ["button" : self]
-        let metrics = ["margin": kMargin]
+        let metrics = ["margin": kMargin, "bottomMargin":50]
         
-        var horizontalConstraint = ""
-        var verticalConstraint = ""
+        var horizontalConstraint = "H:[button(\(kSize))]"
+        var verticalConstraint = "V:[button(\(kSize))]"
         var heightConstraint = "V:[button(\(kSize))]"
         var widthConstraint = "H:[button(\(kSize))]"
 
@@ -126,7 +126,8 @@ extension UIButton {
             verticalConstraint =   "V:[button]-margin-|"
         case .TopHalfLeft:
             horizontalConstraint = "H:|-margin-[button]"
-            verticalConstraint =   "V:|-0-[button]"
+            var constY:NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: superview, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0);
+            self.superview!.addConstraint(constY)
         case .BottomRight:
             horizontalConstraint = "H:[button]-margin-|"
             verticalConstraint =   "V:[button]-margin-|"
@@ -141,6 +142,9 @@ extension UIButton {
             superview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(widthConstraint, options: nil, metrics: nil, views: views))
         }
     }
+    
+  
+ 
 }
 
 

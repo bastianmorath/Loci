@@ -24,7 +24,7 @@ class HideMapAnimationController: AnimationController {
 
         
         UIView.animateWithDuration( self.transitionDuration(transitionContext), animations: {
-            let translation = CGAffineTransformMakeTranslation(0, 400)
+            let translation = CGAffineTransformMakeTranslation(0, toViewController!.view.frame.height)
         
 
             fromViewController?.view.transform = translation

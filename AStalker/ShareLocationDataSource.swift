@@ -15,7 +15,7 @@ class ShareLocationDataSource: ATableViewDataSource{
     var location: Location?
     init( tableView: UITableView, user: LocalUser, location: Location? = nil) {
         self.location = location
-        let fetchedResultsController = LocationStore.defaultStore().getUsersWithoutFriendsFC()
+        let fetchedResultsController = LocationStore.defaultStore().getUsersFC()
         super.init(tableView: tableView, fetchedResultsController: fetchedResultsController )
     }
     

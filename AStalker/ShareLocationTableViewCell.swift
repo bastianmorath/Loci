@@ -20,21 +20,33 @@ class ShareLocationTableViewCell: UITableViewCell {
     }
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-       
         //nameLabel hinzufügen
-        self.nameLabel.frame = CGRectMake(76, 10, 200, 40)
+        self.nameLabel.frame = CGRectMake(73, 8, 200, 40)
         self.nameLabel.font = UIFont.ATTableViewFont()
-        self.nameLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.contentView.addSubview(self.nameLabel)
-
+        
         // Set checkboxButton
-        self.checkboxButton = CheckboxButton(frame: CGRectMake(30, 15, 30, 30))
+        self.checkboxButton = CheckboxButton(frame: CGRectMake(27, 13, 30, 30))
         self.addSubview(self.checkboxButton)
         
         //Configure likeView
-        likeView = UIImageView(image: UIImage(named: "Heart_DarkGrey.png"))
-        likeView.frame = CGRectMake(270, 13, 30, 30)
-        self.contentView.addSubview(likeView)
+        self.likeView = UIImageView(image: UIImage(named: "Heart_DarkGrey.png"))
+        self.likeView.frame = CGRectMake(270, 13, 30, 30)
+        self.likeView.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+        self.contentView.addSubview(self.likeView)
+        
+        //Add Constraints to likeView
+        let views = ["likeView" : self.likeView]
+        let metrics = ["margin":20]
+        
+        var horizontalConstraintLikeView = "H:[likeView(30)]-margin-|"
+        var verticalConstraintLikeView = "V:|-12-[likeView(30)]"
+
+
+        self.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(horizontalConstraintLikeView, options: nil, metrics: metrics, views: views ) )
+        self.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(verticalConstraintLikeView, options: nil, metrics: metrics, views: views ) )
+
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -50,7 +62,7 @@ class ShareLocationTableViewCell: UITableViewCell {
             
             //Herzchen rechts hinter den namen tun, wenn der User ein Freund ist
             if (LocationStore.defaultStore().getLocalUser()!.friends.containsObject(user)){
-               likeView.hidden = false
+                likeView.hidden = false
             } else {
                 likeView.hidden = true
             }

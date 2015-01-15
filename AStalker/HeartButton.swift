@@ -11,11 +11,11 @@ import UIKit
 class HeartButton: UIButton{
     
     //CircleView: Grauer Kreis mit Herz
-    var notSelectedView = CircleView(frame: CGRectMake(0, -6, 35, 35), type: .Heart)
+    var notSelectedView = DeselectedButtonView(frame: CGRectMake(0, -6, 35, 35), type: .Heart)
     //CheckmarkView: Roter Button mit Heart
-    var selectedView = CheckmarkView(frame: CGRectMake(4, -2, 27, 27), type: .Heart)
+    var selectedView = SelectedButtonView(frame: CGRectMake(4, -2, 27, 27), type: .Heart)
     
-    //bool Property. Versteckt,r esp. zeigt die zwei Views an.
+    //bool Property. Versteckt, resp. zeigt die zwei Views an.
     var isChecked:Bool = false {
         didSet{
             if isChecked == true {

@@ -47,7 +47,7 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     // MARK:- Data Source
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 20
     }
     
     // MARK:- Delegates
@@ -88,5 +88,7 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
 
 }

@@ -43,7 +43,7 @@
 		B60C03601A620E4F005921B2 /* FriendsLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60C035F1A620E4F005921B2 /* FriendsLocationTableViewCell.swift */; };
 		B60C03621A620E5D005921B2 /* FriendsLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */; };
 		B60C03641A620F55005921B2 /* FriendsLocationTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */; };
-		B61B12121A628CED00F48702 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B12111A628CED00F48702 /* CheckmarkView.swift */; };
+		B61B12121A628CED00F48702 /* SelectedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B12111A628CED00F48702 /* SelectedButtonView.swift */; };
 		B62291191A6671BB006C1B30 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62291171A6671BB006C1B30 /* AnimationController.swift */; };
 		B622911A1A6671BB006C1B30 /* ATNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62291181A6671BB006C1B30 /* ATNavigationController.swift */; };
 		B622911C1A667A29006C1B30 /* HideMapAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B622911B1A667A29006C1B30 /* HideMapAnimationController.swift */; };
@@ -58,7 +58,7 @@
 		B637309D1A615E3B0073EB51 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309C1A615E3B0073EB51 /* LocalUser.swift */; };
 		B637309F1A615E3B0073EB51 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309E1A615E3B0073EB51 /* User.swift */; };
 		B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */; };
-		B6582E991A62335B00D74FAF /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6582E981A62335B00D74FAF /* CircleView.swift */; };
+		B6582E991A62335B00D74FAF /* DeselectedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6582E981A62335B00D74FAF /* DeselectedButtonView.swift */; };
 		B659CCE51A62445D005B6910 /* FriendsLocationHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B659CCE31A62445D005B6910 /* FriendsLocationHeaderTableViewCell.swift */; };
 		B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */; };
 		B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */; };
@@ -157,7 +157,7 @@
 		A24517721A62727A0006CDB0 /* antum_logo_email.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = antum_logo_email.jpg; sourceTree = "<group>"; };
 		B60C035F1A620E4F005921B2 /* FriendsLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsLocationTableViewCell.swift; sourceTree = "<group>"; };
 		B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsLocationTableViewCell.xib; sourceTree = "<group>"; };
-		B61B12111A628CED00F48702 /* CheckmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
+		B61B12111A628CED00F48702 /* SelectedButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedButtonView.swift; sourceTree = "<group>"; };
 		B62291171A6671BB006C1B30 /* AnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
 		B62291181A6671BB006C1B30 /* ATNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATNavigationController.swift; sourceTree = "<group>"; };
 		B622911B1A667A29006C1B30 /* HideMapAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideMapAnimationController.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		B637309C1A615E3B0073EB51 /* LocalUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = "<group>"; };
 		B637309E1A615E3B0073EB51 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationTableViewCell.swift; sourceTree = "<group>"; };
-		B6582E981A62335B00D74FAF /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		B6582E981A62335B00D74FAF /* DeselectedButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeselectedButtonView.swift; sourceTree = "<group>"; };
 		B659CCE31A62445D005B6910 /* FriendsLocationHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsLocationHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenMapVC.swift; sourceTree = "<group>"; };
 		B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenTableVC.swift; sourceTree = "<group>"; };
@@ -388,8 +388,8 @@
 				A245173B1A6270760006CDB0 /* ATTextField.m */,
 				B668BD5C1A61BAC300939A6C /* UIFont+ATFont.swift */,
 				A24517391A6270750006CDB0 /* AStalker-Bridging-Header.h */,
-				B6582E981A62335B00D74FAF /* CircleView.swift */,
-				B61B12111A628CED00F48702 /* CheckmarkView.swift */,
+				B6582E981A62335B00D74FAF /* DeselectedButtonView.swift */,
+				B61B12111A628CED00F48702 /* SelectedButtonView.swift */,
 				B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */,
 			);
 			name = "Categories + Helper classes";
@@ -718,10 +718,10 @@
 				B63730991A615E3A0073EB51 /* Location.swift in Sources */,
 				B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */,
 				B664B38A1A617214000E24BE /* AddressBook.swift in Sources */,
-				B6582E991A62335B00D74FAF /* CircleView.swift in Sources */,
+				B6582E991A62335B00D74FAF /* DeselectedButtonView.swift in Sources */,
 				B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */,
 				B66B282F1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift in Sources */,
-				B61B12121A628CED00F48702 /* CheckmarkView.swift in Sources */,
+				B61B12121A628CED00F48702 /* SelectedButtonView.swift in Sources */,
 				B668BD5D1A61BAC300939A6C /* UIFont+ATFont.swift in Sources */,
 				B6F1BB2E1A657D4A0083FE07 /* AddFriendsTableViewCell.swift in Sources */,
 				B637309F1A615E3B0073EB51 /* User.swift in Sources */,
