@@ -18,6 +18,7 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
     //DataSource des TableViews
     var addFriendsDataSource: AddFriendsDataSource!
 
+    var localUser:LocalUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,8 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
         }
         
         // Define the tableView's dataSource
-        let localUser = (LocationStore.defaultStore().getLocalUser())
+        
+        localUser = (LocationStore.defaultStore().getLocalUser())
         addFriendsDataSource = AddFriendsDataSource(tableView: tableView, user: localUser!, location: nil)
         tableView.dataSource = addFriendsDataSource
 
@@ -55,6 +57,21 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
     }
     
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var selectedUser = self.addFriendsDataSource.modelForIndexPath(indexPath) as User
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as AddFriendsTableViewCell
+        
+        if localUser.friends.containsObject(selectedUser){
+            //User ist schon ausgewählt. Deselecte ihn im View und lösche ihn aus locations.sharedUsers
+            var mutableSet = NSMutableSet(set: localUser.friends)
+            mutableSet.removeObject(selectedUser)
+           localUser.friends = NSSet(set: mutableSet)
+        } else {
+            //Füge den User bei lcoation.sharedUsers hinzu und Selecte ihn im View(roter Checkmark-View)
+            localUser.friends = localUser.friends.setByAddingObject(selectedUser)
+        }
+        cell.heartButton.isChecked = !cell.heartButton.isChecked
+    }
 
 
 }

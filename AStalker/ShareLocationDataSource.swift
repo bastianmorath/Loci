@@ -10,15 +10,14 @@ import Foundation
 import UIKit
 import CoreData
 
-class ShareLocationDataSource: ATableViewDataSource, UITableViewDelegate{
+class ShareLocationDataSource: ATableViewDataSource{
     
     var location: Location?
     init( tableView: UITableView, user: LocalUser, location: Location? = nil) {
         self.location = location
-        let fetchedResultsController = LocationStore.defaultStore().FetchedResultsControllerOfUser(user)
+        let fetchedResultsController = LocationStore.defaultStore().getUsersWithoutFriendsFC()
         super.init(tableView: tableView, fetchedResultsController: fetchedResultsController )
     }
-    
     
     override func cellForTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell =  ShareLocationTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self ) as ShareLocationTableViewCell

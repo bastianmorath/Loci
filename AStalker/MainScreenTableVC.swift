@@ -18,26 +18,19 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     var tableView:UITableView!
     
-    override func loadView() {
-      
-        // layout tableView
-        tableView = UITableView()
-        self.view = UIView()
-        self.view.backgroundColor = UIColor.purpleColor()
-        self.view.addSubview(tableView)
-        self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
-
-        // setup tableView
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // layout tableView
+        tableView = UITableView()
+        self.view.addSubview(tableView)
+        self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
+        
+        // setup tableView
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         let nibName = UINib(nibName: "FriendsLocationTableViewCell", bundle:nil)
         self.tableView.registerNib(nibName, forCellReuseIdentifier: "FriendsLocationTableViewCell")
 

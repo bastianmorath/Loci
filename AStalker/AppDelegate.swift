@@ -20,12 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
   
+//        
+//        var storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        
+//        var firstViewController = storyboard.instantiateViewControllerWithIdentifier("mainScreenVC") as MainScreenVC
         
-        var storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        var firstViewController = storyboard.instantiateViewControllerWithIdentifier("mainScreenVC") as MainScreenVC
-        
-        
+        var firstViewController = MainScreenVC()
         self.rootViewController = ATNavigationController(rootViewController: firstViewController)
         self.rootViewController!.delegate = self.rootViewController
         

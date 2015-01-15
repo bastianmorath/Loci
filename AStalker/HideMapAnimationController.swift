@@ -18,17 +18,20 @@ class HideMapAnimationController: AnimationController {
         
         
         // Add the 'to' view to the hirarchy
+
         containerView.insertSubview(toViewController!.view, aboveSubview: fromViewController!.view )
-        
+        containerView.bringSubviewToFront(fromViewController!.view)
+
         
         UIView.animateWithDuration( self.transitionDuration(transitionContext), animations: {
-            let translation = CGAffineTransformMakeTranslation(0, -50)
-            
-            toViewController?.view.transform = translation
+            let translation = CGAffineTransformMakeTranslation(0, 400)
+        
+
+            fromViewController?.view.transform = translation
             }, completion:{ finished in
-                transitionContext.completeTransition( true )
+               transitionContext.completeTransition( true )
         })
-    }
+}
     
     
     override func animatePopWithTransitionContext( transitionContext: UIViewControllerContextTransitioning ) {

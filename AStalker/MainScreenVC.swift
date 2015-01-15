@@ -13,6 +13,16 @@ import UIKit
 
 class MainScreenVC: UIViewController {
     
+
+    //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
+    let kAspectRatioMapToTableViewIPhone: CGFloat = 1.24
+    
+    //Verhältnis vom mapContainer zum TableView: iPad
+    let kAspectRatioMapToTableViewIPad: CGFloat = 1.04
+
+
+    
+    
     // MARK: - Properies und Variabeln
     
     // child controllers
@@ -23,8 +33,8 @@ class MainScreenVC: UIViewController {
     var locationToShare:Location?
     
     // Containers to hold the child controllers view
-    @IBOutlet weak var mapContainer: UIView!
-    @IBOutlet weak var friendsLocationsContainer: UIView!
+    var mapContainer: UIView!
+    var tableViewContainer: UIView!
     
     
     
@@ -45,39 +55,41 @@ class MainScreenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.RedColor()
+        
         // Setup MainScreenMapVC
         mapVC = MainScreenMapVC()
         self.addChildViewController(mapVC)
+        var mapHeight:CGFloat!
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+            mapHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPad
+        } else {
+            mapHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPhone
+        }
+        self.mapContainer = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, mapHeight))
+        self.view.addSubview(self.mapContainer)
         mapContainer.addSubview(mapVC.view)
         mapVC.didMoveToParentViewController(self)
         
-        // Constraints of mapView (MainScreenMapVC)
-        let views = ["mapView":mapVC.view ]
-        let metrics = [:]
-        self.view.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat( "H:|[mapView]|", options: nil, metrics: metrics, views: views ) )
-        self.view.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat("V:|[mapView]|", options: nil, metrics: metrics, views: views ))
-        self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
-        self.mapContainer.setTranslatesAutoresizingMaskIntoConstraints( false )
         
-        
-        // Setup MainScreenTableVC
+       //  Setup TableViewController
         tableVC = MainScreenTableVC()
         self.addChildViewController(tableVC)
-        friendsLocationsContainer.addSubview(tableVC.view)
+        var tableViewHeight:CGFloat!
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+            tableViewHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPad
+        } else {
+            tableViewHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPhone
+        }
+        self.tableViewContainer = UIView(frame: CGRectMake(0, tableViewHeight, self.view.frame.size.width, self.view.frame.height - tableViewHeight))
+        self.view.addSubview(self.tableViewContainer)
+        tableViewContainer.addSubview(tableVC.view)
         tableVC.didMoveToParentViewController(self)
         
-        // Constraints of tableView (MainScreenTableVC)
-        let views2 = ["tableView":tableVC.view ]
-        let metrics2 = [:]
-        self.view.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat( "H:|[tableView]|", options: nil, metrics: metrics, views: views2 ) )
-        self.view.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat("V:|[tableView]|", options: nil, metrics: metrics, views: views2 ))
-        self.friendsLocationsContainer.setTranslatesAutoresizingMaskIntoConstraints( false )
         
         // Setup Buttons
         myLocationsButton = UIButton.ATButton(.MultipleLocations, color: .White)
         myLocationsButton.addTarget(self, action: "myLocationButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(myLocationsButton)
+        self.mapContainer.addSubview(myLocationsButton)
         myLocationsButton.positionButtonToLocation(.TopLeft)
         
         contactButton = UIButton.ATButton(.Contact, color: .White)
@@ -94,6 +106,8 @@ class MainScreenVC: UIViewController {
         locateMeButton.addTarget(self, action: "locateMeButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
         self.mapContainer.addSubview(locateMeButton)
         locateMeButton.positionButtonToLocation(.BottomRight)
+        
+        
 }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -126,12 +140,16 @@ class MainScreenVC: UIViewController {
         
         if longitude == longitude && latitude == latitude{
             locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: 4.1, latitude: 2.9, user: nil)
-            self.navigationController?.pushViewController(ShareLocationVC(), animated: true)
+            
+            var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
+            self.navigationController?.pushViewController(shareLocationVC, animated: true)
         }
     }
     
     func contactButtonPressed() {
-        
+        var addFriendsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("addFriendsVC") as AddFriendsVC
+        self.navigationController?.pushViewController(addFriendsVC, animated: true)
+
     }
 }
 

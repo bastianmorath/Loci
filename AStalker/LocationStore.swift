@@ -47,23 +47,37 @@ class LocationStore: NSObject{
         return user! as [User]
     }
     
-    /*
-    :returns: Returns a NSFetchedResultsController for all User.
-    */
-    func getUserFetchedResultsController() -> NSFetchedResultsController {
+ // Get all User as NSFetchedResultsController
+    func getUsersFC() -> NSFetchedResultsController {
+        let predicate = NSPredicate(format: "NOT (self == %@)", self.getLocalUser()!)
+
         // sort them alphabetically
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true )
         
-        return coreDataStore.createFetchedResultsController("User", predicate: nil, sortDescriptors: [sortDescriptor])
+        return coreDataStore.createFetchedResultsController("User", predicate: predicate, sortDescriptors: [sortDescriptor])
     }
     
-    func FetchedResultsControllerOfUser(user:LocalUser) -> NSFetchedResultsController{
-         let predicate = NSPredicate(format: "self IN %@", user.contacts )
-        
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true )
+    // Get all Friends as NSFetchedResultsController
+    func getFriendsFC() -> NSFetchedResultsController {
+        let predicate = NSPredicate(format: "self IN %@", self.getLocalUser()!.friends)
 
-         return coreDataStore.createFetchedResultsController("User", predicate: predicate, sortDescriptors: [sortDescriptor] )
+        // sort them alphabetically
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true )
+        let frc = coreDataStore.createFetchedResultsController("User", predicate: predicate, sortDescriptors: [sortDescriptor])
+        return frc
     }
+    
+    // Get all User without Friends as NSFetchedResultsController
+    func getUsersWithoutFriendsFC() -> NSFetchedResultsController{
+        let predicate = NSPredicate(format: "NOT (self IN %@) && NOT (self == %@)", self.getLocalUser()!.friends, self.getLocalUser()!)
+        
+        // sort them alphabetically
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true )
+        let frc = coreDataStore.createFetchedResultsController("User", predicate: predicate, sortDescriptors: [sortDescriptor])
+        return frc
+
+    }
+
     
     //TODO: LocalUser verbessern, nil prüfen
     func getLocalUser() -> LocalUser?{

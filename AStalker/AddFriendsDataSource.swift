@@ -14,10 +14,11 @@ class AddFriendsDataSource: ATableViewDataSource, UITableViewDelegate{
     
     var location: Location?
     var localUser: LocalUser!
+    
     init( tableView: UITableView, user: LocalUser, location: Location? = nil) {
         self.location = location
-        self.localUser = localUser!
-        let fetchedResultsController = LocationStore.defaultStore().FetchedResultsControllerOfUser(user)
+        self.localUser = user
+        let fetchedResultsController = LocationStore.defaultStore().getUsersFC()
         super.init(tableView: tableView, fetchedResultsController: fetchedResultsController )
     }
     
@@ -28,12 +29,12 @@ class AddFriendsDataSource: ATableViewDataSource, UITableViewDelegate{
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return localUser.friends.count
+            return localUser.contacts.count
         }else{
             return (localUser.contacts.count - localUser.friends.count)
         }

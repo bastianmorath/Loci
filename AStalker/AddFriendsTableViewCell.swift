@@ -10,7 +10,7 @@ import UIKit
 
 class AddFriendsTableViewCell: UITableViewCell {
     var nameLabel = UILabel()
-    var checkboxButton: CheckboxButton!
+    var heartButton: HeartButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,9 +27,8 @@ class AddFriendsTableViewCell: UITableViewCell {
         self.contentView.addSubview(self.nameLabel)
         
         // Set checkboxButton
-        self.checkboxButton = CheckboxButton(frame: CGRectMake(30, 15, 30, 30))
-        self.addSubview(self.checkboxButton)
-        
+        self.heartButton = HeartButton(frame: CGRectMake(30, 15, 30, 30))
+        self.addSubview(self.heartButton)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -40,14 +39,13 @@ class AddFriendsTableViewCell: UITableViewCell {
     
     override func configureWithModelObject(model: AnyObject?) {
         let user = model as? User
-        if let user = user {
+        let localUser = LocationStore.defaultStore().getLocalUser()
+        if let user = user{
             self.nameLabel.text = user.name
             
-            //Herzchen rechts hinter den namen tun, wenn der User ein Freund ist
-            if LocationStore.defaultStore().getLocalUser()?.friends.containsObject(user) != nil{
-
+            if localUser!.friends.containsObject(user){
+                self.heartButton.isChecked = true
             }
         }
     }
-
 }

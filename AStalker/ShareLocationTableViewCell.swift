@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShareLocationTableViewCell: UITableViewCell, UITableViewDelegate {
+class ShareLocationTableViewCell: UITableViewCell {
     var nameLabel = UILabel()
     var checkboxButton: CheckboxButton!
     var likeView = UIImageView()

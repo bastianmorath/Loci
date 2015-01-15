@@ -98,6 +98,7 @@
 		B6A9AD941A61E59100AF4B51 /* UniversLTStd-XBlackExObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD791A61E59100AF4B51 /* UniversLTStd-XBlackExObl.otf */; };
 		B6A9AD951A61E59100AF4B51 /* UniversLTStd-XBlackObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD7A1A61E59100AF4B51 /* UniversLTStd-XBlackObl.otf */; };
 		B6A9AD961A61E59100AF4B51 /* UniversLTStd.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD7B1A61E59100AF4B51 /* UniversLTStd.otf */; };
+		B6B7653D1A67B51700C9A8C5 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B7653C1A67B51700C9A8C5 /* HeartButton.swift */; };
 		B6F1BB2A1A6578440083FE07 /* AddFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F1BB291A6578440083FE07 /* AddFriendsVC.swift */; };
 		B6F1BB2C1A657AFF0083FE07 /* AddFriendsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F1BB2B1A657AFF0083FE07 /* AddFriendsDataSource.swift */; };
 		B6F1BB2E1A657D4A0083FE07 /* AddFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F1BB2D1A657D4A0083FE07 /* AddFriendsTableViewCell.swift */; };
@@ -212,6 +213,7 @@
 		B6A9AD791A61E59100AF4B51 /* UniversLTStd-XBlackExObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-XBlackExObl.otf"; sourceTree = "<group>"; };
 		B6A9AD7A1A61E59100AF4B51 /* UniversLTStd-XBlackObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-XBlackObl.otf"; sourceTree = "<group>"; };
 		B6A9AD7B1A61E59100AF4B51 /* UniversLTStd.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniversLTStd.otf; sourceTree = "<group>"; };
+		B6B7653C1A67B51700C9A8C5 /* HeartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		B6F1BB291A6578440083FE07 /* AddFriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsVC.swift; sourceTree = "<group>"; };
 		B6F1BB2B1A657AFF0083FE07 /* AddFriendsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsDataSource.swift; sourceTree = "<group>"; };
 		B6F1BB2D1A657D4A0083FE07 /* AddFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -372,13 +374,11 @@
 				B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */,
 				B66B282A1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift */,
 				B67E0A9B1A653B1E006F79A1 /* CheckboxButton.swift */,
-				B6582E981A62335B00D74FAF /* CircleView.swift */,
-				B61B12111A628CED00F48702 /* CheckmarkView.swift */,
 			);
 			name = ShareLocation;
 			sourceTree = "<group>";
 		};
-		B668BD5E1A61BACF00939A6C /* Categories */ = {
+		B668BD5E1A61BACF00939A6C /* Categories + Helper classes */ = {
 			isa = PBXGroup;
 			children = (
 				B6271A051A626D5F008B410C /* UIColor+ATColor.swift */,
@@ -388,9 +388,11 @@
 				A245173B1A6270760006CDB0 /* ATTextField.m */,
 				B668BD5C1A61BAC300939A6C /* UIFont+ATFont.swift */,
 				A24517391A6270750006CDB0 /* AStalker-Bridging-Header.h */,
+				B6582E981A62335B00D74FAF /* CircleView.swift */,
+				B61B12111A628CED00F48702 /* CheckmarkView.swift */,
 				B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */,
 			);
-			name = Categories;
+			name = "Categories + Helper classes";
 			sourceTree = "<group>";
 		};
 		B6A9AD601A61E59100AF4B51 /* Univers */ = {
@@ -431,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				B660CC211A6192DC00630E6F /* MainScreenVC.swift */,
+				B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */,
 				B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */,
 				B659CCE31A62445D005B6910 /* FriendsLocationHeaderTableViewCell.swift */,
 				A2119BB61A62DFD100FA095C /* FriendsLocationHeaderTableViewCell.xib */,
@@ -438,7 +441,6 @@
 				B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */,
 				A2119BB81A62E0E400FA095C /* ChangeLocationTableViewCell.swift */,
 				A2119BB91A62E0E400FA095C /* ChangeLocationTableViewCell.xib */,
-				B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */,
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
@@ -449,6 +451,7 @@
 				B6F1BB291A6578440083FE07 /* AddFriendsVC.swift */,
 				B6F1BB2B1A657AFF0083FE07 /* AddFriendsDataSource.swift */,
 				B6F1BB2D1A657D4A0083FE07 /* AddFriendsTableViewCell.swift */,
+				B6B7653C1A67B51700C9A8C5 /* HeartButton.swift */,
 			);
 			name = AddFriends;
 			sourceTree = "<group>";
@@ -477,7 +480,7 @@
 		B88EC3CE1A614C610064ED0E /* AStalker */ = {
 			isa = PBXGroup;
 			children = (
-				B668BD5E1A61BACF00939A6C /* Categories */,
+				B668BD5E1A61BACF00939A6C /* Categories + Helper classes */,
 				B63730741A6151400073EB51 /* Model */,
 				B63730751A6151450073EB51 /* View */,
 				B63730761A61514E0073EB51 /* Controller */,
@@ -738,6 +741,7 @@
 				B659CCE51A62445D005B6910 /* FriendsLocationHeaderTableViewCell.swift in Sources */,
 				A24517361A626F2E0006CDB0 /* LoginSMSVC.swift in Sources */,
 				B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */,
+				B6B7653D1A67B51700C9A8C5 /* HeartButton.swift in Sources */,
 				B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */,
 				B622911A1A6671BB006C1B30 /* ATNavigationController.swift in Sources */,
 				B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */,

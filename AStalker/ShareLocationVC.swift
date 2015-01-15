@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ShareLocationVC: UIViewController, UITableViewDelegate {
+class ShareLocationVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -89,7 +89,6 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
             location.sharedUsers = location.sharedUsers.setByAddingObject(selectedUser)
         }
         cell.checkboxButton.isChecked = !cell.checkboxButton.isChecked
-        
     }
     
     

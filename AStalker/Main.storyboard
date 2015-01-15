@@ -3,7 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Login WelcomeVC-->
@@ -225,49 +224,6 @@
             </objects>
             <point key="canvasLocation" x="1436" y="-604"/>
         </scene>
-        <!--Main ScreenVC-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController storyboardIdentifier="mainScreenVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MainScreenVC" customModule="AStalker" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XNS-bo-wp5" userLabel="mapContainer">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="419"/>
-                                <color key="backgroundColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tab-fF-qvs" userLabel="tableContainer">
-                                <rect key="frame" x="0.0" y="419" width="600" height="181"/>
-                                <color key="backgroundColor" red="0.60000002384185791" green="0.60000002384185791" blue="0.60000002384185791" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="XNS-bo-wp5" secondAttribute="trailing" id="2ZJ-MA-Xl4"/>
-                            <constraint firstItem="XNS-bo-wp5" firstAttribute="height" secondItem="Tab-fF-qvs" secondAttribute="height" multiplier="15:6.5" constant="2" id="8Ub-6n-Ogj"/>
-                            <constraint firstItem="XNS-bo-wp5" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="N0p-dG-vzH"/>
-                            <constraint firstItem="Tab-fF-qvs" firstAttribute="width" secondItem="XNS-bo-wp5" secondAttribute="width" id="Nv9-Bu-30g"/>
-                            <constraint firstItem="Tab-fF-qvs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Yge-f2-aWD"/>
-                            <constraint firstItem="XNS-bo-wp5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dVt-i5-Pf7"/>
-                            <constraint firstItem="Tab-fF-qvs" firstAttribute="top" secondItem="XNS-bo-wp5" secondAttribute="bottom" id="epF-fn-yti"/>
-                            <constraint firstAttribute="trailing" secondItem="XNS-bo-wp5" secondAttribute="trailing" id="iiq-4o-Vx6"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Tab-fF-qvs" secondAttribute="bottom" id="zPd-vp-vwX"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="friendsLocationsContainer" destination="Tab-fF-qvs" id="MrG-dj-FMW"/>
-                        <outlet property="mapContainer" destination="XNS-bo-wp5" id="0MT-xF-tTz"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="926" y="222"/>
-        </scene>
         <!--Share LocationVC-->
         <scene sceneID="uBk-MB-OVd">
             <objects>
@@ -280,7 +236,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZGJ-8o-qII">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZGJ-8o-qII">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="143"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gemeindestrasse Nr. 512" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdc-Gh-zvF">
@@ -461,7 +417,7 @@
         <!--Add FriendsVC-->
         <scene sceneID="i5t-B7-soy">
             <objects>
-                <viewController id="mg1-5D-zjC" customClass="AddFriendsVC" customModule="AStalker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addFriendsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mg1-5D-zjC" customClass="AddFriendsVC" customModule="AStalker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uoq-rd-FAD"/>
                         <viewControllerLayoutGuide type="bottom" id="4f8-9f-zzW"/>

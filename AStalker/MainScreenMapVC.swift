@@ -19,35 +19,41 @@ import CoreLocation
 
 class MainScreenMapVC: UIViewController, MKMapViewDelegate {
     
+    //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
+    let kAspectRatioMapToTableViewIPhone: CGFloat = 1.24
+    
+    //Verhältnis vom mapContainer zum TableView: iPad
+    let kAspectRatioMapToTableViewIPad: CGFloat = 1.04
+    
+    
     var mapView:MKMapView!
     
-    override func loadView() {
-        super.loadView()
+    override func viewDidLoad(){
+        super.viewDidLoad()
         
         // layout mapView
-        mapView = MKMapView()
-        self.view = UIView()
-        self.view.backgroundColor = UIColor.yellowColor()
-        self.view.addSubview( mapView )
-        self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
+        var mapHeight:CGFloat!
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+            mapHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPad
+        } else {
+            mapHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPhone
+        }
+        mapView = MKMapView(frame: CGRectMake(0, 0, self.view.frame.size.width, mapHeight))
+        self.view.addSubview(mapView )
 
         // initialize Map
         mapView.removeAnnotations(self.mapView.annotations)
         mapView.mapType = MKMapType.Standard
         mapView.delegate = self
         mapView.rotateEnabled = false
-        
+        //mapView.setTranslatesAutoresizingMaskIntoConstraints( false )
         
         //show user location
         mapView.showsUserLocation = true
         zoomIn()
     }
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
 
-        mapView.frame = self.view.bounds
-    }
     
     //  adjust Region of mapView
     func zoomIn() {
@@ -68,18 +74,7 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         mapView.centerCoordinate = userLocation.location.coordinate
     }
 
-//    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-//        
-//        var annotationView = MKAnnotationView()
-//        annotationView.image = UIImage(named: "myAnnotationImageTest")
-//        return annotationView
-//        
-//    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

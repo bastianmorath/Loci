@@ -16,11 +16,7 @@ import UIKit
 class AnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     var isPresenting = false
     var oldFrame: CGRect?
-    
-    // a dictionary that can be used to store data
-    // that is needed by the animation
-    var data: [String: AnyObject] = [String: AnyObject]()
-    
+
     /**
     main function of the UIViewControllerAnimatedTransitioning Protocol
     */
@@ -39,18 +35,20 @@ class AnimationController: NSObject, UIViewControllerAnimatedTransitioning {
         var fromViewController = transitionContext.viewControllerForKey( UITransitionContextFromViewControllerKey )
         var toViewController = transitionContext.viewControllerForKey( UITransitionContextToViewControllerKey )
         
+        var height = UIScreen.mainScreen().bounds.height
+        var width = UIScreen.mainScreen().bounds.width
+        
+        toViewController!.view.transform = CGAffineTransformMakeScale( 0.0, 0.0 )
         
         // Add the 'to' view to the hirarchy
         containerView.insertSubview(toViewController!.view, aboveSubview: fromViewController!.view )
-        toViewController?.view.bringSubviewToFront(fromViewController!.view)
         
         UIView.animateWithDuration( self.transitionDuration(transitionContext), animations: {
-            let translation = CGAffineTransformMakeTranslation(0, 50)
-
-            fromViewController?.view.transform = translation
+            toViewController!.view.transform = CGAffineTransformMakeScale( 1.0, 1.0 )
             }, completion:{ finished in
                 transitionContext.completeTransition( true )
         })
+
     }
     
     
@@ -74,6 +72,6 @@ class AnimationController: NSObject, UIViewControllerAnimatedTransitioning {
     :returns: returns the duration of the animation
     */
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
-        return  1.0 as NSTimeInterval
+        return  0.4 as NSTimeInterval
     }
 }

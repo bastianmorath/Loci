@@ -24,11 +24,7 @@ class ATNavigationController: UINavigationController, UINavigationControllerDele
         self.delegate = self
     }
     
-    /**
-    if the toVC is a sublcass of ATViewController it may defined a custom ATAnimationController.
-    If ATAnimtionController is defined we return it
-    
-    returns: optional animation controller
+   /*    returns: optional animation controller
     */
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
@@ -37,7 +33,6 @@ class ATNavigationController: UINavigationController, UINavigationControllerDele
             var vC = toVC as ShareLocationVC
             vC.animationController.isPresenting = true
             return vC.animationController
-            
         }
         
         // Pop from 'ShareLocationVC'

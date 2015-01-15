@@ -1,19 +1,19 @@
 //
-//  CheckboxButton.swift
+//  HeartButton.swift
 //  AStalker
 //
-//  Created by Bastian Morath on 13/01/15.
+//  Created by Bastian Morath on 15/01/15.
 //  Copyright (c) 2015 Antum. All rights reserved.
 //
-// Diese UIButton-Subclass definiert einen "Checkbox"-Button. Der Status des imageViews wird der variable '.isChecked'  angepasst
+
 import UIKit
 
-class CheckboxButton: UIButton {
+class HeartButton: UIButton{
     
-    //CircleView: Grauer Kreis
-    var notSelectedView = CircleView(frame: CGRectMake(0, -6, 35, 35), type: .Empty)
-    //CheckmarkView: Roter Button mit Checkmark
-    var selectedView = CheckmarkView(frame: CGRectMake(4, -2, 27, 27), type: .Checkmark)
+    //CircleView: Grauer Kreis mit Herz
+    var notSelectedView = CircleView(frame: CGRectMake(0, -6, 35, 35), type: .Heart)
+    //CheckmarkView: Roter Button mit Heart
+    var selectedView = CheckmarkView(frame: CGRectMake(4, -2, 27, 27), type: .Heart)
     
     //bool Property. Versteckt,r esp. zeigt die zwei Views an.
     var isChecked:Bool = false {

@@ -5,14 +5,24 @@
 //  Created by Bastian Morath on 11/01/15.
 //  Copyright (c) 2015 Antum. All rights reserved.
 //
-// Ein UIView, welcher einen schwarzen kreis beinhaltet. Er wird im ShareLcoationVC gebraucht
+//  Ein UIView, welcher einen Kreis mi oder ohne Herz darstellt. Er präsentiert den !(UIButton.isSelected)-State 
+
 import UIKit
 
 class CircleView: UIView {
 
-    override init(frame: CGRect) {
+    enum Type {
+        case Empty
+        case Heart
+    }
+    
+    //Speichert den Type des Views
+    let type = Type.Empty
+    
+     init(frame: CGRect, type: Type) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clearColor()
+        self.type = type
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -32,9 +42,19 @@ class CircleView: UIView {
         // Create Circle
         CGContextAddArc(context, (frame.size.width)/2, frame.size.height/2, (frame.size.width - 10)/2, 0.0, CGFloat(M_PI * 2.0), 1)
         
+       
+
+        if self.type == .Heart{
+            UIColor.lightGrayColor().set()
+            //Herz hinzufügen
+            var imageView = UIImageView(image: UIImage(named: "Heart_LightGrey.png"))
+            imageView.frame = CGRectMake(4, 4, 27, 27)
+            imageView.userInteractionEnabled = false
+            //imageView.frame = rect
+            self.addSubview(imageView)
+        }
         // Draw
         CGContextStrokePath(context);
-
     }
     
 }
