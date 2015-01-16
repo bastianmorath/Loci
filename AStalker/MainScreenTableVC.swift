@@ -52,19 +52,7 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate  {
         
         sharedLocationsDataSource = MSSharedLocationsDataSource(tableView: self.tableView)
         self.tableView.dataSource = sharedLocationsDataSource
-        
-        //Swipe Gesture-Recognizer hinzufügen
-        var swipeUp = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
-        self.view.addGestureRecognizer(swipeUp)
-        
-        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
-        self.view.addGestureRecognizer(swipeDown)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "tableViewExtendedNotification", name:"TableViewExtendedNotificationFromMapVC", object: nil)
-        
-    }
+         }
     
     
     override func viewWillLayoutSubviews() {
@@ -103,35 +91,7 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate  {
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
-    
-    // Swipe Gesture Recognizer
-    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-        
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.Up:
-                println("Swiped up")
-                if !tableViewIsExtended{
-                    // tableView heraufanimieren
-                    NSNotificationCenter.defaultCenter().postNotificationName("TableViewExtendedNotificationFromTableViewVC", object: nil)
-                    self.animateTableViewUp()
-                }
-            case UISwipeGestureRecognizerDirection.Down:
-                println("Swiped down")
-                NSNotificationCenter.defaultCenter().postNotificationName("TableViewExtendedNotificationFromTableViewVC", object: nil)
-                self.animateTableViewDown()
-            default:
-                break
-            }
-        }
-    }
-    
-    // Notification; .tableViewIsExtendet inversen
-    func tableViewExtendedNotification(){
-        self.tableViewIsExtended = !self.tableViewIsExtended
-    }
-    
-    
+  
     //TODO: ShareButton vom mainScreenVC hier in den TableView verschieben, unter anderem, um auf ihn zugreifen zu können
     func animateTableViewUp(){
         UIView.animateWithDuration(0.5, animations: { () -> Void in

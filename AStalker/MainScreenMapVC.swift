@@ -19,9 +19,7 @@ import CoreLocation
 
 class MainScreenMapVC: UIViewController, MKMapViewDelegate {
     
-    //Wird vom MainScreenVC gesetzt; Zeigt, ob der TableView des MainScreenVC ausgeklappt ist oder nicht
-    var tableViewIsExtended = false
-    
+
     //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
     let kAspectRatioMapToTableViewIPhone: CGFloat = 1.24
     
@@ -54,14 +52,7 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         //show user location
         mapView.showsUserLocation = true
         zoomIn()
-        
-        //Swipe Gesture-Recognizer hinzufügen
-        var swipeDown = UISwipeGestureRecognizer(target: self, action: "respondToSwipeGesture:")
-        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
-        self.view.addGestureRecognizer(swipeDown)
-        
-        //Notification
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "tableViewExtendedNotification", name:"TableViewExtendedNotificationFromTableViewVC", object: nil)
+   
     }
 
 
@@ -92,27 +83,5 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    // Swipe gesture
-    // Swipe Gesture Recognizer
-    func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-        
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.Up:
-                println("Swiped up")
-                if tableViewIsExtended{
-                    // tableView herunteranimieren
-                    NSNotificationCenter.defaultCenter().postNotificationName("TableViewExtendedNotificationFromMapVC", object: nil)
-                }
-                       default:
-                break
-            }
-        }
     }
-
-    // Notification; .tableViewIsExtendet inversen
-    func tableViewExtendedNotification(){
-        self.tableViewIsExtended = !self.tableViewIsExtended
-    }
-}
 
