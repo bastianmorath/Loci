@@ -85,6 +85,15 @@ class LocationStore: NSObject{
         return localUserArray.first?
     }
     
+    func getMySharedLocationsFC() -> NSFetchedResultsController{
+        let predicate = NSPredicate(format: "self IN %@", self.getLocalUser()!.mySharedLocations)
+        
+        // sort them alphabetically
+        let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true )
+        let frc = coreDataStore.createFetchedResultsController("Location", predicate: predicate, sortDescriptors: [sortDescriptor])
+        return frc
+    }
+    
     /**************************** WRITE Methods **********************************/
     func createUser(name: String) -> User? {
         var userObject = self.coreDataPortal.createObject("User") as User?
@@ -118,15 +127,13 @@ class LocationStore: NSObject{
         var locationObject = self.coreDataPortal.createObject("Location") as Location?
         if let location = locationObject {
             location.name = name
-            if let timestamo = timestamp {
-            location.timestamp = timestamp!
+            if let timestamp = timestamp {
+            location.timestamp = timestamp
             }
             location.longitude = longitude
             location.latitude = latitude
-            if (user != nil) {
-                user!.sharedLocations = user!.sharedLocations.setByAddingObject(location)
-            } else {
-                
+            if let user = user {
+                location.creator = user
             }
             return location
         }
@@ -144,9 +151,19 @@ class LocationStore: NSObject{
     
     func createDebugLocalUser(){
         var localUser = self.createLocalUser("Bastian Morath", phoneNumber: "07954501010")
-        var userArray =  self.getUser()
-        localUser.contacts = NSSet(array: userArray)
+        let userArray =  self.getUser()
         let friendsArray = [userArray[0], userArray[2], userArray[4]]
+        var mySharedLocationsArray: [Location] = []
+        for i in 1...10 {
+            let name = "Location \(i)"
+            var todaysDate:NSDate = NSDate()
+            var location = self.createLocation(name, timestamp: todaysDate, longitude: Double(i) * 3, latitude: Double()*2, user: userArray[0])
+            mySharedLocationsArray.append(location!)
+        }
+
+        
+        localUser.mySharedLocations = NSSet(array: mySharedLocationsArray)
+        localUser.contacts = NSSet(array: userArray)
         localUser.friends = NSSet(array: friendsArray)
     }
 }

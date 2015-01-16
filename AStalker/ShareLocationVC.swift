@@ -35,24 +35,9 @@ class ShareLocationVC: UIViewController {
         
         
         // Strasse und Ort bestimmen
-        var location = CLLocation(latitude: self.location.latitude.doubleValue, longitude: self.location.longitude.doubleValue)
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-            if error != nil {
-                println("Reverse geocoder failed with error" + error.localizedDescription)
-                return
-            }
-            if placemarks.count > 0 {
-                let pm = placemarks[0] as CLPlacemark
-                var city = pm.addressDictionary["City"] as String
-                var street = pm.addressDictionary["Street"] as String
-                
-                self.streetLabel.text = street
-                self.placeLabel.text = city
-            }
-            else {
-                println("Problem with the data received from geocoder")
-            }
-        })
+        
+        self.streetLabel.text = self.location.getStreet()
+        self.placeLabel.text = self.location.getCity()
         
         //ShareButton
         self.shareButton = UIButton.ATButton(UIButton.ATButtonType.Share, color: UIButton.ATColor.White)
@@ -61,7 +46,7 @@ class ShareLocationVC: UIViewController {
             self.view.addSubview(button)
             button.positionButtonToLocation(.TopRight)
         }
-
+        
         
         // TableView DataSource definieren
         let localUser = (LocationStore.defaultStore().getLocalUser())
@@ -76,6 +61,7 @@ class ShareLocationVC: UIViewController {
         label.font = UIFont.ATFont()
         label.text = "Share"
         headerView.addSubview(label)
+        self.tableView.tableHeaderView = headerView;
         return headerView
     }
     

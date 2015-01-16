@@ -9,7 +9,7 @@
 import UIKit
 
 class FriendsLocationTableViewCell: UITableViewCell {
-
+    
     
     // IBOutlets
     @IBOutlet weak var imageIconView: UIImageView!
@@ -28,13 +28,29 @@ class FriendsLocationTableViewCell: UITableViewCell {
         dateLabel.font = UIFont.ATFont()
         timeLabel.font = UIFont.ATTableViewSmallFont()
         
+        self.imageIconView.image = UIImage(named:"LocationPinBlack.png")
+    }
     
-    }
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        //  Configure the view for the selected state
+    
+    override func configureWithModelObject(model: AnyObject?) {
+        let location = model as? Location
+        if let location = location {
+            self.userNameLabel.text = location.creator.name
+            //TODO: Location.getStreet + location.getCity funktionieren in diesem Controller nicht, in anderen jedoch schon
+            self.addressLabel.text = location.getStreet() + ", " + location.getCity()
+            self.dateLabel.text = location.getDateFormatted()
+            self.timeLabel.text = location.getTimeFormatted()
+        }
+        
+        //Hier müsste überprüft werden, ob der User die Location schon angesehen hat ( alles erscheint schwarz), oder nicht ( alles erscheint rot)
+        
     }
+    
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     
 }

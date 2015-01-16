@@ -19,12 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-  
-//        
-//        var storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//        
-//        var firstViewController = storyboard.instantiateViewControllerWithIdentifier("mainScreenVC") as MainScreenVC
-        
+
         var firstViewController = MainScreenVC()
         self.rootViewController = ATNavigationController(rootViewController: firstViewController)
         self.rootViewController!.delegate = self.rootViewController

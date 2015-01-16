@@ -145,18 +145,17 @@ class MainScreenVC: UIViewController {
     }
     
     func myLocationButtonPressed() {
-        var latitude = mapVC.mapView.userLocation?.location?.coordinate.latitude
-        var longitude = mapVC.mapView.userLocation?.location?.coordinate.longitude
-        
-        if let longitude = longitude{
-            if let latitude = latitude{
+        var longitude = 47.35 as Double
+        var latitude = 8.68333 as Double
+        if let location = mapVC.mapView.userLocation?.location{
+            latitude = location.coordinate.latitude
+            longitude = location.coordinate.longitude
+        }
                 locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: longitude, latitude: latitude, user: nil)
                 
                 var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
                 shareLocationVC.location = locationToShare
                 self.navigationController?.pushViewController(shareLocationVC, animated: true)
-            }
-        }
     }
     
     func shareYourLocationButtonPressed(){

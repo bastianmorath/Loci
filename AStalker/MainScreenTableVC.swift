@@ -14,30 +14,30 @@
 import Foundation
 import UIKit
 
-class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDelegate  {
+class MainScreenTableVC: UIViewController, UITableViewDelegate  {
     
     var tableView:UITableView!
+    
+    //DataSource des TableViews
+    var sharedLocationsDataSource: MSSharedLocationsDataSource!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView = UITableView(frame: self.view.frame, style: .Plain)
+        self.tableView.delegate = self
+        
         // layout tableView
-        tableView = UITableView()
         self.view.addSubview(tableView)
         self.view.setTranslatesAutoresizingMaskIntoConstraints( false )
         
-        // setup tableView
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        let nibName = UINib(nibName: "FriendsLocationTableViewCell", bundle:nil)
-        self.tableView.registerNib(nibName, forCellReuseIdentifier: "FriendsLocationTableViewCell")
-
-        let nibNameHeader = UINib(nibName: "FriendsLocationHeaderTableViewCell", bundle:nil)
-        self.tableView.registerNib(nibNameHeader, forCellReuseIdentifier: "FriendsLocationHeaderTableViewCell")
-
         
+        //tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        
+        sharedLocationsDataSource = MSSharedLocationsDataSource(tableView: self.tableView)
+        self.tableView.dataSource = sharedLocationsDataSource
     }
     
     override func viewWillLayoutSubviews() {
@@ -45,50 +45,26 @@ class MainScreenTableVC: UIViewController, UITableViewDataSource, UITableViewDel
         tableView.frame = self.view.bounds
     }
     
-    // MARK:- Data Source
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    // MARK:- Delegates
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell:FriendsLocationTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("FriendsLocationTableViewCell") as FriendsLocationTableViewCell
-        var headerCell:FriendsLocationHeaderTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("FriendsLocationHeaderTableViewCell") as FriendsLocationHeaderTableViewCell
-        if indexPath.row == 0 {
-            return headerCell
-        }
-        // set properties to cell
-        cell.userNameLabel.text = "Aleksandar Papez"
-        cell.timeLabel.text = "12:45"
-        cell.dateLabel.text = "10. Januar"
-        cell.addressLabel.text = "Im Werk 11, Uster"
-        cell.imageIconView.image = UIImage(named: "BigLocationPin")
-        cell.imageIconView.backgroundColor = UIColor.whiteColor()
-    
-        
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("cell selected")
-    }
-    
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            // Header Cell
-            return 60
-        } else {
-            return 55
-        }
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
-
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRectMake(0, 0, 50, 40))
+        headerView.backgroundColor = UIColor.clearColor()
+        var sharedLocationsLabel: UILabel = UILabel(frame: CGRectMake(28, -4, 40, 50))
+        sharedLocationsLabel.font = UIFont.ATFont()
+        sharedLocationsLabel.text = "Shared Locations"
+        headerView.addSubview(sharedLocationsLabel)
+        
+        //TODO: Diesem label Constraints hinzufügen
+        var timeLabel: UILabel = UILabel(frame: CGRectMake(280, -4, 40, 50))
+        timeLabel.font = UIFont.ATFont()
+        timeLabel.text = "Time"
+        headerView.addSubview(timeLabel)
+        
+        self.tableView.tableHeaderView = headerView;
+        return headerView
+    }
 }

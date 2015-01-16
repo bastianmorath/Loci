@@ -6,9 +6,8 @@
 //  Copyright (c) 2015 Antum. All rights reserved.
 //
 
-import Foundation
 import UIKit
-import CoreData
+
 
 class ShareLocationDataSource: ATableViewDataSource{
     
