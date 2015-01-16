@@ -8,10 +8,15 @@
 
 /* This class holds all it's child ViewControllers and their views in ContainerViews */
 
+/*
+tableView ausklappen:
+Der TableView wird mit einer Swipe-Geste im TableView nach oben ausgeklappt. Er wird durch eine Swipe-Geste in der Map oder im TableView nach unten eingeklappt, SOFERN im TableView ganz nach oben gescrollt wird. Sonst wird zuerst nach oben gescrollt. 
+Die Gesture-Recognizer werden vom TableVC und MapVC gehandelt. Wird in einem der beiden Controller geswiped, wird eine Notification in den anderen Controller gesendet, um dort die Bool-Property '.tableViewIsExtended' zu inversen
+*/
 import Foundation
 import UIKit
 
-class MainScreenVC: UIViewController {
+class MainScreenVC: UIViewController, UIScrollViewDelegate {
     
     
     //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
@@ -81,21 +86,21 @@ class MainScreenVC: UIViewController {
         }
         self.mapContainer = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, mapHeight))
         self.view.addSubview(self.mapContainer)
-        mapContainer.addSubview(mapVC.view)
-        mapVC.didMoveToParentViewController(self)
+        self.mapContainer.addSubview(self.mapVC.view)
+        self.mapVC.didMoveToParentViewController(self)
         
         
         //  Setup TableViewController
-        tableVC = MainScreenTableVC()
-        self.addChildViewController(tableVC)
+        self.tableVC = MainScreenTableVC()
+        self.addChildViewController(self.tableVC)
         
-        //
         self.tableViewContainer = UIView(frame: CGRectMake(0, self.view.frame.height-self.tableViewHeight, self.view.frame.size.width, self.tableViewHeight))
-        
+        tableViewContainer.addSubview(self.tableVC.view)
         self.view.addSubview(self.tableViewContainer)
-        tableViewContainer.addSubview(tableVC.view)
         tableVC.didMoveToParentViewController(self)
-        
+
+        // TableView.isScrollable = false, wird nur aktiviert, wenn der TwableView ausgeklappt wurde
+        self.tableVC.tableView.scrollEnabled = false
         
         // Setup Buttons
         myLocationsButton = UIButton.ATButton(.MultipleLocations, color: .White)
@@ -159,27 +164,28 @@ class MainScreenVC: UIViewController {
     }
     
     func shareYourLocationButtonPressed(){
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
-            var transitionConstant = numberOfRows * 55 - self.tableViewHeight
-            
-            let topSpace = 100 as CGFloat
-            let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
-            transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
-            
-            if self.tableViewIsExtended{
-                // Button grau einfärben
-                self.shareYourLocationButton.backgroundColor = UIColor.GreyColor()
-                self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
-            } else {
-                // Button rot einfärben
-                self.shareYourLocationButton.backgroundColor = UIColor.RedColor()
-                self.view.backgroundColor = UIColor.RedColor()
-                self.view.frame = CGRectMake(0, -transitionConstant, self.view.frame.width, self.view.frame.height+2*transitionConstant)
-            }
-            
-        })
+//        UIView.animateWithDuration(0.5, animations: { () -> Void in
+//            let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
+//            var transitionConstant = numberOfRows * 55 - self.tableViewHeight
+//            
+//            let topSpace = 100 as CGFloat
+//            let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
+//            transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
+//            
+//            if self.tableViewIsExtended{
+//                // Button grau einfärben
+//                self.shareYourLocationButton.backgroundColor = UIColor.GreyColor()
+//                self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+//            } else {
+//                // Button rot einfärben
+//                self.shareYourLocationButton.backgroundColor = UIColor.RedColor()
+//                self.view.backgroundColor = UIColor.RedColor()
+//                self.view.frame = CGRectMake(0, -transitionConstant, self.view.frame.width, self.view.frame.height+2*transitionConstant)
+//            }
+//            
+//        })
         
+        // Zwischen den TableViews switchen
         self.tableViewIsExtended = !self.tableViewIsExtended
     }
     
@@ -188,6 +194,7 @@ class MainScreenVC: UIViewController {
         self.navigationController?.pushViewController(addFriendsVC, animated: true)
         
     }
+
 }
 
 

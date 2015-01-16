@@ -23,36 +23,38 @@ class Location: NSManagedObject {
     func getStreet() -> String {
         var street = "Test-Strasse"
         // Strasse
-        var location = CLLocation(latitude: self.latitude.doubleValue, longitude: self.longitude.doubleValue)
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-            if placemarks.count > 0 {
-                let pm = placemarks[0] as CLPlacemark
-                street = pm.addressDictionary["Street"] as String
-            } })
+//        var location = CLLocation(latitude: self.latitude.doubleValue, longitude: self.longitude.doubleValue)
+//        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+//            if placemarks.count > 0 {
+//                let pm = placemarks[0] as CLPlacemark
+//                street = pm.addressDictionary["Street"] as String
+//            } })
         return street
     }
     
     func getCity() -> String {
         var city = "Test-City"
         // City
-        var location = CLLocation(latitude: self.latitude.doubleValue, longitude: self.longitude.doubleValue)
-        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-            if placemarks.count > 0 {
-                let pm = placemarks[0] as CLPlacemark
-                city = pm.addressDictionary["City"] as String
-            } })
+//        var location = CLLocation(latitude: self.latitude.doubleValue, longitude: self.longitude.doubleValue)
+//        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+//            if placemarks.count > 0 {
+//                let pm = placemarks[0] as CLPlacemark
+//                city = pm.addressDictionary["City"] as String
+//            } })
         return city
     }
     
     func getTimeFormatted() -> String{
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "h:mm"
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        dateFormatter.dateFormat = "hh:mm"
         return dateFormatter.stringFromDate(NSDate())
     }
     
     func getDateFormatted() -> String {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "MM. dd"
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        dateFormatter.dateFormat = "dd. MMMM"
         return dateFormatter.stringFromDate(NSDate())
     }
 }
