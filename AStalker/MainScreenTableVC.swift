@@ -14,7 +14,14 @@
 import Foundation
 import UIKit
 
+
+protocol ATModelSource {
+    func modelForIndexPath( indexPath: NSIndexPath ) -> AnyObject?
+}
+
 class MainScreenTableVC: UIViewController, UITableViewDelegate  {
+    
+   
     
     //Wird vom MainScreenVC gesetzt; Zeigt, ob der TableView ausgeklappt ist oder nicht
     var tableViewIsExtended = false
@@ -41,13 +48,14 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate  {
         }
     }
     
+    var delegate:TableViewDelegate! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.tableViewHeight)
         self.tableView = UITableView(frame: self.view.frame, style: .Plain)
         self.tableView.delegate = self
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         self.view.addSubview(tableView)
         
         sharedLocationsDataSource = MSSharedLocationsDataSource(tableView: self.tableView)
@@ -65,19 +73,19 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate  {
         // Dispose of any resources that can be recreated.
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("Selected Row")
+        delegate!.tableView(tableView, didSelectRowAtIndexPath: indexPath)
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRectMake(0, 0, 50, 40))
+        let headerView = UIView(frame: CGRectMake(0, 40, 100, 40))
         headerView.backgroundColor = UIColor.clearColor()
-        var sharedLocationsLabel: UILabel = UILabel(frame: CGRectMake(32, 25, 100, 50))
+        var sharedLocationsLabel: UILabel = UILabel(frame: CGRectMake(32, 48, 100, 15))
         sharedLocationsLabel.font = UIFont.ATFont()
         sharedLocationsLabel.text = "Shared Locations"
         headerView.addSubview(sharedLocationsLabel)
         
         //TODO: Diesem label Constraints hinzufügen
-        var timeLabel: UILabel = UILabel(frame: CGRectMake(270, 25, 40, 50))
+        var timeLabel: UILabel = UILabel(frame: CGRectMake(270, 48, 40, 15))
         timeLabel.font = UIFont.ATFont()
         timeLabel.text = "Time"
         
@@ -89,32 +97,11 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate  {
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 20
     }
   
-    //TODO: ShareButton vom mainScreenVC hier in den TableView verschieben, unter anderem, um auf ihn zugreifen zu können
-    func animateTableViewUp(){
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            let numberOfRows = CGFloat(self.tableView.numberOfRowsInSection(0))
-            var transitionConstant = numberOfRows * 55 - self.tableViewHeight
-            
-            let topSpace = 100 as CGFloat
-            let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
-            transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
-            //self.shareYourLocationButton.backgroundColor = UIColor.RedColor()
-            self.view.frame = CGRectMake(0, -transitionConstant, self.view.frame.width, self.view.frame.height+2*transitionConstant)
-        })
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 52
     }
-    
-    func animateTableViewDown(){
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            let numberOfRows = CGFloat(self.tableView.numberOfRowsInSection(0))
-            var transitionConstant = numberOfRows * 55 - self.tableViewHeight
-            
-            let topSpace = 100 as CGFloat
-            let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
-            transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
-            //self.shareYourLocationButton.backgroundColor = UIColor.GreyColor()
-            self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)        })
-    }
+
 }

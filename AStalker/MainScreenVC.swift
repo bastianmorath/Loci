@@ -10,13 +10,18 @@
 
 /*
 tableView ausklappen:
-Der TableView wird mit einer Swipe-Geste im TableView nach oben ausgeklappt. Er wird durch eine Swipe-Geste in der Map oder im TableView nach unten eingeklappt, SOFERN im TableView ganz nach oben gescrollt wird. Sonst wird zuerst nach oben gescrollt. 
+Der TableView wird mit einer Swipe-Geste im TableView nach oben ausgeklappt. Er wird durch eine Swipe-Geste in der Map oder im TableView nach unten eingeklappt, SOFERN im TableView ganz nach oben gescrollt wird. Sonst wird zuerst nach oben gescrollt.
 Die Gesture-Recognizer werden vom TableVC und MapVC gehandelt. Wird in einem der beiden Controller geswiped, wird eine Notification in den anderen Controller gesendet, um dort die Bool-Property '.tableViewIsExtended' zu inversen
 */
 import Foundation
 import UIKit
 
-class MainScreenVC: UIViewController, UIScrollViewDelegate {
+
+// Protocol, um vom TableVC die Nachricht zu bekommen, wenn eine cell gedrückt wurde
+protocol TableViewDelegate{
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+}
+class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     
     
     //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
@@ -26,16 +31,12 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate {
     let kAspectRatioMapToTableViewIPad: CGFloat = 1.04
     
     
-    
-    
     // MARK: - Properies und Variabeln
     
     // child controllers
     var mapVC: MainScreenMapVC!
     var tableVC: MainScreenTableVC!
-    
-    // Location, welche dem ShareLocationVC übergeben wird
-    var locationToShare:Location?
+
     
     // Containers to hold the child controllers view
     var mapContainer: UIView!
@@ -44,13 +45,14 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate {
     // Gibt an, ob der TableView ausgeklappt ist oder nicht.
     var tableViewIsExtended:Bool = false {
         willSet{
-            
             if newValue == true {
                 self.mapVC.mapView.userInteractionEnabled = false
                 self.tableVC.tableView.scrollEnabled = true
+                self.tableVC.tableView.userInteractionEnabled = true
             } else {
                 self.mapVC.mapView.userInteractionEnabled = true
                 self.tableVC.tableView.scrollEnabled = false
+                self.tableVC.tableView.userInteractionEnabled = false
             }
         }
     }
@@ -65,7 +67,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-
+    
     
     
     // Buttons
@@ -73,7 +75,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate {
     //Zeigt alle Kontakte des Users an, insbesondere wo diese sich befinden und wann sie dort waren
     var contactButton: UIButton!
     
-    /// Der User shared seine Location und kann auswählen, mit welchen Kontakten er das machen will
+    /// 
     var shareYourLocationButton: UIButton!
     
     /// Zeigt die Favoriten/Meist besuchten Locations vom Nutzer an. Dort sieht man auch, wie lange man an einer Location war.
@@ -82,11 +84,10 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate {
     /// Die momentane Location des Users wird auf der Karte angezeigt
     var locateMeButton: UIButton!
     
-    
+    //MARK:- Methoden
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Setup MainScreenMapVC
+        // Setup MapVC
         mapVC = MainScreenMapVC()
         self.addChildViewController(mapVC)
         var mapHeight:CGFloat!
@@ -101,17 +102,17 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate {
         self.mapVC.didMoveToParentViewController(self)
         
         
-        //  Setup TableViewController
+        //  Setup TableVC
         self.tableVC = MainScreenTableVC()
+        self.tableVC.delegate = self
         self.addChildViewController(self.tableVC)
         
         self.tableViewContainer = UIView(frame: CGRectMake(0, self.view.frame.height-self.tableViewHeight, self.view.frame.size.width, self.tableViewHeight))
         tableViewContainer.addSubview(self.tableVC.view)
         self.view.addSubview(self.tableViewContainer)
         tableVC.didMoveToParentViewController(self)
-
-        // TableView.isScrollable = false, wird nur aktiviert, wenn der TwableView ausgeklappt wurde
-        self.tableVC.tableView.scrollEnabled = false
+        
+        self.tableViewIsExtended = false
         
         // Setup Buttons
         myLocationsButton = UIButton.ATButton(.MultipleLocations, color: .White)
@@ -134,36 +135,16 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate {
         self.mapContainer.addSubview(locateMeButton)
         locateMeButton.positionButtonToLocation(.BottomRight)
         
-        //Swipe Gesture Up für TableView
-        var swipeUpTableViewGesture = UISwipeGestureRecognizer(target: self, action: "swipeInTableView:")
+        //Swipe Gesture Up
+        var swipeUpTableViewGesture = UISwipeGestureRecognizer(target: self, action: "swipeUp")
         swipeUpTableViewGesture.direction = UISwipeGestureRecognizerDirection.Up
         self.view.addGestureRecognizer(swipeUpTableViewGesture)
-
-        //Swipe Gesture Down für TableView
-        var swipeDownTableViewGesture = UISwipeGestureRecognizer(target: self, action: "swipeInTableView:")
-        swipeDownTableViewGesture.direction = UISwipeGestureRecognizerDirection.Down
-        self.view.addGestureRecognizer(swipeDownTableViewGesture)
-
-        //Swipe Gesture Down für Map
-        var swipeDownMap = UISwipeGestureRecognizer(target: self, action: "swipeDownInMap")
+        
+        
+        //Swipe Gesture Down
+        var swipeDownMap = UISwipeGestureRecognizer(target: self, action: "swipeDown")
         swipeDownMap.direction = UISwipeGestureRecognizerDirection.Down
         self.view.addGestureRecognizer(swipeDownMap)
-    }
-    
-    
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showShareYourLocationVCSegue" {
-            var shareLocationVC:ShareLocationVC = segue.destinationViewController as ShareLocationVC
-            
-            shareLocationVC.location = self.locationToShare!
-        }
-        if segue.identifier == "showFriendsVCSegue" {
-            var shareLocationVC:ShareLocationVC = segue.destinationViewController as ShareLocationVC
-            
-            shareLocationVC.location = self.locationToShare!
-        }
     }
     
     // MARK: - Button Handling
@@ -173,22 +154,10 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate {
     }
     
     func myLocationButtonPressed() {
-        var longitude = 47.35 as Double
-        var latitude = 8.68333 as Double
-        if let location = mapVC.mapView.userLocation?.location{
-            latitude = location.coordinate.latitude
-            longitude = location.coordinate.longitude
-        }
-                locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: longitude, latitude: latitude, user: nil)
-                
-                var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
-                shareLocationVC.location = locationToShare
-                self.navigationController?.pushViewController(shareLocationVC, animated: true)
+        
     }
     
     func shareYourLocationButtonPressed(){
-
-        
         // Zwischen den TableViews switchen
         self.tableViewIsExtended = !self.tableViewIsExtended
     }
@@ -198,30 +167,20 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate {
         self.navigationController?.pushViewController(addFriendsVC, animated: true)
         
     }
-
-    func swipeInTableView(gesture: UIGestureRecognizer) {
-        
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizerDirection.Up:
-                if !tableViewIsExtended{
-                    // tableView ausklappen
-                    self.animateViewToTop()
-                }
-            case UISwipeGestureRecognizerDirection.Down:
-                println("ContentOffset of TableView: \(self.tableVC.tableView.contentOffset.y)")
-                if (tableViewIsExtended && self.tableVC.tableView.contentOffset.y == 0){
-                    // tableView einklappen
-                    println("Table View einklappen von TC")
-                }
-            default:
-                break
-            }
+    
+    
+    // MARK:- Swipe-Gesture
+    func swipeUp(){
+        if !tableViewIsExtended{
+            // tableView ausklappen
+            self.animateViewToTop()
+            
         }
     }
     
-    func swipeDownInMap(){
-        if tableViewIsExtended{
+    func swipeDown(){
+        //TODO: Momentan kann nur von der Map aus heruntergeswiped werden
+        if (tableViewIsExtended /*&& self.tableVC.tableView.contentOffset.y == 0*/){
             // tableView einklappen
             self.animateViewToBottom()
         }
@@ -229,35 +188,51 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate {
     
     func animateViewToTop(){
         self.tableViewIsExtended =  true
-
+        
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
-            var transitionConstant = numberOfRows * 55 - self.tableViewHeight
+            // transitionConstant: Höhe des TableViews mit allen Cells (Cells + HeaderView) - Höhe des momentanen TableViews
+            var transitionConstant = numberOfRows * 52  + 61 - self.tableViewHeight
             
-            let topSpace = 100 as CGFloat
+            let topSpace = 82 as CGFloat
             let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
             transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
             self.shareYourLocationButton.backgroundColor = UIColor.RedColor()
-            self.view.frame = CGRectMake(0, -transitionConstant, self.view.frame.width, self.view.frame.height+2*transitionConstant)
-            self.tableVC.view.frame = CGRectMake(0, 0, self.view.frame.width, transitionConstant+self.tableViewHeight)
-            self.tableVC.tableView.frame = self.tableVC.view.frame
+            //ganzen View nach oben verschieben + tableView-Höhe vergrössern
+            self.view.frame = CGRectMake(0, -transitionConstant, self.view.frame.width, self.view.frame.height+transitionConstant)
+            //TableViewContainer.frame Höhe anpassen
+            self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, self.view.frame.width, transitionConstant+self.tableViewHeight)
+            let tableViewFrame = CGRectMake(0, 0, self.view.frame.width, transitionConstant+self.tableViewHeight)
+            //self.tableVC.view.frame = CGRectMake(0, 0, self.view.frame.width, transitionConstant+self.tableViewHeight)
+            self.tableVC.tableView.frame = CGRectMake(0, 0, self.view.frame.width, transitionConstant+self.tableViewHeight)
         })
     }
     
+    
     func animateViewToBottom(){
         self.tableViewIsExtended = false
-
+        
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
-            var transitionConstant = numberOfRows * 55 - self.tableViewHeight
-            
-            let topSpace = 100 as CGFloat
-            let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
-            transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
-            self.shareYourLocationButton.backgroundColor = UIColor.RedColor()
-            self.view.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height-2*transitionConstant)
-            self.tableVC.tableView.frame = CGRectMake(0, 0, self.view.frame.width, self.tableViewHeight)
+                var transitionConstant = numberOfRows * 52 - self.tableViewHeight
+                
+                let topSpace = 100 as CGFloat
+                let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
+                transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
+                self.shareYourLocationButton.backgroundColor = UIColor.GreyColor()
+                self.view.frame = CGRectMake(0, 0, self.view.frame.width, UIScreen.mainScreen().bounds.height)
+                self.tableVC.tableView.frame = CGRectMake(0, 0, self.view.frame.width, self.tableViewHeight)
+                self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, self.view.frame.width, self.tableViewHeight)
+                
+                // Scroll to Top of TableView
+                self.tableVC.tableView.contentOffset = CGPointMake(0, 0-self.tableVC.tableView.contentInset.top)
         })
+    }
+    
+    // MARK:- TableView Delegate
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        println("Did Select row at IndexPath:\(indexPath.row)")
+        
     }
 }
 

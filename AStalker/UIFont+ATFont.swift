@@ -25,7 +25,7 @@ extension UIFont{
     }
     
     class func ATFont() -> UIFont? {
-        return UIFont( name: "UniversLTStd-Light", size: 12.0 )
+        return UIFont( name: "UniversLTStd-Light", size: 10.0 )
     }
     
     class func ATBoldFont() -> UIFont? {

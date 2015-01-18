@@ -52,7 +52,6 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         //show user location
         mapView.showsUserLocation = true
         zoomIn()
-   
     }
 
 
@@ -76,7 +75,20 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         mapView.centerCoordinate = userLocation.location.coordinate
     }
 
-
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+        println("Did Select Annotation View")
+        var longitude = 47.35 as Double
+        var latitude = 8.68333 as Double
+        if let location = self.mapView.userLocation?.location{
+            latitude = location.coordinate.latitude
+            longitude = location.coordinate.longitude
+        }
+        var locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: longitude, latitude: latitude, user: nil)
+        
+        var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
+        shareLocationVC.location = locationToShare
+        self.navigationController?.pushViewController(shareLocationVC, animated: true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

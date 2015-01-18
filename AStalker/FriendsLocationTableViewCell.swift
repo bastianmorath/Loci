@@ -18,6 +18,7 @@ class FriendsLocationTableViewCell: UITableViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     
+    //TODO: Constraints dem StrassenLabel + userNameLabel hinzufügen
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,6 +28,7 @@ class FriendsLocationTableViewCell: UITableViewCell {
         addressLabel.font = UIFont.ATFont()
         dateLabel.font = UIFont.ATFont()
         timeLabel.font = UIFont.ATTableViewSmallFont()
+        
         
         self.imageIconView.image = UIImage(named:"LocationPinBlack.png")
     }
