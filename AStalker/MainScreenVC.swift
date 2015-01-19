@@ -45,6 +45,26 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     var mapContainer: UIView!
     var tableViewContainer: UIView!
     
+  
+    
+    
+    
+    // Buttons
+    
+    //Zeigt alle Kontakte des Users an, insbesondere wo diese sich befinden und wann sie dort waren
+    var contactButton: UIButton!
+    
+    /// 
+    var shareYourLocationButton: UIButton!
+    
+    /// Zeigt die Favoriten/Meist besuchten Locations vom Nutzer an. Dort sieht man auch, wie lange man an einer Location war.
+    var myLocationsButton: UIButton!
+    
+    /// Die momentane Location des Users wird auf der Karte angezeigt
+    var locateMeButton: UIButton!
+    
+    
+    //MARK:- Computet Properties
     // Gibt an, ob der TableView ausgeklappt ist oder nicht.
     var tableViewIsExtended:Bool = false {
         willSet{
@@ -71,21 +91,24 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         }
     }
     
-    
-    
-    // Buttons
-    
-    //Zeigt alle Kontakte des Users an, insbesondere wo diese sich befinden und wann sie dort waren
-    var contactButton: UIButton!
-    
-    /// 
-    var shareYourLocationButton: UIButton!
-    
-    /// Zeigt die Favoriten/Meist besuchten Locations vom Nutzer an. Dort sieht man auch, wie lange man an einer Location war.
-    var myLocationsButton: UIButton!
-    
-    /// Die momentane Location des Users wird auf der Karte angezeigt
-    var locateMeButton: UIButton!
+    //Minimale Höhe der Map, wenn der tableView ausgeklappt ist(Abhängig von der Screen-Grösse)
+    var topSpace:CGFloat{
+        get{
+            if UIDevice.currentDevice().isIPhone5(){
+                return 82
+            }
+            if UIDevice.currentDevice().isIPhone6(){
+                return 150
+            }
+            if UIDevice.currentDevice().isIPhone6Plus(){
+                return 150
+            }
+            if UIDevice.currentDevice().isIPad(){
+                return 250
+            }
+            return 82
+        }
+    }
     
     //MARK:- Methoden
     override func viewDidLoad() {
@@ -148,12 +171,6 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         var swipeDownMap = UISwipeGestureRecognizer(target: self, action: "swipeDown")
         swipeDownMap.direction = UISwipeGestureRecognizerDirection.Down
         self.view.addGestureRecognizer(swipeDownMap)
-        
-        println((UIDevice.currentDevice().isIPad()))
-        println(UIDevice.currentDevice().isIPhone5())
-        println(UIDevice.currentDevice().isIPhone6())
-        println(UIDevice.currentDevice().isIPhone6Plus())
-
     }
     
     // MARK: - Button Handling
@@ -188,8 +205,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     }
     
     func swipeDown(){
-        //TODO: Momentan kann nur von der Map aus heruntergeswiped werden
-        if (tableViewIsExtended /*&& self.tableVC.tableView.contentOffset.y == 0*/){
+        if (tableViewIsExtended){
             // tableView einklappen
             self.animateViewToBottom()
         }
@@ -201,9 +217,9 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
             // transitionConstant: Höhe des TableViews mit allen Cells (Cells + HeaderView) - Höhe des momentanen TableViews
-            var transitionConstant = numberOfRows * 52  + 61 - self.tableViewHeight
+            var transitionConstant = numberOfRows * 52  + 70 - self.tableViewHeight
             
-            let topSpace = 82 as CGFloat
+            let topSpace = self.topSpace
             let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
             transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
             //ganzen View nach oben verschieben + tableView-Höhe vergrössern
@@ -223,7 +239,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
             let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
                 var transitionConstant = numberOfRows * 52 - self.tableViewHeight
                 
-                let topSpace = 100 as CGFloat
+                let topSpace = self.topSpace
                 let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
                 transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
                 self.view.frame = CGRectMake(0, 0, self.view.frame.width, UIScreen.mainScreen().bounds.height)

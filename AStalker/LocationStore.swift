@@ -155,7 +155,7 @@ class LocationStore: NSObject{
         let userArray =  self.getUser()
         let friendsArray = [userArray[0], userArray[2], userArray[4]]
         var mySharedLocationsArray: [Location] = []
-        for i in 1...15 {
+        for i in 1...13 {
             let name = "Location \(i)"
             var todaysDate:NSDate = NSDate()
             var location = self.createLocation(name, timestamp: todaysDate, longitude: Double(i) * 3, latitude: Double()*2, user: userArray[0])

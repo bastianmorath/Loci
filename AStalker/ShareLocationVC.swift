@@ -57,7 +57,7 @@ class ShareLocationVC: UIViewController {
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRectMake(0, 0, 50, 40))
         headerView.backgroundColor = UIColor.clearColor()
-        var label: UILabel = UILabel(frame: CGRectMake(28, -4, 40, 50))
+        var label: UILabel = UILabel(frame: CGRectMake(28, 40, 40, 50))
         label.font = UIFont.ATFont()
         label.text = "Share"
         headerView.addSubview(label)

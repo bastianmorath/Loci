@@ -47,6 +47,7 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
         headerView.backgroundColor = UIColor.clearColor()
         var label: UILabel = UILabel(frame: CGRectMake(28, -4, 40, 50))
         label.font = UIFont.ATFont()
+
         headerView.addSubview(label)
         
         //Friends-Section
@@ -56,6 +57,8 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
             // Contacts-Section
             label.text = "Contacts"
         }
+        self.tableView.tableHeaderView = headerView;
+
         return headerView
     }
     

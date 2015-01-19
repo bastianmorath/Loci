@@ -77,29 +77,34 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate, UIScrollViewDele
         delegate.tableView(tableView, didSelectRowAtIndexPath: indexPath)
     }
     
-    //TODO: Time-View constraints
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRectMake(0, 40, 100, 40))
+        let headerView = UIView(frame: CGRectMake(0, 0, 100, 40))
         headerView.backgroundColor = UIColor.clearColor()
-        var sharedLocationsLabel: UILabel = UILabel(frame: CGRectMake(32, 48, 100, 15))
+        var sharedLocationsLabel: UILabel = UILabel(frame: CGRectMake(32, 58, 100, 15))
         sharedLocationsLabel.font = UIFont.ATFont()
         sharedLocationsLabel.text = "Shared Locations"
         headerView.addSubview(sharedLocationsLabel)
         
-        //TODO: Diesem label Constraints hinzufügen
-        var timeLabel: UILabel = UILabel(frame: CGRectMake(270, 48, 40, 15))
+        var timeLabel: UILabel = UILabel(frame: CGRectMake(270, 58, 40, 15))
         timeLabel.font = UIFont.ATFont()
         timeLabel.text = "Time"
-        
         headerView.addSubview(timeLabel)
+        timeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         
-        
+        //Add Constraints to timeLabel
+        let views = ["timeLabel" : timeLabel]
+        let metrics = ["margin":22]
+        var horizontalConstraintLikeView = "H:[timeLabel]-margin-|"
+        var verticalConstraintLikeView = "V:|-60-[timeLabel]"
+        headerView.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(horizontalConstraintLikeView, options: nil, metrics: metrics, views: views ) )
+        headerView.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(verticalConstraintLikeView, options: nil, metrics: metrics, views: views ) )
+
         self.tableView.tableHeaderView = headerView;
         return headerView
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 30
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

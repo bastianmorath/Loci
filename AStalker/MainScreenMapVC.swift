@@ -47,10 +47,10 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         mapView.mapType = MKMapType.Standard
         mapView.delegate = self
         mapView.rotateEnabled = false
-        //mapView.setTranslatesAutoresizingMaskIntoConstraints( false )
-        
+        map
         //show user location
         mapView.showsUserLocation = true
+        
         zoomIn()
     }
 
@@ -64,9 +64,8 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
             let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 2000, 2000)
             let adjustedRegion = mapView.regionThatFits(region)
             mapView.setRegion(adjustedRegion, animated: false)
-
         }
- 
+
     }
     
     
