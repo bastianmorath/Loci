@@ -20,6 +20,7 @@ import UIKit
 // Protocol, um vom TableVC die Nachricht zu bekommen, wenn eine cell gedrückt wurde
 protocol TableViewDelegate{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func animateViewToBottom()
 }
 class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     
@@ -30,7 +31,9 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     //Verhältnis vom mapContainer zum TableView: iPad
     let kAspectRatioMapToTableViewIPad: CGFloat = 1.04
     
-    
+    let kTopSpaceiPhone5 = 83
+    let kTopSpaceiPhone6 = 100
+
     // MARK: - Properies und Variabeln
     
     // child controllers
@@ -145,6 +148,12 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         var swipeDownMap = UISwipeGestureRecognizer(target: self, action: "swipeDown")
         swipeDownMap.direction = UISwipeGestureRecognizerDirection.Down
         self.view.addGestureRecognizer(swipeDownMap)
+        
+        println((UIDevice.currentDevice().isIPad()))
+        println(UIDevice.currentDevice().isIPhone5())
+        println(UIDevice.currentDevice().isIPhone6())
+        println(UIDevice.currentDevice().isIPhone6Plus())
+
     }
     
     // MARK: - Button Handling
@@ -189,7 +198,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     func animateViewToTop(){
         self.tableViewIsExtended =  true
         
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
             let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
             // transitionConstant: Höhe des TableViews mit allen Cells (Cells + HeaderView) - Höhe des momentanen TableViews
             var transitionConstant = numberOfRows * 52  + 61 - self.tableViewHeight
@@ -197,13 +206,11 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
             let topSpace = 82 as CGFloat
             let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
             transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
-            self.shareYourLocationButton.backgroundColor = UIColor.RedColor()
             //ganzen View nach oben verschieben + tableView-Höhe vergrössern
             self.view.frame = CGRectMake(0, -transitionConstant, self.view.frame.width, self.view.frame.height+transitionConstant)
             //TableViewContainer.frame Höhe anpassen
             self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, self.view.frame.width, transitionConstant+self.tableViewHeight)
             let tableViewFrame = CGRectMake(0, 0, self.view.frame.width, transitionConstant+self.tableViewHeight)
-            //self.tableVC.view.frame = CGRectMake(0, 0, self.view.frame.width, transitionConstant+self.tableViewHeight)
             self.tableVC.tableView.frame = CGRectMake(0, 0, self.view.frame.width, transitionConstant+self.tableViewHeight)
         })
     }
@@ -212,14 +219,13 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     func animateViewToBottom(){
         self.tableViewIsExtended = false
         
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
             let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
                 var transitionConstant = numberOfRows * 52 - self.tableViewHeight
                 
                 let topSpace = 100 as CGFloat
                 let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
                 transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
-                self.shareYourLocationButton.backgroundColor = UIColor.GreyColor()
                 self.view.frame = CGRectMake(0, 0, self.view.frame.width, UIScreen.mainScreen().bounds.height)
                 self.tableVC.tableView.frame = CGRectMake(0, 0, self.view.frame.width, self.tableViewHeight)
                 self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, self.view.frame.width, self.tableViewHeight)

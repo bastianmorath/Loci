@@ -140,6 +140,7 @@ class LocationStore: NSObject{
         return nil
     }
     
+    
     /**************************** Create Debug Objects **********************************/
     func createDebugUsers(){
         var nameArray = ["Bastian Morath", "Aleksandar Papez", "Lukas Reichart", "Florian Morath", "Cheryl Vaterlaus", "Elisa Mischi"]
@@ -154,7 +155,7 @@ class LocationStore: NSObject{
         let userArray =  self.getUser()
         let friendsArray = [userArray[0], userArray[2], userArray[4]]
         var mySharedLocationsArray: [Location] = []
-        for i in 1...8 {
+        for i in 1...15 {
             let name = "Location \(i)"
             var todaysDate:NSDate = NSDate()
             var location = self.createLocation(name, timestamp: todaysDate, longitude: Double(i) * 3, latitude: Double()*2, user: userArray[0])

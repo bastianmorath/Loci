@@ -75,13 +75,15 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         mapView.centerCoordinate = userLocation.location.coordinate
     }
 
+    // Gehe zum ShareLocationVC
     func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
-        println("Did Select Annotation View")
         var longitude = 47.35 as Double
         var latitude = 8.68333 as Double
         if let location = self.mapView.userLocation?.location{
             latitude = location.coordinate.latitude
             longitude = location.coordinate.longitude
+        } else {
+        println("Couldn't set UserLocation. Random UserLocation set")
         }
         var locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: longitude, latitude: latitude, user: nil)
         

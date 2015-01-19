@@ -96,6 +96,7 @@
 		B6B7653D1A67B51700C9A8C5 /* HeartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B7653C1A67B51700C9A8C5 /* HeartButton.swift */; };
 		B6C616301A69524500B95663 /* LocalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C6162F1A69524500B95663 /* LocalUser.swift */; };
 		B6C616341A695CBD00B95663 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C616331A695CBD00B95663 /* Location.swift */; };
+		B6D951A81A6D3D9D009315E5 /* UIDevice+ATDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D951A71A6D3D9D009315E5 /* UIDevice+ATDevice.swift */; };
 		B6F1BB2A1A6578440083FE07 /* AddFriendsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F1BB291A6578440083FE07 /* AddFriendsVC.swift */; };
 		B6F1BB2C1A657AFF0083FE07 /* AddFriendsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F1BB2B1A657AFF0083FE07 /* AddFriendsDataSource.swift */; };
 		B6F1BB2E1A657D4A0083FE07 /* AddFriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F1BB2D1A657D4A0083FE07 /* AddFriendsTableViewCell.swift */; };
@@ -208,6 +209,7 @@
 		B6B7653C1A67B51700C9A8C5 /* HeartButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartButton.swift; sourceTree = "<group>"; };
 		B6C6162F1A69524500B95663 /* LocalUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalUser.swift; sourceTree = SOURCE_ROOT; };
 		B6C616331A695CBD00B95663 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = SOURCE_ROOT; };
+		B6D951A71A6D3D9D009315E5 /* UIDevice+ATDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+ATDevice.swift"; sourceTree = "<group>"; };
 		B6F1BB291A6578440083FE07 /* AddFriendsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsVC.swift; sourceTree = "<group>"; };
 		B6F1BB2B1A657AFF0083FE07 /* AddFriendsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsDataSource.swift; sourceTree = "<group>"; };
 		B6F1BB2D1A657D4A0083FE07 /* AddFriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				B6582E981A62335B00D74FAF /* DeselectedButtonView.swift */,
 				B61B12111A628CED00F48702 /* SelectedButtonView.swift */,
 				B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */,
+				B6D951A71A6D3D9D009315E5 /* UIDevice+ATDevice.swift */,
 			);
 			name = "Categories + Helper classes";
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				TargetAttributes = {
 					B88EC3CB1A614C610064ED0E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = P85N2D6LEB;
 					};
 					B88EC3E01A614C610064ED0E = {
 						CreatedOnToolsVersion = 6.2;
@@ -730,6 +734,7 @@
 				B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */,
 				B637309B1A615E3A0073EB51 /* Notification.swift in Sources */,
 				B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */,
+				B6D951A81A6D3D9D009315E5 /* UIDevice+ATDevice.swift in Sources */,
 				B6F1BB2C1A657AFF0083FE07 /* AddFriendsDataSource.swift in Sources */,
 				B6F1BB2A1A6578440083FE07 /* AddFriendsVC.swift in Sources */,
 				A24517341A626EE00006CDB0 /* LoginWelcomeVC.swift in Sources */,
@@ -862,6 +867,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AStalker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -870,6 +877,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AStalker/AStalker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -881,6 +889,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = AStalker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -889,6 +899,7 @@
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AStalker/AStalker-Bridging-Header.h";
 			};
 			name = Release;

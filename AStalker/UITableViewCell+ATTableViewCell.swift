@@ -13,7 +13,7 @@ import CoreData
 /**
 *  The ATModelSource protocol creates a simple protocol for accessing an objects model objects.
 */
-protocol TableViewSelectedSDelegate {
+protocol ATModelSource {
     func modelForIndexPath( indexPath: NSIndexPath ) -> AnyObject?
 }
 
