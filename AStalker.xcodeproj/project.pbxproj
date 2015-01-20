@@ -53,6 +53,7 @@
 		B63730971A61580A0073EB51 /* LocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730961A61580A0073EB51 /* LocationStore.swift */; };
 		B637309B1A615E3A0073EB51 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309A1A615E3A0073EB51 /* Notification.swift */; };
 		B637309F1A615E3B0073EB51 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309E1A615E3B0073EB51 /* User.swift */; };
+		B64DF9371A6D59B300A00C54 /* MultipleSectionsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DF9361A6D59B300A00C54 /* MultipleSectionsTableViewDataSource.swift */; };
 		B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */; };
 		B6582E991A62335B00D74FAF /* DeselectedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6582E981A62335B00D74FAF /* DeselectedButtonView.swift */; };
 		B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */; };
@@ -165,6 +166,7 @@
 		B63730961A61580A0073EB51 /* LocationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationStore.swift; sourceTree = "<group>"; };
 		B637309A1A615E3A0073EB51 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		B637309E1A615E3B0073EB51 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B64DF9361A6D59B300A00C54 /* MultipleSectionsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSectionsTableViewDataSource.swift; sourceTree = "<group>"; };
 		B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationTableViewCell.swift; sourceTree = "<group>"; };
 		B6582E981A62335B00D74FAF /* DeselectedButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeselectedButtonView.swift; sourceTree = "<group>"; };
 		B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreenMapVC.swift; sourceTree = "<group>"; };
@@ -454,6 +456,7 @@
 				B6F1BB2B1A657AFF0083FE07 /* AddFriendsDataSource.swift */,
 				B6F1BB2D1A657D4A0083FE07 /* AddFriendsTableViewCell.swift */,
 				B6B7653C1A67B51700C9A8C5 /* HeartButton.swift */,
+				B64DF9361A6D59B300A00C54 /* MultipleSectionsTableViewDataSource.swift */,
 			);
 			name = AddFriends;
 			sourceTree = "<group>";
@@ -716,6 +719,7 @@
 				B63730971A61580A0073EB51 /* LocationStore.swift in Sources */,
 				B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */,
 				B664B38A1A617214000E24BE /* AddressBook.swift in Sources */,
+				B64DF9371A6D59B300A00C54 /* MultipleSectionsTableViewDataSource.swift in Sources */,
 				B6582E991A62335B00D74FAF /* DeselectedButtonView.swift in Sources */,
 				B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */,
 				B66B282F1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift in Sources */,

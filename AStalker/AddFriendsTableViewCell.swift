@@ -45,6 +45,8 @@ class AddFriendsTableViewCell: UITableViewCell {
             
             if localUser!.friends.containsObject(user){
                 self.heartButton.isChecked = true
+            } else {
+                self.heartButton.isChecked = false
             }
         }
     }

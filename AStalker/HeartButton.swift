@@ -39,7 +39,7 @@ class HeartButton: UIButton{
         self.addSubview(selectedView)
         
         self.userInteractionEnabled = false
-        self.isChecked = false
+        //self.isChecked = false
     }
 
 }

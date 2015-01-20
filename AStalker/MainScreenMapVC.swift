@@ -7,7 +7,7 @@
 //
 
 /**
-*  This Controller controlls the mapContainer View in the MainScreenVC 
+*  This Controller controlls the mapContainer View in the MainScreenVC
 *  The MKMapView displays the users position
 */
 
@@ -19,7 +19,7 @@ import CoreLocation
 
 class MainScreenMapVC: UIViewController, MKMapViewDelegate {
     
-
+    
     //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
     let kAspectRatioMapToTableViewIPhone: CGFloat = 1.24
     
@@ -41,20 +41,19 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         }
         mapView = MKMapView(frame: CGRectMake(0, 0, self.view.frame.size.width, mapHeight))
         self.view.addSubview(mapView )
-
+        
         // initialize Map
         mapView.removeAnnotations(self.mapView.annotations)
         mapView.mapType = MKMapType.Standard
         mapView.delegate = self
         mapView.rotateEnabled = false
-        map
+        
         //show user location
         mapView.showsUserLocation = true
         
         zoomIn()
     }
-
-
+    
     
     //  adjust Region of mapView
     func zoomIn() {
@@ -65,15 +64,18 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
             let adjustedRegion = mapView.regionThatFits(region)
             mapView.setRegion(adjustedRegion, animated: false)
         }
-
+        
     }
     
+//    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+//        
+//    }
     
     //   Keep track of user: if user changes position center of mapView will change
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         mapView.centerCoordinate = userLocation.location.coordinate
     }
-
+    
     // Gehe zum ShareLocationVC
     func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
         var longitude = 47.35 as Double
@@ -82,7 +84,7 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
             latitude = location.coordinate.latitude
             longitude = location.coordinate.longitude
         } else {
-        println("Couldn't set UserLocation. Random UserLocation set")
+            println("Couldn't set UserLocation. Random UserLocation set")
         }
         var locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: longitude, latitude: latitude, user: nil)
         
@@ -96,5 +98,7 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    }
+    
+    
+}
 

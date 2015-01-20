@@ -47,10 +47,10 @@ class LocationStore: NSObject{
         return user! as [User]
     }
     
- // Get all User as NSFetchedResultsController
+    // Get all User as NSFetchedResultsController
     func getUsersFC() -> NSFetchedResultsController {
         let predicate = NSPredicate(format: "NOT (self == %@)", self.getLocalUser()!)
-
+        
         // sort them alphabetically
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true )
         
@@ -60,7 +60,7 @@ class LocationStore: NSObject{
     // Get all Friends as NSFetchedResultsController
     func getFriendsFC() -> NSFetchedResultsController {
         let predicate = NSPredicate(format: "self IN %@", self.getLocalUser()!.friends)
-
+        
         // sort them alphabetically
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true )
         let frc = coreDataStore.createFetchedResultsController("User", predicate: predicate, sortDescriptors: [sortDescriptor])
@@ -75,9 +75,9 @@ class LocationStore: NSObject{
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true )
         let frc = coreDataStore.createFetchedResultsController("User", predicate: predicate, sortDescriptors: [sortDescriptor])
         return frc
-
+        
     }
-
+    
     
     //TODO: LocalUser verbessern, nil prüfen
     func getLocalUser() -> LocalUser?{
@@ -119,6 +119,22 @@ class LocationStore: NSObject{
         }
     }
     
+    func addUserToFriendsOfLocalUser(user: User?){
+        if let user = user{
+            self.getLocalUser()!.friends = self.getLocalUser()!.friends.setByAddingObject(user)
+            //self.coreDataPortal.save()
+        }
+    }
+    
+    func deleteUserinFriendsOfLocalUser(user: User?){
+        if let user = user{
+            var mutableSet = NSMutableSet(set: self.getLocalUser()!.friends)
+            mutableSet.removeObject(user)
+            self.getLocalUser()!.friends = NSSet(set: mutableSet)
+            //self.coreDataPortal.save()
+        }
+    }
+    
     /**
     Erstellt eine Location mit Name, Timestamp, Longitude und latitude.
     Der User ist optional: Wird einer mitgeliefert, wird die Location dem Property 'sharedLocation' des Users, anderfalls des LcoalUsers hinzugefügt.
@@ -128,13 +144,14 @@ class LocationStore: NSObject{
         if let location = locationObject {
             location.name = name
             if let timestamp = timestamp {
-            location.timestamp = timestamp
+                location.timestamp = timestamp
             }
             location.longitude = longitude
             location.latitude = latitude
             if let user = user {
                 location.creator = user
             }
+            
             return location
         }
         return nil
@@ -161,7 +178,7 @@ class LocationStore: NSObject{
             var location = self.createLocation(name, timestamp: todaysDate, longitude: Double(i) * 3, latitude: Double()*2, user: userArray[0])
             mySharedLocationsArray.append(location!)
         }
-
+        
         
         localUser.mySharedLocations = NSSet(array: mySharedLocationsArray)
         localUser.contacts = NSSet(array: userArray)

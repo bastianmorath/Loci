@@ -47,12 +47,12 @@ class ShareLocationVC: UIViewController {
             button.positionButtonToLocation(.TopRight)
         }
         
-        
         // TableView DataSource definieren
         let localUser = (LocationStore.defaultStore().getLocalUser())
         shareLocationDataSource = ShareLocationDataSource(tableView: tableView, user: localUser!, location: self.location )
         tableView.dataSource = shareLocationDataSource
     }
+    
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRectMake(0, 0, 50, 40))
@@ -64,6 +64,7 @@ class ShareLocationVC: UIViewController {
         self.tableView.tableHeaderView = headerView;
         return headerView
     }
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedUser = self.shareLocationDataSource.modelForIndexPath(indexPath) as User

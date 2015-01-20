@@ -12,7 +12,7 @@ import UIKit
 /**
 *  Extend the UIButton with some factory methods for our custom Buttons.
 */
-let kMargin: Int = 20
+let kMargin: Int = 18
 let kSize = 56
 extension UIButton {
     

@@ -33,19 +33,19 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     
     let kTopSpaceiPhone5 = 83
     let kTopSpaceiPhone6 = 100
-
+    
     // MARK: - Properies und Variabeln
     
     // child controllers
     var mapVC: MainScreenMapVC!
     var tableVC: MainScreenTableVC!
-
+    
     
     // Containers to hold the child controllers view
     var mapContainer: UIView!
     var tableViewContainer: UIView!
     
-  
+    
     
     
     
@@ -54,7 +54,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     //Zeigt alle Kontakte des Users an, insbesondere wo diese sich befinden und wann sie dort waren
     var contactButton: UIButton!
     
-    /// 
+    ///
     var shareYourLocationButton: UIButton!
     
     /// Zeigt die Favoriten/Meist besuchten Locations vom Nutzer an. Dort sieht man auch, wie lange man an einer Location war.
@@ -237,17 +237,14 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
-                var transitionConstant = numberOfRows * 52 - self.tableViewHeight
-                
-                let topSpace = self.topSpace
-                let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
-                transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
-                self.view.frame = CGRectMake(0, 0, self.view.frame.width, UIScreen.mainScreen().bounds.height)
-                self.tableVC.tableView.frame = CGRectMake(0, 0, self.view.frame.width, self.tableViewHeight)
-                self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, self.view.frame.width, self.tableViewHeight)
-                
-                // Scroll to Top of TableView
-                self.tableVC.tableView.contentOffset = CGPointMake(0, 0-self.tableVC.tableView.contentInset.top)
+            var transitionConstant = numberOfRows * 52 - self.tableViewHeight
+            
+            let topSpace = self.topSpace
+            let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
+            transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
+            self.view.frame = CGRectMake(0, 0, self.view.frame.width, UIScreen.mainScreen().bounds.height)
+            self.tableVC.tableView.frame = CGRectMake(0, 0, self.view.frame.width, self.tableViewHeight)
+            self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, self.view.frame.width, self.tableViewHeight)
         })
     }
     

@@ -115,7 +115,6 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate, UIScrollViewDele
     
     // Detecte, wenn der User zuoberst angekommen ist und weiter nach oben scrollt
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        
         var translation = scrollView.panGestureRecognizer.translationInView(scrollView.superview!);
         if  translation.y > 0 && scrollView.contentOffset.y == 0 {
             delegate.animateViewToBottom()

@@ -56,7 +56,6 @@ extension ATableViewDataSource: ATModelSource {
 *  is you should probably consider doing something else than coding.
 */
 extension ATableViewDataSource: UITableViewDataSource {
-  
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     

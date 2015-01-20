@@ -10,16 +10,14 @@ import Foundation
 import UIKit
 import CoreData
 
-class AddFriendsDataSource: ATableViewDataSource, UITableViewDelegate{
+class AddFriendsDataSource: MultipleSectionsTableViewDataSource{
     
-    var location: Location?
-    var localUser: LocalUser!
     
-    init( tableView: UITableView, user: LocalUser, location: Location? = nil) {
-        self.location = location
-        self.localUser = user
-        let fetchedResultsController = LocationStore.defaultStore().getUsersFC()
-        super.init(tableView: tableView, fetchedResultsController: fetchedResultsController )
+    init( tableView: UITableView, user: LocalUser) {
+        let fetchedResultsControllerFriends = LocationStore.defaultStore().getFriendsFC()
+        let fetchedResultsControllerNoneFriends = LocationStore.defaultStore().getUsersWithoutFriendsFC()
+        
+        super.init(tableView: tableView, fetchedResultsControllers: [fetchedResultsControllerFriends, fetchedResultsControllerNoneFriends] )
     }
     
     override func cellForTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -28,15 +26,5 @@ class AddFriendsDataSource: ATableViewDataSource, UITableViewDelegate{
         return cell
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return localUser.contacts.count
-        }else{
-            return (localUser.contacts.count - localUser.friends.count)
-        }
-    }
+  
 }
