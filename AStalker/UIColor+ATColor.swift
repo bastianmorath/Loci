@@ -17,7 +17,7 @@ extension UIColor{
 
     /************************* BEGIN Convenience Functions  ***********************************/
     class func RedColor() -> UIColor {
-        return UIColor(red: 237 / 255, green: 27 / 255, blue: 36 / 255, alpha: 1)
+        return UIColor(red: 237 / 255, green: 28 / 255, blue: 36 / 255, alpha: 1)
     }
     
     class func WhiteColor() -> UIColor {
@@ -25,11 +25,11 @@ extension UIColor{
     }
     
     class func BlueColor() -> UIColor {
-        return UIColor(red: 5 / 255, green: 122 / 255, blue: 235 / 255, alpha: 1)
+        return UIColor(red: 4 / 255, green: 123 / 255, blue: 235 / 255, alpha: 1)
     }
     
     class func GreenColor() -> UIColor {
-        return UIColor(red: 57 / 255, green: 178 / 255, blue: 47 / 255, alpha: 1)
+        return UIColor(red: 57 / 255, green: 178 / 255, blue: 48 / 255, alpha: 1)
     }
     
     class func GreyColor() -> UIColor {

@@ -53,6 +53,8 @@
 		B63730971A61580A0073EB51 /* LocationStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730961A61580A0073EB51 /* LocationStore.swift */; };
 		B637309B1A615E3A0073EB51 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309A1A615E3A0073EB51 /* Notification.swift */; };
 		B637309F1A615E3B0073EB51 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637309E1A615E3B0073EB51 /* User.swift */; };
+		B637A9311A6FE2B7009FE828 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637A9301A6FE2B7009FE828 /* Constants.swift */; };
+		B637A9331A6FE50E009FE828 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B637A9321A6FE50E009FE828 /* MapView.swift */; };
 		B64DF9371A6D59B300A00C54 /* MultipleSectionsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64DF9361A6D59B300A00C54 /* MultipleSectionsTableViewDataSource.swift */; };
 		B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */; };
 		B6582E991A62335B00D74FAF /* DeselectedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6582E981A62335B00D74FAF /* DeselectedButtonView.swift */; };
@@ -166,6 +168,8 @@
 		B63730961A61580A0073EB51 /* LocationStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationStore.swift; sourceTree = "<group>"; };
 		B637309A1A615E3A0073EB51 /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		B637309E1A615E3B0073EB51 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B637A9301A6FE2B7009FE828 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B637A9321A6FE50E009FE828 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		B64DF9361A6D59B300A00C54 /* MultipleSectionsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleSectionsTableViewDataSource.swift; sourceTree = "<group>"; };
 		B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationTableViewCell.swift; sourceTree = "<group>"; };
 		B6582E981A62335B00D74FAF /* DeselectedButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeselectedButtonView.swift; sourceTree = "<group>"; };
@@ -399,6 +403,7 @@
 				B61B12111A628CED00F48702 /* SelectedButtonView.swift */,
 				B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */,
 				B6D951A71A6D3D9D009315E5 /* UIDevice+ATDevice.swift */,
+				B637A9301A6FE2B7009FE828 /* Constants.swift */,
 			);
 			name = "Categories + Helper classes";
 			sourceTree = "<group>";
@@ -445,6 +450,7 @@
 				B660CC1F1A6192DC00630E6F /* MainScreenMapVC.swift */,
 				B660CC201A6192DC00630E6F /* MainScreenTableVC.swift */,
 				B60A671B1A69446D00A9AC0C /* MSSharedLocationsDataSource.swift */,
+				B637A9321A6FE50E009FE828 /* MapView.swift */,
 			);
 			name = MainScreen;
 			sourceTree = "<group>";
@@ -720,6 +726,7 @@
 				B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */,
 				B664B38A1A617214000E24BE /* AddressBook.swift in Sources */,
 				B64DF9371A6D59B300A00C54 /* MultipleSectionsTableViewDataSource.swift in Sources */,
+				B637A9331A6FE50E009FE828 /* MapView.swift in Sources */,
 				B6582E991A62335B00D74FAF /* DeselectedButtonView.swift in Sources */,
 				B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */,
 				B66B282F1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift in Sources */,
@@ -737,6 +744,7 @@
 				B60C03601A620E4F005921B2 /* FriendsLocationTableViewCell.swift in Sources */,
 				B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */,
 				B637309B1A615E3A0073EB51 /* Notification.swift in Sources */,
+				B637A9311A6FE2B7009FE828 /* Constants.swift in Sources */,
 				B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */,
 				B6D951A81A6D3D9D009315E5 /* UIDevice+ATDevice.swift in Sources */,
 				B6F1BB2C1A657AFF0083FE07 /* AddFriendsDataSource.swift in Sources */,

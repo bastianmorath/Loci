@@ -77,17 +77,17 @@ class ACoreDataPortal: NSObject {
   */
   func save() {
     // push the changes to the parent
-    managedObjectContext.performBlock({
       var error: NSError?
-      self.managedObjectContext.save( &error )
-      if error != nil {
+      
+
+      if !self.managedObjectContext.save( &error ) {
         // deal with the error.
-        
+        println(error?.localizedDescription)
       }
       
       // call save on the parent
-      self.parentPortal?.save()
-    })
+//      self.parentPortal?.save()
   }
+
 
 }

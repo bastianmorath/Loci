@@ -42,6 +42,20 @@ class ATNavigationController: UINavigationController, UINavigationControllerDele
             return vC.animationController
         }
         
+        // Transition to 'AddFriendsVC'
+        if operation == UINavigationControllerOperation.Push && toVC.isKindOfClass(AddFriendsVC) {
+            var vC = toVC as AddFriendsVC
+            vC.animationController.isPresenting = true
+            return vC.animationController
+        }
+        
+        // Pop from 'AddFriendsVC'
+        if operation == UINavigationControllerOperation.Pop && fromVC.isKindOfClass(AddFriendsVC){
+            var vC = fromVC as AddFriendsVC
+            vC.animationController.isPresenting = false
+            return vC.animationController
+        }
+        
         return nil
     }
 }

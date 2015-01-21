@@ -22,6 +22,8 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
     
     var localUser:LocalUser!
     
+    var animationController = HideMapAnimationController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,7 +43,6 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
         tableView.dataSource = addFriendsDataSource
     }
     
-    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRectMake(0, 0, 50, 20))
         headerView.backgroundColor = UIColor.clearColor()
@@ -56,7 +57,7 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
         }
         
         headerView.addSubview(label)
-        //self.tableView.tablehe= headerView;
+        //self.tableView.tableheader = headerView;
         return headerView
     }
     

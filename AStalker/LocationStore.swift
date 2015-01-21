@@ -119,18 +119,20 @@ class LocationStore: NSObject{
         }
     }
     
+    //TODO:- SaveFunktion funktioniert nicht...
     func addUserToFriendsOfLocalUser(user: User?){
         if let user = user{
-            self.getLocalUser()!.friends = self.getLocalUser()!.friends.setByAddingObject(user)
-            //self.coreDataPortal.save()
+            self.getLocalUser()!.addFriendObject(user)
+            
+            self.coreDataPortal.save()
         }
     }
     
+    
     func deleteUserinFriendsOfLocalUser(user: User?){
         if let user = user{
-            var mutableSet = NSMutableSet(set: self.getLocalUser()!.friends)
-            mutableSet.removeObject(user)
-            self.getLocalUser()!.friends = NSSet(set: mutableSet)
+            self.getLocalUser()!.removeFriendObject(user)
+//            self.coreDataPortal.deleteObject( user )
             //self.coreDataPortal.save()
         }
     }
@@ -151,7 +153,6 @@ class LocationStore: NSObject{
             if let user = user {
                 location.creator = user
             }
-            
             return location
         }
         return nil
@@ -160,8 +161,7 @@ class LocationStore: NSObject{
     
     /**************************** Create Debug Objects **********************************/
     func createDebugUsers(){
-        var nameArray = ["Bastian Morath", "Aleksandar Papez", "Lukas Reichart", "Florian Morath", "Cheryl Vaterlaus", "Elisa Mischi"]
-        
+        var nameArray = [ "Aleksandar Papez", "Lukas Reichart", "Florian Morath", "Cheryl Vaterlaus", "Elisa Mischi", "Benjamin Morath", "Dominik Grimm", "Robin Lingwood", "Frederic Huber", "Benjamin Weiss", "Selina Schenker", "Dio Moonnee"]
         for name in nameArray {
             self.createUser(name)
         }

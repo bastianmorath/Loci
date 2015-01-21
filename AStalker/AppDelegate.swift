@@ -35,7 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //setup MKMapView UserLocation Tracking
         locationManager = CLLocationManager()
-        locationManager?.requestWhenInUseAuthorization()
+            locationManager?.requestWhenInUseAuthorization()
+        
         
         if LocationStore.defaultStore().getLocalUser() == nil {
             LocationStore.defaultStore().createDebugUsers()

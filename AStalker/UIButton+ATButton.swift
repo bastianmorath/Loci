@@ -32,6 +32,7 @@ extension UIButton {
         case ContactLocation
         case MultipleLocations
         case Share
+        case CloseArrow
     }
     
     enum ATColor {
@@ -91,6 +92,10 @@ extension UIButton {
             label.textColor = UIColor.RedColor()
             button.addSubview(label)
             return button
+        case .CloseArrow:
+            imageView.image = UIImage(named: "Close.png")
+            imageView.frame = CGRectMake(3, 3, 30, 30)
+            button.backgroundColor = UIColor.clearColor()
         default:
             imageView.image = UIImage(named: "Contacts.png")
         }

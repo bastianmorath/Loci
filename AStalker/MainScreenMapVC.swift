@@ -27,7 +27,7 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
     let kAspectRatioMapToTableViewIPad: CGFloat = 1.04
     
     
-    var mapView:MKMapView!
+    var mapView:MapView!
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -39,37 +39,16 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         } else {
             mapHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPhone
         }
-        mapView = MKMapView(frame: CGRectMake(0, 0, self.view.frame.size.width, mapHeight))
+        mapView = MapView(frame: CGRectMake(0, 0, self.view.frame.size.width, mapHeight))
+        mapView.delegate = self
         self.view.addSubview(mapView )
         
-        // initialize Map
-        mapView.removeAnnotations(self.mapView.annotations)
-        mapView.mapType = MKMapType.Standard
-        mapView.delegate = self
-        mapView.rotateEnabled = false
-        
-        //show user location
-        mapView.showsUserLocation = true
-        
-        zoomIn()
+        mapView.zoomIn()
     }
     
     
-    //  adjust Region of mapView
-    func zoomIn() {
-        var userLocation = mapView.userLocation
-        
-        if let userLocation = userLocation {
-            let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 2000, 2000)
-            let adjustedRegion = mapView.regionThatFits(region)
-            mapView.setRegion(adjustedRegion, animated: false)
-        }
-        
-    }
     
-//    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-//        
-//    }
+
     
     //   Keep track of user: if user changes position center of mapView will change
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
@@ -97,7 +76,7 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     
 }

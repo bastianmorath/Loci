@@ -21,6 +21,4 @@ class MSSharedLocationsDataSource: ATableViewDataSource{
         var cell =  FriendsLocationTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self ) as FriendsLocationTableViewCell
         return cell
     }
-    
-    
 }
