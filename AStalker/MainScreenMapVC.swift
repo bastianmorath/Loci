@@ -46,10 +46,22 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         mapView.zoomIn()
     }
     
-    
-    
+    override func viewDidAppear(animated: Bool) {
+        // Change frame of legal-label
+        var legalLabel = self.mapView.subviews[1] as UILabel
+        //legalLabel.center = CGPointMake(280, 200)
+        legalLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        let views = ["label" : legalLabel]
+        let metrics = ["margin": kMargin, "bottomMargin":50]
+        
+        var horizontalConstraint = "H:[label]-margin-|"
+        var verticalConstraint = "V:[label]-margin-|"
+        self.mapView.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(horizontalConstraint, options: nil, metrics: metrics, views: views ) )
+        self.mapView.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(verticalConstraint, options: nil, metrics: metrics, views: views ) )
+        
+        
+    }
 
-    
     //   Keep track of user: if user changes position center of mapView will change
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         mapView.centerCoordinate = userLocation.location.coordinate

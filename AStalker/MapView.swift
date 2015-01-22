@@ -5,12 +5,11 @@
 //  Created by Bastian Morath on 21/01/15.
 //  Copyright (c) 2015 Antum. All rights reserved.
 //
+// Subclass of MKMapView
 
 import MapKit
 
 class MapView: MKMapView {
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         // initialize Map
@@ -20,8 +19,9 @@ class MapView: MKMapView {
         
         //show user location
         self.showsUserLocation = true
-    }
-    
+        
+
+            }
     convenience init(frame: CGRect, location: CLLocationCoordinate2D) {
         self.init(frame: frame)
         // Create new Annotation and add it
@@ -29,6 +29,7 @@ class MapView: MKMapView {
         annotation.setCoordinate(location)
         annotation.title = "Hier bist du"
         self.addAnnotation(annotation)
+        
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -42,9 +43,12 @@ extension MapView {
         if let userLocation = userLocation {
             let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 2000, 2000)
             let adjustedRegion = self.regionThatFits(region)
-            self.setRegion(adjustedRegion, animated: false)
+            self.setRegion(adjustedRegion, animated: true)
+            
+            
         }
         
     }
     
+
 }

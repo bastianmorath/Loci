@@ -59,7 +59,6 @@ class ShareLocationTableViewCell: UITableViewCell {
         let user = model as? User
         if let user = user {
             self.nameLabel.text = user.name
-            println("Checked:\(self.checkboxButton.isChecked)")
             if let location = self.location{
                 if location.sharedUsers.containsObject(user){
                     self.checkboxButton.isChecked = true
@@ -68,7 +67,6 @@ class ShareLocationTableViewCell: UITableViewCell {
                 }
 
             }
-            
             
             //Herzchen rechts hinter den namen tun, wenn der User ein Freund ist
             if (LocationStore.defaultStore().getLocalUser()!.friends.containsObject(user)){
