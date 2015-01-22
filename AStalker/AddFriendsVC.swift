@@ -71,7 +71,7 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
         
         if localUser.friends.containsObject(selectedUser){
             //User ist schon ausgewählt. Deselecte ihn im View und lösche ihn aus locations.friends
-            LocationStore.defaultStore().deleteUserinFriendsOfLocalUser(selectedUser)
+            LocationStore.defaultStore().deleteUserInFriendsOfLocalUser(selectedUser)
         } else {
             //Füge den User bei lcoation.friends hinzu und Selecte ihn im View(roter Checkmark-View)
             LocationStore.defaultStore().addUserToFriendsOfLocalUser(selectedUser)

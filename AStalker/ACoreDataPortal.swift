@@ -86,7 +86,7 @@ class ACoreDataPortal: NSObject {
       }
       
       // call save on the parent
-//      self.parentPortal?.save()
+      self.parentPortal?.save()
   }
 
 

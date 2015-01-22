@@ -19,15 +19,13 @@ class FriendsLocationTableViewCell: UITableViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var timeLabel: UILabel!
     
-    //Speichert den Indexpath der angeklickten Cell (falls eine angeklickt ist), welche dann vergrössert wird und einen MapView anzeigt. Wir
-    var selectedRowIndexPath:NSIndexPath?
-    
     var mapView:MKMapView?
     
     var hideMapButton:UIButton?
     
     var coordinate:CLLocationCoordinate2D!
     
+    var isExpanded:Bool = false
     //TODO: Constraints dem StrassenLabel + userNameLabel hinzufügen
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -55,19 +53,12 @@ class FriendsLocationTableViewCell: UITableViewCell {
             self.timeLabel.text = location.getTimeFormatted()
         }
         
-        if selectedRowIndexPath != nil{
-            self.mapView = MapView(frame: CGRectMake(0, Constants.kCellHeight, self.frame.width, Constants.screenHeight - Constants.topSpace - Constants.kCellHeight), location: self.coordinate)
-            self.hideMapButton = UIButton.ATButton(.CloseArrow, color: .White)
-            self.hideMapButton!.center = CGPointMake(self.frame.width/2 - 15, self.frame.height - 40)
-            
-            self.hideMapButton!.addTarget(self, action: "hideMap", forControlEvents: .TouchUpInside)
-            self.contentView.addSubview(hideMapButton!)
-            self.contentView.addSubview(self.mapView!)
-        } else {
+        if !self.isExpanded{
             self.mapView?.removeFromSuperview()
             self.hideMapButton?.removeFromSuperview()
             mapView = nil
             hideMapButton = nil
+
         }
         
         //Hier müsste überprüft werden, ob der User die Location schon angesehen hat ( alles erscheint schwarz), oder nicht ( alles erscheint rot)
@@ -81,5 +72,22 @@ class FriendsLocationTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
     
+    func expandCellWithCoordinate(coordinate: CLLocationCoordinate2D){
+        self.mapView = MapView(frame: CGRectMake(0, Constants.kCellHeight, self.frame.width, Constants.screenHeight - Constants.topSpace - Constants.kCellHeight-30), location: coordinate)
+        mapView?.userInteractionEnabled = false
+        self.hideMapButton = UIButton.ATButton(.CloseArrow, color: .White)
+        self.hideMapButton!.center = CGPointMake(self.frame.width/2 - 15, self.frame.height - 40)
+        
+        self.hideMapButton!.addTarget(self, action: "hideMap", forControlEvents: .TouchUpInside)
+        self.contentView.addSubview(hideMapButton!)
+        self.contentView.addSubview(self.mapView!)
+    }
+    
+    func closeCell(){
+        self.mapView?.removeFromSuperview()
+        self.hideMapButton?.removeFromSuperview()
+        mapView = nil
+        hideMapButton = nil
+    }
     
 }

@@ -129,11 +129,11 @@ class LocationStore: NSObject{
     }
     
     
-    func deleteUserinFriendsOfLocalUser(user: User?){
+    func deleteUserInFriendsOfLocalUser(user: User?){
         if let user = user{
             self.getLocalUser()!.removeFriendObject(user)
 //            self.coreDataPortal.deleteObject( user )
-            //self.coreDataPortal.save()
+            self.coreDataPortal.save()
         }
     }
     
@@ -153,6 +153,7 @@ class LocationStore: NSObject{
             if let user = user {
                 location.creator = user
             }
+            self.coreDataPortal.save()
             return location
         }
         return nil

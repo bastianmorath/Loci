@@ -19,11 +19,10 @@ import UIKit
 
 // Protocol, um vom TableVC die Nachricht zu bekommen, wenn eine cell gedrückt wurde
 protocol TableViewDelegate {
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     func animateViewToBottom()
 }
 class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
-
+    
     // MARK: - Properies und Variabeln
     
     // child controllers
@@ -35,7 +34,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     var mapContainer: UIView!
     var tableViewContainer: UIView!
     
-
+    
     // Buttons
     
     //Zeigt alle Kontakte des Users an, insbesondere wo diese sich befinden und wann sie dort waren
@@ -192,6 +191,15 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     
     
     func animateViewToBottom(){
+        // Falls noch eine Cell offen ist, dann diese schliessen
+        if let selectedRowIndexPath = self.tableVC.selectedRowIndexPath{
+            
+            self.tableVC.sharedLocationsDataSource.selectedRowIndexPath = NSIndexPath()
+            self.tableVC.tableView.beginUpdates()
+            self.tableVC.tableView.reloadRowsAtIndexPaths([selectedRowIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.tableVC.tableView.endUpdates()
+        }
+        self.tableVC.tableView.scrollRectToVisible(CGRectMake(0, 0, 0, 0), animated: true)
         self.tableViewIsExtended = false
         
         UIView.animateWithDuration(0.3, animations: { () -> Void in
@@ -205,17 +213,11 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
             self.tableVC.tableView.frame = CGRectMake(0, 0, Constants.screenWidth, Constants.tableViewHeight)
             self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, Constants.screenWidth, Constants.tableViewHeight)
         })
-    }
-    
-    
-    // MARK:- TableView Delegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        println("Did Select row at IndexPath:\(indexPath.row)")
-    
         
     }
 
-
+    
+    
 }
 
 

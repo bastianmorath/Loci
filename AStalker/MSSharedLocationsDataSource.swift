@@ -7,18 +7,31 @@
 //
 
 import UIKit
+import MapKit
 
 class MSSharedLocationsDataSource: ATableViewDataSource{
+  
+    //Speichert den Indexpath der angeklickten Cell (falls eine angeklickt ist), welche dann vergrössert wird und einen MapView anzeigt.
+    var selectedRowIndexPath: NSIndexPath = NSIndexPath()
+    var coordinateOfMap: CLLocationCoordinate2D?
+   
     init( tableView: UITableView) {
         let fetchedResultsController = LocationStore.defaultStore().getMySharedLocationsFC()
-        let nib = UINib(nibName: "FriendsLocationTableViewCell", bundle:nil)
+        let nib1 = UINib(nibName: "FriendsLocationTableViewCell", bundle:nil)
 
-        tableView.registerNib(nib, forCellReuseIdentifier: FriendsLocationTableViewCell.reuseIdentifier() )
-        super.init(tableView: tableView, fetchedResultsController: fetchedResultsController )
+        tableView.registerNib(nib1, forCellReuseIdentifier: FriendsLocationTableViewCell.reuseIdentifier())
+
+        super.init(tableView: tableView, fetchedResultsController: fetchedResultsController)
     }
     
     override func cellForTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell =  FriendsLocationTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self ) as FriendsLocationTableViewCell
+        if selectedRowIndexPath == indexPath {
+            cell.expandCellWithCoordinate(self.coordinateOfMap!)
+        } else {
+            cell.closeCell()
+        }
+        
         return cell
     }
 }

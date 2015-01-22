@@ -30,6 +30,7 @@ class MapView: MKMapView {
         annotation.title = "Hier bist du"
         self.addAnnotation(annotation)
         
+        self.zoomIn()
     }
     
     required init(coder aDecoder: NSCoder) {

@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-
+        
         var firstViewController = MainScreenVC()
         self.rootViewController = ATNavigationController(rootViewController: firstViewController)
         self.rootViewController!.delegate = self.rootViewController
@@ -28,14 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.window!.rootViewController = self.rootViewController
             self.window!.makeKeyAndVisible()
         }
-
+        
         /*
         Ask for AddressBookAccess
         */
         
         //setup MKMapView UserLocation Tracking
         locationManager = CLLocationManager()
-            locationManager?.requestWhenInUseAuthorization()
+        locationManager?.requestWhenInUseAuthorization()
+        
         
         
         if LocationStore.defaultStore().getLocalUser() == nil {

@@ -27,7 +27,7 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate, UIScrollViewDele
     //DataSource des TableViews
     var sharedLocationsDataSource: MSSharedLocationsDataSource!
     
-    //Speichert den Indexpath der angeklickten Cell (falls eine angeklickt ist), welche dann vergrössert wird und einen MapView anzeigt. Wir
+    //Speichert den Indexpath der angeklickten Cell (falls eine angeklickt ist), welche dann vergrössert wird und einen MapView anzeigt.
     var selectedRowIndexPath: NSIndexPath?
     
     
@@ -64,32 +64,32 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate, UIScrollViewDele
     
     //MARK:- TableView Delegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        var cell = tableView.cellForRowAtIndexPath(indexPath) as FriendsLocationTableViewCell
-//        
-//        if self.selectedRowIndexPath == indexPath{
-//            // Schliesse Die Cell; Lösche selectetRowAtIndexPath
-//            cell.selectedRowIndexPath = NSIndexPath()
-//            self.selectedRowIndexPath = nil
-//            self.tableView.scrollEnabled = true
-//            self.tableView.frame = Constants.tableViewFrameExtended
-//        } else {
-//            //Speichere selectedRowAtIndexPath und location der cell
-//            let location = self.sharedLocationsDataSource.modelForIndexPath(indexPath) as Location
-//            cell.coordinate = CLLocationCoordinate2D(latitude: Double(location.latitude), longitude: Double(location.longitude))
-//            self.selectedRowIndexPath = indexPath
-//            cell.selectedRowIndexPath = indexPath
-//
-//            self.tableView.scrollEnabled = false
-//            self.tableView.frame = Constants.tableViewFrameNotExtended
-//
-//        }
-//        
-//        tableView.beginUpdates()
-//        // Cell expanden; TableView nicht mehr scrollable machen; Map in Cell einfügen
-//        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-//        // Geklickte Row nach oben  scrollen
-//        self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
-//        tableView.endUpdates()
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as FriendsLocationTableViewCell
+        
+        if indexPath == self.selectedRowIndexPath{
+            // Cell schliessen
+            self.tableView.scrollEnabled = true
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: true)
+            self.tableView.scrollRectToVisible(CGRectMake(0, 0, 0, 0), animated: true)
+            self.sharedLocationsDataSource.selectedRowIndexPath = NSIndexPath()
+            self.selectedRowIndexPath = NSIndexPath()
+            
+        } else {
+            // Cell expanden
+            let location = self.sharedLocationsDataSource.modelForIndexPath(indexPath) as Location
+            let coordinate = CLLocationCoordinate2D(latitude: Double(location.latitude), longitude: Double(location.longitude))
+            self.selectedRowIndexPath = indexPath
+            self.sharedLocationsDataSource.selectedRowIndexPath = self.selectedRowIndexPath!
+            self.sharedLocationsDataSource.coordinateOfMap = coordinate
+            self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: true)
+            self.tableView.scrollEnabled = false
+        }
+        
+        tableView.beginUpdates()
+        // Cell expanden; TableView nicht mehr scrollable machen; Map in Cell einfügen
+        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        // Geklickte Row nach oben  scrollen
+        tableView.endUpdates()
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -126,8 +126,11 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate, UIScrollViewDele
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if selectedRowIndexPath == indexPath && selectedRowIndexPath != nil {
-            return UIScreen.mainScreen().bounds.height - Constants.topSpace
+        //indexPath is NSMutableIndexPath, so create an indexPath
+        var index = NSIndexPath(forRow: indexPath.row, inSection: indexPath.section)
+        
+        if self.selectedRowIndexPath == index{
+            return Constants.screenHeight - Constants.topSpace
         }
         return Constants.kCellHeight
     }
@@ -138,6 +141,7 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate, UIScrollViewDele
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         var translation = scrollView.panGestureRecognizer.translationInView(scrollView.superview!);
         if  translation.y > 0 && scrollView.contentOffset.y == 0 {
+            // Geklickte Row nach oben  scrollen
             delegate.animateViewToBottom()
         }
     }
