@@ -75,9 +75,11 @@ class ShareLocationVC: UIViewController {
             var mutableSet = NSMutableSet(set: location.sharedUsers)
             mutableSet.removeObject(selectedUser)
             location.sharedUsers = NSSet(set: mutableSet)
+            cell.location = location
         } else {
             //Füge den User bei lcoation.sharedUsers hinzu und Selecte ihn im View(roter Checkmark-View)
             location.sharedUsers = location.sharedUsers.setByAddingObject(selectedUser)
+            cell.location = location
         }
         cell.checkboxButton.isChecked = !cell.checkboxButton.isChecked
     }

@@ -56,12 +56,16 @@ class FriendsLocationTableViewCell: UITableViewCell {
         }
         
         if selectedRowIndexPath != nil{
-            mapView = MapView(frame: CGRectMake(0, Constants.kCellHeight, self.frame.width, Constants.screenHeight - Constants.topSpace - Constants.kCellHeight), location: self.coordinate)
-            var closeButton = UIButton.ATButton(.CloseArrow, color: .White)
-            closeButton.center = CGPointMake(self.frame.width/2 - 15, self.frame.height - 40)
-            closeButton.addTarget(self, action: "hideMap", forControlEvents: .TouchUpInside)
-            hideMapButton?.addSubview(closeButton)
+            self.mapView = MapView(frame: CGRectMake(0, Constants.kCellHeight, self.frame.width, Constants.screenHeight - Constants.topSpace - Constants.kCellHeight), location: self.coordinate)
+            self.hideMapButton = UIButton.ATButton(.CloseArrow, color: .White)
+            self.hideMapButton!.center = CGPointMake(self.frame.width/2 - 15, self.frame.height - 40)
+            
+            self.hideMapButton!.addTarget(self, action: "hideMap", forControlEvents: .TouchUpInside)
+            self.contentView.addSubview(hideMapButton!)
+            self.contentView.addSubview(self.mapView!)
         } else {
+            self.mapView?.removeFromSuperview()
+            self.hideMapButton?.removeFromSuperview()
             mapView = nil
             hideMapButton = nil
         }

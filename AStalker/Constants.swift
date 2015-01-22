@@ -9,6 +9,13 @@
 import UIKit
 
 struct Constants {
+    
+    //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
+    static let kAspectRatioMapToTableViewIPhone: CGFloat = 1.24
+    
+    //Verhältnis vom mapContainer zum TableView: iPad
+    static let kAspectRatioMapToTableViewIPad: CGFloat = 1.04
+    
     //Höhe der Cells in den TableViews
     static let kCellHeight = 52 as CGFloat
     
@@ -16,6 +23,14 @@ struct Constants {
     static  var screenHeight:CGFloat {
         get{
             return UIScreen.mainScreen().bounds.height
+        }
+    }
+    
+    // breite des Screens
+    static  var screenWidth:CGFloat {
+        get{
+            
+            return UIScreen.mainScreen().bounds.width
         }
     }
     
@@ -35,6 +50,29 @@ struct Constants {
                 return 250
             }
             return 82
+        }
+    }
+    
+    static var tableViewFrameExtended:CGRect{
+        get{
+            return CGRectMake(0, 0, Constants.screenWidth, Constants.screenHeight - Constants.topSpace)
+        }
+    }
+    
+    static var tableViewFrameNotExtended:CGRect{
+        get{
+            return CGRectMake(0, 0, Constants.screenWidth, Constants.tableViewHeight)
+        }
+    }
+    
+    // Height of TableViewNotExtended
+    static var tableViewHeight:CGFloat {
+        get{
+            if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
+                return Constants.screenHeight - Constants.screenWidth*Constants.kAspectRatioMapToTableViewIPad
+            } else {
+                return Constants.screenHeight - Constants.screenWidth*Constants.kAspectRatioMapToTableViewIPhone
+            }
         }
     }
 }

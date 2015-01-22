@@ -23,14 +23,6 @@ protocol TableViewDelegate {
     func animateViewToBottom()
 }
 class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
-    
-    
-    //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
-    let kAspectRatioMapToTableViewIPhone: CGFloat = 1.24
-    
-    //Verhältnis vom mapContainer zum TableView: iPad
-    let kAspectRatioMapToTableViewIPad: CGFloat = 1.04
-    
 
     // MARK: - Properies und Variabeln
     
@@ -75,17 +67,6 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         }
     }
     
-    // Height of TableView
-    var tableViewHeight:CGFloat {
-        get{
-            if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
-                return UIScreen.mainScreen().bounds.height-self.view.frame.size.width*kAspectRatioMapToTableViewIPad
-            } else {
-                return UIScreen.mainScreen().bounds.height-self.view.frame.size.width*kAspectRatioMapToTableViewIPhone
-            }
-        }
-    }
-    
     //MARK:- Methoden
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,9 +75,9 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         self.addChildViewController(mapVC)
         var mapHeight:CGFloat!
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
-            mapHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPad
+            mapHeight = Constants.screenWidth * Constants.kAspectRatioMapToTableViewIPad
         } else {
-            mapHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPhone
+            mapHeight = Constants.screenWidth * Constants.kAspectRatioMapToTableViewIPhone
         }
         self.mapContainer = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, mapHeight))
         self.view.addSubview(self.mapContainer)
@@ -109,7 +90,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         self.tableVC.delegate = self
         self.addChildViewController(self.tableVC)
         
-        self.tableViewContainer = UIView(frame: CGRectMake(0, self.view.frame.height-self.tableViewHeight, self.view.frame.size.width, self.tableViewHeight))
+        self.tableViewContainer = UIView(frame: CGRectMake(0, Constants.screenHeight-Constants.tableViewHeight, Constants.screenHeight, Constants.tableViewHeight))
         tableViewContainer.addSubview(self.tableVC.view)
         self.view.addSubview(self.tableViewContainer)
         tableVC.didMoveToParentViewController(self)
@@ -193,18 +174,20 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
             // transitionConstant: Höhe des TableViews mit allen Cells (Cells + HeaderView) - Höhe des momentanen TableViews
-            var transitionConstant = numberOfRows * Constants.kCellHeight  + 70 - self.tableViewHeight
+            var transitionConstant = numberOfRows * Constants.kCellHeight  + 70 - Constants.tableViewHeight
             
             let topSpace = Constants.topSpace
-            let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
+            let maxTransition = self.view.frame.height-Constants.tableViewHeight-topSpace
             transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
             //ganzen View nach oben verschieben + tableView-Höhe vergrössern
-            self.view.frame = CGRectMake(0, -transitionConstant, self.view.frame.width, self.view.frame.height+transitionConstant)
+            self.view.frame = CGRectMake(0, -transitionConstant, Constants.screenWidth, self.view.frame.height+transitionConstant)
             //TableViewContainer.frame Höhe anpassen
-            self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, self.view.frame.width, transitionConstant+self.tableViewHeight)
-            let tableViewFrame = CGRectMake(0, 0, self.view.frame.width, transitionConstant+self.tableViewHeight)
-            self.tableVC.tableView.frame = CGRectMake(0, 0, self.view.frame.width, transitionConstant+self.tableViewHeight)
+            self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y,Constants.screenWidth, transitionConstant+Constants.tableViewHeight)
+            
+            let tableViewFrame = CGRectMake(0, 0, Constants.screenWidth, transitionConstant+Constants.tableViewHeight)
+            self.tableVC.tableView.frame = CGRectMake(0, 0, Constants.screenWidth, transitionConstant+Constants.tableViewHeight)
         })
+        
     }
     
     
@@ -213,14 +196,14 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         
         UIView.animateWithDuration(0.3, animations: { () -> Void in
             let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
-            var transitionConstant = numberOfRows * Constants.kCellHeight - self.tableViewHeight
+            var transitionConstant = numberOfRows * Constants.kCellHeight - Constants.tableViewHeight
             
             let topSpace = Constants.topSpace
-            let maxTransition = self.view.frame.height-self.tableViewHeight-topSpace
+            let maxTransition = Constants.screenHeight-Constants.tableViewHeight-topSpace
             transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
-            self.view.frame = CGRectMake(0, 0, self.view.frame.width, UIScreen.mainScreen().bounds.height)
-            self.tableVC.tableView.frame = CGRectMake(0, 0, self.view.frame.width, self.tableViewHeight)
-            self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, self.view.frame.width, self.tableViewHeight)
+            self.view.frame = CGRectMake(0, 0, Constants.screenWidth, UIScreen.mainScreen().bounds.height)
+            self.tableVC.tableView.frame = CGRectMake(0, 0, Constants.screenWidth, Constants.tableViewHeight)
+            self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, Constants.screenWidth, Constants.tableViewHeight)
         })
     }
     
