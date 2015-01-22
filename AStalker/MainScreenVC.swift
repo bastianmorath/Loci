@@ -90,7 +90,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         self.tableVC.delegate = self
         self.addChildViewController(self.tableVC)
         
-        self.tableViewContainer = UIView(frame: CGRectMake(0, Constants.screenHeight-Constants.tableViewHeight, Constants.screenHeight, Constants.tableViewHeight))
+        self.tableViewContainer = UIView(frame: CGRectMake(0, Constants.screenHeight-Constants.tableViewHeight, Constants.screenWidth, Constants.tableViewHeight))
         tableViewContainer.addSubview(self.tableVC.view)
         self.view.addSubview(self.tableViewContainer)
         tableVC.didMoveToParentViewController(self)
