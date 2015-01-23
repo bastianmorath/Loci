@@ -33,7 +33,7 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate, UIScrollViewDele
     
   
     
-    var delegate:TableViewDelegate! = nil
+    var delegate:TableViewAndMapDelegate! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()

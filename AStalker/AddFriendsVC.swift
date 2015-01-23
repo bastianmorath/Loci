@@ -80,7 +80,7 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
     }
     
     func addFriendsPressed(){
-        self.navigationController?.popViewControllerAnimated(true)
+        self.dismissViewController()
     }
     
 

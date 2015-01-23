@@ -18,22 +18,31 @@ import UIKit
 
 
 // Protocol, um vom TableVC die Nachricht zu bekommen, wenn eine cell gedrückt wurde
-protocol TableViewDelegate {
+protocol TableViewAndMapDelegate {
     func animateViewToBottom()
+    func didSelectAnnotationPin(location: Location)
+    
 }
-class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
+class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDelegate {
     
     // MARK: - Properies und Variabeln
+    
+    
     
     // child controllers
     var mapVC: MainScreenMapVC!
     var tableVC: MainScreenTableVC!
     
     
+    /// Container to hold Map and TableView
+    var homeViewContainer: UIView!
+    
     // Containers to hold the child controllers view
     var mapContainer: UIView!
     var tableViewContainer: UIView!
     
+    /// Container to hold all Controllers -> For Animations
+    var container: UIView!
     
     // Buttons
     
@@ -69,8 +78,13 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     //MARK:- Methoden
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.container = UIView(frame: self.view.frame)
+        self.view.addSubview(self.container)
+        self.homeViewContainer = UIView(frame: self.view.frame)
+        self.container.addSubview(self.homeViewContainer)
         // Setup MapVC
-        mapVC = MainScreenMapVC()
+        self.mapVC = MainScreenMapVC()
+        self.mapVC.delegate = self
         self.addChildViewController(mapVC)
         var mapHeight:CGFloat!
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
@@ -79,7 +93,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
             mapHeight = Constants.screenWidth * Constants.kAspectRatioMapToTableViewIPhone
         }
         self.mapContainer = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, mapHeight))
-        self.view.addSubview(self.mapContainer)
+        self.homeViewContainer.addSubview(self.mapContainer)
         self.mapContainer.addSubview(self.mapVC.view)
         self.mapVC.didMoveToParentViewController(self)
         
@@ -91,7 +105,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         
         self.tableViewContainer = UIView(frame: CGRectMake(0, Constants.screenHeight-Constants.tableViewHeight, Constants.screenWidth, Constants.tableViewHeight))
         tableViewContainer.addSubview(self.tableVC.view)
-        self.view.addSubview(self.tableViewContainer)
+        self.homeViewContainer.addSubview(self.tableViewContainer)
         tableVC.didMoveToParentViewController(self)
         
         self.tableViewIsExtended = false
@@ -99,12 +113,12 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         // Setup Buttons
         myLocationsButton = UIButton.ATButton(.MultipleLocations, color: .White)
         myLocationsButton.addTarget(self, action: "myLocationButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.mapContainer.addSubview(myLocationsButton)
+        self.homeViewContainer.addSubview(myLocationsButton)
         myLocationsButton.positionButtonToLocation(.TopLeft)
         
         contactButton = UIButton.ATButton(.Contact, color: .White)
         contactButton.addTarget(self, action: "contactButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(contactButton)
+        self.homeViewContainer.addSubview(contactButton)
         contactButton.positionButtonToLocation(.TopRight)
         
         shareYourLocationButton = UIButton.ATButton(.ContactLocation, color: .Grey)
@@ -147,7 +161,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
     //TODO:- Wenn Map verschwindet, soll der entsprechende BUtton jeweils oben bleiben und nicht mitanimiert werden
     func contactButtonPressed() {
         var addFriendsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("addFriendsVC") as AddFriendsVC
-        self.navigationController?.pushViewController(addFriendsVC, animated: true)
+        self.addViewController(addFriendsVC)
     }
     
     
@@ -215,7 +229,13 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewDelegate {
         })
         
     }
-
+    
+    func didSelectAnnotationPin(location: Location){
+        var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
+        shareLocationVC.location = location
+        self.addViewController(shareLocationVC)
+    }
+    
     
     
 }

@@ -17,7 +17,7 @@ import MapKit
 import CoreLocation
 
 
-class MainScreenMapVC: UIViewController, MKMapViewDelegate {
+class MainScreenMapVC: UIViewController, MKMapViewDelegate{
     
     
     //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
@@ -28,6 +28,8 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
     
     
     var mapView:MapView!
+    
+    var delegate:TableViewAndMapDelegate!
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -61,7 +63,7 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         
         
     }
-
+    
     //   Keep track of user: if user changes position center of mapView will change
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
         mapView.centerCoordinate = userLocation.location.coordinate
@@ -79,9 +81,7 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate {
         }
         var locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: longitude, latitude: latitude, user: nil)
         
-        var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
-        shareLocationVC.location = locationToShare
-        self.navigationController?.pushViewController(shareLocationVC, animated: true)
+        self.delegate.didSelectAnnotationPin(locationToShare!)
     }
     
     override func didReceiveMemoryWarning() {

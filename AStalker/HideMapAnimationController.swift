@@ -17,11 +17,8 @@ class HideMapAnimationController: AnimationController {
         var toViewController = transitionContext.viewControllerForKey( UITransitionContextToViewControllerKey )
         
         
-        // Add the 'to' view to the hirarchy
-
-        containerView.insertSubview(toViewController!.view, aboveSubview: fromViewController!.view )
+        containerView.insertSubview( toViewController!.view, belowSubview: fromViewController!.view )
         containerView.bringSubviewToFront(fromViewController!.view)
-
         
         UIView.animateWithDuration( self.transitionDuration(transitionContext), animations: {
             let translation = CGAffineTransformMakeTranslation(0, toViewController!.view.frame.height)

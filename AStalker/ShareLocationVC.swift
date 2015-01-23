@@ -91,7 +91,7 @@ class ShareLocationVC: UIViewController {
         LocationStore.defaultStore().getLocalUser()?.sharedLocations = mutableSet
         println("\(self.location.sharedUsers.count) Personen hinzugefügt")
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.dismissViewController()
     }
     
     

@@ -10,6 +10,8 @@
 import MapKit
 
 class MapView: MKMapView {
+    var coordinate:CLLocationCoordinate2D?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         // initialize Map
@@ -25,8 +27,9 @@ class MapView: MKMapView {
     convenience init(frame: CGRect, location: CLLocationCoordinate2D) {
         self.init(frame: frame)
         // Create new Annotation and add it
+        self.coordinate = location
         var annotation = MKPointAnnotation()
-        annotation.setCoordinate(location)
+        annotation.setCoordinate(self.coordinate!)
         annotation.title = "Hier bist du"
         self.addAnnotation(annotation)
         
@@ -42,11 +45,14 @@ extension MapView {
     func zoomIn() {
         var userLocation = self.userLocation
         if let userLocation = userLocation {
-            let region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 2000, 2000)
+            var region: MKCoordinateRegion!
+            if let coordinate = self.coordinate{
+                region = MKCoordinateRegionMakeWithDistance(coordinate, 2000, 2000)
+            } else {
+                region = MKCoordinateRegionMakeWithDistance(userLocation.coordinate, 2000, 2000)
+            }
             let adjustedRegion = self.regionThatFits(region)
             self.setRegion(adjustedRegion, animated: true)
-            
-            
         }
         
     }
