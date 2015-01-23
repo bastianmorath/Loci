@@ -10,10 +10,13 @@ import UIKit
 
 var mainScreenVC: MainScreenVC!
 
+
 extension MainScreenVC{
     func addViewController(controller: UIViewController){
         mainScreenVC = self
-        self.mapVC.view.userInteractionEnabled = false
+        self.mapVC.mapView.scrollEnabled = false
+        self.mapIsAtBottom = true
+        self.mapVC.mapIsAtBottom = true
         self.addChildViewController(controller)
         self.container.insertSubview(controller.view, atIndex: 0)
         UIView.animateWithDuration( 0.6, animations: {
@@ -25,10 +28,12 @@ extension MainScreenVC{
     }
 }
 
+
 extension UIViewController{
     func dismissViewController(){
-        mainScreenVC.mapVC.view.userInteractionEnabled = true
-        
+        mainScreenVC.mapVC.mapView.scrollEnabled = true
+        mainScreenVC.mapIsAtBottom = false
+        mainScreenVC.mapVC.mapIsAtBottom = false
         UIView.animateWithDuration(0.6, animations: { () -> Void in
             let translation = CGAffineTransformMakeTranslation(0, 0)
             

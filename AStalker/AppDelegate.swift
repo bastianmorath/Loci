@@ -13,16 +13,14 @@ import CoreLocation
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var rootViewController : ATNavigationController?
+    var rootViewController : UIViewController?
     var locationManager: CLLocationManager?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
-        var firstViewController = MainScreenVC()
-        self.rootViewController = ATNavigationController(rootViewController: firstViewController)
-        self.rootViewController!.delegate = self.rootViewController
+        self.rootViewController = MainScreenVC()
         
         if let window = window {
             self.window!.rootViewController = self.rootViewController

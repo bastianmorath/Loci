@@ -25,10 +25,10 @@ protocol TableViewAndMapDelegate {
 }
 class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDelegate {
     
-    // MARK: - Properies und Variabeln
     
     
     
+    //MARK:- Views
     // child controllers
     var mapVC: MainScreenMapVC!
     var tableVC: MainScreenTableVC!
@@ -44,7 +44,9 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
     /// Container to hold all Controllers -> For Animations
     var container: UIView!
     
-    // Buttons
+    
+    
+    // MARK:-Buttons
     
     //Zeigt alle Kontakte des Users an, insbesondere wo diese sich befinden und wann sie dort waren
     var contactButton: UIButton!
@@ -59,7 +61,8 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
     var locateMeButton: UIButton!
     
     
-    //MARK:- Computet Properties
+    // MARK: - Properies und Variabeln
+    
     // Gibt an, ob der TableView ausgeklappt ist oder nicht.
     var tableViewIsExtended:Bool = false {
         willSet{
@@ -74,6 +77,9 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
             }
         }
     }
+    
+    //Wenn ein anderer Controller angezeigt wird und die Map an den Bottom animiert wird, wird die Variable auf true gesetzt
+    var mapIsAtBottom = false
     
     //MARK:- Methoden
     override func viewDidLoad() {
@@ -150,7 +156,9 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
     }
     
     func myLocationButtonPressed() {
-        
+        var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
+       shareLocationVC.location = LocationStore.defaultStore().createLocation("tst", timestamp: NSDate(), longitude: 5.5, latitude: 3.4, user: nil)
+        self.addViewController(shareLocationVC)
     }
     
     func shareYourLocationButtonPressed(){
@@ -167,10 +175,10 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
     
     // MARK:- Swipe-Gesture
     func swipeUp(){
-        if !tableViewIsExtended{
+        
+        if !tableViewIsExtended && !self.mapIsAtBottom{
             // tableView ausklappen
             self.animateViewToTop()
-            
         }
     }
     

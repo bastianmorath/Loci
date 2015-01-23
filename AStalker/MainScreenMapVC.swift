@@ -31,6 +31,8 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate{
     
     var delegate:TableViewAndMapDelegate!
     
+    var mapIsAtBottom = false
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
@@ -89,7 +91,11 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        if self.mapIsAtBottom{
+            (self.parentViewController!.childViewControllers[2] as UIViewController).dismissViewController()
+        }
+    }
     
 }
 

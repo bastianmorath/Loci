@@ -42,9 +42,6 @@
 		B60C03621A620E5D005921B2 /* FriendsLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */; };
 		B60C03641A620F55005921B2 /* FriendsLocationTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */; };
 		B61B12121A628CED00F48702 /* SelectedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B12111A628CED00F48702 /* SelectedButtonView.swift */; };
-		B62291191A6671BB006C1B30 /* AnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62291171A6671BB006C1B30 /* AnimationController.swift */; };
-		B622911A1A6671BB006C1B30 /* ATNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B62291181A6671BB006C1B30 /* ATNavigationController.swift */; };
-		B622911C1A667A29006C1B30 /* HideMapAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B622911B1A667A29006C1B30 /* HideMapAnimationController.swift */; };
 		B6271A041A626C74008B410C /* UIButton+ATButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6271A031A626C74008B410C /* UIButton+ATButton.swift */; };
 		B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6271A051A626D5F008B410C /* UIColor+ATColor.swift */; };
 		B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730771A6151870073EB51 /* ACoreDataPortal.swift */; };
@@ -158,9 +155,6 @@
 		B60C035F1A620E4F005921B2 /* FriendsLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsLocationTableViewCell.swift; sourceTree = "<group>"; };
 		B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsLocationTableViewCell.xib; sourceTree = "<group>"; };
 		B61B12111A628CED00F48702 /* SelectedButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedButtonView.swift; sourceTree = "<group>"; };
-		B62291171A6671BB006C1B30 /* AnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationController.swift; sourceTree = "<group>"; };
-		B62291181A6671BB006C1B30 /* ATNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATNavigationController.swift; sourceTree = "<group>"; };
-		B622911B1A667A29006C1B30 /* HideMapAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideMapAnimationController.swift; sourceTree = "<group>"; };
 		B6271A031A626C74008B410C /* UIButton+ATButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+ATButton.swift"; sourceTree = "<group>"; };
 		B6271A051A626D5F008B410C /* UIColor+ATColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ATColor.swift"; sourceTree = "<group>"; };
 		B63730771A6151870073EB51 /* ACoreDataPortal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataPortal.swift; sourceTree = "<group>"; };
@@ -328,9 +322,7 @@
 		B62291161A6671AE006C1B30 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				B62291171A6671BB006C1B30 /* AnimationController.swift */,
-				B62291181A6671BB006C1B30 /* ATNavigationController.swift */,
-				B622911B1A667A29006C1B30 /* HideMapAnimationController.swift */,
+				B644A6DC1A725D3B005C1376 /* UIViewController + Navigation.swift */,
 			);
 			name = Navigation;
 			sourceTree = "<group>";
@@ -406,7 +398,6 @@
 				B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */,
 				B6D951A71A6D3D9D009315E5 /* UIDevice+ATDevice.swift */,
 				B637A9301A6FE2B7009FE828 /* Constants.swift */,
-				B644A6DC1A725D3B005C1376 /* UIViewController + Navigation.swift */,
 			);
 			name = "Categories + Helper classes";
 			sourceTree = "<group>";
@@ -741,7 +732,6 @@
 				B6C616301A69524500B95663 /* LocalUser.swift in Sources */,
 				B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */,
 				B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */,
-				B62291191A6671BB006C1B30 /* AnimationController.swift in Sources */,
 				B67E0A9C1A653B1E006F79A1 /* CheckboxButton.swift in Sources */,
 				B60A671C1A69446D00A9AC0C /* MSSharedLocationsDataSource.swift in Sources */,
 				B60C03601A620E4F005921B2 /* FriendsLocationTableViewCell.swift in Sources */,
@@ -753,12 +743,10 @@
 				B6F1BB2C1A657AFF0083FE07 /* AddFriendsDataSource.swift in Sources */,
 				B6F1BB2A1A6578440083FE07 /* AddFriendsVC.swift in Sources */,
 				A24517341A626EE00006CDB0 /* LoginWelcomeVC.swift in Sources */,
-				B622911C1A667A29006C1B30 /* HideMapAnimationController.swift in Sources */,
 				A24517361A626F2E0006CDB0 /* LoginSMSVC.swift in Sources */,
 				B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */,
 				B6B7653D1A67B51700C9A8C5 /* HeartButton.swift in Sources */,
 				B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */,
-				B622911A1A6671BB006C1B30 /* ATNavigationController.swift in Sources */,
 				B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */,
 				B6C616341A695CBD00B95663 /* Location.swift in Sources */,
 				A24517381A626F540006CDB0 /* LoginRegistrationVC.swift in Sources */,

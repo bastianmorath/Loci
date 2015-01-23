@@ -17,7 +17,7 @@ struct Constants {
     static let kAspectRatioMapToTableViewIPad: CGFloat = 1.04
     
     //Höhe der Cells in den TableViews
-    static let kCellHeight = 52 as CGFloat
+    static let kCellHeight = 55 as CGFloat
     
     // Höhe des Screens
     static  var screenHeight:CGFloat {
@@ -49,7 +49,6 @@ struct Constants {
             if UIDevice.currentDevice().isIPad(){
                 return 250
             }
-            
             return 82
         }
     }

@@ -21,8 +21,6 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
     var addFriendsDataSource: AddFriendsDataSource!
     
     var localUser:LocalUser!
-    
-    var animationController = HideMapAnimationController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +75,10 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
             LocationStore.defaultStore().addUserToFriendsOfLocalUser(selectedUser)
         }
         cell.heartButton.isChecked = !cell.heartButton.isChecked
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return Constants.kCellHeight
     }
     
     func addFriendsPressed(){
