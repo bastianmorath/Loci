@@ -21,9 +21,10 @@ class MapView: MKMapView {
         
         //show user location
         self.showsUserLocation = true
+    
         
-
-            }
+    }
+    
     convenience init(frame: CGRect, location: CLLocationCoordinate2D) {
         self.init(frame: frame)
         // Create new Annotation and add it
@@ -40,6 +41,8 @@ class MapView: MKMapView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+
 
 extension MapView {
     func zoomIn() {
