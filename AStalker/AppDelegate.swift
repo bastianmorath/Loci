@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
+        if LocationStore.defaultStore().getLocalUser() == nil {
+            LocationStore.defaultStore().createDebugUsers()
+            LocationStore.defaultStore().createDebugLocalUser()
+        }
         self.rootViewController = MainScreenVC()
         
         if let window = window {
@@ -37,10 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        if LocationStore.defaultStore().getLocalUser() == nil {
-            LocationStore.defaultStore().createDebugUsers()
-            LocationStore.defaultStore().createDebugLocalUser()
-        }
+       
         return true
     }
     

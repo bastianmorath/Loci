@@ -54,7 +54,7 @@ class ShareLocationTableViewCell: UITableViewCell {
     }
     
     
-    
+    //TODO:- Button enablen wenn user selected ist -> Vom Array des ShareLocationVC übernehmen
     override func configureWithModelObject(model: AnyObject?) {
         let user = model as? User
         if let user = user {
