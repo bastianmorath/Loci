@@ -10,23 +10,26 @@ import UIKit
 
 struct Constants {
     
-    //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
+    ///Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
     static let kAspectRatioMapToTableViewIPhone: CGFloat = 1.24
     
-    //Verhältnis vom mapContainer zum TableView: iPad
+    ///Verhältnis vom mapContainer zum TableView: iPad
     static let kAspectRatioMapToTableViewIPad: CGFloat = 1.04
     
-    //Höhe der Cells in den TableViews
+    /// Default-Höhe der Cells in den TableViews
     static let kCellHeight = 55 as CGFloat
     
-    // Höhe des Screens
+    //Höhe der Cells in den TableViews
+    static let kCellHeightAddFriends = 57 as CGFloat
+    
+    /// Höhe des Screens
     static  var screenHeight:CGFloat {
         get{
             return UIScreen.mainScreen().bounds.height
         }
     }
     
-    // breite des Screens
+    /// Breite des Screens
     static  var screenWidth:CGFloat {
         get{
             return UIScreen.mainScreen().bounds.width
@@ -34,7 +37,7 @@ struct Constants {
     }
     
     
-    //Minimale Höhe der Map, wenn der tableView ausgeklappt ist(Abhängig von der Screen-Grösse)
+    ///Minimale Höhe der Map, wenn der tableView ausgeklappt ist(Abhängig von der Screen-Grösse)
     static var topSpace:CGFloat {
         get{
             if UIDevice.currentDevice().isIPhone5(){
@@ -49,8 +52,14 @@ struct Constants {
             if UIDevice.currentDevice().isIPad(){
                 return 250
             }
+            
             return 82
         }
+    }
+    
+    ///Minimale Höhe der Map, wenn der tableView ausgeklappt ist(Abhängig von der Screen-Grösse)
+    static var mapHeight:CGFloat {
+        return 92
     }
     
     static var tableViewFrameExtended:CGRect{
@@ -65,7 +74,7 @@ struct Constants {
         }
     }
     
-    // Height of TableViewNotExtended
+    ///Height of TableViewNotExtended
     static var tableViewHeight:CGFloat {
         get{
             if UIDevice.currentDevice().userInterfaceIdiom == .Pad{

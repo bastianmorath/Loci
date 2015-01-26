@@ -39,6 +39,9 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
         localUser = (LocationStore.defaultStore().getLocalUser())
         addFriendsDataSource = AddFriendsDataSource(tableView: tableView, user: localUser!)
         tableView.dataSource = addFriendsDataSource
+        
+        self.tableView.frame = CGRectMake(0, Constants.topSpace, Constants.screenWidth, Constants.screenHeight-2 * Constants.topSpace)
+
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -78,7 +81,7 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return Constants.kCellHeight
+        return Constants.kCellHeightAddFriends
     }
     
     func addFriendsPressed(){

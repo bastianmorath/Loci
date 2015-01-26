@@ -20,7 +20,7 @@ extension MainScreenVC{
         self.addChildViewController(controller)
         self.container.insertSubview(controller.view, atIndex: 0)
         UIView.animateWithDuration( 0.6, animations: {
-            let translation = CGAffineTransformMakeTranslation(0, Constants.screenHeight-Constants.topSpace)
+            let translation = CGAffineTransformMakeTranslation(0, Constants.screenHeight-Constants.mapHeight)
             
             self.homeViewContainer.transform = translation
         })

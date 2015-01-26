@@ -63,6 +63,9 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
     
     // MARK: - Properies und Variabeln
     
+    //Wenn ein anderer Controller angezeigt wird und die Map an den Bottom animiert wird, wird die Variable auf true gesetzt
+    var mapIsAtBottom = false
+    
     // Gibt an, ob der TableView ausgeklappt ist oder nicht.
     var tableViewIsExtended:Bool = false {
         willSet{
@@ -78,8 +81,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
         }
     }
     
-    //Wenn ein anderer Controller angezeigt wird und die Map an den Bottom animiert wird, wird die Variable auf true gesetzt
-    var mapIsAtBottom = false
+
     
     //MARK:- Methoden
     override func viewDidLoad() {
@@ -180,6 +182,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
             // tableView ausklappen
             self.animateViewToTop()
         }
+        
     }
     
     func swipeDown(){
