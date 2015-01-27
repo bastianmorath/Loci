@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  AStalker
+//  Loci
 //
 //  Created by Lukas Reichart on 10/01/15.
 //  Copyright (c) 2015 Antum. All rights reserved.
@@ -38,10 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //setup MKMapView UserLocation Tracking
         locationManager = CLLocationManager()
         locationManager?.requestWhenInUseAuthorization()
-        
-        
-        
-       
+
         return true
     }
     

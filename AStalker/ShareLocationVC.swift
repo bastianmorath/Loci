@@ -1,6 +1,6 @@
 //
 //  ShareLocationVC.swift
-//  AStalker
+//  Loci
 //
 //  Created by Bastian Morath on 10/01/15.
 //  Copyright (c) 2015 Antum. All rights reserved.
@@ -25,7 +25,6 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
     
     var shareButton: UIButton?
     
-    var selectedUserSet = NSMutableSet()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,15 +72,13 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var selectedUser = self.shareLocationDataSource.modelForIndexPath(indexPath) as User
         var cell = tableView.cellForRowAtIndexPath(indexPath) as ShareLocationTableViewCell
-        
-        if self.selectedUserSet.containsObject(selectedUser){
+        var dataSource = self.tableView.dataSource as ShareLocationDataSource
+        if dataSource.selectedUserSet.containsObject(selectedUser){
             //User ist schon ausgewählt. Deselecte ihn im View und lösche ihn aus dem userSet
-            self.selectedUserSet.removeObject(selectedUser)
-            cell.selectedUserSet = self.selectedUserSet
+            dataSource.selectedUserSet.removeObject(selectedUser)
         } else {
             //Füge den User bei lcoation.sharedUsers hinzu und Selecte ihn im View(roter Checkmark-View)
-            self.selectedUserSet.addObject(selectedUser)
-            cell.selectedUserSet = self.selectedUserSet
+            dataSource.selectedUserSet.addObject(selectedUser)
         }
         cell.checkboxButton.isChecked = !cell.checkboxButton.isChecked
     }
@@ -92,7 +89,8 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
     
     //MARK:- Button Handlers
     func sharePressed() {
-        self.location.sharedUsers = self.selectedUserSet
+        self.location.sharedUsers = (self.tableView.dataSource as ShareLocationDataSource).selectedUserSet
+
         //Add Location to localUser.sharedLocations
         var mutableSet = LocationStore.defaultStore().getLocalUser()?.sharedLocations as NSMutableSet
         mutableSet.addObject(location)

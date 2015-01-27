@@ -1,6 +1,6 @@
 //
 //  ContainerViewController.swift
-//  AStalker
+//  Loci
 //
 //  Created by Florian Morath on 10.01.15.
 //  Copyright (c) 2015 Antum. All rights reserved.
@@ -118,6 +118,8 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
         
         self.tableViewIsExtended = false
         
+        self.view.backgroundColor = UIColor.greenColor()
+        
         // Setup Buttons
         myLocationsButton = UIButton.ATButton(.MultipleLocations, color: .White)
         myLocationsButton.addTarget(self, action: "myLocationButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
@@ -209,7 +211,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
                 return
             }
             //ganzen View nach oben verschieben + tableView-Höhe vergrössern
-            self.view.frame = CGRectMake(0, -transitionConstant, Constants.screenWidth, self.view.frame.height+transitionConstant)
+            self.container.frame = CGRectMake(0, -transitionConstant, Constants.screenWidth, self.view.frame.height+transitionConstant)
             //TableViewContainer.frame Höhe anpassen
             self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y,Constants.screenWidth, transitionConstant+Constants.tableViewHeight)
             
@@ -240,7 +242,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
             let topSpace = Constants.topSpace
             let maxTransition = Constants.screenHeight-Constants.tableViewHeight-topSpace
             transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
-            self.view.frame = CGRectMake(0, 0, Constants.screenWidth, UIScreen.mainScreen().bounds.height)
+            self.container.frame = CGRectMake(0, 0, Constants.screenWidth, UIScreen.mainScreen().bounds.height)
             self.tableVC.tableView.frame = CGRectMake(0, 0, Constants.screenWidth, Constants.tableViewHeight)
             self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, Constants.screenWidth, Constants.tableViewHeight)
         })

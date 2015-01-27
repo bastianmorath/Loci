@@ -1,6 +1,6 @@
 //
-//  AStalker.swift
-//  AStalker
+//  Loci.swift
+//  Loci
 //
 //  Created by Bastian Morath on 16/01/15.
 //  Copyright (c) 2015 Antum. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  Constants.swift
-//  AStalker
+//  Loci
 //
 //  Created by Bastian Morath on 21/01/15.
 //  Copyright (c) 2015 Antum. All rights reserved.

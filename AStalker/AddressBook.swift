@@ -1,6 +1,6 @@
 //
 //  AddressBook.swift
-//  AStalker
+//  Loci
 //
 //  Created by Bastian Morath on 10/01/15.
 //  Copyright (c) 2015 Antum. All rights reserved.
@@ -63,7 +63,7 @@ class AddressBook: NSObject{
             return self.accesAuthorized()
         default:
             println("Access denied")
-            let alert = UIAlertView(title: "Kein Zugriff", message: "Gehen Sie in die Einstellungen und erlauben Sie AStalker Zugriff auf IHre Kontakte", delegate: self, cancelButtonTitle: "Verstanden!")
+            let alert = UIAlertView(title: "Kein Zugriff", message: "Gehen Sie in die Einstellungen und erlauben Sie Loci Zugriff auf IHre Kontakte", delegate: self, cancelButtonTitle: "Verstanden!")
             alert.show()
             
             return false

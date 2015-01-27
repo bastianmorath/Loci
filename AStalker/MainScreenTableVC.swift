@@ -1,6 +1,6 @@
 //
 //  TableVC.swift
-//  AStalker
+//  Loci
 //
 //  Created by Florian Morath on 10.01.15.
 //  Copyright (c) 2015 Antum. All rights reserved.
@@ -139,6 +139,7 @@ class MainScreenTableVC: UIViewController, UITableViewDelegate, UIScrollViewDele
     
     // Detecte, wenn der User zuoberst angekommen ist und weiter nach oben scrollt
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        
         var translation = scrollView.panGestureRecognizer.translationInView(scrollView.superview!);
         if  translation.y > 0 && scrollView.contentOffset.y == 0 {
             // Geklickte Row nach oben  scrollen

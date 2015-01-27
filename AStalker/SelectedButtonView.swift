@@ -1,6 +1,6 @@
 //
 //  CheckmarkView.swift
-//  AStalker
+//  Loci
 //
 //  Created by Bastian Morath on 11/01/15.
 //  Copyright (c) 2015 Antum. All rights reserved.
