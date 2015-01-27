@@ -76,12 +76,12 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
         
         if self.selectedUserSet.containsObject(selectedUser){
             //User ist schon ausgewählt. Deselecte ihn im View und lösche ihn aus dem userSet
-            self.selectedUserSet.removeObject(selectedUserSet)
-            cell.location = location
+            self.selectedUserSet.removeObject(selectedUser)
+            cell.selectedUserSet = self.selectedUserSet
         } else {
             //Füge den User bei lcoation.sharedUsers hinzu und Selecte ihn im View(roter Checkmark-View)
             self.selectedUserSet.addObject(selectedUser)
-            cell.location = location
+            cell.selectedUserSet = self.selectedUserSet
         }
         cell.checkboxButton.isChecked = !cell.checkboxButton.isChecked
     }
@@ -101,7 +101,4 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
         
         self.dismissViewController()
     }
-
-    
-    
 }

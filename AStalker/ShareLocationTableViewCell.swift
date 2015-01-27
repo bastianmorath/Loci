@@ -7,13 +7,15 @@
 //
 
 import UIKit
-
-class ShareLocationTableViewCell: UITableViewCell {
+protocol SelectedUser{
+    func selectedUser(user: NSMutableSet)->NSMutableSet
+}
+class ShareLocationTableViewCell: UITableViewCell, SelectedUser {
     var nameLabel = UILabel()
     var checkboxButton: CheckboxButton!
     var likeView = UIImageView()
-    //Die Location, die vom TableVC übergebn wird. Sie wird gebraucht, um auf die bereits angeklickten User zuzugreifen und je nach dem den Button zu aktivieren oder nicht
-    var location: Location?
+    /// Der selectedUserArray, der vom TableVC übergebn wird. Er wird gebraucht, um auf die bereits angeklickten User zuzugreifen und je nach dem den Button zu aktivieren oder nicht
+    var selectedUserSet: NSMutableSet?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -59,21 +61,25 @@ class ShareLocationTableViewCell: UITableViewCell {
         let user = model as? User
         if let user = user {
             self.nameLabel.text = user.name
-            if let location = self.location{
-                if location.sharedUsers.containsObject(user){
+            if let selectedUser = self.selectedUserSet{
+                if selectedUser.containsObject(user){
                     self.checkboxButton.isChecked = true
                 } else {
                     self.checkboxButton.isChecked = false
                 }
-
             }
-            
-            //Herzchen rechts hinter den namen tun, wenn der User ein Freund ist
+
+            //Herzchen rechts hinter den Namen tun, wenn der User ein Freund ist
             if (LocationStore.defaultStore().getLocalUser()!.friends.containsObject(user)){
                 likeView.hidden = false
             } else {
                 likeView.hidden = true
             }
         }
+    }
+    
+    // SelectedUser-Protocol
+    func selectedUser(user: NSMutableSet) -> NSMutableSet {
+        return user
     }
 }

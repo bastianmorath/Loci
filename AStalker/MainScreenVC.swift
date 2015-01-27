@@ -81,7 +81,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
         }
     }
     
-
+    
     
     //MARK:- Methoden
     override func viewDidLoad() {
@@ -159,7 +159,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
     
     func myLocationButtonPressed() {
         var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
-       shareLocationVC.location = LocationStore.defaultStore().createLocation("tst", timestamp: NSDate(), longitude: 5.5, latitude: 3.4, user: nil)
+        shareLocationVC.location = LocationStore.defaultStore().createLocation("tst", timestamp: NSDate(), longitude: 5.5, latitude: 3.4, user: nil)
         self.addViewController(shareLocationVC)
     }
     
@@ -202,7 +202,12 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
             
             let topSpace = Constants.topSpace
             let maxTransition = self.view.frame.height-Constants.tableViewHeight-topSpace
+            
             transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
+            if transitionConstant < 0{
+                self.tableViewIsExtended = false
+                return
+            }
             //ganzen View nach oben verschieben + tableView-Höhe vergrössern
             self.view.frame = CGRectMake(0, -transitionConstant, Constants.screenWidth, self.view.frame.height+transitionConstant)
             //TableViewContainer.frame Höhe anpassen
@@ -210,6 +215,7 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
             
             let tableViewFrame = CGRectMake(0, 0, Constants.screenWidth, transitionConstant+Constants.tableViewHeight)
             self.tableVC.tableView.frame = CGRectMake(0, 0, Constants.screenWidth, transitionConstant+Constants.tableViewHeight)
+            
         })
         
     }

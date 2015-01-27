@@ -97,21 +97,40 @@ extension MultipleSectionsTableViewDataSource: NSFetchedResultsControllerDelegat
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        var newIPath : NSIndexPath!
+        if let newIndexPath = newIndexPath{
+            for (i, fetchedController) in enumerate(fetchedResultsControllers) {
+                if fetchedController === controller {
+                    newIPath = NSIndexPath(forRow: newIndexPath.row, inSection: i)
+                }
+            }
+        }
+        
+        var oldIPath : NSIndexPath!
+        if let indexPath = indexPath{
+            for (i, fetchedController) in enumerate(fetchedResultsControllers) {
+                if fetchedController === controller {
+                    oldIPath = NSIndexPath(forRow: indexPath.row, inSection: i)
+                }
+            }
+        }
+
+    
         
         switch type {
         case .Insert:
-            tableView.insertRowsAtIndexPaths( [ newIndexPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
+            tableView.insertRowsAtIndexPaths( [ newIPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
             
         case .Delete:
-            tableView.deleteRowsAtIndexPaths( [ indexPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
+            tableView.deleteRowsAtIndexPaths( [ oldIPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
             
         case .Update:
             // cellForRowAtIndexPath does update the cells?
-            tableView.cellForRowAtIndexPath( indexPath! )
+            tableView.cellForRowAtIndexPath( oldIPath! )
             
         case .Move:
-            tableView.deleteRowsAtIndexPaths( [ indexPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
-            tableView.insertRowsAtIndexPaths( [ newIndexPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
+            tableView.deleteRowsAtIndexPaths( [ oldIPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
+            tableView.insertRowsAtIndexPaths( [ newIPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
         }
         
     }

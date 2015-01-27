@@ -70,7 +70,6 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate{
     func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
        
         mapView.centerCoordinate = userLocation.location.coordinate
-        
         // stop AnnotationView callout
         if let annotationView = mapView.viewForAnnotation(userLocation) {
             annotationView.canShowCallout = false

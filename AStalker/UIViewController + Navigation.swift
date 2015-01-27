@@ -19,7 +19,7 @@ extension MainScreenVC{
         self.mapVC.mapIsAtBottom = true
         self.addChildViewController(controller)
         self.container.insertSubview(controller.view, atIndex: 0)
-        UIView.animateWithDuration( 0.6, animations: {
+        UIView.animateWithDuration( 0.3, animations: {
             let translation = CGAffineTransformMakeTranslation(0, Constants.screenHeight-Constants.mapHeight)
             
             self.homeViewContainer.transform = translation
@@ -34,7 +34,7 @@ extension UIViewController{
         mainScreenVC.mapVC.mapView.scrollEnabled = true
         mainScreenVC.mapIsAtBottom = false
         mainScreenVC.mapVC.mapIsAtBottom = false
-        UIView.animateWithDuration(0.6, animations: { () -> Void in
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
             let translation = CGAffineTransformMakeTranslation(0, 0)
             
             mainScreenVC.homeViewContainer.transform = translation

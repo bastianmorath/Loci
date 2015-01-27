@@ -19,14 +19,17 @@ class User: NSManagedObject {
 
 extension User{
     func addFriendObject(friend: User?){
-        var friends = self.mutableSetValueForKey("friends")
-        friends.addObject(friend!)
+        var friendsArray = self.mutableSetValueForKey("friends")
+        friendsArray.addObject(friend!)
+        self.friends = friendsArray
+        
     }
     
     func removeFriendObject(friend: User?){
-        var friends = NSMutableSet(set: self.friends)
+        var friendsArray = self.mutableSetValueForKey("friends")
         
-        friends.removeObject(friend!)
-        self.friends = friends
+        friendsArray.removeObject(friend!)
+        self.friends = friendsArray
+        
     }
 }
