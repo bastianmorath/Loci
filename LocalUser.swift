@@ -14,6 +14,8 @@ class LocalUser: User {
     @NSManaged var phoneNumber: String
     @NSManaged var userID: String
     @NSManaged var mySharedLocations: NSSet
+    @NSManaged var favoriteLocations: NSSet
     @NSManaged var notifications: NSSet
+    @NSManaged var currentLocation: Location
 
 }

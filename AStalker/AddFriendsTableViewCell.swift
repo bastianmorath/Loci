@@ -21,13 +21,13 @@ class AddFriendsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         //nameLabel hinzufügen
-        self.nameLabel.frame = CGRectMake(76, 10, 200, 40)
+        self.nameLabel.frame = CGRect(x: 76, y: 10, width: 200, height: 40)
         self.nameLabel.font = UIFont.ATTableViewFont()
-        self.nameLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(self.nameLabel)
         
         // Set checkboxButton
-        self.heartButton = HeartButton(frame: CGRectMake(30, 15, 30, 30))
+        self.heartButton = HeartButton(frame: CGRect(x: 30, y: 15, width: 30, height: 30))
         self.addSubview(self.heartButton)
     }
     
@@ -37,13 +37,13 @@ class AddFriendsTableViewCell: UITableViewCell {
     
     
     
-    override func configureWithModelObject(model: AnyObject?) {
+    override func configureWithModelObject(_ model: AnyObject?) {
         let user = model as? User
         let localUser = LocationStore.defaultStore().getLocalUser()
         if let user = user{
             self.nameLabel.text = user.name
             
-            if localUser!.friends.containsObject(user){
+            if localUser!.friends.contains(user){
                 self.heartButton.isChecked = true
             } else {
                 self.heartButton.isChecked = false

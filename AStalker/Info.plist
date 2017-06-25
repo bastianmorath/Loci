@@ -2,8 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationUsageDescription</key>
+	<string>Warum braucht diese App Ihre Location? Darum.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>Location</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,10 +26,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Authorization granted when in use</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Authorization granted</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Authorization granted when in use</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>UniversLTStd-Light.otf</string>

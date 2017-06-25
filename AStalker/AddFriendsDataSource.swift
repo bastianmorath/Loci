@@ -20,9 +20,9 @@ class AddFriendsDataSource: MultipleSectionsTableViewDataSource{
         super.init(tableView: tableView, fetchedResultsControllers: [fetchedResultsControllerFriends, fetchedResultsControllerNoneFriends] )
     }
     
-    override func cellForTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell =  AddFriendsTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self ) as AddFriendsTableViewCell
-        var user = self.modelForIndexPath(indexPath) as User
+    override func cellForTableView(_ tableView: UITableView, atIndexPath indexPath: IndexPath) -> UITableViewCell {
+        var cell =  AddFriendsTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self ) as! AddFriendsTableViewCell
+        var user = self.modelForIndexPath(indexPath) as! User
         return cell
     }
     

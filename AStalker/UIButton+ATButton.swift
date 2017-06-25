@@ -45,25 +45,26 @@ extension UIButton {
     Enumeration über den Ort des Buttons.
     
     - TopHalfLeft: Das Icon wird am oberen linken Rand des SuperViews angezeigt, wobei die Hälfte des Icons darüber hinaus ist.
-
+    
     */
-
+    
     enum ATButtonLocation {
         case TopRight
         case TopLeft
         case BottomLeft
         case TopHalfLeft
+        case TopHalfRight
         case BottomRight
     }
     
     
     class func ATButton( type: ATButtonType, color: ATColor) -> UIButton {
-        var button = UIButton.buttonWithType( UIButtonType.Custom ) as UIButton
+        var button = UIButton.buttonWithType( UIButtonType.Custom ) as! UIButton
         
         //button.clipsToBounds = true
         button.layer.cornerRadius = CGFloat(kSize / 2)
         button.setTranslatesAutoresizingMaskIntoConstraints( false )
-        button.showsTouchWhenHighlighted = true
+        button.showsTouchWhenHighlighted = false
         switch color{
         case .Red:
             button.backgroundColor = UIColor.RedColor()
@@ -100,7 +101,7 @@ extension UIButton {
             imageView.image = UIImage(named: "Contacts.png")
         }
         button.addSubview(imageView)
-    
+        
         return button
     }
     
@@ -110,15 +111,26 @@ extension UIButton {
     :param: location Location-Enumeration
     */
     func positionButtonToLocation(location: ATButtonLocation ) {
+        //Remove and re-add the button to its superView to remove constraints and update it later in this method
+        let superView = self.superview
+        self.removeFromSuperview()
+        superView?.addSubview(self)
         
         let views = ["button" : self]
-        let metrics = ["margin": kMargin, "bottomMargin":50]
+        /// margin: Abstand der Buttons zum Rand
+        /// topSpace: Abstand des shareLocationButtons zum oberen Rand -> floated zwischen TableView und Map
+        let metrics = ["margin": kMargin,"topSpace":Constants.screenWidth * Constants.kAspectRatioMapToTableView - 29]
+        
+        //Höhe und Breite des Buttons
+        var heightConstraint = "V:[button(\(kSize))]"
+        var widthConstraint = "H:[button(\(kSize))]"
+        if let superview = self.superview {
+            superview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(heightConstraint, options: nil, metrics: nil, views: views))
+            superview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(widthConstraint, options: nil, metrics: nil, views: views))
+        }
         
         var horizontalConstraint = "H:[button(\(kSize))]"
         var verticalConstraint = "V:[button(\(kSize))]"
-        var heightConstraint = "V:[button(\(kSize))]"
-        var widthConstraint = "H:[button(\(kSize))]"
-
         switch location {
         case .TopRight:
             horizontalConstraint = "H:[button]-margin-|"
@@ -131,8 +143,10 @@ extension UIButton {
             verticalConstraint =   "V:[button]-margin-|"
         case .TopHalfLeft:
             horizontalConstraint = "H:|-margin-[button]"
-            var constY:NSLayoutConstraint = NSLayoutConstraint(item: self, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: superview, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: 0);
-            self.superview!.addConstraint(constY)
+            verticalConstraint = "V:|-topSpace-[button]"
+        case .TopHalfRight:
+            horizontalConstraint = "H:[button]-margin-|"
+            verticalConstraint = "V:|-topSpace-[button]"
         case .BottomRight:
             horizontalConstraint = "H:[button]-margin-|"
             verticalConstraint =   "V:[button]-margin-|"
@@ -141,15 +155,14 @@ extension UIButton {
         }
         
         if let superview = self.superview {
-            superview.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(horizontalConstraint, options: nil, metrics: metrics, views: views ) )
-            superview.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(verticalConstraint, options: nil, metrics: metrics, views: views ) )
-            superview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(heightConstraint, options: nil, metrics: nil, views: views))
-            superview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(widthConstraint, options: nil, metrics: nil, views: views))
+            superview.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(horizontalConstraint, options: nil, metrics: metrics as [NSObject : AnyObject], views: views ) )
+            superview.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(verticalConstraint, options: nil, metrics: metrics as [NSObject : AnyObject], views: views ) )
+            
         }
+        
     }
     
-  
- 
+
 }
 
 

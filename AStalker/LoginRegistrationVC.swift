@@ -31,7 +31,7 @@ class LoginRegistrationVC: UIViewController, UITextFieldDelegate {
     var password2:Int?
     var name:Int?
     
-    @IBAction func finishPressed(sender: AnyObject) {
+    @IBAction func finishPressed(_ sender: AnyObject) {
         
         if password1 != nil && password2 != nil && password1 == password2 {
             // save User with name and password
@@ -57,36 +57,36 @@ class LoginRegistrationVC: UIViewController, UITextFieldDelegate {
         // textField
         nameTextField.delegate = self
         passwordTextField.delegate = self
-        passwordTextField.secureTextEntry = true
+        passwordTextField.isSecureTextEntry = true
         passwordAgainTextField.delegate = self
-        passwordAgainTextField.secureTextEntry = true
+        passwordAgainTextField.isSecureTextEntry = true
       
         
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
     
     // move view up during editing textField
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         animateViewMoving(true, moveValue: 102)
     }
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         animateViewMoving(false, moveValue: 102)
     }
     
-    func animateViewMoving (up:Bool, moveValue :CGFloat){
-        var movementDuration:NSTimeInterval = 0.3
-        var movement:CGFloat = ( up ? -moveValue : moveValue)
+    func animateViewMoving (_ up:Bool, moveValue :CGFloat){
+        let movementDuration:TimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
         UIView.beginAnimations( "animateView", context: nil)
         UIView.setAnimationBeginsFromCurrentState(true)
         UIView.setAnimationDuration(movementDuration )
-        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
         UIView.commitAnimations()
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     

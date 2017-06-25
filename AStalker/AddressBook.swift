@@ -1,4 +1,4 @@
-//
+
 //  AddressBook.swift
 //  Loci
 //
@@ -11,10 +11,13 @@ import UIKit
 import AddressBook
 
 class AddressBook: NSObject{
-    lazy var addressBook: ABAddressBookRef = {
+    private static var __once: () = {
+            StaticInstance.instance = AddressBook()
+        }()
+    lazy var addressBook: ABAddressBook = {
         var error: Unmanaged<CFError>?
         return ABAddressBookCreateWithOptions(nil,
-            &error).takeRetainedValue() as ABAddressBookRef
+            &error).takeRetainedValue() as ABAddressBook
         }()
     
     
@@ -23,12 +26,10 @@ class AddressBook: NSObject{
     class func defaultStore() -> AddressBook {
         struct StaticInstance {
             static var instance: AddressBook?
-            static var token: dispatch_once_t = 0
+            static var token: Int = 0
         }
         
-        dispatch_once( &StaticInstance.token ) {
-            StaticInstance.instance = AddressBook()
-        }
+        _ = AddressBook.__once
         
         return StaticInstance.instance!
     }
@@ -41,10 +42,10 @@ class AddressBook: NSObject{
                 
                 if granted{
                     let strongSelf = self!
-                    println("Access is granted")
+                    print("Access is granted")
                     
                 } else {
-                    println("Access is not granted")
+                    print("Access is not granted")
                 }
                 
         })
@@ -55,14 +56,14 @@ class AddressBook: NSObject{
     */
     func accesAuthorized() -> Bool{
         switch ABAddressBookGetAuthorizationStatus(){
-        case .Authorized:
-            println("Already authorized")
+        case .authorized:
+            print("Already authorized")
             return true
-        case .NotDetermined:
+        case .notDetermined:
             self.askForAccess()
             return self.accesAuthorized()
         default:
-            println("Access denied")
+            print("Access denied")
             let alert = UIAlertView(title: "Kein Zugriff", message: "Gehen Sie in die Einstellungen und erlauben Sie Loci Zugriff auf IHre Kontakte", delegate: self, cancelButtonTitle: "Verstanden!")
             alert.show()
             
@@ -75,10 +76,10 @@ class AddressBook: NSObject{
     
     :returns: Ein Array mit Dictionaries
     */
-    func getContacts(addName: Bool = false, addPhoneNumber: Bool = false) -> [Dictionary<String, AnyObject>]?{
+    func getContacts(_ addName: Bool = false, addPhoneNumber: Bool = false) -> [Dictionary<String, AnyObject>]?{
         
         if self.accesAuthorized() {
-            let addressBook: ABAddressBookRef = AddressBook.defaultStore().addressBook as ABAddressBookRef
+            let addressBook: ABAddressBook = AddressBook.defaultStore().addressBook as ABAddressBook
             let allPeople = ABAddressBookCopyArrayOfAllPeople(
                 addressBook).takeRetainedValue() as NSArray
             var dictArray:[Dictionary<String, AnyObject>] = []
@@ -87,22 +88,22 @@ class AddressBook: NSObject{
                 
                 var personDictionary = Dictionary<String, AnyObject>()
                 if addPhoneNumber{
-                    let phoneNumbers = self.getMobileNumberFromABRecordRef(person)
+                    let phoneNumbers = self.getMobileNumberFromABRecordRef(person as ABRecord)
                     //Wenn der KOntakt kein Nummern gespeichert hat, überspringe diesen Kontakt
                     if let numbers = phoneNumbers {
-                        personDictionary.updateValue(numbers, forKey: "user_identifier")
+                        personDictionary.updateValue(numbers as AnyObject, forKey: "user_identifier")
                         
                         if addName{
                             
-                            var firstName = ABRecordCopyValue(person,
-                                kABPersonFirstNameProperty).takeRetainedValue() as String
-                            let lastName = ABRecordCopyValue(person,
+                            var firstName = ABRecordCopyValue(person as ABRecord,
+                                kABPersonFirstNameProperty).takeRetainedValue() as! String
+                            let lastName = ABRecordCopyValue(person as ABRecord,
                                 kABPersonLastNameProperty)?.takeRetainedValue() as? String
                             if let name = lastName {
                                 firstName = firstName + " " + name
                             }
                             
-                            personDictionary.updateValue(firstName, forKey: "name")
+                            personDictionary.updateValue(firstName as AnyObject, forKey: "name")
                         }
                     }
                 }
@@ -114,15 +115,15 @@ class AddressBook: NSObject{
         }
     }
     
-    func getMobileNumberFromABRecordRef(ref: ABRecordRef) -> [String]?{
+    func getMobileNumberFromABRecordRef(_ ref: ABRecord) -> [String]?{
         var numberArray:[String] = []
-        var phoneNumbers: ABMultiValueRef? = ABRecordCopyValue(ref,
+        let phoneNumbers: ABMultiValue? = ABRecordCopyValue(ref,
             kABPersonPhoneProperty)?.takeRetainedValue()
-        if let phoneNumbers: ABMultiValueRef = phoneNumbers {
+        if let phoneNumbers: ABMultiValue = phoneNumbers {
             let count: Int = ABMultiValueGetCount(phoneNumbers)
             if count>0 {
                 for i in 0..<count {
-                    let value = ABMultiValueCopyValueAtIndex( phoneNumbers, i )!.takeRetainedValue() as AnyObject as String
+                    let value = ABMultiValueCopyValueAtIndex( phoneNumbers, i )!.takeRetainedValue() as AnyObject as! String
                     numberArray.append(value)
                 }
                 return numberArray

@@ -26,25 +26,25 @@ class LoginSMSVC: UIViewController, UITextFieldDelegate {
         // setup labels and textField
         self.gotSMS.font = UIFont.ATTableViewFont()
         self.pleaseEnterInfoLabel.font = UIFont.ATFont()
-        self.textField.backgroundColor = UIColor.whiteColor()
-        self.textField.textColor = UIColor.blackColor()
+        self.textField.backgroundColor = UIColor.white
+        self.textField.textColor = UIColor.black
         self.textField.text = ""
         self.forMoreInfoLabel.font = UIFont.ATFont()
         self.resendCodeLabel.font = UIFont.ATFont()
-        self.resendCodeLabel.hidden = true
+        self.resendCodeLabel.isHidden = true
         
         textField.delegate = self
         
     }
     
     
-    @IBAction func donePressed(sender: AnyObject) {
-        println("done")
+    @IBAction func donePressed(_ sender: AnyObject) {
+        print("done")
 
         if code != nil && validCode(code!) {
             // dismiss
         } else {
-            self.resendCodeLabel.hidden = false
+            self.resendCodeLabel.isHidden = false
             self.textField.text = ""
         }
         
@@ -55,37 +55,37 @@ class LoginSMSVC: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func validCode (Int)->(Bool) {
+    func validCode (_: Int)->(Bool) {
         
         // Überprüfen ob Code richtig
         return true
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         var stringCode = textField.text
-        code = stringCode.toInt()
-        println("Code: \(code)")
+        code = stringCode.int()
+        print("Code: \(code)")
         if code != nil {
             // dissmiss
             
         } else {
-            self.resendCodeLabel.hidden = false
+            self.resendCodeLabel.isHidden = false
             self.textField.text = ""
         }
         
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         if code != nil && validCode(code!) {
             // dismiss
         } else {
-            self.resendCodeLabel.hidden = false
+            self.resendCodeLabel.isHidden = false
             self.textField.text = ""
         }
 

@@ -25,8 +25,8 @@ class LoginWelcomeVC: UIViewController, UITextFieldDelegate {
         // setup labels and textField
         self.welcomeLabel.font = UIFont.ATTableViewFont()
         self.pleaseEnterInfoLabel.font = UIFont.ATFont()
-        self.textField.backgroundColor = UIColor.whiteColor()
-        self.textField.textColor = UIColor.blackColor()
+        self.textField.backgroundColor = UIColor.white
+        self.textField.textColor = UIColor.black
         self.textField.text = ""
         self.forMoreInfoLabel.font = UIFont.ATFont()
         
@@ -35,8 +35,8 @@ class LoginWelcomeVC: UIViewController, UITextFieldDelegate {
     }
 
     
-    @IBAction func donePressed(sender: AnyObject) {
-        println("done")
+    @IBAction func donePressed(_ sender: AnyObject) {
+        print("done")
 
     }
     override func didReceiveMemoryWarning() {
@@ -44,18 +44,18 @@ class LoginWelcomeVC: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        var stringNumber = textField.text
-        phoneNumber = stringNumber.toInt()
-        println("PhoneNumber: \(phoneNumber)")
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let stringNumber = textField.text
+        phoneNumber = Int(stringNumber!)
+        print("PhoneNumber: \(phoneNumber)")
 
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

@@ -12,18 +12,18 @@ import UIKit
 class SelectedButtonView: UIView {
     
     enum Type {
-        case Checkmark
-        case Heart
+        case checkmark
+        case heart
     }
     
     //Speichert den Type des Views
-    let type = Type.Checkmark
+    var type = Type.checkmark
     
     var imageView = UIImageView()
     
     init(frame: CGRect, type: Type) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         self.type = type
     }
     
@@ -31,23 +31,23 @@ class SelectedButtonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         var bPath:UIBezierPath = UIBezierPath(rect: rect)
         let circleFillColor = UIColor.RedColor()
-        var cPath: UIBezierPath = UIBezierPath(ovalInRect: rect)
+        let cPath: UIBezierPath = UIBezierPath(ovalIn: rect)
         circleFillColor.set()
         cPath.fill()
         
         switch self.type {
-        case .Checkmark:
+        case .checkmark:
             self.imageView = UIImageView(image: UIImage(named: "Checkmark.png"))
-            self.imageView.userInteractionEnabled = false
+            self.imageView.isUserInteractionEnabled = false
             self.imageView.frame = rect
             self.addSubview(self.imageView)
             
-        case .Heart:
+        case .heart:
             self.imageView = UIImageView(image: UIImage(named: "Heart_White.png"))
-            self.imageView.userInteractionEnabled = false
+            self.imageView.isUserInteractionEnabled = false
             self.imageView.frame = rect
             self.addSubview(self.imageView)
         }

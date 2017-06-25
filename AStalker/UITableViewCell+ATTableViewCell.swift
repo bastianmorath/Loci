@@ -14,7 +14,7 @@ import CoreData
 *  The ATModelSource protocol creates a simple protocol for accessing an objects model objects.
 */
 protocol ATModelSource {
-    func modelForIndexPath( indexPath: NSIndexPath ) -> AnyObject?
+    func modelForIndexPath( _ indexPath: IndexPath ) -> AnyObject?
 }
 
 /**
@@ -24,8 +24,8 @@ protocol ATModelSource {
 extension UITableViewCell {
   
   // Class functions for creating a reuseIdentifier are very handy :D
-  class func reuseIdentifier() -> String { return NSStringFromClass( self ).componentsSeparatedByString(".").last! }
-  func reuseIdentifier() -> String { return NSStringFromClass( self.dynamicType ).componentsSeparatedByString(".").last! }
+  class func reuseIdentifier() -> String { return NSStringFromClass( self ).components(separatedBy: ".").last! }
+  fileprivate func reuseIdentifier() -> String { return NSStringFromClass( type(of: self) ).components(separatedBy: ".").last! }
   
   /**
   Class func that returns a new UITableViewCell for the given tableView.
@@ -37,17 +37,17 @@ extension UITableViewCell {
   
   :returns: the newly created table view cell.
   */
-  class func cellForTableView( tableView: UITableView, atIndexPath indexPath: NSIndexPath, withModelSource modelSource: ATModelSource ) -> UITableViewCell {
+  class func cellForTableView( _ tableView: UITableView, atIndexPath indexPath: IndexPath, withModelSource modelSource: ATModelSource ) -> UITableViewCell {
     
-    var cell = tableView.dequeueReusableCellWithIdentifier( self.reuseIdentifier() ) as? UITableViewCell
+    var cell = tableView.dequeueReusableCell( withIdentifier: self.reuseIdentifier() )
     
     if cell == nil {
-      tableView.registerClass( self, forCellReuseIdentifier: self.reuseIdentifier() )
-      cell = (tableView.dequeueReusableCellWithIdentifier( self.reuseIdentifier(), forIndexPath: indexPath ) as UITableViewCell)
+      tableView.register( self, forCellReuseIdentifier: self.reuseIdentifier() )
+      cell = (tableView.dequeueReusableCell( withIdentifier: self.reuseIdentifier(), for: indexPath ) )
     }
     
     // configure the cell with the data from the model object
-    var model: AnyObject? = modelSource.modelForIndexPath( indexPath )
+    let model: AnyObject? = modelSource.modelForIndexPath( indexPath )
     cell?.configureWithModelObject( model )
     
     return cell!
@@ -58,7 +58,7 @@ extension UITableViewCell {
   
   :param: model model to work with.
   */
-  func configureWithModelObject( model: AnyObject? ) {
+  func configureWithModelObject( _ model: AnyObject? ) {
     // ... autoconfig not possible because valueForKey is implemented shitty.
   }
   
@@ -73,7 +73,7 @@ extension UITableViewCell {
   :param: shouldAnimate indicates whether the changes happes animated or not.
   */
   
-  func setPresentationState( state: Int, shouldAnimate: Bool ) {
+  func setPresentationState( _ state: Int, shouldAnimate: Bool ) {
     
   }
 }

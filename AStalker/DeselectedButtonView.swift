@@ -12,16 +12,16 @@ import UIKit
 class DeselectedButtonView: UIView {
 
     enum Type {
-        case Empty
-        case Heart
+        case empty
+        case heart
     }
     
     //Speichert den Type des Views
-    let type = Type.Empty
+    var type = Type.empty
     
      init(frame: CGRect, type: Type) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         self.type = type
     }
     
@@ -29,32 +29,32 @@ class DeselectedButtonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         // Get the Graphics Context
-        var context = UIGraphicsGetCurrentContext();
+        let context = UIGraphicsGetCurrentContext();
         
         // Set the circle outerline-width
-        CGContextSetLineWidth(context, 1);
+        context?.setLineWidth(1);
         
         // Set the circle outerline-colour
-        UIColor.blackColor().set()
+        UIColor.black.set()
         
         // Create Circle
         CGContextAddArc(context, (frame.size.width)/2, frame.size.height/2, (frame.size.width - 10)/2, 0.0, CGFloat(M_PI * 2.0), 1)
         
        
 
-        if self.type == .Heart{
-            UIColor.lightGrayColor().set()
+        if self.type == .heart{
+            UIColor.lightGray.set()
             //Herz hinzufügen
-            var imageView = UIImageView(image: UIImage(named: "Heart_LightGrey.png"))
-            imageView.frame = CGRectMake(4, 4, 27, 27)
-            imageView.userInteractionEnabled = false
+            let imageView = UIImageView(image: UIImage(named: "Heart_LightGrey.png"))
+            imageView.frame = CGRect(x: 4, y: 4, width: 27, height: 27)
+            imageView.isUserInteractionEnabled = false
             //imageView.frame = rect
             self.addSubview(imageView)
         }
         // Draw
-        CGContextStrokePath(context);
+        context?.strokePath();
     }
     
 }

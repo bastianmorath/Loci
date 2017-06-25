@@ -17,12 +17,12 @@ import CoreData
 */
 class ATableViewDataSource: NSObject {
   /// Use a NSFetchedResultsController as the underlying data source.
-  internal var fetchedResultsController: NSFetchedResultsController!
+  internal var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
   
   /// The tableView that is provided with data by this objct
   internal var tableView: UITableView!
   
-  init( tableView: UITableView, fetchedResultsController: NSFetchedResultsController ) {
+  init( tableView: UITableView, fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult> ) {
       
     super.init()
     
@@ -32,7 +32,7 @@ class ATableViewDataSource: NSObject {
     self.tableView = tableView
   }
   
-  internal func cellForTableView( tableView: UITableView, atIndexPath indexPath: NSIndexPath ) -> UITableViewCell {
+  internal func cellForTableView( _ tableView: UITableView, atIndexPath indexPath: IndexPath ) -> UITableViewCell {
     
     var cell = UITableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self )
     return cell
@@ -44,8 +44,8 @@ class ATableViewDataSource: NSObject {
 *  ATableViewDataSource implements the ATModelSource protocol for access to its model data.
 */
 extension ATableViewDataSource: ATModelSource {
-  func modelForIndexPath( indexPath: NSIndexPath ) -> AnyObject? {
-    return fetchedResultsController.objectAtIndexPath( indexPath )
+  func modelForIndexPath( _ indexPath: IndexPath ) -> AnyObject? {
+    return fetchedResultsController.object( at: indexPath )
   }
 }
 
@@ -57,19 +57,19 @@ extension ATableViewDataSource: ATModelSource {
 */
 extension ATableViewDataSource: UITableViewDataSource {
 
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
     let sectionInfo: AnyObject? = fetchedResultsController?.sections?[ section ]
     
     if sectionInfo != nil {
       let count = sectionInfo!.numberOfObjects
-        return count
+        return count!
     }
     return 0
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = cellForTableView( tableView, atIndexPath: indexPath )
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = cellForTableView( tableView, atIndexPath: indexPath )
     
     // and return it
     return cell
@@ -84,45 +84,45 @@ extension ATableViewDataSource: UITableViewDataSource {
 *  For more information about NSFetchedResultsControlerDelegate, please consider the documentation.
 */
 extension ATableViewDataSource: NSFetchedResultsControllerDelegate {
-  func controllerWillChangeContent(controller: NSFetchedResultsController) {
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     tableView.beginUpdates()
   }
   
-  func controllerDidChangeContent(controller: NSFetchedResultsController) {
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     tableView.endUpdates()
   }
   
-  func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
     
     switch type {
-    case .Insert:
-      tableView.insertRowsAtIndexPaths( [ newIndexPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
+    case .insert:
+      tableView.insertRows( at: [ newIndexPath! ], with: UITableViewRowAnimation.fade )
       
-    case .Delete:
-      tableView.deleteRowsAtIndexPaths( [ indexPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
+    case .delete:
+      tableView.deleteRows( at: [ indexPath! ], with: UITableViewRowAnimation.fade )
       
-    case .Update:
+    case .update:
       // cellForRowAtIndexPath does update the cells?
-      tableView.cellForRowAtIndexPath( indexPath! )
+      tableView.cellForRow( at: indexPath! )
       
-    case .Move:
-      tableView.deleteRowsAtIndexPaths( [ indexPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
-      tableView.insertRowsAtIndexPaths( [ newIndexPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
+    case .move:
+      tableView.deleteRows( at: [ indexPath! ], with: UITableViewRowAnimation.fade )
+      tableView.insertRows( at: [ newIndexPath! ], with: UITableViewRowAnimation.fade )
     }
     
   }
   
-  func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
     
     switch type {
-    case NSFetchedResultsChangeType.Insert:
-      tableView.insertSections( NSIndexSet(index: sectionIndex ), withRowAnimation: UITableViewRowAnimation.Fade )
-    case NSFetchedResultsChangeType.Delete:
-      tableView.deleteSections( NSIndexSet(index: sectionIndex), withRowAnimation: UITableViewRowAnimation.Fade )
+    case NSFetchedResultsChangeType.insert:
+      tableView.insertSections( IndexSet(integer: sectionIndex ), with: UITableViewRowAnimation.fade )
+    case NSFetchedResultsChangeType.delete:
+      tableView.deleteSections( IndexSet(integer: sectionIndex), with: UITableViewRowAnimation.fade )
     default:
       return
+        }
     }
-  }
 }
 
 

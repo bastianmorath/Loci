@@ -11,7 +11,7 @@ import CoreData
 
 class Notification: NSManagedObject {
 
-    @NSManaged var timestamp: NSDate
+    @NSManaged var timestamp: Date
     @NSManaged var creator: User
     @NSManaged var location: Location
 

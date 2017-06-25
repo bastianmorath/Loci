@@ -15,7 +15,7 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
     
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    var addFriendsButton: UIButton?
+    var addFriendsButton: LociButton?
     
     //DataSource des TableViews
     var addFriendsDataSource: AddFriendsDataSource!
@@ -25,11 +25,11 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.addFriendsButton = UIButton.ATButton(UIButton.ATButtonType.Contact, color: UIButton.ATColor.White)
+        self.addFriendsButton = LociButton(type:.contact, color: .white)
         if let button = addFriendsButton{
-            button.addTarget(self, action: "addFriendsPressed", forControlEvents:UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: #selector(AddFriendsVC.addFriendsPressed), for:UIControlEvents.touchUpInside)
             self.view.addSubview(button)
-            button.positionButtonToLocation(.TopRight)
+            button.positionButtonToLocation(.topRight)
         }
         
         self.descriptionLabel.numberOfLines = 0
@@ -39,15 +39,12 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
         localUser = (LocationStore.defaultStore().getLocalUser())
         addFriendsDataSource = AddFriendsDataSource(tableView: tableView, user: localUser!)
         tableView.dataSource = addFriendsDataSource
-        
-        self.tableView.frame = CGRectMake(0, Constants.topSpace, Constants.screenWidth, Constants.screenHeight-2 * Constants.topSpace)
-
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRectMake(0, 0, 50, 20))
-        headerView.backgroundColor = UIColor.clearColor()
-        var label: UILabel = UILabel(frame: CGRectMake(34, 24, 40, 20))
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
+        headerView.backgroundColor = UIColor.clear
+        let label: UILabel = UILabel(frame: CGRect(x: 34, y: 24, width: 40, height: 20))
         label.font = UIFont.ATFont()
         
         //Friends-Section
@@ -58,19 +55,18 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
         }
         
         headerView.addSubview(label)
-        //self.tableView.tableheader = headerView;
         return headerView
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var selectedUser = self.addFriendsDataSource.modelForIndexPath(indexPath) as User
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as AddFriendsTableViewCell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var selectedUser = self.addFriendsDataSource.modelForIndexPath(indexPath) as! User
+        var cell = tableView.cellForRow(at: indexPath) as! AddFriendsTableViewCell
         
-        if localUser.friends.containsObject(selectedUser){
+        if localUser.friends.contains(selectedUser){
             //User ist schon ausgewählt. Deselecte ihn im View und lösche ihn aus locations.friends
             LocationStore.defaultStore().deleteUserInFriendsOfLocalUser(selectedUser)
         } else {
@@ -80,7 +76,7 @@ class AddFriendsVC: UIViewController, UITableViewDelegate {
         cell.heartButton.isChecked = !cell.heartButton.isChecked
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.kCellHeightAddFriends
     }
     

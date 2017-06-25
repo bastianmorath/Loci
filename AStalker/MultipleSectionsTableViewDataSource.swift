@@ -19,13 +19,13 @@ import CoreData
 // Arrays!!
 class MultipleSectionsTableViewDataSource:NSObject{
     
-    /// Use a NSFetch2edResultsController as the underlying data source.
-    internal var fetchedResultsControllers: [NSFetchedResultsController] = []
+    /// Use a NSFetchedResultsController as the underlying data source.
+    internal var fetchedResultsControllers: [NSFetchedResultsController] = [] as! [NSFetchedResultsController]
     
     /// The tableView that is provided with data by this objct
     internal var tableView: UITableView!
     
-    init( tableView: UITableView, fetchedResultsControllers: [NSFetchedResultsController] ) {
+    init( tableView: UITableView, fetchedResultsControllers: [NSFetchedResultsController<NSFetchRequestResult>] ) {
         
         super.init()
         
@@ -37,7 +37,7 @@ class MultipleSectionsTableViewDataSource:NSObject{
         self.tableView = tableView
     }
     
-    internal func cellForTableView( tableView: UITableView, atIndexPath indexPath: NSIndexPath ) -> UITableViewCell {
+    internal func cellForTableView( _ tableView: UITableView, atIndexPath indexPath: IndexPath ) -> UITableViewCell {
         var cell = UITableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self )
         return cell
     }
@@ -48,9 +48,9 @@ class MultipleSectionsTableViewDataSource:NSObject{
 *  ATableViewDataSource implements the ATModelSource protocol for access to its model data.
 */
 extension MultipleSectionsTableViewDataSource: ATModelSource {
-    func modelForIndexPath( indexPath: NSIndexPath ) -> AnyObject? {
-        var indexPathWithSectionZero = NSIndexPath(forRow: indexPath.row, inSection: 0)
-        return fetchedResultsControllers[indexPath.section].objectAtIndexPath(indexPathWithSectionZero)
+    func modelForIndexPath( _ indexPath: IndexPath ) -> AnyObject? {
+        var indexPathWithSectionZero = IndexPath(row: indexPath.row, section: 0)
+        return fetchedResultsControllers[indexPath.section].object(at: indexPathWithSectionZero)
     }
 }
 
@@ -62,19 +62,19 @@ extension MultipleSectionsTableViewDataSource: ATModelSource {
 */
 extension MultipleSectionsTableViewDataSource: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
       return self.fetchedResultsControllers[section].fetchedObjects!.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = cellForTableView( tableView, atIndexPath: indexPath )
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = cellForTableView( tableView, atIndexPath: indexPath )
         
         // and return it
         return cell
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.fetchedResultsControllers.count
     }
     
@@ -88,60 +88,64 @@ extension MultipleSectionsTableViewDataSource: UITableViewDataSource {
 *  For more information about NSFetchedResultsControlerDelegate, please consider the documentation.
 */
 extension MultipleSectionsTableViewDataSource: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tableView.beginUpdates()
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+       tableView.beginUpdates()
     }
     
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        var newIPath : NSIndexPath!
-        if let newIndexPath = newIndexPath{
-            for (i, fetchedController) in enumerate(fetchedResultsControllers) {
-                if fetchedController === controller {
-                    newIPath = NSIndexPath(forRow: newIndexPath.row, inSection: i)
-                }
-            }
-        }
+     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
-        var oldIPath : NSIndexPath!
-        if let indexPath = indexPath{
-            for (i, fetchedController) in enumerate(fetchedResultsControllers) {
-                if fetchedController === controller {
-                    oldIPath = NSIndexPath(forRow: indexPath.row, inSection: i)
-                }
-            }
+        if type == .update{
+            self.controller(controller, didChange: anObject, at: indexPath, for: .delete, newIndexPath: nil)
+            self.controller(controller, didChange: anObject, at: nil, for: .insert, newIndexPath: newIndexPath)
+            return
         }
 
-    
-        
-        switch type {
-        case .Insert:
-            tableView.insertRowsAtIndexPaths( [ newIPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
-            
-        case .Delete:
-            tableView.deleteRowsAtIndexPaths( [ oldIPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
-            
-        case .Update:
-            // cellForRowAtIndexPath does update the cells?
-            tableView.cellForRowAtIndexPath( oldIPath! )
-            
-        case .Move:
-            tableView.deleteRowsAtIndexPaths( [ oldIPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
-            tableView.insertRowsAtIndexPaths( [ newIPath! ], withRowAnimation: UITableViewRowAnimation.Fade )
+        var newIPath : IndexPath!
+        if let newIndexPath = newIndexPath{
+            for (i, fetchedController) in fetchedResultsControllers.enumerated() {
+                if fetchedController === controller {
+                    newIPath = IndexPath(row: newIndexPath.row, section: i)
+                }
+            }
         }
         
-    }
-    
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        var oldIPath : IndexPath!
+        if let indexPath = indexPath{
+            for (i, fetchedController) in fetchedResultsControllers.enumerated() {
+                if fetchedController === controller {
+                    oldIPath = IndexPath(row: indexPath.row, section: i)
+                }
+            }
+        }
         
         switch type {
-        case NSFetchedResultsChangeType.Insert:
-            tableView.insertSections( NSIndexSet(index: sectionIndex ), withRowAnimation: UITableViewRowAnimation.Fade )
-        case NSFetchedResultsChangeType.Delete:
-            tableView.deleteSections( NSIndexSet(index: sectionIndex), withRowAnimation: UITableViewRowAnimation.Fade )
+        case .insert:
+            tableView.insertRows( at: [ newIPath! ], with: UITableViewRowAnimation.fade )
+            
+        case .delete:
+            tableView.deleteRows( at: [ oldIPath! ], with: UITableViewRowAnimation.fade )
+            
+        case .update:
+            // cellForRowAtIndexPath does update the cells?
+            tableView.cellForRow( at: oldIPath! )
+            
+        case .move:
+            tableView.deleteRows( at: [ oldIPath! ], with: UITableViewRowAnimation.fade )
+            tableView.insertRows( at: [ newIPath! ], with: UITableViewRowAnimation.fade )
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        switch type {
+        case NSFetchedResultsChangeType.insert:
+            tableView.insertSections( IndexSet(integer: sectionIndex ), with: UITableViewRowAnimation.fade )
+        case NSFetchedResultsChangeType.delete:
+            tableView.deleteSections( IndexSet(integer: sectionIndex), with: UITableViewRowAnimation.fade )
         default:
             return
         }

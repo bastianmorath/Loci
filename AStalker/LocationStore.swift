@@ -14,6 +14,10 @@ import UIKit
 
 class LocationStore: NSObject{
     
+    private static var __once: () = {
+            StaticInstance.instance = LocationStore()
+        }()
+    
     var coreDataStore: ACoreDataStore = ACoreDataStore.defaultStore()
     var coreDataPortal: ACoreDataPortal = ACoreDataStore.defaultStore()
     
@@ -25,12 +29,10 @@ class LocationStore: NSObject{
     class func defaultStore() -> LocationStore {
         struct StaticInstance {
             static var instance: LocationStore?
-            static var token: dispatch_once_t = 0
+            static var token: Int = 0
         }
         
-        dispatch_once( &StaticInstance.token ) {
-            StaticInstance.instance = LocationStore()
-        }
+        _ = LocationStore.__once
         
         return StaticInstance.instance!
     }
@@ -38,17 +40,17 @@ class LocationStore: NSObject{
     /**************************** READ Methods **********************************/
     func getUser() -> [User]{
         var user = self.coreDataStore.performFetch("User")
-        for (index, object) in enumerate(user as [User]) {
+        for (index, object) in (user?.enumerated())! {
             if object == self.getLocalUser(){
-                user!.removeAtIndex(index)
+                user!.remove(at: index)
             }
         }
         
-        return user! as [User]
+        return user as! [User]
     }
     
     // Get all User as NSFetchedResultsController
-    func getUsersFC() -> NSFetchedResultsController {
+    func getUsersFC() -> NSFetchedResultsController<NSFetchRequestResult> {
         let predicate = NSPredicate(format: "NOT (self == %@)", self.getLocalUser()!)
         
         // sort them alphabetically
@@ -58,7 +60,7 @@ class LocationStore: NSObject{
     }
     
     // Get all Friends as NSFetchedResultsController
-    func getFriendsFC() -> NSFetchedResultsController {
+    func getFriendsFC() -> NSFetchedResultsController<NSFetchRequestResult> {
         let predicate = NSPredicate(format: "self IN %@", self.getLocalUser()!.friends)
         
         // sort them alphabetically
@@ -68,7 +70,7 @@ class LocationStore: NSObject{
     }
     
     // Get all User without Friends as NSFetchedResultsController
-    func getUsersWithoutFriendsFC() -> NSFetchedResultsController{
+    func getUsersWithoutFriendsFC() -> NSFetchedResultsController<NSFetchRequestResult>{
         let predicate = NSPredicate(format: "NOT (self IN %@) && NOT (self == %@)", self.getLocalUser()!.friends, self.getLocalUser()!)
         
         // sort them alphabetically
@@ -81,22 +83,44 @@ class LocationStore: NSObject{
     
     //TODO: LocalUser verbessern, nil prüfen
     func getLocalUser() -> LocalUser?{
-        var localUserArray = self.coreDataStore.performFetch("LocalUser") as [LocalUser]
-        return localUserArray.first?
+        var localUserArray = self.coreDataStore.performFetch("LocalUser") as! [LocalUser]
+        return localUserArray.first
     }
     
-    func getMySharedLocationsFC() -> NSFetchedResultsController{
+    func getMySharedLocationsFC() -> NSFetchedResultsController<NSFetchRequestResult>{
         let predicate = NSPredicate(format: "self IN %@", self.getLocalUser()!.mySharedLocations)
         
         // sort them alphabetically
         let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: true )
-        let frc = coreDataStore.createFetchedResultsController("Location", predicate: predicate, sortDescriptors: [sortDescriptor])
+        let frc = coreDataStore.createFetchedResultsController("SharedLocation", predicate: predicate, sortDescriptors: [sortDescriptor])
         return frc
     }
     
+    //TODO:- Seine eigenen Locations fetchen. MOmentan werden die Locations gefetched, welche ich selber geshared habe
+    func getFavoriteLocationsFC() -> NSFetchedResultsController<NSFetchRequestResult>{
+        
+        // TODO:- Nach hoursSpent sortieren
+        let sortDescriptor1 = NSSortDescriptor(key: "isFavorite", ascending: false )
+        let sortDescriptor2 = NSSortDescriptor(key: "timeSpent", ascending: false )
+
+        let frc = coreDataStore.createFetchedResultsController("FavoriteLocation", predicate: nil, sortDescriptors: [sortDescriptor1, sortDescriptor2])
+        
+        return frc
+    }
+    
+    // Gibt die "Unterwegs"-Favorite Location zurück
+    func  getOnTheWayLocation() -> FavoriteLocation{
+        let predicate = NSPredicate(format: "self.name == %@", "Unterwegs")
+        
+        // sort them alphabetically
+        let location = self.coreDataStore.performFetch("FavoriteLocation", predicate: predicate, sortDescriptors: nil)?[0]
+        return location as! FavoriteLocation
+    }
+    
+    
     /**************************** WRITE Methods **********************************/
-    func createUser(name: String) -> User? {
-        var userObject = self.coreDataPortal.createObject("User") as User?
+    func createUser(_ name: String) -> User? {
+        var userObject = self.coreDataPortal.createObject("User") as? User
         if let user = userObject {
             user.name = name
             self.coreDataPortal.save()
@@ -105,13 +129,13 @@ class LocationStore: NSObject{
         return nil
     }
     
-    func createLocalUser(name: String, phoneNumber: String) -> LocalUser{
-        var localUserArray = self.coreDataStore.performFetch("LocalUser")! as [LocalUser]
+    func createLocalUser(_ name: String, phoneNumber: String) -> LocalUser{
+        var localUserArray = self.coreDataStore.performFetch("LocalUser")! as! [LocalUser]
         //Prüft, ob schon ein LocalUser vorhanden ist
         if localUserArray.count>0 {
             return localUserArray.first!
         } else {
-            var user = self.coreDataPortal.createObject("LocalUser") as LocalUser
+            var user = self.coreDataPortal.createObject("LocalUser") as! LocalUser
             user.name = name
             user.phoneNumber = phoneNumber
             self.coreDataPortal.save()
@@ -120,36 +144,33 @@ class LocationStore: NSObject{
     }
     
     //TODO:- SaveFunktion funktioniert nicht...
-    func addUserToFriendsOfLocalUser(user: User?){
+    func addUserToFriendsOfLocalUser(_ user: User?){
         if let user = user{
             self.getLocalUser()!.addFriendObject(user)
-            
             self.coreDataPortal.save()
         }
     }
     
     
-    func deleteUserInFriendsOfLocalUser(user: User?){
+    func deleteUserInFriendsOfLocalUser(_ user: User?){
         if let user = user{
             self.getLocalUser()!.removeFriendObject(user)
-//            self.coreDataPortal.deleteObject( user )
             self.coreDataPortal.save()
         }
     }
     
     /**
-    Erstellt eine Location mit Name, Timestamp, Longitude und latitude.
+    Erstellt eine Location mit Timestamp, Longitude und latitude.
     Der User ist optional: Wird einer mitgeliefert, wird die Location dem Property 'sharedLocation' des Users, anderfalls des LcoalUsers hinzugefügt.
     */
-    func createLocation(name: String, timestamp: NSDate? = nil, longitude: Double, latitude: Double, user: User? = nil) -> Location?{
-        var locationObject = self.coreDataPortal.createObject("Location") as Location?
+    func createSharedLocation(_ timestamp: Date? = nil, longitude: Double, latitude: Double, user: User? = nil) -> SharedLocation?{
+        var locationObject = self.coreDataPortal.createObject("SharedLocation") as? SharedLocation
         if let location = locationObject {
-            location.name = name
             if let timestamp = timestamp {
                 location.timestamp = timestamp
             }
-            location.longitude = longitude
-            location.latitude = latitude
+            location.longitude = NSNumber(longitude)
+            location.latitude = NSNumber(latitude)
             if let user = user {
                 location.creator = user
             }
@@ -159,30 +180,81 @@ class LocationStore: NSObject{
         return nil
     }
     
+    /**
+    Erstellt eine FavoriteLocation mit Name, Timestamp, Longitude und latitude.
+    Der User ist optional: Wird einer mitgeliefert, wird die Location dem Property 'sharedLocation' des Users, anderfalls des LcoalUsers hinzugefügt.
+    */
+    func createFavoriteLocation(_ name: String? = nil, longitude: Double, latitude: Double) -> FavoriteLocation?{
+        var locationObject = self.coreDataPortal.createObject("FavoriteLocation") as? FavoriteLocation
+        if let location = locationObject {
+            
+            location.longitude = NSNumber(longitude)
+            location.latitude = NSNumber(latitude)
+
+            if let name = name {
+                location.name = name
+            } else {
+                location.name = ""
+            }
+
+            self.coreDataPortal.save()
+            return location
+        }
+        return nil
+    }
+    
+    // Erstellt eine "Unterwegs"-Favorite location (nur einmal)
+    func  createOnTheWayLocation(){
+        let onTheWayLocation = self.createFavoriteLocation("Unterwegs", longitude: 0, latitude: 0)
+        onTheWayLocation?.isFavorite = true
+    }
     
     /**************************** Create Debug Objects **********************************/
     func createDebugUsers(){
-        var nameArray = [ "Aleksandar Papez", "Lukas Reichart", "Florian Morath", "Cheryl Vaterlaus", "Elisa Mischi", "Benjamin Morath", "Dominik Grimm", "Robin Lingwood", "Frederic Huber", "Benjamin Weiss", "Selina Schenker", "Dio Moonnee"]
+        let nameArray = [ "Aleksandar Papez", "Lukas Reichart", "Florian Morath", "Cheryl Vaterlaus", "Elisa Mischi", "Benjamin Morath", "Dominik Grimm", "Robin Lingwood", "Frederic Huber", "Benjamin Weiss", "Selina Schenker", "Dio Moonnee"]
         for name in nameArray {
             self.createUser(name)
         }
     }
     
     func createDebugLocalUser(){
-        var localUser = self.createLocalUser("Bastian Morath", phoneNumber: "07954501010")
+        let localUser = self.createLocalUser("Bastian Morath", phoneNumber: "07954501010")
         let userArray =  self.getUser()
         let friendsArray = [userArray[0], userArray[2], userArray[4]]
-        var mySharedLocationsArray: [Location] = []
+        // Create debug Shared Locations
+        var mySharedLocationsArray: [SharedLocation] = []
         for i in 1...13 {
-            let name = "Location \(i)"
-            var todaysDate:NSDate = NSDate()
-            var location = self.createLocation(name, timestamp: todaysDate, longitude: Double(i) * 3, latitude: Double()*2, user: userArray[0])
-            mySharedLocationsArray.append(location!)
+            var name: String?
+            if i<3{
+                name = "Location \(i)"
+            }
+            let todaysDate:Date = Date()
+            let sharedLocation = self.createSharedLocation(todaysDate, longitude: Double(i) * 3, latitude: Double()*2, user: userArray[0])
+            mySharedLocationsArray.append(sharedLocation!)
         }
         
+//        // Create debug Favorite Locations
+//        var myFavoriteLocationsArray: [FavoriteLocation] = []
+//        for i in 1...3 {
+//            var name: String?
+//            if i<3{
+//                name = "Location \(i)"
+//            }
+//            var todaysDate:NSDate = NSDate()
+//            var favoriteLocation = self.createFavoriteLocation(name: name, longitude: Double(i) * 3-4, latitude: Double()*2+5)
+//            if i==1{
+//                localUser.currentLocation = favoriteLocation!
+//            }
+//            
+//            myFavoriteLocationsArray.append(favoriteLocation!)
+//        }
         
         localUser.mySharedLocations = NSSet(array: mySharedLocationsArray)
+        //localUser.favoriteLocations = NSSet(array: myFavoriteLocationsArray)
+        
         localUser.contacts = NSSet(array: userArray)
         localUser.friends = NSSet(array: friendsArray)
+        
+        self.coreDataPortal.save()
     }
 }

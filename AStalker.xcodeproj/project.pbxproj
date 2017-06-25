@@ -42,7 +42,6 @@
 		B60C03621A620E5D005921B2 /* FriendsLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */; };
 		B60C03641A620F55005921B2 /* FriendsLocationTableViewCell.xib in Sources */ = {isa = PBXBuildFile; fileRef = B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */; };
 		B61B12121A628CED00F48702 /* SelectedButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61B12111A628CED00F48702 /* SelectedButtonView.swift */; };
-		B6271A041A626C74008B410C /* UIButton+ATButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6271A031A626C74008B410C /* UIButton+ATButton.swift */; };
 		B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6271A051A626D5F008B410C /* UIColor+ATColor.swift */; };
 		B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730771A6151870073EB51 /* ACoreDataPortal.swift */; };
 		B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63730781A6151870073EB51 /* ACoreDataStore.swift */; };
@@ -86,6 +85,21 @@
 		B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */; };
 		B67BEDD11A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf in Resources */ = {isa = PBXBuildFile; fileRef = B67BEDD01A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf */; };
 		B67E0A9C1A653B1E006F79A1 /* CheckboxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E0A9B1A653B1E006F79A1 /* CheckboxButton.swift */; };
+		B688B7581B7C8CA100A315F9 /* LIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B7571B7C8CA100A315F9 /* LIViewController.swift */; };
+		B688B75A1B7C8CEA00A315F9 /* SharedLocationsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B7591B7C8CEA00A315F9 /* SharedLocationsTableVC.swift */; };
+		B688B75C1B7C8CFD00A315F9 /* FriendsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B75B1B7C8CFD00A315F9 /* FriendsTableVC.swift */; };
+		B688B75E1B7C8D1A00A315F9 /* LociButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B75D1B7C8D1A00A315F9 /* LociButton.swift */; };
+		B688B7601B7C8D3900A315F9 /* FavoritePlacesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B75F1B7C8D3900A315F9 /* FavoritePlacesVC.swift */; };
+		B688B7621B7C8D5800A315F9 /* FavoriteLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B7611B7C8D5800A315F9 /* FavoriteLocation.swift */; };
+		B688B7641B7C8D6900A315F9 /* SharedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B7631B7C8D6900A315F9 /* SharedLocation.swift */; };
+		B688B7661B7C8EBD00A315F9 /* MSFriendsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B7651B7C8EBD00A315F9 /* MSFriendsDataSource.swift */; };
+		B688B7681B7C8EE800A315F9 /* ExpendableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B7671B7C8EE800A315F9 /* ExpendableTableViewCell.swift */; };
+		B688B76A1B7C8F4800A315F9 /* FavoritePlacesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B7691B7C8F4800A315F9 /* FavoritePlacesDataSource.swift */; };
+		B688B76C1B7C8F6900A315F9 /* SharedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B76B1B7C8F6900A315F9 /* SharedLocationTableViewCell.swift */; };
+		B688B76E1B7C8F9C00A315F9 /* FavoritePlacesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B76D1B7C8F9C00A315F9 /* FavoritePlacesTableViewCell.swift */; };
+		B688B7701B7C8FBD00A315F9 /* LocationManagerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B688B76F1B7C8FBD00A315F9 /* LocationManagerHandler.swift */; };
+		B688B7721B7C907E00A315F9 /* SharedLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B688B7711B7C907E00A315F9 /* SharedLocationTableViewCell.xib */; };
+		B688B7741B7C90E500A315F9 /* FavoritePlacesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B688B7731B7C90E500A315F9 /* FavoritePlacesTableViewCell.xib */; };
 		B6A9AD7C1A61E59100AF4B51 /* UniversLTStd-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD611A61E59100AF4B51 /* UniversLTStd-Black.otf */; };
 		B6A9AD7D1A61E59100AF4B51 /* UniversLTStd-BlackEx.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD621A61E59100AF4B51 /* UniversLTStd-BlackEx.otf */; };
 		B6A9AD7E1A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf in Resources */ = {isa = PBXBuildFile; fileRef = B6A9AD631A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf */; };
@@ -173,7 +187,6 @@
 		B60C035F1A620E4F005921B2 /* FriendsLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsLocationTableViewCell.swift; sourceTree = "<group>"; };
 		B60C03611A620E5D005921B2 /* FriendsLocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendsLocationTableViewCell.xib; sourceTree = "<group>"; };
 		B61B12111A628CED00F48702 /* SelectedButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectedButtonView.swift; sourceTree = "<group>"; };
-		B6271A031A626C74008B410C /* UIButton+ATButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+ATButton.swift"; sourceTree = "<group>"; };
 		B6271A051A626D5F008B410C /* UIColor+ATColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ATColor.swift"; sourceTree = "<group>"; };
 		B63730771A6151870073EB51 /* ACoreDataPortal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataPortal.swift; sourceTree = "<group>"; };
 		B63730781A6151870073EB51 /* ACoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ACoreDataStore.swift; sourceTree = "<group>"; };
@@ -217,6 +230,21 @@
 		B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareLocationVC.swift; sourceTree = "<group>"; };
 		B67BEDD01A62D67F00F16DA8 /* Hackaton-Icons_Shared-Locations.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Hackaton-Icons_Shared-Locations.pdf"; sourceTree = "<group>"; };
 		B67E0A9B1A653B1E006F79A1 /* CheckboxButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxButton.swift; sourceTree = "<group>"; };
+		B688B7571B7C8CA100A315F9 /* LIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LIViewController.swift; sourceTree = "<group>"; };
+		B688B7591B7C8CEA00A315F9 /* SharedLocationsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedLocationsTableVC.swift; sourceTree = "<group>"; };
+		B688B75B1B7C8CFD00A315F9 /* FriendsTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableVC.swift; sourceTree = "<group>"; };
+		B688B75D1B7C8D1A00A315F9 /* LociButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LociButton.swift; sourceTree = "<group>"; };
+		B688B75F1B7C8D3900A315F9 /* FavoritePlacesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePlacesVC.swift; sourceTree = "<group>"; };
+		B688B7611B7C8D5800A315F9 /* FavoriteLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteLocation.swift; sourceTree = "<group>"; };
+		B688B7631B7C8D6900A315F9 /* SharedLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedLocation.swift; sourceTree = "<group>"; };
+		B688B7651B7C8EBD00A315F9 /* MSFriendsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSFriendsDataSource.swift; sourceTree = "<group>"; };
+		B688B7671B7C8EE800A315F9 /* ExpendableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpendableTableViewCell.swift; sourceTree = "<group>"; };
+		B688B7691B7C8F4800A315F9 /* FavoritePlacesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePlacesDataSource.swift; sourceTree = "<group>"; };
+		B688B76B1B7C8F6900A315F9 /* SharedLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedLocationTableViewCell.swift; sourceTree = "<group>"; };
+		B688B76D1B7C8F9C00A315F9 /* FavoritePlacesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritePlacesTableViewCell.swift; sourceTree = "<group>"; };
+		B688B76F1B7C8FBD00A315F9 /* LocationManagerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerHandler.swift; sourceTree = "<group>"; };
+		B688B7711B7C907E00A315F9 /* SharedLocationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharedLocationTableViewCell.xib; sourceTree = "<group>"; };
+		B688B7731B7C90E500A315F9 /* FavoritePlacesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoritePlacesTableViewCell.xib; sourceTree = "<group>"; };
 		B6A9AD611A61E59100AF4B51 /* UniversLTStd-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-Black.otf"; sourceTree = "<group>"; };
 		B6A9AD621A61E59100AF4B51 /* UniversLTStd-BlackEx.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BlackEx.otf"; sourceTree = "<group>"; };
 		B6A9AD631A61E59100AF4B51 /* UniversLTStd-BlackExObl.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "UniversLTStd-BlackExObl.otf"; sourceTree = "<group>"; };
@@ -358,6 +386,8 @@
 		B62291161A6671AE006C1B30 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				B688B7671B7C8EE800A315F9 /* ExpendableTableViewCell.swift */,
+				B688B7571B7C8CA100A315F9 /* LIViewController.swift */,
 				B644A6DC1A725D3B005C1376 /* UIViewController + Navigation.swift */,
 			);
 			name = Navigation;
@@ -368,6 +398,7 @@
 			children = (
 				B63730931A6157BE0073EB51 /* NSManagedObject Subclasses */,
 				B63730961A61580A0073EB51 /* LocationStore.swift */,
+				B688B76F1B7C8FBD00A315F9 /* LocationManagerHandler.swift */,
 				B637307B1A61566D0073EB51 /* DataModel.xcdatamodeld */,
 				B664B3891A617214000E24BE /* AddressBook.swift */,
 				B63730771A6151870073EB51 /* ACoreDataPortal.swift */,
@@ -388,6 +419,7 @@
 		B63730761A61514E0073EB51 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B688B7751B7C90F100A315F9 /* Favorite Places */,
 				B62291161A6671AE006C1B30 /* Navigation */,
 				B6F1BB281A65777C0083FE07 /* AddFriends */,
 				A24517321A626E8A0006CDB0 /* Login */,
@@ -445,7 +477,10 @@
 			isa = PBXGroup;
 			children = (
 				B66B28321A61C13900D3E6D1 /* ShareLocationVC.swift */,
+				B688B7591B7C8CEA00A315F9 /* SharedLocationsTableVC.swift */,
 				B653D4B71A61C46200B5D185 /* ShareLocationTableViewCell.swift */,
+				B688B76B1B7C8F6900A315F9 /* SharedLocationTableViewCell.swift */,
+				B688B7711B7C907E00A315F9 /* SharedLocationTableViewCell.xib */,
 				B66B282A1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift */,
 				B67E0A9B1A653B1E006F79A1 /* CheckboxButton.swift */,
 			);
@@ -455,8 +490,8 @@
 		B668BD5E1A61BACF00939A6C /* Categories + Helper classes */ = {
 			isa = PBXGroup;
 			children = (
+				B688B75D1B7C8D1A00A315F9 /* LociButton.swift */,
 				B6271A051A626D5F008B410C /* UIColor+ATColor.swift */,
-				B6271A031A626C74008B410C /* UIButton+ATButton.swift */,
 				B66B282E1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift */,
 				A245173A1A6270760006CDB0 /* ATTextField.h */,
 				A245173B1A6270760006CDB0 /* ATTextField.m */,
@@ -467,8 +502,21 @@
 				B66B282C1A61BF9C00D3E6D1 /* ATableViewDataSource.swift */,
 				B6D951A71A6D3D9D009315E5 /* UIDevice+ATDevice.swift */,
 				B637A9301A6FE2B7009FE828 /* Constants.swift */,
+				B688B7611B7C8D5800A315F9 /* FavoriteLocation.swift */,
+				B688B7631B7C8D6900A315F9 /* SharedLocation.swift */,
 			);
 			name = "Categories + Helper classes";
+			sourceTree = "<group>";
+		};
+		B688B7751B7C90F100A315F9 /* Favorite Places */ = {
+			isa = PBXGroup;
+			children = (
+				B688B75F1B7C8D3900A315F9 /* FavoritePlacesVC.swift */,
+				B688B7691B7C8F4800A315F9 /* FavoritePlacesDataSource.swift */,
+				B688B76D1B7C8F9C00A315F9 /* FavoritePlacesTableViewCell.swift */,
+				B688B7731B7C90E500A315F9 /* FavoritePlacesTableViewCell.xib */,
+			);
+			name = "Favorite Places";
 			sourceTree = "<group>";
 		};
 		B6A9AD601A61E59100AF4B51 /* Univers */ = {
@@ -521,6 +569,8 @@
 		B6F1BB281A65777C0083FE07 /* AddFriends */ = {
 			isa = PBXGroup;
 			children = (
+				B688B75B1B7C8CFD00A315F9 /* FriendsTableVC.swift */,
+				B688B7651B7C8EBD00A315F9 /* MSFriendsDataSource.swift */,
 				B6F1BB291A6578440083FE07 /* AddFriendsVC.swift */,
 				B6F1BB2D1A657D4A0083FE07 /* AddFriendsTableViewCell.swift */,
 				B6B7653C1A67B51700C9A8C5 /* HeartButton.swift */,
@@ -639,15 +689,18 @@
 		B88EC3C41A614C610064ED0E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = Antum;
 				TargetAttributes = {
 					B88EC3CB1A614C610064ED0E = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = P85N2D6LEB;
+						LastSwiftMigration = 0830;
 					};
 					B88EC3E01A614C610064ED0E = {
 						CreatedOnToolsVersion = 6.2;
+						LastSwiftMigration = 0830;
 						TestTargetID = B88EC3CB1A614C610064ED0E;
 					};
 				};
@@ -683,6 +736,7 @@
 				A245176C1A6272070006CDB0 /* Hackaton-Icons_Notification-6.pdf in Resources */,
 				A245175B1A6272070006CDB0 /* Hackaton-Icons_Big-Location-Pin-Grey.pdf in Resources */,
 				A24517691A6272070006CDB0 /* Hackaton-Icons_Notification-3.pdf in Resources */,
+				B688B7721B7C907E00A315F9 /* SharedLocationTableViewCell.xib in Resources */,
 				A245176F1A6272070006CDB0 /* Hackaton-Icons_Notification-9.pdf in Resources */,
 				A24517641A6272070006CDB0 /* Hackaton-Icons_Location-und-Bild-Grey.pdf in Resources */,
 				B65FEA7A1A76973000A259B8 /* Icon-Small.png in Resources */,
@@ -698,6 +752,7 @@
 				B6A9AD921A61E59100AF4B51 /* UniversLTStd-XBlack.otf in Resources */,
 				A24517601A6272070006CDB0 /* Hackaton-Icons_Heart-White.pdf in Resources */,
 				B6A9AD8E1A61E59100AF4B51 /* UniversLTStd-LightUltraCn.otf in Resources */,
+				B688B7741B7C90E500A315F9 /* FavoritePlacesTableViewCell.xib in Resources */,
 				B65FEA731A76973000A259B8 /* Icon-76.png in Resources */,
 				A24517681A6272070006CDB0 /* Hackaton-Icons_Notification-2.pdf in Resources */,
 				A245175F1A6272070006CDB0 /* Hackaton-Icons_Heart-Light-Grey.pdf in Resources */,
@@ -801,46 +856,58 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6271A041A626C74008B410C /* UIButton+ATButton.swift in Sources */,
 				A245173C1A6270760006CDB0 /* ATTextField.m in Sources */,
 				B60C03641A620F55005921B2 /* FriendsLocationTableViewCell.xib in Sources */,
 				B63730971A61580A0073EB51 /* LocationStore.swift in Sources */,
+				B688B7681B7C8EE800A315F9 /* ExpendableTableViewCell.swift in Sources */,
 				B653D4B81A61C46200B5D185 /* ShareLocationTableViewCell.swift in Sources */,
 				B664B38A1A617214000E24BE /* AddressBook.swift in Sources */,
+				B688B7661B7C8EBD00A315F9 /* MSFriendsDataSource.swift in Sources */,
 				B64DF9371A6D59B300A00C54 /* MultipleSectionsTableViewDataSource.swift in Sources */,
 				B637A9331A6FE50E009FE828 /* MapView.swift in Sources */,
+				B688B7621B7C8D5800A315F9 /* FavoriteLocation.swift in Sources */,
 				B6582E991A62335B00D74FAF /* DeselectedButtonView.swift in Sources */,
 				B637307D1A61566D0073EB51 /* DataModel.xcdatamodeld in Sources */,
 				B66B282F1A61C07800D3E6D1 /* UITableViewCell+ATTableViewCell.swift in Sources */,
 				B61B12121A628CED00F48702 /* SelectedButtonView.swift in Sources */,
+				B688B7601B7C8D3900A315F9 /* FavoritePlacesVC.swift in Sources */,
 				B668BD5D1A61BAC300939A6C /* UIFont+ATFont.swift in Sources */,
 				B6F1BB2E1A657D4A0083FE07 /* AddFriendsTableViewCell.swift in Sources */,
 				B637309F1A615E3B0073EB51 /* User.swift in Sources */,
 				B660CC241A6192DC00630E6F /* MainScreenVC.swift in Sources */,
 				B6C616301A69524500B95663 /* LocalUser.swift in Sources */,
 				B63730791A6151870073EB51 /* ACoreDataPortal.swift in Sources */,
+				B688B75E1B7C8D1A00A315F9 /* LociButton.swift in Sources */,
 				B660CC221A6192DC00630E6F /* MainScreenMapVC.swift in Sources */,
+				B688B76C1B7C8F6900A315F9 /* SharedLocationTableViewCell.swift in Sources */,
 				B67E0A9C1A653B1E006F79A1 /* CheckboxButton.swift in Sources */,
 				B60A671C1A69446D00A9AC0C /* MSSharedLocationsDataSource.swift in Sources */,
 				B60C03601A620E4F005921B2 /* FriendsLocationTableViewCell.swift in Sources */,
 				B66B28331A61C13900D3E6D1 /* ShareLocationVC.swift in Sources */,
 				B637309B1A615E3A0073EB51 /* Notification.swift in Sources */,
 				B637A9311A6FE2B7009FE828 /* Constants.swift in Sources */,
+				B688B7641B7C8D6900A315F9 /* SharedLocation.swift in Sources */,
 				B660CC231A6192DC00630E6F /* MainScreenTableVC.swift in Sources */,
 				B6D951A81A6D3D9D009315E5 /* UIDevice+ATDevice.swift in Sources */,
+				B688B7581B7C8CA100A315F9 /* LIViewController.swift in Sources */,
+				B688B75C1B7C8CFD00A315F9 /* FriendsTableVC.swift in Sources */,
 				B6F1BB2C1A657AFF0083FE07 /* AddFriendsDataSource.swift in Sources */,
+				B688B76A1B7C8F4800A315F9 /* FavoritePlacesDataSource.swift in Sources */,
 				B6F1BB2A1A6578440083FE07 /* AddFriendsVC.swift in Sources */,
 				A24517341A626EE00006CDB0 /* LoginWelcomeVC.swift in Sources */,
 				A24517361A626F2E0006CDB0 /* LoginSMSVC.swift in Sources */,
 				B637307A1A6151870073EB51 /* ACoreDataStore.swift in Sources */,
+				B688B7701B7C8FBD00A315F9 /* LocationManagerHandler.swift in Sources */,
 				B6B7653D1A67B51700C9A8C5 /* HeartButton.swift in Sources */,
 				B6271A061A626D5F008B410C /* UIColor+ATColor.swift in Sources */,
 				B88EC3D21A614C610064ED0E /* AppDelegate.swift in Sources */,
 				B6C616341A695CBD00B95663 /* Location.swift in Sources */,
+				B688B75A1B7C8CEA00A315F9 /* SharedLocationsTableVC.swift in Sources */,
 				A24517381A626F540006CDB0 /* LoginRegistrationVC.swift in Sources */,
 				B66B282B1A61BF7F00D3E6D1 /* ShareLocationDataSource.swift in Sources */,
 				B644A6DD1A725D3B005C1376 /* UIViewController + Navigation.swift in Sources */,
 				B66B282D1A61BF9C00D3E6D1 /* ATableViewDataSource.swift in Sources */,
+				B688B76E1B7C8F9C00A315F9 /* FavoritePlacesTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -969,6 +1036,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AStalker/AStalker-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -987,6 +1055,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "AStalker/AStalker-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1005,6 +1074,7 @@
 				INFOPLIST_FILE = AStalkerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AStalker.app/AStalker";
 			};
 			name = Debug;
@@ -1020,6 +1090,7 @@
 				INFOPLIST_FILE = AStalkerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AStalker.app/AStalker";
 			};
 			name = Release;

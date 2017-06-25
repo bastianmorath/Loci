@@ -57,8 +57,8 @@ class ACoreDataPortal: NSObject {
   
   :returns: the newly created NSManagedObject as an optional.
   */
-  func createObject( entityName: String ) -> NSManagedObject? {
-    var res: AnyObject? = NSEntityDescription.insertNewObjectForEntityForName( entityName, inManagedObjectContext: self.managedObjectContext )
+  func createObject( _ entityName: String ) -> NSManagedObject? {
+    let res: AnyObject? = NSEntityDescription.insertNewObject( forEntityName: entityName, into: self.managedObjectContext )
     return res as? NSManagedObject
   }
   
@@ -67,8 +67,8 @@ class ACoreDataPortal: NSObject {
   
   :param: object the NSManagedObject that should be deleted.
   */
-  func deleteObject( object: NSManagedObject ) {
-    managedObjectContext.deleteObject( object )
+  func deleteObject( _ object: NSManagedObject ) {
+    managedObjectContext.delete( object )
   }
   
   /**
@@ -80,11 +80,11 @@ class ACoreDataPortal: NSObject {
       var error: NSError?
       
 
-      if !self.managedObjectContext.save( &error ) {
-        // deal with the error.
-        println(error?.localizedDescription)
-      }
-      
+//      if !self.managedObjectContext.save( &error ) {
+//        // deal with the error.
+//        print(error?.localizedDescription)
+//      }
+    
       // call save on the parent
       self.parentPortal?.save()
   }

@@ -18,8 +18,12 @@ It is used for:
 */
 final class ACoreDataStore: ACoreDataPortal {
   
-  private var managedObjectModel: NSManagedObjectModel!
-  private var persistenStoreCoordinator: NSPersistentStoreCoordinator!
+  private static var __once: () = {
+      StaticInstance.instance = ACoreDataStore()
+    }()
+  
+  fileprivate var managedObjectModel: NSManagedObjectModel!
+  fileprivate var persistenStoreCoordinator: NSPersistentStoreCoordinator!
   
   /**
   The defaultStore exposes the default instance of this class. Generally you will
@@ -30,12 +34,10 @@ final class ACoreDataStore: ACoreDataPortal {
   class func defaultStore()-> ACoreDataStore {
     struct StaticInstance {
       static var instance: ACoreDataStore?
-      static var token: dispatch_once_t = 0
+      static var token: Int = 0
     }
     
-    dispatch_once( &StaticInstance.token ) {
-      StaticInstance.instance = ACoreDataStore()
-    }
+    _ = ACoreDataStore.__once
     
     return StaticInstance.instance!
   }
@@ -46,7 +48,7 @@ final class ACoreDataStore: ACoreDataPortal {
   override init() {
     super.init()
     
-    var error = setupCoreDataStack()
+    let error = setupCoreDataStack()
     if error != nil {
       // TODO: Add system to deal with the error
     }
@@ -59,10 +61,10 @@ final class ACoreDataStore: ACoreDataPortal {
   
   :returns: optional NSError
   */
-  private func setupCoreDataStack() -> NSError? {
-    managedObjectModel = NSManagedObjectModel.mergedModelFromBundles( nil )
+  fileprivate func setupCoreDataStack() -> NSError? {
+    managedObjectModel = NSManagedObjectModel.mergedModel( from: nil )
     
-    let storeURL = NSURL( fileURLWithPath: NSHomeDirectory() + "/Documents/trainer.db" )
+    let storeURL = URL( fileURLWithPath: NSHomeDirectory() + "/Documents/trainer.db" )
     
     var error: NSError?
     persistenStoreCoordinator = NSPersistentStoreCoordinator( managedObjectModel: managedObjectModel )
@@ -76,13 +78,13 @@ final class ACoreDataStore: ACoreDataPortal {
 //    }
     
     // create the persisten Disk Store
-    persistenStoreCoordinator.addPersistentStoreWithType( NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil, error: &error )
+    persistenStoreCoordinator.addPersistentStoreWithType( NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil, error: &error! )
     if error != nil {
       return error
     }
     
     // create the managedObjectContext
-    managedObjectContext = NSManagedObjectContext( concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType )
+    managedObjectContext = NSManagedObjectContext( concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType )
     managedObjectContext.persistentStoreCoordinator = persistenStoreCoordinator
     
     return nil
@@ -98,9 +100,9 @@ final class ACoreDataStore: ACoreDataPortal {
   
   :returns: the newly created NSFetchRequest
   */
-  internal func createFetchRequest( entityName: String, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil ) -> NSFetchRequest {
+  internal func createFetchRequest( _ entityName: String, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil ) -> NSFetchRequest<NSFetchRequestResult> {
     
-    var fetchRequest = NSFetchRequest(entityName:  entityName )
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName:  entityName )
     fetchRequest.predicate = predicate
     fetchRequest.sortDescriptors = sortDescriptors
     fetchRequest.fetchBatchSize = 10
@@ -114,14 +116,21 @@ final class ACoreDataStore: ACoreDataPortal {
   
   :returns: Results in an arra
   */
-  func performFetch( entityName: String, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil ) -> [NSManagedObject]? {
+  func performFetch( _ entityName: String, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil ) -> [NSManagedObject]? {
     let fetchRequest = createFetchRequest( entityName, predicate: predicate, sortDescriptors: sortDescriptors )
     
     var error: NSError?
-    let result = managedObjectContext.executeFetchRequest(fetchRequest, error: &error)
+    
+    do {
+        if let result = try managedObjectContext.fetch(fetchRequest) {
+            print(result)
+        }
+    } catch let error as NSError {
+        print(error.localizedDescription)
+    }
 
     
-    return result as [NSManagedObject]?
+    return result as! [NSManagedObject]?
   }
   
   /**
@@ -129,14 +138,18 @@ final class ACoreDataStore: ACoreDataPortal {
   
   :returns: The newly created NSFetchedResultsController
   */
-  func createFetchedResultsController( entityName: String, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil ) -> NSFetchedResultsController {
+  func createFetchedResultsController( _ entityName: String, predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil ) -> NSFetchedResultsController<NSFetchRequestResult> {
     
     let fetchRequest = createFetchRequest( entityName, predicate: predicate, sortDescriptors: sortDescriptors )
     let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedObjectContext, sectionNameKeyPath: nil, cacheName: nil )
     
     var error: NSError?
-    fetchedResultsController.performFetch( &error )
-    
+    do {
+        try  fetchedResultsController.performFetch()
+           
+    } catch let error as NSError {
+        print(error.localizedDescription)
+    }
     return fetchedResultsController
   }
   

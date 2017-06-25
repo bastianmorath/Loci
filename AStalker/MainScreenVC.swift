@@ -13,6 +13,9 @@ tableView ausklappen:
 Der TableView wird mit einer Swipe-Geste im TableView nach oben ausgeklappt. Er wird durch eine Swipe-Geste in der Map oder im TableView nach unten eingeklappt, SOFERN im TableView ganz nach oben gescrollt wird. Sonst wird zuerst nach oben gescrollt.
 Die Gesture-Recognizer werden vom TableVC und MapVC gehandelt. Wird in einem der beiden Controller geswiped, wird eine Notification in den anderen Controller gesendet, um dort die Bool-Property '.tableViewIsExtended' zu inversen
 */
+
+
+//TODO: - Wenn zwischen den TableViewController gewechselt wird, muss die Höhe des Containers/Views der Höhe des TableViews angepasst werden
 import Foundation
 import UIKit
 
@@ -20,45 +23,76 @@ import UIKit
 // Protocol, um vom TableVC die Nachricht zu bekommen, wenn eine cell gedrückt wurde
 protocol TableViewAndMapDelegate {
     func animateViewToBottom()
-    func didSelectAnnotationPin(location: Location)
+    func didSelectAnnotationPin(_ location: Location)
     
 }
 class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDelegate {
-    
-    
-    
-    
     //MARK:- Views
     // child controllers
     var mapVC: MainScreenMapVC!
-    var tableVC: MainScreenTableVC!
+    
+    //TODO:- Man kann nicht den ganzen TableView scrollen...
+    /// Der aktive ViewController (sharedLocationsTableVC oder friendsTableVC)
+    var activeTableViewController: LIViewController! {
+        willSet{
+            // Frames so setzen, dass sie nebeneinander sind und nach links, resp. rechts animiert werden
+            
+            if newValue.isKind(of: SharedLocationsTableVC.self){
+                self.sharedLocationsTableVC.view.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth, height: self.getHeightForTableViewController(sharedLocationsTableVC))
+                self.sharedLocationsTableVC.tableView.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth, height: self.getHeightForTableViewController(sharedLocationsTableVC))
+                
+                self.friendsTableVC.view.frame = CGRect(x: Constants.screenWidth, y: 0, width: Constants.screenWidth, height: self.getHeightForTableViewController(self.friendsTableVC))
+                self.friendsTableVC.tableView.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth, height: self.getHeightForTableViewController(self.friendsTableVC))
+            } else {
+                self.sharedLocationsTableVC.view.frame = CGRect(x: -Constants.screenWidth, y: 0, width: Constants.screenWidth, height: self.getHeightForTableViewController(sharedLocationsTableVC))
+                self.sharedLocationsTableVC.tableView.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth, height: self.getHeightForTableViewController(sharedLocationsTableVC))
+                
+                self.friendsTableVC.view.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth, height: self.getHeightForTableViewController(self.friendsTableVC))
+                self.friendsTableVC.tableView.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth, height: self.getHeightForTableViewController(self.friendsTableVC))
+            }
+        }
+    }
     
     
-    /// Container to hold Map and TableView
+    /// TableViewController that isn't showed at the moment
+    var passiveTableViewController: LIViewController{
+        if self.activeTableViewController.isKind(of: SharedLocationsTableVC.self){
+            return self.friendsTableVC
+        } else {
+            return self.sharedLocationsTableVC
+        }
+    }
+    
+    
+    var sharedLocationsTableVC: SharedLocationsTableVC!
+    var friendsTableVC: FriendsTableVC!
+    
+    
+    /// Container to hold all Controllers -> For Animations
+    var container: UIView!
+    
+    /// Container to hold Map and TableViews
     var homeViewContainer: UIView!
     
     // Containers to hold the child controllers view
     var mapContainer: UIView!
     var tableViewContainer: UIView!
     
-    /// Container to hold all Controllers -> For Animations
-    var container: UIView!
-    
     
     
     // MARK:-Buttons
     
     //Zeigt alle Kontakte des Users an, insbesondere wo diese sich befinden und wann sie dort waren
-    var contactButton: UIButton!
+    var addFriendsButton: LociButton!
     
     ///
-    var shareYourLocationButton: UIButton!
+    var changeTableViewButton: LociButton!
     
     /// Zeigt die Favoriten/Meist besuchten Locations vom Nutzer an. Dort sieht man auch, wie lange man an einer Location war.
-    var myLocationsButton: UIButton!
+    var favoritePlacesButton: LociButton!
     
     /// Die momentane Location des Users wird auf der Karte angezeigt
-    var locateMeButton: UIButton!
+    var zoomToCurrentLocationButton: LociButton!
     
     
     // MARK: - Properies und Variabeln
@@ -70,13 +104,13 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
     var tableViewIsExtended:Bool = false {
         willSet{
             if newValue == true {
-                self.mapVC.mapView.userInteractionEnabled = false
-                self.tableVC.tableView.scrollEnabled = true
-                self.tableVC.tableView.userInteractionEnabled = true
+                self.mapVC.mapView.isUserInteractionEnabled = false
+                self.activeTableViewController.tableView.isScrollEnabled = true
+                self.activeTableViewController.tableView.isUserInteractionEnabled = true
             } else {
-                self.mapVC.mapView.userInteractionEnabled = true
-                self.tableVC.tableView.scrollEnabled = false
-                self.tableVC.tableView.userInteractionEnabled = false
+                self.mapVC.mapView.isUserInteractionEnabled = true
+                self.activeTableViewController.tableView.isScrollEnabled = false
+                self.activeTableViewController.tableView.isUserInteractionEnabled = false
             }
         }
     }
@@ -89,97 +123,138 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
         self.container = UIView(frame: self.view.frame)
         self.view.addSubview(self.container)
         self.homeViewContainer = UIView(frame: self.view.frame)
+        self.homeViewContainer.backgroundColor = UIColor.WhiteColor()
         self.container.addSubview(self.homeViewContainer)
+        
         // Setup MapVC
         self.mapVC = MainScreenMapVC()
         self.mapVC.delegate = self
         self.addChildViewController(mapVC)
-        var mapHeight:CGFloat!
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
-            mapHeight = Constants.screenWidth * Constants.kAspectRatioMapToTableViewIPad
-        } else {
-            mapHeight = Constants.screenWidth * Constants.kAspectRatioMapToTableViewIPhone
-        }
-        self.mapContainer = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, mapHeight))
+        var mapHeight = Constants.screenWidth * Constants.kAspectRatioMapToTableView
+        self.mapContainer = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: mapHeight))
         self.homeViewContainer.addSubview(self.mapContainer)
         self.mapContainer.addSubview(self.mapVC.view)
-        self.mapVC.didMoveToParentViewController(self)
+        self.mapVC.didMove(toParentViewController: self)
         
         
-        //  Setup TableVC
-        self.tableVC = MainScreenTableVC()
-        self.tableVC.delegate = self
-        self.addChildViewController(self.tableVC)
+        //  Setup TableViewControllers
+        self.sharedLocationsTableVC = SharedLocationsTableVC()
+        self.sharedLocationsTableVC.delegate = self
+        self.addChildViewController(self.sharedLocationsTableVC)
         
-        self.tableViewContainer = UIView(frame: CGRectMake(0, Constants.screenHeight-Constants.tableViewHeight, Constants.screenWidth, Constants.tableViewHeight))
-        tableViewContainer.addSubview(self.tableVC.view)
+        self.friendsTableVC = FriendsTableVC()
+        self.friendsTableVC.delegate = self
+        self.addChildViewController(self.friendsTableVC)
+        
+        self.tableViewContainer = UIView(frame: CGRect(x: 0, y: Constants.screenHeight-Constants.tableViewHeight, width: Constants.screenWidth, height: Constants.tableViewHeight))
+        tableViewContainer.addSubview(self.sharedLocationsTableVC.view)
+        tableViewContainer.addSubview(self.friendsTableVC.view)
+        
         self.homeViewContainer.addSubview(self.tableViewContainer)
-        tableVC.didMoveToParentViewController(self)
+        
+        sharedLocationsTableVC.didMove(toParentViewController: self)
+        friendsTableVC.didMove(toParentViewController: self)
+        
+        
+        // Set default TableViewController
+        self.activeTableViewController = self.friendsTableVC
         
         self.tableViewIsExtended = false
         
-        self.view.backgroundColor = UIColor.greenColor()
-        
         // Setup Buttons
-        myLocationsButton = UIButton.ATButton(.MultipleLocations, color: .White)
-        myLocationsButton.addTarget(self, action: "myLocationButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.homeViewContainer.addSubview(myLocationsButton)
-        myLocationsButton.positionButtonToLocation(.TopLeft)
+        favoritePlacesButton = LociButton(type: .multipleLocations, color: .white)
+        favoritePlacesButton.addTarget(self, action: #selector(MainScreenVC.favoritePlacesButtonPressed), for: UIControlEvents.touchUpInside)
+        self.homeViewContainer.addSubview(favoritePlacesButton)
+        favoritePlacesButton.positionButtonToLocation(.topLeft)
         
-        contactButton = UIButton.ATButton(.Contact, color: .White)
-        contactButton.addTarget(self, action: "contactButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.homeViewContainer.addSubview(contactButton)
-        contactButton.positionButtonToLocation(.TopRight)
+        addFriendsButton = LociButton(type:.contact, color: .white)
+        addFriendsButton.addTarget(self, action: #selector(MainScreenVC.addFriendsButtonPressed), for: UIControlEvents.touchUpInside)
+        self.homeViewContainer.addSubview(addFriendsButton)
+        addFriendsButton.positionButtonToLocation(.topRight)
         
-        shareYourLocationButton = UIButton.ATButton(.ContactLocation, color: .Grey)
-        shareYourLocationButton.addTarget(self, action: "shareYourLocationButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.tableViewContainer.addSubview(shareYourLocationButton)
-        shareYourLocationButton.positionButtonToLocation(.TopHalfLeft)
+        changeTableViewButton = LociButton(type:.contactLocation, color: .grey)
+        changeTableViewButton.addTarget(self, action: #selector(MainScreenVC.changeTableViewButtonPressed), for: UIControlEvents.touchUpInside)
+        self.homeViewContainer.addSubview(changeTableViewButton)
+        changeTableViewButton.positionButtonToLocation(.topHalfLeft)
         
-        locateMeButton = UIButton.ATButton(.SingleLocation, color: .White)
-        locateMeButton.addTarget(self, action: "locateMeButtonPressed", forControlEvents: UIControlEvents.TouchUpInside)
-        self.mapContainer.addSubview(locateMeButton)
-        locateMeButton.positionButtonToLocation(.BottomRight)
+        zoomToCurrentLocationButton = LociButton(type:.singleLocation, color: .white)
+        zoomToCurrentLocationButton.addTarget(self, action: #selector(MainScreenVC.zoomToCurrentLocationButtonPressed), for: UIControlEvents.touchUpInside)
+        self.mapContainer.addSubview(zoomToCurrentLocationButton)
+        zoomToCurrentLocationButton.positionButtonToLocation(.bottomRight)
         
         //Swipe Gesture Up
-        var swipeUpTableViewGesture = UISwipeGestureRecognizer(target: self, action: "swipeUp")
-        swipeUpTableViewGesture.direction = UISwipeGestureRecognizerDirection.Up
+        var swipeUpTableViewGesture = UISwipeGestureRecognizer(target: self, action: #selector(MainScreenVC.swipeUp))
+        swipeUpTableViewGesture.direction = UISwipeGestureRecognizerDirection.up
         self.view.addGestureRecognizer(swipeUpTableViewGesture)
         
         
         //Swipe Gesture Down
-        var swipeDownMap = UISwipeGestureRecognizer(target: self, action: "swipeDown")
-        swipeDownMap.direction = UISwipeGestureRecognizerDirection.Down
+        var swipeDownMap = UISwipeGestureRecognizer(target: self, action: #selector(MainScreenVC.swipeDown))
+        swipeDownMap.direction = UISwipeGestureRecognizerDirection.down
         self.view.addGestureRecognizer(swipeDownMap)
     }
     
     // MARK: - Button Handling
     
-    func locateMeButtonPressed() {
+    func zoomToCurrentLocationButtonPressed() {
         mapVC.mapView.zoomIn()
     }
     
-    func myLocationButtonPressed() {
-        var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
-        shareLocationVC.location = LocationStore.defaultStore().createLocation("tst", timestamp: NSDate(), longitude: 5.5, latitude: 3.4, user: nil)
-        self.addViewController(shareLocationVC)
+    func favoritePlacesButtonPressed() {
+        if !self.tableViewIsExtended{
+            var favoritePlacesVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "favoritePlacesVC") as! FavoritePlacesVC
+            self.addViewController(favoritePlacesVC)
+        }
     }
     
-    func shareYourLocationButtonPressed(){
+    // TODO:- Wenn gewechselt wird, überprüfen, ob der neue TableView gerade so gross wird, wie wenn er zugeklappt wäre -> dann zuklappen
+    func changeTableViewButtonPressed(){
         // Zwischen den TableViews switchen
-        self.tableViewIsExtended = !self.tableViewIsExtended
+        
+        UIView.animate(withDuration: 0.2, animations: { () -> Void in
+            // Zuerst muss der Frame des neuen TableViewControllers gesetzt werden, da nicht beide TableViews unbedingt gleich hoch sein müssen
+            if self.tableViewIsExtended{
+                var heightForVC = self.getHeightForTableViewController(self.passiveTableViewController)
+                
+                // HomeViewContainer
+                self.homeViewContainer.frame = CGRect(x: 0, y: -heightForVC + Constants.tableViewHeight, width: Constants.screenWidth, height: Constants.screenHeight + heightForVC - Constants.tableViewHeight)
+                // TableViewContainer
+                self.tableViewContainer.frame = CGRect(x: 0, y: self.tableViewContainer.frame.origin.y, width: Constants.screenWidth, height: heightForVC)
+            }
+            // Animation
+            if self.activeTableViewController.isKind(of: FriendsTableVC.self){
+                self.activeTableViewController = self.sharedLocationsTableVC
+                self.changeTableViewButton.backgroundColor = UIColor.RedColor()
+                self.changeTableViewButton.positionButtonToLocation(.topHalfRight)
+            } else {
+                self.activeTableViewController = self.friendsTableVC
+                self.changeTableViewButton.backgroundColor = UIColor.GreyColor()
+                self.changeTableViewButton.positionButtonToLocation(.topHalfLeft)
+            }
+            // Muss aufgerufen werden, damit der Wechsel des Buttons animiert wird
+            self.changeTableViewButton.layoutIfNeeded()
+        })
+        
+        
+        //Da der activeController neu gesetzt wurde, muss die property tableViewIsExtended nochmals gesetzt werden, um auch beim neuen Controller die das Verhalten des TableViews zu bestimmen. Ist die Höhe des TableViews gerade so gross, wie wenn er nicht ausgeklappt wäre, setze die Variable auf false
+        if self.activeTableViewController.tableView.contentSize.height == Constants.tableViewHeight{
+            self.tableViewIsExtended = false
+        }else {
+            self.tableViewIsExtended = self.tableViewIsExtended as Bool
+        }
+        
     }
     
-    //TODO:- Wenn Map verschwindet, soll der entsprechende BUtton jeweils oben bleiben und nicht mitanimiert werden
-    func contactButtonPressed() {
-        var addFriendsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("addFriendsVC") as AddFriendsVC
-        self.addViewController(addFriendsVC)
+    func addFriendsButtonPressed() {
+        if !self.tableViewIsExtended{
+            var addFriendsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addFriendsVC") as! AddFriendsVC
+            self.addViewController(addFriendsVC)
+        }
     }
     
     
     // MARK:- Swipe-Gesture
     func swipeUp(){
-        
         if !tableViewIsExtended && !self.mapIsAtBottom{
             // tableView ausklappen
             self.animateViewToTop()
@@ -197,64 +272,76 @@ class MainScreenVC: UIViewController, UIScrollViewDelegate, TableViewAndMapDeleg
     func animateViewToTop(){
         self.tableViewIsExtended =  true
         
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
-            let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
-            // transitionConstant: Höhe des TableViews mit allen Cells (Cells + HeaderView) - Höhe des momentanen TableViews
-            var transitionConstant = numberOfRows * Constants.kCellHeight  + 70 - Constants.tableViewHeight
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            let heightOfActiveTVC = self.getHeightForTableViewController(self.activeTableViewController)
+            let heightOfPassiveTVC = self.getHeightForTableViewController(self.passiveTableViewController)
             
-            let topSpace = Constants.topSpace
-            let maxTransition = self.view.frame.height-Constants.tableViewHeight-topSpace
-            
-            transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
-            if transitionConstant < 0{
+            if heightOfActiveTVC - Constants.tableViewHeight < 0{
                 self.tableViewIsExtended = false
                 return
             }
-            //ganzen View nach oben verschieben + tableView-Höhe vergrössern
-            self.container.frame = CGRectMake(0, -transitionConstant, Constants.screenWidth, self.view.frame.height+transitionConstant)
-            //TableViewContainer.frame Höhe anpassen
-            self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y,Constants.screenWidth, transitionConstant+Constants.tableViewHeight)
             
-            let tableViewFrame = CGRectMake(0, 0, Constants.screenWidth, transitionConstant+Constants.tableViewHeight)
-            self.tableVC.tableView.frame = CGRectMake(0, 0, Constants.screenWidth, transitionConstant+Constants.tableViewHeight)
+            // HomeContainer Frame
+            self.homeViewContainer.frame = CGRect(x: 0, y: -heightOfActiveTVC + Constants.tableViewHeight, width: Constants.screenWidth, height: Constants.screenHeight + heightOfActiveTVC - Constants.tableViewHeight)
             
+            // Set BOTH TableView Frames
+            self.tableViewContainer.frame = CGRect(x: 0, y: self.tableViewContainer.frame.origin.y, width: Constants.screenWidth, height: heightOfActiveTVC)
+            self.activeTableViewController.tableView.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth, height: heightOfActiveTVC)
+            
+            var x_Value_OfPassiveViewController:CGFloat!
+            
+            if self.passiveTableViewController.isKind(of: SharedLocationsTableVC.self){
+                x_Value_OfPassiveViewController = -Constants.screenWidth
+            } else {
+                x_Value_OfPassiveViewController = +Constants.screenWidth
+            }
+            self.passiveTableViewController.tableView.frame = CGRect(x: x_Value_OfPassiveViewController, y: 0, width: Constants.screenWidth, height: heightOfPassiveTVC)
+            
+            self.zoomToCurrentLocationButton.alpha = 0.0
         })
-        
     }
     
     
     func animateViewToBottom(){
-        // Falls noch eine Cell offen ist, dann diese schliessen
-        if let selectedRowIndexPath = self.tableVC.selectedRowIndexPath{
-            
-            self.tableVC.sharedLocationsDataSource.selectedRowIndexPath = NSIndexPath()
-            self.tableVC.tableView.beginUpdates()
-            self.tableVC.tableView.reloadRowsAtIndexPaths([selectedRowIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            self.tableVC.tableView.endUpdates()
-        }
-        self.tableVC.tableView.scrollRectToVisible(CGRectMake(0, 0, 0, 0), animated: true)
+        
+        
         self.tableViewIsExtended = false
         
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
-            let numberOfRows = CGFloat(self.tableVC.tableView.numberOfRowsInSection(0))
-            var transitionConstant = numberOfRows * Constants.kCellHeight - Constants.tableViewHeight
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
             
-            let topSpace = Constants.topSpace
-            let maxTransition = Constants.screenHeight-Constants.tableViewHeight-topSpace
-            transitionConstant = transitionConstant > maxTransition ? maxTransition : transitionConstant
-            self.container.frame = CGRectMake(0, 0, Constants.screenWidth, UIScreen.mainScreen().bounds.height)
-            self.tableVC.tableView.frame = CGRectMake(0, 0, Constants.screenWidth, Constants.tableViewHeight)
-            self.tableViewContainer.frame = CGRectMake(0, self.tableViewContainer.frame.origin.y, Constants.screenWidth, Constants.tableViewHeight)
-        })
+            // Scroll to top of BOTH tableView
+            self.activeTableViewController.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
+            self.passiveTableViewController.tableView.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: false)
+            
+            }, completion: { (Bool) -> Void in
+                UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                    // HomeViewContainer Frame
+                    self.homeViewContainer.frame = self.view.frame
+                    
+                    // TableView Frames
+                    self.tableViewContainer.frame = CGRect(x: 0, y: Constants.screenHeight - Constants.tableViewHeight, width: Constants.screenHeight, height: Constants.tableViewHeight)
+                    self.activeTableViewController.tableView.frame = CGRect(x: 0, y: 0, width: Constants.screenWidth, height: Constants.tableViewHeight)
+                    
+                    self.zoomToCurrentLocationButton.alpha = 1.0
+                })
+        }) 
+    }
+    
+    func didSelectAnnotationPin(_ location: Location){
+        if !self.tableViewIsExtended{
+            var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "shareLocationVC") as! ShareLocationVC
+            shareLocationVC.location = LocationStore.defaultStore().createSharedLocation(Date(), longitude: 5.5, latitude: 3.4, user: nil)
+            self.addViewController(shareLocationVC)
+        }
+    }
+    
+    func getHeightForTableViewController(_ tableViewController: LIViewController) -> CGFloat{
+        // Height: Höhe des TableViews mit allen Cells (Cells + HeaderView)
+        let height = tableViewController.tableView.rect(forSection: 0).maxY
+        let maxHeight = Constants.screenHeight - Constants.topSpace
         
+        return height > maxHeight ? maxHeight : height
     }
-    
-    func didSelectAnnotationPin(location: Location){
-        var shareLocationVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("shareLocationVC") as ShareLocationVC
-        shareLocationVC.location = location
-        self.addViewController(shareLocationVC)
-    }
-    
     
     
 }

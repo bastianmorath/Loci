@@ -14,47 +14,70 @@ class Location: NSManagedObject {
     
     @NSManaged var latitude: NSNumber
     @NSManaged var longitude: NSNumber
-    @NSManaged var name: String
-    @NSManaged var timestamp: NSDate
-    @NSManaged var sharedUsers: NSSet
-    @NSManaged var creator: User
     
-    
+    // TODO:- Problem: reverseGeocodeLocation is asynchros --> street wird zurückgegeben, bevor der Completionhandler überhaupt aufgerufen wird
     func getStreet() -> String {
-        var street = "Test-Strasse"
+        var street = "Teststrasse"
         // Strasse
-//        var location = CLLocation(latitude: self.latitude.doubleValue, longitude: self.longitude.doubleValue)
-//        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-//            if placemarks.count > 0 {
-//                let pm = placemarks[0] as CLPlacemark
-//                street = pm.addressDictionary["Street"] as String
-//            } })
+        let location = CLLocation(latitude: self.latitude.doubleValue, longitude: self.longitude.doubleValue)
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+            if let error = error {print("reverse geodcode fail: \(error.localizedDescription)")}
+            if let playcemarks = placemarks {
+                if  placemarks!.count > 0 {
+                    let pm = placemarks![0] 
+                    let streetString = pm.thoroughfare
+                    if let streetString = streetString{
+                        street = streetString
+                    }
+                }
+            }
+            
+        })
+        
         return street
     }
     
     func getCity() -> String {
-        var city = "Test-City"
+        var city = "Greifensee"
         // City
-//        var location = CLLocation(latitude: self.latitude.doubleValue, longitude: self.longitude.doubleValue)
-//        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
-//            if placemarks.count > 0 {
-//                let pm = placemarks[0] as CLPlacemark
-//                city = pm.addressDictionary["City"] as String
-//            } })
+        let location = CLLocation(latitude: self.latitude.doubleValue, longitude: self.longitude.doubleValue)
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+            if placemarks != nil && placemarks!.count > 0 {
+                let pm = placemarks![0] as? CLPlacemark
+                let cityString = pm?.locality
+                if let cityString = cityString{
+                    city = cityString
+                }
+            } })
         return city
     }
     
+    func getCountry() -> String {
+        var country = "Schweiz"
+        //Country
+        let location = CLLocation(latitude: self.latitude.doubleValue, longitude: self.longitude.doubleValue)
+        CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error) -> Void in
+            if placemarks != nil && placemarks!.count > 0 {
+                let pm = placemarks![0] as? CLPlacemark
+                let countryString = pm?.country
+                if let countryString = countryString{
+                    country = countryString
+                }
+            } })
+        return country
+    }
+    
     func getTimeFormatted() -> String{
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         dateFormatter.dateFormat = "hh:mm"
-        return dateFormatter.stringFromDate(NSDate())
+        return dateFormatter.string(from: Date())
     }
     
     func getDateFormatted() -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         dateFormatter.dateFormat = "dd. MMMM"
-        return dateFormatter.stringFromDate(NSDate())
+        return dateFormatter.string(from: Date())
     }
 }

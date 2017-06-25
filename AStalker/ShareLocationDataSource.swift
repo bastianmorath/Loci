@@ -11,17 +11,17 @@ import UIKit
 
 class ShareLocationDataSource: ATableViewDataSource{
     var selectedUserSet = NSMutableSet()
-    var location: Location?
-    init( tableView: UITableView, user: LocalUser, location: Location? = nil) {
+    var location: SharedLocation?
+    init( tableView: UITableView, user: LocalUser, location: SharedLocation? = nil) {
         self.location = location
         let fetchedResultsController = LocationStore.defaultStore().getUsersFC()
         super.init(tableView: tableView, fetchedResultsController: fetchedResultsController )
     }
     
-    override func cellForTableView(tableView: UITableView, atIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell =  ShareLocationTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self ) as ShareLocationTableViewCell
-        var user = self.modelForIndexPath(indexPath) as User
-        if self.selectedUserSet.containsObject(user){
+    override func cellForTableView(_ tableView: UITableView, atIndexPath indexPath: IndexPath) -> UITableViewCell {
+        var cell =  ShareLocationTableViewCell.cellForTableView( tableView, atIndexPath: indexPath, withModelSource: self ) as! ShareLocationTableViewCell
+        var user = self.modelForIndexPath(indexPath) as! User
+        if self.selectedUserSet.contains(user){
             cell.checkboxButton.isChecked = true
         } else {
             cell.checkboxButton.isChecked = false

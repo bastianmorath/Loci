@@ -21,9 +21,9 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
     var shareLocationDataSource: ShareLocationDataSource!
     
     //Hier wird das Location-Objekt gespeichert, welches vom MainVC übergeben wird
-    var location:Location!
+    var location:SharedLocation!
     
-    var shareButton: UIButton?
+    var shareButton: LociButton?
     
     
     override func viewDidLoad() {
@@ -39,28 +39,25 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
         self.placeLabel.text = self.location.getCity()
         
         //ShareButton
-        self.shareButton = UIButton.ATButton(UIButton.ATButtonType.Share, color: UIButton.ATColor.White)
+        self.shareButton = LociButton(type:.share, color:.white)
         if let button = shareButton{
-            button.addTarget(self, action: "sharePressed", forControlEvents:UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: #selector(ShareLocationVC.sharePressed), for:UIControlEvents.touchUpInside)
             self.view.addSubview(button)
-            button.positionButtonToLocation(.TopRight)
+            button.positionButtonToLocation(.topRight)
         }
         
         // TableView DataSource definieren
         let localUser = (LocationStore.defaultStore().getLocalUser())
         shareLocationDataSource = ShareLocationDataSource(tableView: tableView, user: localUser!, location: self.location )
         tableView.dataSource = shareLocationDataSource
-        
-        self.tableView.frame = CGRectMake(0, Constants.topSpace, Constants.screenWidth, Constants.screenHeight-2 * Constants.topSpace)
     }
     
-    
     //MARK:- Table View Delegate
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRectMake(0, 0, 50, 40))
-        headerView.backgroundColor = UIColor.clearColor()
-        var label: UILabel = UILabel(frame: CGRectMake(31
-            , 40, 40, 50))
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: Constants.headerHeight-30))
+        headerView.backgroundColor = UIColor.clear
+        let label: UILabel = UILabel(frame: CGRect(x: 31
+            , y: Constants.headerHeight - 30, width: 40, height: 15))
         label.font = UIFont.ATFont()
         label.text = "Share"
         headerView.addSubview(label)
@@ -68,34 +65,33 @@ class ShareLocationVC: UIViewController, UITableViewDelegate {
         return headerView
     }
     
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var selectedUser = self.shareLocationDataSource.modelForIndexPath(indexPath) as User
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as ShareLocationTableViewCell
-        var dataSource = self.tableView.dataSource as ShareLocationDataSource
-        if dataSource.selectedUserSet.containsObject(selectedUser){
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var selectedUser = self.shareLocationDataSource.modelForIndexPath(indexPath) as! User
+        var cell = tableView.cellForRow(at: indexPath) as! ShareLocationTableViewCell
+        var dataSource = self.tableView.dataSource as! ShareLocationDataSource
+        if dataSource.selectedUserSet.contains(selectedUser){
             //User ist schon ausgewählt. Deselecte ihn im View und lösche ihn aus dem userSet
-            dataSource.selectedUserSet.removeObject(selectedUser)
+            dataSource.selectedUserSet.remove(selectedUser)
         } else {
             //Füge den User bei lcoation.sharedUsers hinzu und Selecte ihn im View(roter Checkmark-View)
-            dataSource.selectedUserSet.addObject(selectedUser)
+            dataSource.selectedUserSet.add(selectedUser)
         }
         cell.checkboxButton.isChecked = !cell.checkboxButton.isChecked
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.kCellHeight
     }
     
     //MARK:- Button Handlers
     func sharePressed() {
-        self.location.sharedUsers = (self.tableView.dataSource as ShareLocationDataSource).selectedUserSet
-
+        self.location.sharedUsers = (self.tableView.dataSource as! ShareLocationDataSource).selectedUserSet
+        
         //Add Location to localUser.sharedLocations
-        var mutableSet = LocationStore.defaultStore().getLocalUser()?.sharedLocations as NSMutableSet
-        mutableSet.addObject(location)
+        let mutableSet = LocationStore.defaultStore().getLocalUser()?.sharedLocations as! NSMutableSet
+        mutableSet.add(location)
         LocationStore.defaultStore().getLocalUser()?.sharedLocations = mutableSet
-        println("\(self.location.sharedUsers.count) Personen hinzugefügt")
+        print("\(self.location.sharedUsers.count) Personen hinzugefügt")
         
         self.dismissViewController()
     }

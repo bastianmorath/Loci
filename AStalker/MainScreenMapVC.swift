@@ -19,14 +19,6 @@ import CoreLocation
 
 class MainScreenMapVC: UIViewController, MKMapViewDelegate{
     
-    
-    //Verhältnis vom mapContainer zum TableView: iPhone 5-6Plus
-    let kAspectRatioMapToTableViewIPhone: CGFloat = 1.24
-    
-    //Verhältnis vom mapContainer zum TableView: iPad
-    let kAspectRatioMapToTableViewIPad: CGFloat = 1.04
-    
-    
     var mapView:MapView!
     
     var delegate:TableViewAndMapDelegate!
@@ -37,56 +29,51 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate{
         super.viewDidLoad()
         
         // layout mapView
-        var mapHeight:CGFloat!
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad{
-            mapHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPad
-        } else {
-            mapHeight = self.view.frame.size.width*kAspectRatioMapToTableViewIPhone
-        }
-        mapView = MapView(frame: CGRectMake(0, 0, self.view.frame.size.width, mapHeight))
+        let mapHeight = Constants.screenWidth * Constants.kAspectRatioMapToTableView
+        mapView = MapView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: mapHeight))
         mapView.delegate = self
         self.view.addSubview(mapView )
         
         mapView.zoomIn()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         // Change frame of legal-label
-        var legalLabel = self.mapView.subviews[1] as UILabel
+        let legalLabel = self.mapView.subviews[1] as! UILabel
         //legalLabel.center = CGPointMake(280, 200)
-        legalLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        legalLabel.translatesAutoresizingMaskIntoConstraints = false
         let views = ["label" : legalLabel]
         let metrics = ["margin": kMargin, "bottomMargin":50]
         
-        var horizontalConstraint = "H:[label]-margin-|"
-        var verticalConstraint = "V:[label]-margin-|"
-        self.mapView.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(horizontalConstraint, options: nil, metrics: metrics, views: views ) )
-        self.mapView.addConstraints( NSLayoutConstraint.constraintsWithVisualFormat(verticalConstraint, options: nil, metrics: metrics, views: views ) )
+        let horizontalConstraint = "H:[label]-margin-|"
+        let verticalConstraint = "V:[label]-margin-|"
+        self.mapView.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: horizontalConstraint, options: NSLayoutFormatOptions.AlignAllBaseline, metrics: metrics, views: views ) )
+        self.mapView.addConstraints( NSLayoutConstraint.constraints(withVisualFormat: verticalConstraint, options: NSLayoutFormatOptions.AlignAllBaseline, metrics: metrics, views: views ) )
         
         
     }
     
     //   Keep track of user: if user changes position center of mapView will change
-    func mapView(mapView: MKMapView!, didUpdateUserLocation userLocation: MKUserLocation!) {
+    func mapView(_ mapView: MKMapView!, didUpdate userLocation: MKUserLocation!) {
        
-        mapView.centerCoordinate = userLocation.location.coordinate
+        mapView.centerCoordinate = userLocation.location!.coordinate
         // stop AnnotationView callout
-        if let annotationView = mapView.viewForAnnotation(userLocation) {
-            annotationView.canShowCallout = false
+        if let annotationView = mapView.view(for: userLocation) {
+            //annotationView.canShowCallout = false
         }
     }
     
     // Gehe zum ShareLocationVC
-    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         var longitude = 47.35 as Double
         var latitude = 8.68333 as Double
-        if let location = self.mapView.userLocation?.location{
+        if let location = self.mapView.userLocation.location{
             latitude = location.coordinate.latitude
             longitude = location.coordinate.longitude
         } else {
-            println("Couldn't set UserLocation. Random UserLocation set")
+            print("Couldn't set UserLocation. Random UserLocation set")
         }
-        var locationToShare = LocationStore.defaultStore().createLocation("TestName", timestamp: nil, longitude: longitude, latitude: latitude, user: nil)
+        var locationToShare = LocationStore.defaultStore().createSharedLocation( nil, longitude: longitude, latitude: latitude, user: nil)
         
         self.delegate.didSelectAnnotationPin(locationToShare!)
     }
@@ -96,11 +83,17 @@ class MainScreenMapVC: UIViewController, MKMapViewDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        if self.mapIsAtBottom{
-            (self.parentViewController!.childViewControllers[2] as UIViewController).dismissViewController()
-        }
-    }
+    
+//        func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+//        if self.mapIsAtBottom{
+//            for controller in self.parentViewController!.childViewControllers{
+//                if controller.isKindOfClass(AddFriendsVC) || controller.isKindOfClass(ShareLocationVC) || controller.isKindOfClass(FavoritePlacesVC){
+//                    (controller as! UIViewController).dismissViewController()
+//                }
+//            }
+//        }
+
+  //  }
     
 }
 

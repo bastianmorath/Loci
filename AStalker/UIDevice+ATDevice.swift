@@ -12,26 +12,26 @@ extension UIDevice {
     
     var IS_OS_8_OR_LATER:Bool {
         get{
-            return NSProcessInfo().isOperatingSystemAtLeastVersion(NSOperatingSystemVersion(majorVersion: 8, minorVersion: 0, patchVersion: 0))
+            return ProcessInfo().isOperatingSystemAtLeast(OperatingSystemVersion(majorVersion: 8, minorVersion: 0, patchVersion: 0))
         }
     }
    
     func isIPad() -> Bool{
-        if self.userInterfaceIdiom == .Pad {
+        if self.userInterfaceIdiom == .pad {
             return true
         }
         return false
     }
     
     func isIPhone() -> Bool{
-        if self.userInterfaceIdiom == .Phone {
+        if self.userInterfaceIdiom == .phone {
             return true
         }
         return false
     }
     
     func isIPhone5() -> Bool{
-        if UIScreen.mainScreen().bounds.size.height == 568{
+        if UIScreen.main.bounds.size.height == 568{
             return true
         }
         return false
@@ -39,14 +39,14 @@ extension UIDevice {
 
     
     func isIPhone6() -> Bool{
-        if UIScreen.mainScreen().bounds.size.height == 667 || (UIScreen.mainScreen().bounds.size.height == 568 && UIScreen.mainScreen().nativeScale < UIScreen.mainScreen().scale && IS_OS_8_OR_LATER){
+        if UIScreen.main.bounds.size.height == 667 || (UIScreen.main.bounds.size.height == 568 && UIScreen.main.nativeScale < UIScreen.main.scale && IS_OS_8_OR_LATER){
             return true
         }
         return false
     }
     
     func isIPhone6Plus() -> Bool{
-        if UIScreen.mainScreen().bounds.size.height == 736 || (UIScreen.mainScreen().bounds.size.height == 667 && UIScreen.mainScreen().nativeScale < UIScreen.mainScreen().scale && IS_OS_8_OR_LATER){
+        if UIScreen.main.bounds.size.height == 736 || (UIScreen.main.bounds.size.height == 667 && UIScreen.main.nativeScale < UIScreen.main.scale && IS_OS_8_OR_LATER){
             return true
         }
         return false

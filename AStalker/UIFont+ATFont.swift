@@ -40,10 +40,10 @@ extension UIFont{
   Debug function: Logs all fonts available to the command line.
   */
   class func createDebugOutput() {
-    for family in UIFont.familyNames() as [String] {
-      println( family )
-      for name in UIFont.fontNamesForFamilyName( family ) {
-        println( name )
+    for family in UIFont.familyNames {
+      print( family )
+      for name in UIFont.fontNames( forFamilyName: family ) {
+        print( name )
       }
     }
   }

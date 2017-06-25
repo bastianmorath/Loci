@@ -11,34 +11,34 @@ import UIKit
 class HeartButton: UIButton{
     
     //CircleView: Grauer Kreis mit Herz
-    var notSelectedView = DeselectedButtonView(frame: CGRectMake(0, -6, 35, 35), type: .Heart)
+    var notSelectedView = DeselectedButtonView(frame: CGRect(x: 0, y: -6, width: 35, height: 35), type: .heart)
     //CheckmarkView: Roter Button mit Heart
-    var selectedView = SelectedButtonView(frame: CGRectMake(4, -2, 27, 27), type: .Heart)
+    var selectedView = SelectedButtonView(frame: CGRect(x: 4, y: -2, width: 27, height: 27), type: .heart)
     
     //bool Property. Versteckt, resp. zeigt die zwei Views an.
     var isChecked:Bool = false {
         didSet{
             if isChecked == true {
-                notSelectedView.hidden == true
-                selectedView.hidden = false
+                notSelectedView.isHidden == true
+                selectedView.isHidden = false
             } else {
-                notSelectedView.hidden == false
-                selectedView.hidden = true
+                notSelectedView.isHidden == false
+                selectedView.isHidden = true
             }
         }
     }
     
     override func layoutSubviews() {
-        self.addTarget(self, action: "buttonClicked:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.addTarget(self, action: "buttonClicked:", for: UIControlEvents.touchUpInside)
         
         //Füge die beiden Views dem Button hinzu
-        notSelectedView.userInteractionEnabled = false
-        selectedView.userInteractionEnabled = false
+        notSelectedView.isUserInteractionEnabled = false
+        selectedView.isUserInteractionEnabled = false
         
         self.addSubview(notSelectedView)
         self.addSubview(selectedView)
         
-        self.userInteractionEnabled = false
+        self.isUserInteractionEnabled = false
         //self.isChecked = false
     }
 
